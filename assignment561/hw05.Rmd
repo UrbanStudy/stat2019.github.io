@@ -1,0 +1,155 @@
+---
+title: "STAT561 Fall 2018 HW5"
+author: 'Shen Qu'
+date: "11/1/2018"
+output: html_document
+---
+
+**3.2** A manufacturer receives a lot of 100 parts from a vendor. The lot will be unacceptable if more than five of the parts are defective. The manufacturer is going to select randomly K parts from the lot for inspection and the lot will be accepted if no defective parts are found in the sample.
+
+(a) How large does K have to be to ensure that the probability that the manufacturer accepts an unacceptable lot is less than . 10?
+
+The probability of accepting the unacceptable lot is
+
+$$P(X=0|N=100,5<M<(100-K),0<K<(100-m))=\sum_{M=6}^{100-K}\frac{\binom{M}{0}\binom{100-M}{K}}{\binom{100}{K}}=\sum_{M=6}^{100-K}\frac{(100-M)!(100-K)!}{100!(100-M-K)!}$$
+
+For a given probability, When M get the minimum value, the K get the maximum value.
+
+$$Let\quad P(X=0|N=100,M=6,K)=\frac{\binom{6}{0}\binom{100-6}{K}}{\binom{100}{K}}<0.10$$
+
+$$\implies \frac{(100-k)(99-k)(98-k)(97-k)(96-k)(95-k)}{100*99*98*97*96*95}<0.10$$
+
+```{r}
+# by bisection method
+# when K up to 32, the probability of no defective part is smaller than 0.1.
+dhyper(0, 6, 94, 32, log = FALSE)
+# when K down to 31, the defective might not be chose on 0.1 probability.
+qhyper(0.1, 6, 94, 31, lower.tail = TRUE, log.p = FALSE)
+
+# by function of phyper
+uniroot(function(k)(phyper(0, 6, 94, k, lower.tail = TRUE, log.p = FALSE)-0.1), lower=0, upper=100)$root
+
+curve(phyper(0, 6, 94, x, lower.tail = TRUE, log.p = FALSE), 0, 100); text(0,0.1, "0.1"); abline(h = 0.1, lty = 2); text(32,0, "32"); abline(v = 32, lty = 3)
+
+# by resolving equation
+uniroot(function(k)(((100-k)*(99-k)*(98-k)*(97-k)*(96-k)*(95-k))/(100*99*98*97*96*95)-0.1), lower=0, upper=100)$root
+
+
+
+```
+
+ When the defective parts are 6, K must be at least 32
+
+****
+(b) Suppose the manufacturer decides to accept the lot if there is at most one defective in the sample. How large does K have to be to ensure that the probability that the manufacturer accepts an unacceptable lot is less than . 10?
+
+$$P(X=0 or 1|N=100,M=6,K)=\frac{\binom{6}{0}\binom{100-6}{K-0}}{\binom{100}{K}}+\frac{\binom{6}{1}\binom{100-6}{K-1}}{\binom{100}{K}}<0.10$$
+
+$$\implies \frac{(95+5k)(100-k)(99-k)(98-k)(97-k)(96-k)}{100*99*98*97*96*95}<0.10$$
+
+```{r}
+# by function of phyper
+uniroot(function(k)(phyper(1, 6, 94, k, lower.tail = TRUE, log.p = FALSE)-0.1), lower=1, upper=100)$root
+
+curve(phyper(1, 6, 94, x, lower.tail = TRUE, log.p = FALSE), 0, 100); text(0,0.1, "0.1"); abline(h = 0.1, lty = 2); text(51,0, "51"); abline(v = 51, lty = 3)
+
+# by resolving equation
+uniroot(function(k)(((95+5*k)*(100-k)*(99-k)*(98-k)*(97-k)*(96-k))/(100*99*98*97*96*95)-0.1), lower=0, upper=100)$root
+
+```
+
+When the defective parts are 6, K must be at least 51.
+
+****
+**3.7** Let the number of chocolate chips in a certain type of cookie have a Poisson distribution. We want the probability that a randomly chosen cookie has at least two chocolate chips to be greater than .99. Find the smallest value of the mean of the distribution that ensures this probability.
+
+$$X\sim Poisson(\lambda) \implies P(X=x)=e^{-\lambda}\frac{\lambda^x}{x!}$$
+
+$$P(X\ge 2)\ge0.99 \implies1-P(X\le 1)\le1-0.01$$
+
+$$\therefore P(X\le 1)=P(X=1)+P(X=2)=e^{-\lambda}\frac{\lambda^0}{0!}+ e^{-\lambda}\frac{\lambda^1}{1!}=(1+\lambda)e^{-\lambda}\le0.01$$
+$$\implies e^{\lambda}\ge100\lambda+100$$
+
+```{R}
+# by resolving equation
+uniroot(function(x)(exp(x)-100*x-100), lower=0, upper=10)$root
+
+# by bisection method
+# when lambda is between 6 and 7, a randomly chosen cookie has at least 2 chocolate chips on 0.01 probability.
+qpois(0.01, 6, lower.tail = TRUE, log.p = FALSE)
+curve(qpois(0.01, x, lower.tail = TRUE, log.p = FALSE), from=0,to=10); text(7,0, "7"); abline(v = 7, lty = 3)
+
+# by function of ppois
+uniroot(function(x)(ppois(1, x, lower.tail = TRUE, log.p = FALSE)-0.01), lower=0, upper=100)$root
+curve(ppois(1, x, lower.tail = TRUE, log.p = FALSE), from=4,to=10); abline(h = 0.01, lty = 2); text(6.64,0, "6.638351"); abline(v = 6.638351, lty = 3)
+```
+
+$$\therefore min(EX)=min(\lambda)=6.638351$$
+
+****
+**3.13** A truncated discrete distribution is one in which a. particular class cannot be observed and is eliminated from the sample space. In particular, if X has range 0, 1, 2, . . . and the 0 class cannot be observed (as is usually the case), the O-truncated random variable $X_T$ has pmf
+
+$$P(X_T = x) = \frac{P(X=x)}{P(X>0)},\ x=1,2,..$$
+
+Find the pmf, mean, and variance of the O-truncated random varia.ble starting from
+
+$$E(X_T) =\sum_{x=1}^{\infty}xP(X_T=x)= \sum_{x=1}^{\infty}x\frac{P(X=x)}{P(X>0)}=\frac1{P(X>0)}\sum_{x=1}^{\infty}x{P(X=x)}=\frac{EX}{P(X>0)}$$
+$$E(X_T^2) =\sum_{x=1}^{\infty}x^2P(X_T=x)= \sum_{x=1}^{\infty}x^2\frac{P(X=x)}{P(X>0)}=\frac1{P(X>0)}\sum_{x=1}^{\infty}x^2{P(X=x)}=\frac{EX^2}{P(X>0)}$$
+
+$$VarX=E(X_T^2)-[E(X_T)]^2=\frac{EX^2}{P(X>0)}-\frac{(EX)^2}{P(X>0)^2}$$
+
+(a) $X\sim Poisson(\lambda)$
+
+In Poisson distribution, $x\in\{0,1,2..\}$,
+
+$$\therefore\quad P(X>0)=1-P(X=0)=1-\frac{e^{-\lambda}\lambda^0}{0!}=1-e^{-\lambda}$$
+
+$$\text{For Poisson distribution,}\quad P(X=x)=e^{-\lambda}\frac{\lambda^x}{x!},\ EX=\lambda,\ EX^2=\lambda^2+\lambda$$
+
+$$P(X_t=x)=e^{-\lambda}\frac{\lambda^x}{x!P(X>0)}=e^{-\lambda}\frac{\lambda^x}{x!(1-e^{-\lambda})},x\in\{1,2..\}$$
+
+$$E(X_T) =\frac{EX}{P(X>0)}=\frac{\lambda}{1-e^{-\lambda}},\quad E(X_T^2) =\frac{EX^2}{P(X>0)}=\frac{\lambda^2+\lambda}{1-e^{-\lambda}}$$
+
+$$VarX=E(X_T^2)-[E(X_T)]^2=\frac{\lambda^2+\lambda}{1-e^{-\lambda}}-\frac{\lambda^2}{(1-e^{-\lambda})^2}$$
+
+****
+(b) $X\sim negative binomial(r, p)$, as in (3.2.10)
+
+In negative binomial distribution, $x\in\{0,1,2..\}$,
+
+$$\therefore\quad P(X>0)=1-P(X=0)=1-\binom{0+r-1}{0}p^r(1-p)^0=1-p^r$$
+
+$$\text{For negative binomial distribution,}\quad P(X=x)=\binom{x+r-1}{x}p^r(1-p)^x,\ EX=\frac{rq}p,\ EX^2=$$
+
+$$P(X_t=x)=\frac{\binom{x+r-1}{x}p^r(1-p)^x}{P(X>0)}=\frac{\binom{x+r-1}{x}p^r(1-p)^x}{1-p^r},x\in\{1,2..\}$$
+
+$$E(X_T) =\frac{EX}{P(X>0)}=\frac{rq}{p(1-p^r)},\quad E(X_T^2) =\frac{EX^2}{P(X>0)}=\frac{rq+r^2q^2}{p^2(1-p^r)}$$
+
+$$VarX=E(X_T^2)-[E(X_T)]^2=\frac{rq+r^2q^2}{p^2(1-p^r)}-(\frac{rq}{p(1-p^r)})^2$$
+
+
+****
+**3.17** Establish a formula similar to (3.3.18) for the gamma distribution. If $X \sim gamma(\alpha, \beta)$, then for any positive constant $\nu$,
+<!--
+$$f(x|\alpha,\beta)=\frac1{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}, x \in (0, 1), \beta>0, \alpha>0$$
+
+$$B(\alpha,\beta)=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}dx =\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}; x \in (0, 1), \beta>0, \alpha>0$$
+
+
+$$(3.3.18)\quad EX^n=\frac{1}{B(\alpha,\beta)}\int_0^1x^nx^{\alpha-1}(1-x)^{\beta-1}dx=\frac{B(a+n,\beta)}{B(\alpha,\beta)}=\frac{\Gamma(\alpha+n)\Gamma(\alpha+\beta)}{\Gamma(\alpha+\beta+n)\Gamma(\alpha)} $$ -->
+
+
+$$f(x|\alpha,\beta) = \frac{1}{\Gamma(a)\beta^{\alpha}}x^{a-1}e^{-x/\beta}; x \in (0, \infty), \beta>0, \alpha>0$$
+
+$$EX= \frac{1}{\Gamma(a)\beta^{\alpha}}\int_0^{\infty}xx^{a-1}e^{-x/\beta}dx=\frac{1}{\Gamma(a)\beta^{\alpha}}\int_0^{\infty}x^ae^{-x/\beta}dx=\frac{\Gamma(a+1)\beta^{\alpha+1}}{\Gamma(a)\beta^{\alpha}}=\alpha\beta$$
+
+$$EX^{\nu}=\frac{1}{\Gamma(a)\beta^{\alpha}}\int_0^{\infty}x^{\nu}x^{a-1}e^{-x/\beta}dx=\frac{1}{\Gamma(a)\beta^{\alpha}}\int_0^{\infty}x^{a+\nu-1}e^{-x/\beta}dx=\frac{\Gamma(a+\nu)\beta^{\alpha+\nu}}{\Gamma(a)\beta^{\alpha}}=\frac{\beta^{\nu}\Gamma(\alpha+\nu)}{\Gamma(\alpha)},\nu\ge-\alpha$$
+
+<!--
+
+$$VarX= \alpha\beta^2;\ M_X(t)=\left(\frac{1}{1 - \beta t}\right)^a, t < \frac1\beta$$
+
+$$When\quad \beta=1,\quad\Gamma(\alpha)= \int_0^{\infty}t^{\alpha-1}e^{-t}dx$$
+
+
+$$When \beta=\frac1\lambda,\quad(\Gamma (a, \lambda); f(x) = \frac{1}{\Gamma(a)}(\lambda x)^ae^{-\lambda x}\frac{1}{x}; x \in (0, \infty) \frac{a}{\lambda} \frac{a}{\lambda^2} \left(\frac{\lambda}{\lambda - t}\right)^a, t < \lambda)$$ -->

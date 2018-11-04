@@ -1,0 +1,394 @@
+---
+title: 'STAT564 Homework 1'
+author: "Shen Qu"
+date: "10/15/2018"
+output: 
+  html_document:
+    toc: false
+    toc_float: false
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(message=FALSE, warning=F, echo=TRUE)
+options(width = 2000)
+options(repos="https://cran.rstudio.com")
+```
+
+## Problem 1: 
+
+Exercise 2.3 (Page 58): Table B.2 presents data collected during a solar energy project at Georgia Tech.
+y: Total heat flux (kwatts)  
+x1 : Insolation (watts/m2)   
+x2 : Position of focal point in east direction (inches)   
+x3 : Position of focal point in south direction (inches)   
+x4 : Position of focal point in north direction (inches)   
+x5 : Time of day
+
+ <!--https://rpubs.com/aaronsc32/regression-confidence-prediction-intervals-->
+
+```{r, echo=TRUE}
+# Load the package 
+library(readxl)
+library(tidyverse)
+library(broom)
+# Import Data
+table_b2 <- read_xlsx("Table B.2.xlsx")
+
+# Observe the data frame
+head(table_b2)
+
+# visualizng y and x4
+table_b2 %>% ggplot(aes(x4,y))+geom_point()+geom_smooth(method="lm", level=0.99)
+```
+
+ > There seems to be a decreasing (negative) medium approximately linear relationship..
+
+a. Fit a simple linear regression model relating total heat flux y (kilowatts) to the radial deflection of the deflected rays $x_4$ (milliradians).
+
+```{r}
+# build the model
+model_y_x4 <- lm(y ~ x4, data=table_b2)
+model_y_x4
+```
+
+ > The model is $y=607.1-21.4x_4$
+
+b. Construct the analysis-of-variance table and test for significance of regression.
+
+```{r}
+anova(model_y_x4)
+```
+
+ > The table shows that p-value is less than 5.935e-09. There is strong evidence that the fitted model is statistically significant at 5% significance level because p-value is much smaller than 0.05.
+
+c. Find a 99% CI on the slope.
+
+ > The equation for the 99% CI for the estimated β1 is defined as:
+
+$$\beta_1 \pm t_{\alpha / 2, n - 2} \left(\frac{\sqrt{MSE}}{\sqrt{\sum (x_i - \bar{x})^2}}\right)$$
+
+```{r}
+model_y_x4 %>% confint(level=0.99)
+```
+
+ > The 99% confidence interval for slope of the regression line is (-28.50995, -14.29497).
+The confidence interval for β1 does not contain 0.Therefore, we are 95% confidence that the true slope is different from zero.
+
+
+d. Calculate $R^2$.
+
+```{r}
+model_y_x4 %>% summary()
+```
+
+ > According to the table, Multiple R-squared is 0.7205, Adjusted R-squared is 0.7102. This is not so close to 100% and therefore, fitted model explain moderate amount of variation is the heat flux with radial deflection.
+
+e. Find a 95% CI on the mean heat flux when the radial deflection is 16.5 milliradians.
+
+> The confidence interval around the mean response, when the predictor value is $x_k$ is defined as:
+
+$$\hat{y}_h \pm t_{\alpha / 2, n - 2} \sqrt{MSE \left(\frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum(x_i - \bar{x}^2)} \right)}$$
+
+ > Where $\hat{y}_h$ is the fitted response for predictor value $x_h$, $t_{\alpha/2,n-2}$ is the t-value with n−2 degrees of freedom, while $\sqrt{MSE \left(\frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum(x_i - \bar{x}^2)} \right)}$ is the standard error of the fit.
+ 
+```{r}
+model_y_x4 %>% predict(newdata = data.frame(x4=16.5), interval = "confidence", level=0.95)
+```
+
+ > From the output, the fitted heat flux is 253.9627 kwatts when the radial deflection is 16.5 milliradians. The confidence interval of (249.1468, 258.7787) signifies the range in which the true population parameter lies at a 95% level of confidence.
+
+## Problem 2: 
+
+Exercise 2.4 (Page 58): Table B.3 presents data on the gasoline mileage performance of 32 different automobiles.  
+y : Miles/gallon   
+x1 : Displacement (cubic in.)   
+x2 : Horsepower (ft-lb)   
+x3 : Torqne (ft-lb)   
+x4 : Compression ratio   
+x5 : Rear axle ratio Source : Motor Trend , 1975  
+x6 : Carburetor (barrels)  
+x7 : No. of transmission speeds   
+x8 : Overall length (in.)   
+x9 : Width (in.)   
+x10 : Weight (lb)   
+x11 : Type of transmission (A automatic; M manual)  
+
+```{r, echo=TRUE}
+
+# Import Data
+table_b3 <- read_xlsx("Table B.3.xlsx")
+
+# Observe the data frame
+head(table_b3)
+
+# visualizng y and x1
+table_b3 %>% ggplot(aes(x1,y))+geom_point()+geom_smooth(method="lm")
+```
+
+ > There seems to be a decreasing (negative) medium approximately linear relationship.
+
+a. Fit a simple linear regression model relating gasoline mileage y (miles per gallon) to engine displacement x1 (cubic inches).
+
+
+```{r}
+# build the model
+model_y_x1 <- lm(y ~ x1, data=table_b3)
+model_y_x1
+```
+
+ > The model is $y=33.72744-0.04743x_1$.
+
+b. Construct the analysis-of-variance table and test for significance of regression.
+
+
+```{r}
+anova(model_y_x1)
+```
+
+ > The table shows that p-value is 3.82e-11. There is strong evidence that the fitted model is statistically significant at 5% significance level because p-value is much smaller than 0.05.
+
+c. What percent of the total variability in gasoline mileage is accounted for by the linear relationship with engine displacement?
+
+```{r}
+model_y_x1 %>% summary()
+```
+
+ > According to the Multiple R-squared value, there are 77.2% variability in gasoline mileage is accounted for by the linear relationship with engine displacement. This is not so close to 100% and fitted model explain moderate amount of variation.
+
+d. Find a 95% CI on the mean gasoline mileage if the engine displacement is 275 in.^3
+
+ > The confidence interval around the mean response, denoted $\mu_y$, when the predictor value is $x_k$ is defined as:
+
+$$\hat{y}_h \pm t_{\alpha / 2, n - 2} \sqrt{MSE \left(\frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum(x_i - \bar{x}^2)} \right)}$$
+
+ > Where $\hat{y}_h$ is the fitted response for predictor value $x_h$, $t_{\alpha/2,n-2}$ is the t-value with n−2 degrees of freedom, while $\sqrt{MSE \left(\frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum(x_i - \bar{x}^2)} \right)}$ is the standard error of the fit.
+
+```{r}
+
+model_y_x1 %>% predict(newdata = data.frame(x1=275), interval = "confidence", level=0.95)
+
+```
+
+ > From the output, the fitted gasoline mileage when the engine displacement is 275 in.^3 is 20.68466 gasoline mileage. The confidence interval of (19.57343, 21.79589) signifies the range in which the true population parameter lies at a 95% level of confidence.
+
+e. Suppose that we wish to predict the gasoline mileage obtained from a car with a 275-in.3 engine. Give a point estimate of mileage. Find a 95% prediction interval on the mileage.
+
+ > The prediction interval is rather similar to the confidence interval in calculation, but as mentioned earlier, there are significant differences. The prediction interval equation is defined as:
+
+$$\hat{y}_h \pm t_{\alpha / 2, n - 2} \sqrt{MSE \left(1 + \frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum (x_i - \bar{x})^2} \right)}$$
+
+ > Where $\hat{y}_h$ is the fitted response for predictor value $x_h$, $t_{\alpha/2,n-2}$ is the t-value with n−2 degrees of freedom, while $\sqrt{MSE \left(1+\frac{1}{n} + \frac{(x_k - \bar{x})^2}{\sum(x_i - \bar{x}^2)} \right)}$ is the standard error of the fit.
+
+```{r}
+
+model_y_x1 %>% predict(newdata = data.frame(x1=275), interval = "prediction", level=0.95)
+
+```
+
+ > When the engine displacement is 275 in.^3, the 95% prediction interval on the mean gasoline mileage is (14.32311, 27.04622).
+
+f. Compare the two intervals obtained in parts d and e. Explain the difference between them. Which one is wider, and why?
+
+ > The fitted value is the same, but the prediction interval is wider than confidence interval due to the additional term in the standard error of prediction. The prediction interval is wider than the confidence interval because prediction interval is for a single observation of response while confidence interval is for the mean response. The prediction interval depends on both the error from the fitted model and the error associated with future observations. It is difficult to predict a single observation than mean response and hence there is more variation in the new observation.
+ 
+## Problem 3: 
+
+Exercise 2.12 (Page 60): The number of pounds of steam used per month at a plant is thought to be related to the average monthly ambient temperature. The past year’s usages and temperatures follow.
+
+```{r, echo=TRUE}
+
+# Import Data
+table_12 <- read_xlsx("Problem 2.12.xlsx")
+
+# Observe the data frame
+glimpse(table_12)
+
+# visualizng `Usage/l000` and Temperature
+table_12 %>% ggplot(aes(Temperature,`Usage/l000`,col=as.factor(Month)))+geom_point( )+geom_smooth(method="lm")
+```
+
+> There seems to be a increasing strong linear relationship.
+
+a. Fit a simple linear regression model to the data.
+
+```{r}
+# build the model
+model_use_tem <- lm(`Usage/l000` ~ Temperature, data=table_12)
+
+model_use_tem %>% summary()
+```
+
+ > The model is `Usage/l000`=-6.33209+9.20847*Temperature
+
+b. Test for significance of regression.
+
+> According to the analysis-of-variance table (a.), the table shows that p-value is less than 2.2e-16. There is strong evidence that the fitted model is statistically significant at 5% significance level because p-value is much smaller than 0.05.
+
+c. Plant management believes that an increase in average ambient temperature of 1 degree will increase average monthly steam consumption by 10,000lb. Do the data support this statement?
+
+ > We made the null hypothesis H0: $\hat\beta_1=10$ the altertative hypothesis H1: $\hat\beta_1\ne10$. Accroding the method of t test (2.3.1)
+ 
+$$t_0=\frac{\hat\beta_1-\beta_{10}}{\sqrt\frac{M SE}{S_{xx}}}=\frac{\hat\beta_1-\beta_{10}}{se(\hat\beta_1)}$$
+ 
+```{r} 
+2*pt(q = (9.20847-10)/0.03382, df = nrow(table_12)-2 , lower.tail = TRUE)
+```
+ > The result shows that the p_value is 4.593537e-10, which is far less than 0.05. Therefore, we can reject the H0 and the true slope is not equal 10. The data don't support the statement.
+
+d. Construct a 99% prediction interval on steam usage in a month with average ambient temperature of 58°.
+
+
+```{r}
+
+model_use_tem %>% predict(newdata = data.frame(Temperature=58), interval = "prediction", level=0.99)
+
+```
+
+ > When the Temperature is 58°, the 99% prediction interval on the steam usage is (521.2237, 534.2944).
+
+## Problem 4: 
+
+Exercise 2.25 (Page 65): Consider the simple linear regression model $y=\beta_0+\beta_1x + \epsilon$, with $E(\epsilon)=0,\ Var(\epsilon)=\sigma^2$, and $\epsilon$ uncorrelated.  
+
+ > According to the definition of covariance,  
+ 
+$$Cov(X,Y)=\sigma_{XY}=E[(X-\bar X)(Y-\bar Y)]=\frac1n\sum_{i=1}^n(x_i-\bar X)(y_i-\bar Y)$$
+
+ > According to the properties of covariance,  
+
+$$Cov(X,a)=0,\quad Cov(X,X)=Var(X)\equiv\sigma^2(X)\equiv\sigma_X^2$$
+
+$$Cov(X,Y)=Cov(Y,X),\quad Cov(aX,bY)=ab\ Cov(X,Y)$$
+
+$$Cov(X+a,Y+b)=Cov(X,Y)$$
+
+$$And\quad Cov(a_1X_1+a_2X_2,\ b_1Y_1+b_2Y_2)=a_1b_1Cov(X_1,Y_1)+a_1b_2Cov(X_1,Y_2)+a_2b_1Cov(X_2,Y_1)+a_2b_2Cov(X_2,Y_2)$$
+
+a. Show that $Cov(\hat\beta_0, \hatβ_1)=−\overline x\sigma^2 S_{xx}$.
+
+ > Accroding to the properties of the Least-Squares Estimators and the Fitted Regression Model (2.2.2)
+
+$$\hat\beta_1=\sum_{i=1}^n c_iy_i=\frac{\sum_{i=1}^n (x_i-\bar x)}{S_{xx}}y_i$$
+
+$$\hat\beta_0=\bar y-\hat\beta_1\bar x=\frac{\sum_{i=1}^n y_i}n-\frac{\bar x\sum_{i=1}^n (x_i-\bar x)}{S_{xx}}y_i=\sum_{i=1}^n\left(\frac1n-\frac{\bar x(x_i-\bar x)}{S_{xx}}\right)y_i$$
+
+> For $Cov(aX,bY)=ab\ Cov(X,Y)$
+
+$$Cov(\hat\beta_0, \hatβ_1)=Cov\left[\sum_{i=1}^n\left(\frac1n-\frac{\bar x(x_i-\bar x)}{S_{xx}}\right)y_i,\ \frac{\sum_{i=1}^n (x_i-\bar x)}{S_{xx}}y_i \right]=\sum_{i=1}^n\left(\frac1n-\frac{\bar x(x_i-\bar x)}{S_{xx}}\right)\frac{(x_i-\bar x)}{S_{xx}}Cov(y_i,y_i)$$
+
+$$=\left[\frac{\sum_{i=1}^n(x_i-\bar x)}{nS_{xx}}-\frac{\bar x\sum_{i=1}^n(x_i-\bar x)^2}{S_{xx}^2}\right]Cov(y_i,y_i)$$
+
+$$\because\quad \sum_{i=1}^n(x_i-\bar x)=0,\quad \sum_{i=1}^n(x_i-\bar x)^2=S_{xx},\quad Cov(y_i,y_i)=Var(y_i)=\sigma^2$$
+
+$$\therefore Cov(\hat\beta_0, \hatβ_1)=\left[\frac0{nS_{xx}}-\frac{\bar x}{S_{xx}}\right]\sigma^2=−\bar x\frac{\sigma^2}{S_{xx}}$$
+
+
+b. Show that $Cov(\bar y,\hat\beta_1) = 0$.
+
+According to above results,
+
+$$Cov(\bar y,\hat\beta_1)=Cov\left[\frac{\sum_{i=1}^n y_i}n,\ \frac{\sum_{i=1}^n (x_i-\bar x)}{S_{xx}}y_i\right]=\frac{\sum_{i=1}^n(x_i-\bar x)}{nS_{xx}}Cov(y_i,y_i)=\frac0{nS_{xx}}Var(y_i)=0$$
+
+## Problem 5: 
+Exercise 2.26 (Page 65): Consider the simple linear regression model $y=\beta_0+\beta_1x + \epsilon$, with $E(\epsilon)=0,\ Var(\epsilon)=\sigma^2$, and $\epsilon$ uncorrelated.
+
+a. Show that $E(MS_R)=\sigma^2+\beta_1^2S_{xx}$
+
+$$\because \hat y_i=\hat\beta_0+\hat\beta_1x_i,\quad \hat\beta_0=\bar y-\bar x\hat\beta_1$$
+
+$$SSR=\sum_{i=1}^n(\hat y_i-\bar y)^2=\sum_{i=1}^n(\hat\beta_0+\hat\beta_1x_i-\bar y)^2=\sum_{i=1}^n(\bar y-\bar x\hat\beta_1+\hat\beta_1x_i-\bar y)^2=\hat\beta_1^2\sum_{i=1}^n(x_i-\bar x)^2=\hat\beta_1^2S_{xx}$$
+
+$$\because Var(\hat\beta_1)=E(\hat\beta_1^2)-[E(\hat\beta_1)]^2=\frac{\sigma^2}{S_{xx}},\quad E(\hat\beta_1)=\hat\beta_1$$
+
+$$\therefore E(\hat\beta_1^2)=Var(\hat\beta_1)+[E(\hat\beta_1)]^2=\frac{\sigma^2}{S_{xx}}+\hat\beta_1^2$$
+
+
+$$\therefore E(MSR)=\frac{E(SSR)}1=E(\hat\beta_1^2S_{xx})=S_{xx}E(\hat\beta_1^2)=S_{xx}(\frac{\sigma^2}{S_{xx}}+\beta_1^2)=\sigma^2+\beta_1^2S_{xx}$$
+
+
+b. Show that $E(MS_{Res})=\sigma^2$.
+
+> Step 1:
+
+$$SSE=\sum_{i=1}^n(y_i-\hat y)^2=\sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)^2=\sum_{i=1}^n(y_i-\bar y+\bar x\hat\beta_1-\hat\beta_1x_i)^2=\sum_{i=1}^n((y_i-\bar y)-\hat\beta_1(x_i-\bar x))^2$$
+
+
+
+$$=\sum_{i=1}^n(y_i-\bar y)^2-2\hat\beta_1(y_i-\bar y)(x_i-\bar x)+\hat\beta_1^2(x_i-\bar x)^2=S_{yy}-2\hat\beta_1S_{xy}+\hat\beta_1^2S_{xx}$$
+$$\because \hat\beta_1=\frac{S_{xy}}{S_{xx}}\quad\therefore S_{xy}=\hat\beta_1S_{xx}$$
+
+$$\implies SSE=S_{yy}-2\hat\beta_1\hat\beta_1S_{xx}+\hat\beta_1^2S_{xx}=S_{yy}-\hat\beta_1^2S_{xx}=S_{yy}-SSR$$
+
+> Step 2:
+
+$$E(S_{yy})=E\sum_{i=1}^n(y_i-\bar y)^2=E\sum_{i=1}^n\left[(\beta_0+\beta_1x_i+\epsilon_i)-\frac1n\sum_{i=1}^n(\beta_0+\beta_1x_i+\epsilon_i)\right]^2=E\left(\sum_{i=1}^n[\beta_1(x_i-\bar x)+\epsilon_i-\bar\epsilon]^2\right)$$
+
+$$E\left(\beta_1^2\sum_{i=1}^n(x_i-\bar x)^2+2\beta_1\sum_{i=1}^n(x_i-\bar x)(\epsilon_i-\bar\epsilon)+(\epsilon_i-\bar\epsilon)^2\right)=\hat\beta_1^2S_{xx}+2\beta_1\sum_{i=1}^n(x_i-\bar x)[E(\epsilon_i)-E(\bar\epsilon)]+E(S_{\epsilon\epsilon})$$
+
+$$=\hat\beta_1^2S_{xx}+E(S_{\epsilon\epsilon})=\hat\beta_1^2S_{xx}+(n-1)E(S_{\epsilon}^2)=\hat\beta_1^2S_{xx}+(n-1)\sigma^2$$
+
+$$\therefore E(SSE)=E(S_{yy})-E(SSR)=\hat\beta_1^2S_{xx}+(n-1)\sigma^2-(\sigma^2+\hat\beta_1^2S_{xx})=(n-2)\sigma^2$$
+
+> Step 3:
+
+$$E(MSE)=E(\frac{SSE}{n-2})=\frac{E(SSE)}{n-2}=\frac{\sigma^2(n-2)}{n-2}=\sigma^2$$
+
+## Problem 6: 
+
+Exercise 2.27 (Page 65): Suppose that we have fit the straight-line regression model $\hat y=\hat\beta_0+\hat\beta_1x$ but the response is affected by a second variable $x_2$ such that the true regression function is
+
+$$E(y)=\beta_0+\beta_1x_1+\beta_2x_2$$
+
+a. Is the least-squares estimator of the slope in the original simple linear regression model unbiased?
+
+$$\because \sum_{i=1}^n(x_{i1}-\bar x)=\sum_{i=1}^n{x_{i1}}-n\bar x=\sum_{i=1}^n{x_{i1}}-n\frac{\sum_{i=1}^n{x_{i1}}}n=0,\quad S_{xx}=\sum_{i=1}^n(x_{i1}-\bar x)x_{i1}$$
+
+$$\therefore E(\hat\beta_1)=E(\sum_{i=1}^nc_iy_i)=E(\frac{\sum_{i=1}^n(x_i-\bar x)y_i}{S_{xx}})=\frac{\sum_{i=1}^n(x_{i1}-\bar x)}{Sxx}E(y_i)=\frac{\sum_{i=1}^n(x_{i1}-\bar x)}{Sxx}E(\beta_0+\beta_1x_{i1}+\beta_2x_{i2})$$
+
+$$=\frac0{S_{xx}}\beta_0+\frac{\sum_{i=1}^n(x_{i1}-\bar x)x_{i1}}{S_{xx}}\beta_1+\frac{\sum_{i=1}^n(x_{i1}-\bar x)x_{i2}}{S_{xx}}\beta_2=\beta_1+\frac{\sum_{i=1}^n(x_{i1}-\bar x)x_{i2}}{S_{xx}}\beta_2$$
+
+Thus, $\hat\beta_1$ have bias.
+
+b. Show the bias in $\hat\beta_1$
+
+$$E(\hat\beta_1)-\beta_1=\frac{\sum_{i=1}^n(x_{i1}-\bar x)x_{i2}}{Sxx}\beta_2$$
+
+## Problem 7: 
+Exercise 2.32 (Page 66): Consider the simple linear regression model $y=\beta_0+\beta_1x + \epsilon$ where the intercept $\beta_0$ is known.
+
+a. Find the least-squares estimator of $\beta_1$ for this model. Does this answer seem reasonable?
+
+$$Let\quad SSE=\sum_{i=1}^n(y_i-\beta_0-\hat\beta_1x_i)^2$$
+
+> The least-squares estimators of $\beta_1$, must satisfy
+
+$$\left.\frac{\partial SSE}{\partial\beta_1}\right|_{\hat\beta_1}=-2\sum_{i=1}^n(y_i-\beta_0-\hat\beta_1x_i)x_i=0$$
+
+$$\hat\beta_1\sum_{i=1}^nx_i^2=\sum_{i=1}^n(y_i-\beta_0)x_i\implies \hat\beta_1=\frac{\sum_{i=1}^n(y_i-\beta_0)x_i}{\sum_{i=1}^nx_i^2}$$
+
+> The least-squares regression line passes through the point ($\beta_0,0$). Because $y_i-\beta_0=\beta_1x_i+\varepsilon$
+
+$$E(\hat\beta_1)=E\left[\frac{\sum_{i=1}^n(y_i-\beta_0)x_i}{\sum_{i=1}^nx_i^2}\right]=\frac1{\sum_{i=1}^nx_i^2}E\left[\sum_{i=1}^nx_i(\beta_1x_i+\varepsilon)\right]=\frac{\beta_1\sum_{i=1}^nx_i^2}{\sum_{i=1}^nx_i^2}-\frac{\sum_{i=1}^nx_i}{\sum_{i=1}^nx_i^2}E[\varepsilon]=\beta_1$$
+
+> The estimator $\beta_1$ is unbiased and reasonable. 
+
+b. What is the variance of the slope ($\hat\beta_1$) for the least-squares estimator found in part a?
+
+$$Var(\hat\beta_1)=Var\left(\frac{\sum_{i=1}^n(y_i-\beta_0)x_i}{\sum_{i=1}^nx_i^2}\right)=\frac1{(\sum_{i=1}^nx_i^2)^2}Var(\sum_{i=1}^ny_ix_i-\sum_{i=1}^n\beta_0x_i)$$
+
+$$=\frac1{(\sum_{i=1}^nx_i^2)^2}Var(\sum_{i=1}^ny_ix_i)=\frac{\sum_{i=1}^nx_i^2}{(\sum_{i=1}^nx_i^2)^2}Var(y_i)=\frac{\sigma^2}{\sum_{i=1}^nx_i^2}$$
+
+c. Find a 100(1−α) percent CI for $\beta_1$. Is this interval narrower than the estimator for the case where both slope and intercept are unknown?
+
+ > When $\beta_0$ is known and is a consistant.
+
+$$\therefore se(\hat{\beta_1})=\sqrt{Var(\hat\beta_1)}=\sqrt{\frac{\sigma^2}{\sum_{i=1}^nx_i^2}}=\sqrt{\frac{MSE}{\sum_{i=1}^n x_i^2}}$$
+
+> a 100(1−α) percent CI for $\beta_1$ is given by
+
+$$\hat\beta_1-t_{\frac\alpha2,n-1}\sqrt\frac{MSE}{\sum_{i=1}^n x_i^2}\le\beta_1\le\hat\beta_1+t_{\frac\alpha2,n-1}\sqrt\frac{MSE}{\sum_{i=1}^n x_i^2} $$
+
+$$\because \sum_{i=1}^n x_i^2\ge\sum_{i=1}^n x_i^2-n\bar x^2\quad and\quad t_{\frac\alpha2,n-1}<t_{\frac\alpha2,n-2}$$
+
+ > confidence intervals for $\beta_1$ will be narrower when $\beta_0$ is known,
+regardless of sample size (unless $\bar x=0$).

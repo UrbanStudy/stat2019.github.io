@@ -1,0 +1,204 @@
+---
+title: 'STAT561 Fall 2018 HW1'
+author: "Shen Qu"
+date: "10/04/2017"
+output: 
+  html_document
+---
+
+
+**1.13** If $P(A)=1/3$ and $P(B^c)=1/4$, can A and B be disjoint? Explain.  
+
+> According to properties of the probability function
+
+$$P(B)=1-P(B^c)=1-\frac14=\frac34$$
+
+> According to the Bonferroni's Inequality:
+
+$$P(A_1\cap ...\cap A_n)\ge\sum_{i=1}^\infty P(A_i)-(n-1)$$
+
+$$\implies\quad P(A\cap B)\ge P(A)+P(B)-(2-1)=\frac13+\frac34-1=\frac1{12}$$
+
+> According to properties of the probability function, $A\cap B\ne\emptyset$. Therefore, A and B don't satisfy the definition of pairwise disjoint.
+
+
+**1.19** If a multivariate function has continuous partial derivatives, the order in which the derivatives are calculated does not matter. Thus, for example, the function f(x, y) of two variables has equal third partials  
+
+$$\frac{\partial^3}{\partial x^2\partial y}f(x,y)=\frac{\partial^3}{\partial y\partial x^2}f(x,y)$$
+
+   (a) How many fourth partial derivatives does a function of three variables have? 
+    
+ > We can write the function as:
+ 
+$$\frac{\partial^4}{\partial V_1^{r_1}\partial V_2^{r_2}\partial V_3^{r_3}}f(x,y,z),\quad \sum _{i=1}^3r_i=4$$
+
+ > This question is an elementary combinatorics using the stars and bars method, which is also called putting n indistinguishable balls into r distinguishable bins.
+The number of possible derivatives is equal to the number of possible arrangements of putting the 4 index into the 3 bins, which is the arrangement of the index and the walls of the bins. 3 bins make 3-1=2 walls. Thus, we count all of the **unordered** arrangements of 4 tasks in 6 ways (2 walls and 4 index) **without replacement**. 
+We calculate the combination $\binom64$. The result is 15.
+
+```{r, include=FALSE}
+C <- function(n,r){choose(n,r)} # combination
+P <- function(n,r){choose(n,r) * factorial(r)} # permutation
+C(6,4)
+
+```
+
+   (b) Prove that a function of n variables has $\binom{n+r-1}{r})$ rth partial derivatives.  
+
+ > We can write the function as:
+
+$$\frac{\partial^{r}}{\partial V_1^{r_1}\partial V_2^{r_2}...\partial V_n^{r_i}}f(V_1,V_2,...V_n),\quad r=\sum_{i=1}^n r_i$$
+
+ > According the method in question (a),we count all of the unordered arrangements of r tasks in (n+r-1) ways (n-1 walls and r index) **without replacement**
+
+$$\binom {n+r-1}r$$
+
+ > This is also a multiset coefficient of cardinality r, with elements taken from a finite set of cardinality n, a notation that is meant to resemble that of binomial coefficients
+ 
+$$\bigg (\binom nr\bigg)=\binom {n+r-1}r=\frac{(n+r-1)!}{r!(n-1)!}=\frac{(n+r-1)...(n+2)(n+1)n}{r!}$$
+
+ > We also know
+ 
+$$\binom{n+r-1}{r-1}=\binom{n+r-1}{n}$$
+
+
+**1.20** My telephone rings 12 times each week, the calls being randomly distributed among the 7 days. What is the probability that I get at least one call each day?  
+
+<!--[Answer: .2285](https://jcnts.wordpress.com/2011/05/15/at-least-one-call-each-day/)(https://math.stackexchange.com/questions/2421875/what-is-the-probability-i-get-at-least-one-call-each-day-if-my-telephone-rings?rq=1)-->
+
+ > This question is about enumerating methods of counting to construct probability assignments on finite sample spaces. Each call is unique and randomly assigned to a day independently. There are a total of $7^{12}$ assignments.  
+   Firstly, We use $P_i,\ i=1,2,...7$ to represent the porbability of no call on i days. When no call on 1 day, the number of assignments of rest days includes 6 ordered choosing tasks in 12 ways with replacement. In this way, when no call on 6 day the number of assignments of rest days includes 1 ordered choosing tasks in 12 ways with replacement. The probabilities are:
+ 
+$$P_i=\frac{6^{12}}{7^{12}},\ \frac{5^{12}}{7^{12}},..\frac{1^{12}}{7^{12}},\ 0$$
+
+
+
+ > Secondly, we use $A_i,\ i=1,2,...7$ represent the combination of days. The probability of no call is:
+
+$$P(A_1\cup A_2\cup...A_7)=P(\cup_{i=1}^7A_i)=\sum_{i=1}^7P(A_i)-\sum_{i<j}P(A_i\cap A_j)+\sum_{i<j<k}P(A_i\cap A_j\cap A_k)-...+P(\cap_{i=1}^7A_i)$$
+
+$$=\binom71P_1-\binom72P_2+\binom73P_3-...-\binom76P_6+\binom77P_7$$
+
+ $$=\binom71\frac{6^{12}}{7^{12}}-\binom72\frac{5^{12}}{7^{12}}+\binom73\frac{4^{12}}{7^{12}}-\binom74\frac{3^{12}}{7^{12}}+\binom75\frac{2^{12}}{7^{12}}-\binom76\frac{1^{12}}{7^{12}}+0=\sum_{k=1}^{7}(-1)^{7-k}\binom{7}{k}(\frac{7-k}{7})^{12}$$
+
+ > The probability of at least one call each day is:
+
+ $$1-P(A_1\cup A_2\cup...A_7)=1-\sum_{k=1}^{7}(-1)^{7-k}\binom{7}{k}(\frac{7-k}{7})^{12}$$
+
+ > I complete the calculation in R: 
+
+```{r}
+1-(C(7,1)*6^12-C(7,2)*5^12+C(7,3)*4^12-C(7,4)*3^12+C(7,5)*2^12-C(7,6)*1^12)/(7^12)
+```
+
+ > I also try an incomprehensible way for me. Using the binomial distribution with parameters _size_ and _prob_, the density is:
+
+$$p(x) = \binom nxp^x (1-p)^{n-x},\ for\ x = 0, …, n$$
+
+ > Convert this formula by two methord in R, the results is close.
+
+```{r}
+# X1…n ∼Binomial(size,p)
+# Generate 1000000 occurrences of 12 calls, each with 7/12 probability
+# Finding density with simulation
+mean(rbinom(1000000,12,7/12)==7)
+# Calculating exact probability density
+dbinom(7, 12, 7/12)
+```
+
+
+**1.27** Verify the following identities for $n\ge2$.  
+
+(a) $\sum_{k=0}^n(-1)^k(_k^n)=0$  
+
+ > When n is odd, the formula is:
+
+$$\sum_{k=0}^n(-1)^k(_k^n)=\binom n0-\binom n1+\binom n2...-\binom n{n-2}+\binom n{n-1}-\binom nn$$
+
+$$=\binom n0-\binom nn+\Big[\binom n{n-1}-\binom n1\Big]+\Big[\binom n2-\binom n{n-2}\Big]...$$
+
+$$\because\quad \binom nk=\frac{n!}{k!(n-k)!}=\frac{n!}{(n-k)![n-(n-k)]!}=\binom n{n-k}$$
+
+ > All $\binom nk and \binom n{n-k}$ which are equal and have opposite signs. Thus, all pairs cancel and the sum is zero.  
+ 
+ > When n is even, in the same way, we know that: 
+
+$$\sum_{k=1}^{n-1}(-1)^k\binom{n-1}k=\Bigg[-\binom{n-1}1+\binom{n-1}2-\binom{n-1}3...-\binom{n-1}{n-3}+\binom {n-1}{n-2}\Bigg]-\binom{n-1}{n-1}=-\binom{n-1}{n-1}=-1$$
+
+$$\sum_{k=1}^{n-1}(-1)^k\binom{n-1}{k-1}=-\binom{n-1}0+\Bigg[\binom{n-1}1-\binom{n-1}2...-\binom{n-1}{n-4}+\binom {n-1}{n-3}-\binom{n-1}{n-2}\Bigg]=-\binom{n-1}{0}=-1$$
+
+
+ > When n is even, the formula is:
+
+$$\sum_{k=0}^n(-1)^k(_k^n)=\binom n0-\binom n1+\binom n2...+\binom n{n-2}-\binom n{n-1}+\binom nn$$
+
+$$=1+1-\binom n1+\binom n2...+\binom n{n-2}-\binom n{n-1}=2+\sum_{k=1}^{n-1}(-1)^k(_k^n)$$
+
+  > According to the Pascal's rule, a combinatorial identity about binomial coefficients
+ 
+ $$\binom nk=\binom {n-1}{k-1}+\binom {n-1}{k}$$
+
+$$\therefore\quad \sum_{k=0}^n(-1)^k(_k^n)=2+\sum_{k=1}^{n-1}(-1)^k\bigg[\binom {n-1}{k-1}+\binom {n-1}{k}\bigg]$$
+
+$$=2+\sum_{k=1}^{n-1}(-1)^k\binom {n-1}{k-1}+\sum_{k=1}^{n-1}(-1)^k\binom {n-1}{k}=2-1-1=0$$
+
+ > Therefore, for k>0, $\sum_{k=0}^n(-1)^k(_k^n)=0$
+
+(b) $\sum_{k=1}^nk\binom{k}n=n2^{n-1}$  
+
+$$\sum_{k=1}^nk(_k^n)=\binom n1+2\binom n2+3\binom n3...+(n-2)\binom n{n-2}+(n-1)\binom n{n-1}+n\binom nn$$
+
+$$\sum_{k=1}^nk(_k^n)=\sum_{k=1}^n\frac{kn!}{k!(n-k)!}=\sum_{k=1}^nn\frac{(n-1)!}{(k-1)!(n-1-k+1)}=n\sum_{k=1}^n\binom{n-1}{k-1}$$
+
+ > According to the Binomial theorem, set x=1, j=k-1, m=n-1
+
+$$\sum_{j=0}^m(_j^m)x^j=(1+x)^m \implies \sum_{k=1}^{n-1}\binom{n-1}{k-1}1^{k-1}=(1+1)^{n-1}=2^{n-1} $$
+
+$$\therefore\quad \sum_{k=1}^nk\binom{k}n=n2^{n-1}$$
+
+(c) $\sum_{k=1}^n(-1)^{k+1}k(_k^n)=0$  
+
+ > According question (a) $\sum_{j=0}^m(-1)^j\binom{m}j=0$, set j=k-1, m=n-1.
+
+$$\implies \sum_{k=1}^{n-1}(-1)^{k-1}\binom{n-1}{k-1}=0$$
+
+
+**1.38** Prove each of the following statements. ( Assume that any conditioning event has positive probability.)  
+
+(a) If P(B) = 1 , then P(A|B) = P(A) for any A.  
+
+ $$\because\quad P(B)=1,\quad \text{according Theorem 1.2.8}\quad P(B^c)=1-P(B)=0\quad \therefore A\cap B^c=\emptyset$$
+ 
+  $$\text{according Theorem 1.2.11}\quad P(A)=P(A\cap B)+P(A\cap B^c)=P(A\cap B)+P(\emptyset)=P(A\cap B)$$
+ 
+ > According to the definition of **conditional probability of A given B**
+
+$$\therefore\quad P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A)}1=P(A)$$
+
+(b) If A $\subset$ B, then P(B|A) = 1 and P(A|B) = P(A)/P(B).  
+
+$$When A\subset B,\quad A\cap B=A,\quad P(A\cap B)=P(A)$$
+
+$$\therefore\quad P(B|A)=\frac{P(A\cap B)}{P(A)}=\frac{P(A)}{P(A)}=1$$
+
+(c) If A and B are mutually exclusive, then  
+
+ > According to the Axiom of Finite Additivity: If A and B are disjoint, then 
+
+$$P(A\cup B) = P(A) + P(B)$$
+
+$$And\quad A\subset A\cup B,\quad A\cap(A\cup B)=A$$
+
+$$\therefore\quad P(A|A\cup B)=\frac{P(A\cap(A\cup B))}{P(A\cup B)} =\frac{P(A)}{P(A) + P(B)}$$
+
+(d) $P(A\cap B\cap C) = P(A|B\cap C)P(B|C)P(C)$ .  
+
+ > According to the definition of **conditional probability of A given B**
+
+$$P(A|B)=\frac{P(A\cap B)}{P(B)},\quad then\quad P(A\cap B)=P(A|B)P(B)$$
+
+$$\therefore P(A\cap (B\cap C)) = P(A|(B\cap C))P(B\cap C)=P(A|B\cap C)\Big[P(B|C)P(C)\Big]$$
+
+$$= P(A|B\cap C)P(B|C)P(C)$$
+
+

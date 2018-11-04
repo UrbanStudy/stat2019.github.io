@@ -1,0 +1,237 @@
+---
+title: "STAT561 Fall 2018 HW4"
+author: 'Shen Qu'
+date: "10/25/2018"
+output: html_document
+---
+
+**2.24** Compute E X and Var X for eaCh of the following probability distributions.
+
+(a) $f_X(x)=ax^{a-1}, 0<x<1, a>0$
+
+Because X is a continuous variable.
+
+$$EX=\int_0^1xax^{a-1}dx=\int_0^1ax^{a}dx=\frac{a}{a+1}x^{a+1}\bigg|_0^1=\frac{a}{a+1}-0=\frac{a}{a+1},\quad a>0$$
+
+$$EX^2=\int_0^1x^2ax^{a-1}dx=\int_0^1ax^{a+1}dx=\frac{a}{a+2}x^{a+2}\bigg|_0^1=\frac{a}{a+2}-0=\frac{a}{a+2},\quad a>0$$
+
+$$VarX=EX^2-(EX)^2=\frac{a}{a+2}-(\frac{a}{a+1})^2=\frac{a(a+1)^2-a^2(a+2)}{(a+2)(a+1)^2}=\frac{a}{(a+2)(a+1)^2},\quad a>0$$
+
+****
+
+(b) $fx(x)=\frac1n,\ x=1,2,..., n, n>0$ an integer
+
+Because X is a discrete variable.
+
+$$EX=\sum_1^nx\frac1n=\frac1n\frac{n(n+1)}2=\frac{n+1}2,\quad n>0$$
+
+$$EX^2=\sum_1^nx^2\frac1n=\frac1n\frac{n(n+1)(2n+1)}6=\frac{(n+1)(2n+1)}6,\quad n>0$$
+
+$$VarX=EX^2-(EX)^2=\frac{(n+1)(2n+1)}6-(\frac{n+1}2)^2=\frac{(n+1)(4n+2-3n-3)}{12}=\frac{n^2-1}{12},\quad n>0$$
+
+****
+
+(c) $fx(x)=\frac32(x-1)^2, 0<X<2$
+
+Because X is a continuous variable.
+
+$$EX=\int_0^2x\frac32(x-1)^2dx=\frac32\int_0^2(x^3-2x^2+x)dx=\frac32(\frac{x^4}4\bigg|_0^2-\frac{2x^3}3\bigg|_0^2+\frac{x^2}2\bigg|_0^2)=\frac32(4-\frac{16}3+2)=1$$
+
+$$EX^2=\int_0^2x^2\frac32(x-1)^2dx=\frac32\int_0^2(x^4-2x^3+x^2)dx=\frac32(\frac{x^5}5\bigg|_0^2-\frac{2x^4}4\bigg|_0^2+\frac{x^3}3\bigg|_0^2)=\frac32(\frac{32}5-8+\frac{8}3)=\frac85$$
+
+$$VarX=EX^2-(EX)^2=\frac85-1^2=\frac35$$
+
+****
+
+**2.28** Let $\mu_n$ denote the nth central moment of a random variable X. Two quantities of
+interest, in addition to the mean and variance, are
+
+$$\alpha_3=\frac{\mu_3}{(\mu_2)^{3/2}}\ and\ \alpha_4=\frac{\mu_4}{\mu_2^2}$$
+
+The value $\alpha_3$ is called the _skewness_ and $\alpha_4$ is called the _kurtosis_. The skewness measures
+the lack of symmetry in the pdf (see Exercise 2.26). The kurtosis, although harder to
+interpret, measures the peakedness or flatness of the pdf.
+
+(a) Show that if a pdf is symmetric about a point a, then $\alpha_3=0$.
+
+A symmetric pdf about a point a means $\mu=a$ and $f_X(a-x)=f_X(a+x)$
+
+$$\mu_3=E(X-\mu)^3=\int_{-\infty}^{\infty}(x-a)^3f(x)dx=\int_{-\infty}^{a}(x-a)^3f(x)dx+\int_{a}^{\infty}(x-a)^3f(x)dx$$
+
+Let u=x-a, x=u+a, then
+
+$$\mu_3=\int_{-\infty}^{a}u^3f(u+a)d(u+a)+\int_{a}^{\infty}u^3f(u+a)d(u+a)=\int_{-\infty}^{0}u^3f(u+a)d(u)+\int_{0}^{\infty}u^3f(u+a)d(u)$$
+
+$$=\int_{0}^{\infty}-u^3f(-u+a)d(u)+\int_{0}^{\infty}u^3f(u+a)d(u)=0$$
+
+****
+
+(b) Calculate $\alpha_3$ as for $f(x)=e^{-x},\ x\ge0$, a pdf that is skewed to the right.
+
+Let $u=x,\ dv=e^{-x}dx$, then $du=dx,\ v=-e^{-x}$
+
+$$\mu=E(X)=\int_{0}^{\infty}xe^{-x}dx=\int_{0}^{\infty}udv=uv\bigg|_0^{\infty}-\int_{0}^{\infty}vdu=-xe^{-x}\bigg|_0^{\infty}-\int_{0}^{\infty}-e^{-x}dx=0-e^{-x}\bigg|_0^{\infty}=0-0+1=1$$
+
+Let $u=x^2,\ dv=e^{-x}dx$, then $du=2dx,\ v=-e^{-x}$
+
+$$\mu_2=E(X-\mu)^2=EX^2-\mu^2=\int_{0}^{\infty}x^2e^{-x}dx-1=\int_{0}^{\infty}udv-1=uv\bigg|_0^{\infty}-\int_{0}^{\infty}vdu-1$$
+
+$$=-x^2e^{-x}\bigg|_0^{\infty}-\int_{0}^{\infty}-e^{-x}2dx-1=0-2e^{-x}\bigg|_0^{\infty}-1=0-0+2-1=1$$
+
+
+$$\mu_3=E(X-\mu)^3=\int_{0}^{\infty}(x-1)^3e^{-x}dx=\int_{0}^{\infty}(x^3-3x^2+3x-1)e^{-x}dx=\Gamma4-3\Gamma3+3\Gamma2-1=3!-3\times2!+3-1=2$$
+
+$$\therefore\quad \alpha_3=\frac{\mu_3}{(\mu_2)^{3/2}}=\frac21=2$$
+
+****
+
+(c) Calculate $\alpha_4$ for each of the following pdfs and comment on the peakedness of each.
+Ruppert (1987) uses influence functions (see Miscellanea 10.6.4) to explore further the meaning of kurtosis, and Groeneveld (1991) uses them to explore skewness; see also Balanda and MacGillivray (1988) for more on the interpretation of $\alpha_4$.
+
+$$f(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2},-\infty<x<\infty$$
+
+This is the pdf of standard normal distribution, $\mu=E(X)=0,\ \mu_2=Var(X)=1,\ \mu_3=0,\ \mu_4=3$.
+
+$$E(X^m)=\begin{cases}0 &\text{if m is odd}\\\frac{m!}{2^{\frac m2}(\frac m2)!}&\text{if m is even}\end{cases}$$
+
+Proof
+
+$$EX^0=\int_{-\infty}^{\infty}x^0\frac1{\sqrt{2\pi}}e^{-x^2/2}dx=1$$
+
+This pdf is symmetric about x=0. when m is odd,
+
+$$\mu_m=E(X)=\int_{-\infty}^{\infty}x\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}dx=\int_{0}^{\infty}x\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}+\int_{-\infty}^{0}x\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}dx=\int_{0}^{\infty}x\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}-\int_{0}^{\infty}x\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}dx=0$$
+
+When m is even, let $u=x^{m-1}, dv=\frac{x}{\sqrt{2\pi}}e^{\frac{-x^2}2}dx$, then $du=(m-1)x^{m-2}dx, v=-\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}$
+
+$$\mu_m=E(X-\mu)^m=EX^m=\int_{-\infty}^{\infty}x^{m-1}\frac{x}{\sqrt{2\pi}}e^{\frac{-x^2}2}dx=uv-\int_{-\infty}^{\infty}vdu$$
+
+$$=-\frac{x^{m-1}}{\sqrt{2\pi}}e^{\frac{-x^2}2}\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}(-\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2})(m-1)x^{m-2}dx=0+(m-1)\int_{-\infty}^{\infty}x^{m-2}\frac1{\sqrt{2\pi}}e^{\frac{-x^2}2}dx=(m-1)EX^{m-2}$$
+
+$$EX^m=(m-1)(m-3)...(5)(3)EX^0=\frac{m!}{\Pi_{i=1}^{\frac m2}2i}=\frac{m!}{2^{\frac m2}(\frac m2)!}$$
+
+$$\mu_4=E(X-\mu)^4=(4-1)EX^{4-2}=3(2-1)EX^0=3$$
+
+$$\alpha_4=\frac{\mu_4}{\mu_2^2}=\frac31=3$$
+
+The standard measure of kurtosis, originating with Karl Pearson, is based on a scaled version of the fourth moment of the data or population.There are various interpretations of kurtosis. "...its only unambiguous interpretation is in terms of tail extremity; i.e., either existing outliers (for the sample kurtosis) or propensity to produce outliers (for the kurtosis of a probability distribution)." (Westfall, 2014) This number is related to the tails of the distribution, not its peak. higher kurtosis is the result of infrequent extreme deviations (or outliers), as opposed to frequent modestly sized deviations.
+The kurtosis of any univariate normal distribution is 3 called **mesokurtic**. Distributions with kurtosis less than 3 are said to be **platykurtic**. It means the distribution produces fewer and less extreme outliers than does the normal distribution rather than "flat-topped". Distributions with kurtosis greater than 3 are said to be **leptokurtic**.
+
+[Westfall, P. (2014). Kurtosis as Peakedness, 1905–2014. R.I.P. The American Statistician, 68(3), 191-195.]
+
+Therefore, in this question, the normal distribution with kurtosis equal 3 is mesokurtic.
+
+$$f(x)=\frac12,-1<x<1$$
+
+$$\mu=E(X)=\int_{-1}^{1}x\frac12dx=\frac14x^2\bigg|_{-1}^{1}=0$$
+
+$$\mu_2=(X-\mu)^2=EX^2=\int_{-1}^{1}x^2\frac12dx=\frac16x^3\bigg|_{-1}^{1}=\frac13$$
+
+$$\mu_4=E(X-\mu)^4=\int_{-\infty}^{\infty}x^4\frac12dx=\frac1{10}x^5\bigg|_{-1}^{1}=\frac15$$
+
+$$\alpha_4=\frac{\mu_4}{\mu_2^2}=\frac{\frac15}{\frac19}=\frac95$$
+
+In this question, the continuous uniform distribution with kurtosis less than 3 is platykurtic.
+
+
+$$f(x)=\frac12e^{-|x|},-\infty<x<\infty$$
+
+This pdf is symmetric about x=0. 
+
+$$\mu=E(X)=\int_{0}^{\infty}x\frac12e^{-x}dx+\int_{-\infty}^{0}x\frac12e^{-(-x)}dx=\int_{0}^{\infty}x\frac12e^{-x}dx+\int_{0}^{\infty}(-x)\frac12e^{-x}dx=0$$
+
+$$\mu_2=(X-\mu)^2=EX^2=\int_{0}^{\infty}x^2\frac12e^{-x}dx+\int_{-\infty}^{0}x^2\frac12e^{-(-x)}dx=2\int_{0}^{\infty}x^2\frac12e^{-x}dx$$
+
+Let $u=x^2, dv=\frac12e^{-x}dx$, then $du=2dx, v=-\frac12e^{-x}$
+
+$$=2(-x^2\frac12e^{-x})\bigg|_{0}^{\infty}-2\int_{0}^{\infty}-\frac12e^{-x}2dx=0-2e^{-x}\bigg|_{0}^{\infty}=2$$
+
+Let $u=x^4, dv=\frac12e^{-x}dx$, then $du=4!dx, v=-\frac12e^{-x}$
+
+$$\mu_4=E(X-\mu)^4=\int_{0}^{\infty}x^4\frac12e^{-x}dx+\int_{-\infty}^{0}x^4\frac12e^{-(-x)}dx=2\int_{0}^{\infty}x^4\frac12e^{-x}dx$$
+
+$$=2(-x^4\frac12e^{-x})\bigg|_{0}^{\infty}-2(\int_{0}^{\infty}\frac12e^{-x}4!dx)=0-4!e^{-x}\bigg|_{0}^{\infty}=24$$
+
+$$\alpha_4=\frac{\mu_4}{\mu_2^2}=\frac{24}{4}=6$$
+
+In this question, the exponential distribution with kurtosis greater than 3 is leptokurtic.
+
+****
+
+**2.33** In each of the following cases verify the expression given for the moment generating function, and in each case use the mgf to calculate EX and VarX.
+
+(a) $P(X=x)=\frac{e^{-\lambda}\ \lambda^x}{x!}, M_X(t)=e^{\lambda(e^t-1)}, x=0,1,...; \lambda>0$
+
+This is a descrete function.
+
+$$\text{According to the exponential function}\quad \sum_{x=0}^{\infty}\frac{k^x}{x!}=e^k$$
+
+$$M_X(t)=E(e^{tx})=\sum_{x=0}^{\infty}e^{tx}\frac{e^{-\lambda}\lambda^x}{x!}=e^{-\lambda}\sum_{x=0}^{\infty}\frac{(e^t\lambda)^x}{x!}=e^{-\lambda}e^{\lambda e^t}=e^{\lambda(e^t-1)}$$
+
+$$Check\quad M_X(0)=E(e^{0x})=e^{\lambda(e^0-1)}=1$$
+
+$$M_X'(t)=e^{\lambda(e^t-1)}\lambda e^t=\lambda e^{\lambda e^t+t-\lambda}$$
+
+$$E(X)=M_X'(0)=\lambda e^{\lambda e^0+0-\lambda}=\lambda$$
+
+$$M_X''(t)=\lambda e^{\lambda e^t+t-\lambda}(\lambda e^t+1)=\lambda^2 e^{\lambda e^t+2t-\lambda}+\lambda e^{\lambda e^t+t-\lambda}$$
+
+$$E(X^2)=M_X''(0)=\lambda^2 e^{\lambda e^0+0-\lambda}+\lambda e^{\lambda e^0+0-\lambda}=\lambda^2+\lambda$$
+
+$$Var(X)=E(X^2)-(EX)^2=\lambda^2+\lambda-\lambda^2=\lambda$$
+
+****
+
+(b) $P(X=x)=p(1-p)^x, M_X(t)=\frac{p}{1-(1-p)e^t}, x=0,1,...; 0<p<1$
+
+This is a descrete function.
+
+$$\text{According to the geomitric series}\quad \sum_{x=0}^{\infty}{r^x}=\frac1{1-r},\quad if\ |r|<1$$
+
+$$M_X(t)=E(e^{tx})=\sum_{x=0}^{\infty}e^{tx}p(1-p)^x=p\sum_{x=0}^{\infty}[e^{t}(1-p)]^x=\frac{p}{1-(1-p)e^{t}}=\frac{p}{1+(p-1)e^{t}},\quad |(1-p)e^{t}|<1\implies t<-log(1-p)$$
+
+$$Check\quad M_X(0)=E(e^{0x})=\frac{p}{1+(p-1)e^{0}}=1$$
+
+$$M_X'(t)=\frac{-p}{[1+(p-1)e^{t}]^2}(p-1)e^{t}=\frac{-p(p-1)e^{t}}{[1+(p-1)e^{t}]^2}$$
+
+$$E(X)=M_X'(0)=\frac{-p(p-1)e^{0}}{[1+(p-1)e^{0}]^2}=\frac{1-p}p$$
+
+$$M_X''(t)=\left(\frac{-p(p-1)e^{t}}{[1+(p-1)e^{t}]^2}\right)'=\left(\frac{p-p-p(p-1)e^{t}}{[1+(p-1)e^{t}]^2}\right)'=\left(\frac{p}{[1+(p-1)e^{t}]^2}-\frac{p}{1+(p-1)e^{t}}\right)'$$
+
+$$=\frac{-2p(p-1)e^{t}}{[1+(p-1)e^{t}]^3}-\frac{-p(p-1)e^{t}}{[1+(p-1)e^{t}]^2}=\frac{p(p-1)e^{t}}{[1+(p-1)e^{t}]^2}-\frac{2p(p-1)e^{t}}{[1+(p-1)e^{t}]^3}$$
+
+$$E(X^2)=M_X''(0)=\frac{p(p-1)e^{0}}{[1+(p-1)e^{0}]^2}-\frac{2p(p-1)e^{0}}{[1+(p-1)e^{0}]^3}=\frac{p(p-1)}{p^2}-\frac{2(p-1)}{p^2}=\frac{p^2-3p+2}{p^2}$$
+
+$$Var(X)=E(X^2)-(EX)^2=\frac{p^2-3p+2}{p^2}-\frac{(1-p)^2}{p^2}=\frac{1-p}{p^2}$$
+
+****
+
+(c) $f_X(x)=\frac{e^{-(x-\mu)^2/(2\sigma^2)}}{\sqrt{2\pi}\sigma},\quad M_X(t)=e^{\mu t+\sigma^2t^2/2}, -\infty<x<\infty; -\infty<\mu<\infty, \sigma>0$
+
+This is a continuous function.
+
+$$M_X(t)=E(e^{tx})=\int_{-\infty}^{\infty}e^{tx}\frac{e^{-\frac{(x-\mu)^2}{2\sigma^2}}}{\sqrt{2\pi}\sigma}dx=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}e^{tx-\frac{(x-\mu)^2}{2\sigma^2}}dx=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}e^{\frac{-1}{2\sigma^2}[x^2-(2\mu+2\sigma^2t)x+\mu^2]}dx$$
+
+Transform the part of exponent
+
+$$\frac{-1}{2\sigma^2}[x^2-(2\mu+2\sigma^2t)x+\mu^2]=\frac{-1}{2\sigma^2}[(x-\mu-\sigma^2t)^2-(\mu+\sigma^2t)^2+\mu^2]$$
+
+$$=\frac{-1}{2\sigma^2}[(x-\mu-\sigma^2t)^2-2\mu\sigma^2t-\sigma^4t^2]=\frac{-1}{2\sigma^2}(x-\mu-\sigma^2t)^2+\mu t+\frac{\sigma^2t^2}2$$
+
+Let $y=x-\mu-\sigma^2t,\ dy=dx$,
+
+$$\text{According to the normal distribution}\quad \int _{-\infty \:}^{\infty \:}\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^2}{2\sigma^2}}dx=1$$
+
+$$M_X(t)=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}e^{\frac{-(x-\mu-\sigma^2t)^2}{2\sigma^2}}e^{\mu t+\frac{\sigma^2t^2}2}dx={e^{\mu t+\frac{\sigma^2t^2}2}}\int_{-\infty}^{\infty}\frac1{\sqrt{2\pi}\sigma}e^{\frac{-y^2}{2\sigma^2}}dy=e^{\mu t+\frac{\sigma^2t^2}2}$$
+
+$$Check\quad M_X(0)=E(e^{0x})=e^{\mu 0+\frac{\sigma^2{0}^2}2}=1$$
+
+$$M_X'(t)=e^{\mu t+\frac{\sigma^2t^2}2}(\mu+\sigma^2t)$$
+
+$$E(X)=M_X'(0)=e^{\mu 0+\frac{\sigma^2(0)^2}2}(\mu+\sigma^20)=\mu$$
+
+$$M_X''(t)=\left(e^{\mu t+\frac{\sigma^2t^2}2}\right)'(\mu+\sigma^2t)+e^{\mu t+\frac{\sigma^2t^2}2}(\mu+\sigma^2t)'=(\mu+\sigma^2t)^2e^{\mu t+\frac{\sigma^2t^2}2}+\sigma^2e^{\mu t+\frac{\sigma^2t^2}2}$$
+
+$$E(X^2)=M_X''(0)=(\mu+\sigma^20)^2e^{\mu 0+\frac{\sigma^2{0}^2}2}+\sigma^2e^{\mu 0+\frac{\sigma^2{0}^2}2}=\mu^2+\sigma^2$$
+
+$$Var(X)=E(X^2)-(EX)^2=\mu^2+\sigma^2-\mu^2=\sigma^2$$
