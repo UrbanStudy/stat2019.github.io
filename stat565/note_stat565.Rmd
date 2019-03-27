@@ -13,15 +13,46 @@ output: html_document
 
 ### 1.2 Some Typical Applications of Experimental Design
 
+ - Characterizing a Process
+ - Optimizing a Process
+ - Designing a Product
+ - Formulating a Product
+ - Designing a Web Page
+
 ### 1.3 Basic Principles
+
+ - randomization: both the allocation of the experimental material and the order in which the individual runs of the experiment are to be performed are randomly determined.
+ - replication: an independent repeat run of each factor combination. replication $\neq$ repeated measurements.
+ - blocking: a design technique used to improve the precision with which comparisons among the factors of
+interest are made.
+ - factorial
 
 ### 1.4 Guidelines for Designing Experiments
 
+ 1. Recognition of and statement of the problem.
+ 2. Selection of the response variable.
+ 3. Choice of factors, levels, and range.
+  - potential design factors
+   + design factors
+   + held-constant factors
+   + allowed-to-vary factors
+  - nuisance factors
+   + controllable factors
+   + uncontrollable factors
+   + noise factors
+ 4. Choice of experimental design
+ 5. Performing the experiment
+ 6. Statistical analysis of the data
+ 7. Conclusions and recommendations
+ 
 ### 1.5 A Brief History of Statistical Design
 
-### 1.6 Summary
+### 1.6 Summary: Using Statistical Techniques in Experimentation
 
-Using Statistical Techniques in Experimentation
+ 1. Use your nonstatistical knowledge of the problem
+ 2. Keep the design and analysis as simple as possible
+ 3. Recognize the difference between practical and statistical significance
+ 4. Experiments are usually iterative
 
 
 ## 2. Simple Comparative Experiments
@@ -46,11 +77,13 @@ as $n\to\infty$ is the standard normal distribution.
 
 #### 2.4.3 Choice of Sample Size
 
-#### 2.4.4 The Case Where
+#### 2.4.4 The Case Where $\sigma_1^2\neq\sigma_2^2$
 
-#### 2.4.5 The Case Where a nd re Known
+#### 2.4.5 The Case Where $\sigma_1$ and $\sigma_2$ are Known
 
 #### 2.4.6 Comparing a Single Mean to a Specified Value
+
+If the population is normal with known variance, or if the population is nonnormal but the sample size is large enough so that the central limit theorem applies, then the hypothesis may be tested using a direct application of the normal distribution.
 
 #### 2.4.7 Summary
 
@@ -67,11 +100,67 @@ as $n\to\infty$ is the standard normal distribution.
 
 ### 3.1 An Example
 
+a single-factor experiment with _a_ levels of the factor and _n_ replicates
+
 ### 3.2 The Analysis of Variance
+
+*a* treatments or different *levels* of a *single factor*.
+
+$$\text{mean model}\quad y_{ij}=\mu_{i}+\varepsilon_{ij} \begin{cases}i=1,2,…,a\\j=1,2,…,n\end{cases}$$
+
+where $y_{ij}$ is the ijth observation, $\mu_i$ is the mean of the ith factor level or treatment, and $\varepsilon_{ij}$ is a random error component. $E[y_{ij}]=\mu_i$
+
+$$\text{effects model}\quad y_{ij}=\mu+\tau_{i}+\varepsilon_{ij} \begin{cases}i=1,2,…,a\\j=1,2,…,n\end{cases}$$
+
+$\mu$ is a parameter common to all treatments called the overall mean, and $\tau_{i}$ is a parameter unique to the ith treatment called the ith treatment effect.
+
+$$y_{ij}\sim N(\mu+\tau_{i},\sigma^2) $$
+
+$$\begin{array}\ \text{linear statistical models} \\ \text{(one-way or single-factor analysis of variance (ANOVA) model)}\end{array} \begin{cases}
+\text{fixed effects model}\\ \\ \text{random effects model} \\ \text{(components of variancemodel)}\end{cases}$$
 
 ### 3.3 Analysis of the Fixed Effects Model
 
+$y_{i.}$ represents the total of the observations under the ith treatment. Let $\bar y_{i.}$ represent the average of the observations under the ith treatment. Similarly, let $y_{..}$ represent the grand total of all the observations and $y_{..}$ represent the grand average of all the observations.
+$$y_{i.} =\sum^n_{j=1}y_{ij}\quad \bar y_{i.} = \frac{y_{i.}}n\quad i=1,2,..,a$$
+$$y_{..}=\sum^a_{i=1}\sum^n_{j=1}y_{ij}\quad \bar y_{..}=\frac{y_{..}}N=\frac{1}N\sum^a_{i=1}y_{i.}=\frac{1}a\sum^a_{i=1}\bar y_{i.}$$
+
+where $N=an$ is the total number of observations.
+
+$$y_{..}=\sum^a_{i=1}(y_{i.}=\sum^n_{j=1}y_{ij})$$
+$$\bar y_{..}=\frac{1}N\left[y_{..}=\sum^a_{i=1}(y_{i.}=\sum^n_{j=1}y_{ij})\right]=\frac{1}a\sum^a_{i=1}\left[\bar y_{i.}=\frac{1}n(y_{i.}=\sum^n_{j=1}y_{ij})\right]$$
+
+$$H_0: \mu_1=\mu_2=..=\mu_a\qquad H_A: \mu_i\neq\mu_j\quad \text{for at least one pair (i, j)}$$
+
+$$\frac{\sum_{i=1}^a\mu_i}{a}=\mu\quad \sum_{i=1}^a\tau_i=0$$
+
+$$H_0: \tau_1=\tau_2=..=\tau_a=0\qquad H_A: \mu_i\neq\mu_j\quad \text{for at least one pair (i, j)}$$
+
 #### 3.3.1 Decomposition of the Total Sum of Squares
+
+$$SST = \sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}[(\bar y_{i.}−\bar y_{..})+(y_{ij}−\bar y_{i.})]^2$$
+
+$$=n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2+\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2+2\sum^a_{i=1}\sum^n_{j=1}(\bar y_{i.}−\bar y_{..})(y_{ij}−\bar y_{i.})$$
+
+$$\because \sum^n_{j=1}(y_{ij}−\bar y_{i.})=y_{i.}-n\bar y_{i.}=y_{i.}-n\frac{y_{i.}}n=0$$
+$$\therefore \sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2+\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2$$
+
+$$SS_T = SS_{treatments} + SS_E$$
+
+$$SS_E=\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2=\sum^a_{i=1}\left[\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2\right]$$
+
+$$S_i^2=\frac{\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2}{n-1}\quad i=1,2,..,a$$
+
+|      |      |  SS | df  | MS  |F test|P-value
+| ---  | ---  | --- | --- | --- |  --- |
+|Treatment(Between or Model)|$SS_{Trt}$|$n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2=\frac1n\sum^a_{i=1}y_{i.}^2-\frac{y_{..}^2}N$|$a-1$|$\frac{SS_{Trt}}{a-1}$|$\frac{MS_{Trt}}{MS_E}$|$P(F>F_0)$|
+|Error(Within)|$SS_E$    |$\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2$     |$N-a=a(n-1)$| $\frac{SS_E}{N-a}$   
+Total|$SS_T$    |$\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}y_{ij}^2-\frac{y_{..}^2}N$     |$N-1=na-1$|
+
+|     | E(SS) | E(MS) |
+| --- |  ---  |  ---  |
+|Treatment|$(a-1)\sigma^2+n\sum^a_{i=1}\tau_i^2$|$\sigma^2+\frac{n}{a-1}\sum^a_{i=1}\tau_i^2$|
+|Erro     |$(N-a)\sigma^2$ | $\sigma^2$|
 
 #### 3.3.2 Statistical Analysis
 
@@ -84,11 +173,87 @@ $$\sum_{i=1}^\nu Z_i^2 = Q_1 + Q_2 + · · · + Q_s$$
 
  
 where $s\le\nu$, and $Q_i$ has $\nu_i$ degrees of freedom $(i= 1,2,..,s)$. Then $Q_1,Q_2,..,Q_s$ are independent chi-square random variables with $\nu_1,\nu_2,.., \nu_s$ degrees of freedom, respectively, if and only if
-$$\nu_=\nu_1 +\nu_2+..+\nu_s$$
+$$\nu=\nu_1 +\nu_2+..+\nu_s$$
 
-####3.3.3 Estimation of the Model Parameters
+#### 3.3.3 Estimation of the Model Parameters
+
+ - Least Squares Method I
+
+$y_{ij}=\mu+\tau_{i}+\varepsilon_{ij}$, for $ε_{ij}\sim iid N(0,\sigma^2),i=1,2,…,a,j=1,2,…,n$, $\sum_{i=1}^a\tau_i=0$
+
+$SSE=\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i)^2$,or $\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i-\beta_j)^2$,
+
+$\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i}=2\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0$,$y_{..}=an\hat\mu+n\sum_{i=1}^a\hat\tau_i$
+$\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i}=2\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0$,$y_{i.}=n\hat\mu+n\hat\tau_i$
+
+$\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{..}=ab\hat\mu+b\sum_{i=1}^a\hat\tau_i+a\sum_{j=1}^b\hat\beta_j$
+$\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{i.}=b\hat\mu+b\hat\tau_i+\sum_{j=1}^b\hat\beta_j$
+$\left.\frac{\partial SSE}{\partial\beta_j}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{.j}=a\hat\mu+\sum_{i=1}^a\hat\tau_i+a\hat\beta_j$
+
+
+$$\hat\mu=\frac1{an}y_{..}-\frac1{a}\sum_{i=1}^a\hat\tau_i=\bar y_{..}$$
+$$\hat\tau_i=\frac1{a}y_{i.}-\hat\mu=\bar y_{i.}-\bar y_{..}$$
+
+ - Least Squares Method II
+ 
+$y_{ij}=\mu_{i}+\varepsilon_{ij}$, for $ε_{ij}\sim iid N(0,\sigma^2),i=1,2,…,a,j=1,2,…,n$, $\sum_{i=1}^a\mu_i=au$
+
+$$\vec y=\mathbf{X}\vecβ+\vecε$$
+ 
+$\mathbf{X'X}=nI_{a\times a}$,$\mathbf{(X'X)^{-1}}=\frac1nI_{a\times a}$,$\mathbf{X'}\vec{Y}=\vec{y_i}$
+
+$$\vecβ=\mathbf{(X'X)^{-1}X}\vec{Y}=\vec{\hat{y_i}}=\vec{\hat{\mu_i}}\implies \hat\mu_i=\bar y_{i.};\ \hat\mu=\bar y_{..};\ \hat\tau_i=\bar y_{i.}-\bar y_{..}$$
+
+ - Confidence Interval for parameters
+ 
+$y_{ij}\sim NID(\mu+\tau_i,\sigma^2)$, $\bar y_{i.}\sim NID(\mu+\tau_i,\frac{\sigma^2}n)$, $\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}\sim N(0,1)$
+
+$\frac{SS_E}{\sigma^2}\sim \chi^2_{df_E}$, and $\bar y_{i.}$ and $\frac{SS_E}{\sigma^2}$ are independent.
+
+$$\frac{\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}}{\sqrt{\frac{SS_E}{\sigma^2(N-a)}}}=\frac{y_{i.}-\mu_i}{\sqrt{\frac{SS_E}{n(df_E)}}}=\frac{y_{i.}-\mu_i}{\sqrt{\frac{MS_E}n}}\sim t_{df_E=N-a}$$
+
+$100(1-\alpha)$% confidence interval for ith treatment mean ($\mu_i$) is $\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n}}$
+
+$\bar y_{i.}-\bar y_{j.}\sim N(\mu_i-\mu_j,\frac{2\sigma^2}n)$, $\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\frac{2\sigma}{\sqrt{n}}}\sim N(0,1)$
+
+if $\hat\sigma^2=MS_E$, $\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\sqrt{\frac{2MS_E}n}}\sim t_{df_E}$
+
+$100(1-\alpha)$% confidence interval for the difference in ith and jth treatment means ($\mu_i-\mu_j$) is $\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{\frac{2MS_E}{n}}$
+
+| $\hat\mu$   | $\hat\mu_i$ | $\hat\tau_i$ |
+|      ---    |    ---      |     ---      |
+|$\bar y_{..}$|$\bar y_{i.}$| $\bar y_{i.}-\bar y_{..}$
+
+|$y_{ij}$|$\bar y_{i.}$|$\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}$|$\frac{SS_E}{\sigma^2}$| $\frac{y_{i.}-\mu_i}{\sqrt{\frac{MS_E}n}}$
+|   ---  |      ---    |    ---      |     ---      | ---
+|$N(\mu+\tau_i,\sigma^2)$|$N(\mu+\tau_i,\frac{\sigma^2}n)$|$N(0,1)$| $\chi^2_{df_E}$  |  $t_{df_E=N-a}$  |
+
+
+|$\bar y_{i.}-\bar y_{j.}$|$\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\frac{2\sigma}{\sqrt{n}}}$|$\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\sqrt{\frac{2MS_E}n}}$
+|   ---  |    ---      |     ---      
+|$N(\mu_i-\mu_j,\frac{2\sigma^2}n)$|$N(0,1)$|  $t_{df_E}$  |
 
 #### 3.3.4 Unbalanced Data
+
+|      |      |  SS | df  | MS  |F test|P-value
+| ---  | ---  | --- | --- | --- |  --- |
+|Treatment(Between or Model)|$SS_{Trt}$|$\sum^a_{i=1}\sum^{n_i}_{i=1}(\bar y_{i.}−\bar y_{..})^2=\sum^a_{i=1}\frac{y_{i.}^2}{n_i}-\frac{y_{..}^2}N$|$a-1$|$\frac{SS_{Trt}}{a-1}$|$\frac{MS_{Trt}}{MS_E}$|$P(F>F_0)$|
+|Error(Within)|$SS_E$    |$\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2$     |$N-a=\sum_{i=1}^a(n_i-1)$| $\frac{SS_E}{N-a}$   
+Total|$SS_T$    |$\sum^a_{i=1}\sum^{n_i}_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}y_{ij}^2-\frac{y_{..}^2}N$     |$N-1=\sum_{i=1}^an_i-1$|
+
+|    | E(SS) | E(MS) |
+| ---|  ---  |  ---  |
+|Treatment|$(a-1)\sigma^2+n\sum^a_{i=1}n_i\tau_i^2$|$\sigma^2+\frac{n}{a-1}\sum^a_{i=1}n_i\tau_i^2$|
+|Erro|$(N-a)\sigma^2$ | $\sigma^2$|
+
+|        CI   | balanced | unbalanced |
+|    ---      |    ---   |     ---    |
+|$\mu_i$      |$\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n}}$|$\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n_i}}$
+|$\mu_i-\mu_j$|$\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{\frac{2MS_E}{n}}$|$\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{MS_E(\frac{1}{n_i}+\frac{1}{n_j})}$
+
+
+
+
 
 ### 3.4 Model Adequacy Checking (verification)
 

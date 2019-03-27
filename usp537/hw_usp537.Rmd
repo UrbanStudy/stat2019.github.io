@@ -1,6 +1,6 @@
 ---
 title: 'USP537 Problem Sets'
-author: ""
+author: "Shen Qu"
 date: "Winter 2019"
 output: html_document
 ---
@@ -9,132 +9,199 @@ output: html_document
 
 ## Problem Set 1
 
-1. Portland’s transit agency TriMet wants to increase transit usage by 15%. They expect no changes in the demand for transit and will lower the fare to attract the additional riders. The estimated price elasticity of demand is 0.3(actual elasticity used by TriMet).
+ 1. Portland’s transit agency TriMet wants to increase transit usage by 15%. They expect no changes in the demand for transit and will lower the fare to attract the additional riders. The estimated price elasticity of demand is 0.3(actual elasticity used by TriMet).
 
  a. Calculate the percentage change necessary in fares to achieve the increased transit usage and the change in fare box revenue (use simple percentages rather than the midpoint elasticities). 
 
-Percentage change in P = Percentage change in Q/E = 0.15/0.3 = 50%
+When no changes in the demand for transit, the value of usage moves along the MD curve, then 
 
-To achieve 15% increase in transit usage, the fare should decrease 50%. 
+$$\text{Elasticity }\eta=\frac{\Delta Q/Q}{\Delta P/P}\implies\Delta P/P=\frac{\Delta Q/Q}{\eta}=\frac{0.15}{0.3}=50\%$$
+$$TR=50\%P(1+15\%)Q=57.5\%PQ$$
 
+50% decrease in fares could achive the increase transit usage by 15%. The new revenue will be 57.5% of previous revenue.
+
+ ---
+ 
  b. Would you expect the long-run price elasticity of demand to be larger or smaller? Explain why?
 
-Long-term elasticity will be larger. 
-Long term will bring about more change for people’s response for the change of fare. Because in short-run, people are not very responsive to the fare. However, over longer period, people can change their location of home and work, buy new cars or sell cars. Thus, in the long run, people can respond substantially to a change of fare. 
+I expect the long-run price elasticity of demand to be larger. Demand tends to be more elastic in the long rung rather than in the short run, because when prices change consumers often need more time to respond and change their shopping habits such as househould or firms' location, vehicle ownership, further change travel behaviors. (Mankiw, 2004).
+
+ * Reference
+
+_Mankiw (2004) “Principals of Macroeconomics”,South-WesternCollegePub,UK_
+
+ ---
  
- c. Do you expect that costs willrise? Consider total cost, fixed cost, and variable cost. Explain why it would or would not.
+ c. Do you expect that costs will rise? Consider total cost, fixed cost, and variable cost. Explain why it would or would not.
 
-Fixed cost are business expenses that are not dependent on the level of ridership, thus dixed does not change
-Variable cost will increase because of increased ridership. Total cost is the sum of fixed  cost and variable, so total cost will increase. 
+If the extra riderships don't exceed current transit capacity, fixed cost would not change. The variable cost will rise for the addtional operation cost such as energy consumption and labor cost. Thus, the total cost would increase. If current transit is underload, the change would be tiny.
 
-2. In “The Urban Transportation Problem: A Reexamination and Update”, by JohnF. Kain([GTW] Chap11), the author concludes the paper with a recommendation: “There remains a strong, if not compelling, case to begin charging road users the full social cost of their road use, for reversing the public ownership and operation of transit services, and for stopping wasteful expenditures on ineffective rail systems.” Please write a short analysis (approximately1 page, single-spaced, typed) highlighting your arguments either in support of or against this recommendation.
+ ---
+ 
+ 2. In “The Urban Transportation Problem: A Reexamination and Update”, by John F. Kain([GTW] Chap11), the author concludes the paper with a recommendation: “There remains a strong, if not compelling, case to begin charging road users the full social cost of their road use, for reversing the public ownership and operation of transit services, and for stopping wasteful expenditures on ineffective rail systems.” Please write a short analysis (approximately1 page, single-spaced, typed) highlighting your arguments either in support of or against this recommendation.
 
-I support Kain’s recommendation of charging road users the full social cost of their use. 
-The most important reason for support road pricing is that it is the optimal method to internalize external costs of driving. There are various externalities of driving, such as infrastructure depreciation, external accident costs, air pollution, noise, climate and congestion effect on other traffic. Current charges do not properly address such external costs of driving. Thus, road pricing attempts to internalize those costs for drivers. After implementing road pricing, the price paid by drivers will more accurately reflect the cost of using the road. 
+There are three points in Kain’s statement: charging road users the full social cost, reversing public ownership and operation of transit services, and stopping ineffective rail systems (Kain, 2001 p.396). The three concepts are related. In general, I agree with him and try to make a further discussion.
 
-Furthermore, road pricing has been proved practical and efficient. Taking London as an example, only 71% of cars at peak hours have single occupants, encouraging car sharing by offering exemptions in HOT lanes could substantially reduce congestion. Further, as only half of those single drivers are commuters, road pricing can easily encourage them to change their time of travel. Singapore is the first country to implement congestion pricing. It has been one of the highest per capita incomes in Asia, but fewer than 30% of Singaporean households own cars.
+ - Charging road users the full social cost
+ 
+The principle of road pricing is to balance the cost and externality. Because the road using costs do not reflect true costs to society and environment, users are not paying the full costs of their purchases and even unaware of it. They will tend to use too much that is subsidized by society. The markets are distorted and inefficient.
 
-Road pricing will bring various short run and long run benefits. For short run benefits, road pricing will change people’s travel behavior. Drivers who are not willing to pay a price will either drive at a different time, change destinations, change routes to the same destination, change modes of transportation, or decide not to travel.
+Road user charges have two functions. The first one is used for revenue generation, which was used to road infrastructure financing. The second function is as a transportation demand management tool, which can reduce peak hour travel, release traffic congestion, and encourage transit development. Kain (2001) believes the later: “In the short run, motorists would make fewer trips, change their time of travel, and alter their destinations…In the long run, higher road user charges would eventually affect the dispersed patterns of workplaces and residences that were in part induced by congestion” (P.393).
 
-Furthermore, road pricing can improve the development of sustainable transportation.  Road pricing reveals the true economic costs of the road use so that intermodal competition would become fairer, thus it will give a real boost to public transit and discourage automobile travel.  This mechanism will form the “virtuous circle” to improving sustainable transportation. In London, the evidence backs this up: new service has been added and ridership has gone up notably after implementing congestion charge. London’s mayor may have viewed transit improvements as part of the necessary politics, or as just good management; but we can view them as logically following from the favorable conditions created by congestion pricing. 
+The problem is how to get “the right price”? Prices should reflect all the costs and externalities including both negative and positive. Many economists try to measure the lost such as congestion, air pollution, GHG emissions, visual intrusion, noise, and road accidents.  But “economists disagree over how to set tolls, how to cover common costs, what to do with any excess revenues, whether and how "losers" from tolling previously free roads should be compensated, and whether to privatize highways.  It is hard to measure the benefit of road using such as economic growth, the communication of information and technology, the recreation activities, and the emotional need for social lives. Kain’s main idea is charging low-occupancy vehicles and subsidizing transit (p.393). It is also a huge challenge at the operating level, which leads to the second topic: privatization.
 
-Evidences show that the unintended negative effect of road pricing can be minimized. For example, road pricing may lead to improper traffic diversion. While evidence in London and Norway, business effects are not necessarily adverse, and with responsible management, increased mobility can provide gains to businesses. Indeed, worsening congestion is likely to cost businesses as well. 
+The application of congestion charges is currently limited to a small number of cities and urban roads.  The technology of electronic road pricing through ITS is making detailed billing based on actual use feasible and affordable.
 
-In short, road pricing should implemented. It can internalize external cost of driving, bring various benefits, and it has been proven to be practical and efficient. Furthermore the unintended negative effect of road pricing can be minimized. 
+ - Reversing public ownership and operation of transit services
+ 
+Transit is a quasi-public good, Off-peak travelers’ consumption does not reduce any other's consumption of that good.  In some time or location, transit is scarce goods. Both excludability and rivalry are possible. Hart (1995) proposes the party with the better investment technology should be the owner , while Besley and Ghatak (2001) argue that the party who has a larger valuation for the public good should be the owner.  Klein, Moore and Reja (1997) point out public transit authorities have tended to over-provide their service. (P.12). It seems that privatization can help to improve efficiency and achieve benefit maximum inside the transportation system, promote the resources redistribution by the hand of market. But Market cannot solute the problem of externalities by itself. The free travel and dispersed patterns might become the wealthy’s privilege. For transit, the scarce time and segments will turn to “club goods,” which means high excludability and low rivalry in consumption. In social justice or equality, the public department still needs to provide alternative goods or subsidies. Especially, mass transit, what is commonly known as natural monopolies, need huge initial investment and have essentially zero marginal costs. It beyond the issues of ownership or operation.
 
-3. Rail City operates a train service on weekdays only. The fixed cost is $120,000 per day. The operating cost is $100 per train-hour, with service adjusted to provide 200 rides per train-hour. This yields a marginal cost of $0.50 per rider. Use this where information on marginal cost is needed. The following information is available regarding cost and demand on a daily basis.
+ - The ineffective rail systems
+ 
+Kain (2001) believes busway can close match between demand and capacity with the lower operating costs, (P.379). “Research on mode choice shows that travelers value the following characteristics: short trip times, avoidance of transfers and waiting time, door-to-door service, reliability, comfort, seat availability, storage space, security, and flexibility” (Klein, Moore and Reja, 1997. P.9). In this way, rail system is the most expensive and least flexible, should be stopped.
 
-Demand:P = $10 -0.0001 Q
+Other reasons Kain gave are disappointing ridership than projected (p.362), the dispersed employment patterns and low population densities (P.366). It is true that the low density in the U.S. make transit operators difficult to provide competitive services. Meaning while, in some cities with mid-high income and high density such as New York and Hong Kong, a powerful rail system support the cities operation and play an irreplaceable role (Pushkarev and Zupan,1997; Cervero,1998). 
 
-Fixed Cost:FC = $120000
+Review the history, “the steady rise in auto ownership and declines in transit use since 1895 were largely efficient responses to changes in technology and rising incomes” (Kain, 2001. P.359). “The transit market is contracting because of natural forces” (Klein, Moore and Reja, 1997. P.16). Therefore, we should be careful when planning a rail in a med-low density area and have to pay the heavy cost of rail system in some cities. Beside advocating BRT and TOD in middle cities or growing area, next generation of technology such as automated driving system could turn the trend in future and lead to an unpredictable land use pattern.
 
-Marginal Cost: MC = 0.5
+ * Reference
 
-Total Cost:TC = FC + VC = $120,000 + 0.5 Q
+  _[1] Kain, John F. (2001). Essays in transportation economics and policy : a handbook in honor of john r. meyer, Chapter 11. Brookings Institution Press._
 
-Total Revenue: TR = P x Q = 10 Q -0.0001 Q2
+  _[2] Paul Johnson, Andrew Leicester & George Stoye. (2012). Fuel for Thought – The what, why and how of motoring taxation. Institute for Fiscal Studies and Royal Automobile Club Foundation for Motoring. Executive Summary, pp. v._
+  
+  _[3] Lindsey, Robin. (2006). Do Economists Reach a Conclusion on Road Pricing? The Intellectual History of an Idea. Econ Journal Watch. 3 (2): 292–379._
+  
+  _[4] Small, Kenneth A.; Verhoef, Erik T. (2007). The Economics of Urban Transportation. Routledge, New York. pp. 148–153._
+  
+  _[5] Demsetz, Harold. (1970). Full Access The Private Production of Public Goods. Journal of Law and Economics. 13 (2): 293–306._
+  
+  _[6] Hart, Oliver. (1995). Firms, Contracts, and Financial Structure. Oxford University Press._
+  
+  _[7] Besley, Timothy; Ghatak, Maitreesh. (2001). Government Versus Private Ownership of Public Goods. The Quarterly Journal of Economics. 116 (4): 1343–72._
 
-Marginal Revenue:MR = 10 -0.0002 Q
+  _[8] Klein, D. B., Moore, A. T., & Reja, B. (1997). Curb rights: a foundation for free enterprise in urban transit. Brookings Institution Press._
 
- a. What number of riders will use the system if the price is set equal to marginal cost1? How muchservice will be provided (Q*)? What are the subsidies or profits at this level of cost and price? What is the consumer surplus?
 
-P= MC = 0.5
+ ---
+ 
+ 3. Rail City operates a train service on weekdays only. The fixed cost is $120,000 per day. The operating cost is $100 per train-hour, with service adjusted to provide 200 rides per train-hour. This yields a marginal cost of $0.50 per rider. Use this where information on marginal cost is needed. The following information is available regarding cost and demand on a daily basis.
 
-10 -0.0001Q = 0.5
+|        |Cost|Revenue|Demand
+|---     | ---|--- | ---
+|Fixed   |$FC=\$120000$| |
+|Marginal|$MC=0.5$|$MR=10-0.0002Q$|$P=\$10-0.0001Q$|
+|Total   |$TC=FC+VC=\$120000+0.5Q$|$TR=P\times Q=10Q-0.0001Q^2$|
 
-Q*=95000
+ a. What number of riders will use the system if the price is set equal to marginal cost(This is essentially equivalent to assuming that a benevolent social planner sets the price so that maximum efficiency is reached)? How much service will be provided (Q*)? What are the subsidies or profits at this level of cost and price? What is the consumer surplus?
 
-Profit = TR – TC = (10Q-0.0001Q2) – (120000+0.5Q) = 47500-167500= -120000
+Let $P^*=MC$, then $10-0.0001Q^*=0.5\implies Q^*=95000$ riders. The service is $95000/200=475$ train-hour.
 
-Subsidies = 120000
+$TR-TC=(P^*Q^*)–(120000+P^*Q^*)=-\$120000$
 
-CS= 0.5*9.5*95000=451250
+$CS^*= \frac12(10-P^*)Q^*=\frac12\times(10-0.5)\times95000=\$451250$
 
+When the price equals marginal cost, there will be 95000 riders and 475 train-hour service will be provided.It needs $120000 subsidies for operation. The consumer surplus reach the maximum \$451250.
+
+ ---
+ 
  b. If the price is raised to $2.00, how many people will use the train, and what happens to total revenue? What subsidy is required? Calculate any efficiency loss or gain associated with this change. Compare the change in subsidy with the change in consumer surplus.
 
-Q = （10 - P）/0.0001= 8/0.0001= 80000
+When $P_2=\$2.00$, there will be $Q_2=\frac{10-2}{0.0001}=80000$ riders.
 
-TR = 10Q – 0.0001Q2 = 800000 – 640000 = 160000
+$TR=P_2Q_2=2\times80000=\$160000$.
 
-Profit = TR – TC = (10Q-0.0001Q2) – (120000+0.5Q) = 160000 – 160000= 0 
+$TR-TC=160000–(120000+0.5\times8000)=\$0$, $\Delta(TR-TC)=0-(-120000)=\$120000$
 
-Subsidies = 0            ∆Subsidies = 120000
+$CS=\frac12(10-P_2)Q_2=\frac12(10-2)80000=320000$, $\Delta{CS}=320000-451250=-\$131250$
 
-CS = 320000            ∆CS = 451250 – 320000 = 131250
+$PS=(P_2-P^*)Q_2=(2-0.5)80000=120000$
 
-The change of consumer surplus is larger than the change of subsidies
+$TS=CS+PS=320000+120000=440000$
 
-DWL = 0.5*∆P*∆Q = 0.5*1.5*15000 = 11250
+$DWL=\frac12\Delta P\Delta Q=\frac12(2.0-0.5)(80000-95000)=-\$11250$
 
+When the price equals to \$2, there are 80000 riders. The total revenue is \$160000 and don't need subsidies. But the consumer surplus loss \$131250, which is greater than the decrease in subsidies \$120000. It means we should not raise price for reducing subsidies.
 
- c. Suppose that a monopolist is allowed to run the system and set price. What quantity (Qm) and price (Pm) willbe set andwhat profits or losses will be generated if the monopolist wants to maximize profits? Calculate any efficiency loss associated with this level of service.
+ ---
+ 
+ c. Suppose that a monopolist is allowed to run the system and set price. What quantity ($Q_m$) and price ($P_m$) will be set and what profits or losses will be generated if the monopolist wants to maximize profits? Calculate any efficiency loss associated with this level of service.
 
-When MR=MC, profit is maximum.
+When $MR=MC$, the monopolist maximizes profits. $10–0.0002Q_m=0.5\implies Q_m=47500$ riders,  $P_m=10–0.0001Q=10–4.75=\$5.25$
 
-10 – 0.0002Q = 0.5
+$TR-TC=(P_m-P^*)Q_m-FC=(5.25-0.5)\times47500–120000=\$105625$
 
-Qm  = 47500
+$CS=\frac12(10-P_m)Q_m=\frac12(10-5.25)47500=112812.5$
 
-Profitmax = -0.0001*475002 + 9.5 *47500 – 120000 = 105625
+$PS=(P_m-P^*)Q_m=(5.25-0.5)47500=225625$
 
-Pm = 10 – 0.0001Q = 10 – 4.75 = 5.25
+$TS=CS+PS=112812.5+225625=338437.5$
 
-DWL = 0.5*∆P*∆Q = 0.5*(5.25-0.5)*(95000-47500) = 112812.5
+$DWL=\frac12\Delta P\Delta Q=\frac12(5.25-0.5)(47500-95000)=-\$112812.5$
 
+When the marginal revenue equals marginal cost, the price is \$5.25 and riders are 47500. The monopolist get the maximum profit of \$105625. However, the total efficientcy lost are \$112812.5. We should not sacrific the publis interest for maximizing the monopolist's profit.
+
+ ---
+ 
  d. Could the monopolist make a profit if fixed costs are $250,000 per day?  Does this mean that it would be a mistake to build the train based on economic benefits and costs for this level of fixed cost? Explain why you think it would or would not be from an economic efficiency perspective and include appropriate calculations.
 
-When fixed costs = 250000
+Let $FC=\$250000$, the monopolist's maximum profit is $TR-VC-FC=(P_m-P^*)Q_m-250000=-\$24375$.
 
-Profit = (10Q- 0.0001Q2) – (25000 + 0.5Q)
+The monopolist won't make a profit. To examine the efficiency, we should compare subsidies and cunsumer surplus. 
 
-Profitmax = -24375
+If the price is set to $P^*=0.5$, the social benefit is $CS+TR-TC=451250+(0.5-0.5)95000-250000=\$201250$
 
-Monopolist cannot make a profit. I think this does not mean that it would be a mistake to build the train. Because when take consumer surplus into consideration for profit, 
+If the price is set to $P_m=5.25$, the social benefit is $CS+TR-TC=112812.5-24375=\$88437.5$
 
-Profit = CS + TR – TC 
-           = 0.5*(10-P)*Q + (10Q- 0.0001Q2) – (250000 + 0.5Q)
-           =0.5*[10-(10-0.0001*Q)]*Q + (10Q- 0.0001Q2) – (250000 + 0.5Q)
-           =0.00005Q2 + (10Q- 0.0001Q2) – (250000 + 0.5Q)
-            = - 0.00005Q2 + 9.5Q – 250000
-            
-When Q = 95000, profit is maximum,
-Profitmax = 652500
+Let $TS+TR-TC=\frac12(10+P-2P^*)Q-250000=-0.00005Q^2+9.5Q–250000=0$, $Q_{1,2}=\frac{-b\pm \sqrt{b^2-4ac}}{2a}=\frac{9.5\pm\sqrt{40.25}}{0.0001}$, $Q_1=31558,Q_2=158442$. For $Q\le95000$, so $Q=31557.11,P=6.844289$.
 
-The profit is positive, so train should still be built. 
+Then $CS+TR-TC=49792.56-49792.57=\$0$. Once the price is lower than \$6.844289, the riders are more than 31558, the cunsumer surplus will be larger than subsidies.
+
+The reults prove that the train is worth to be bulit because social benefit are positive rather than considering the profit of monopolist. Only if the riders are less than 31558, building this train is a mistake for a negative social benefit.
 
 
+|P(\$)|Rider|Fixed Cost|Variable Cost|Total Cost||Revenue|subsidies/profit||Consumer Surplus|Producer Surplus|Total Surplus        | DWL                     |
+|---  | --- | ---      |---          | ---      |---| ---| ---       | --- |---             | ---            | ---                 |---                      |
+|$P$  |$Q$  |$FC$      |$P^*Q$       |$FC+VC$   ||$PQ$   |$(P-P^*)Q-FC$   ||$\frac12(10-P)Q$|$(P-P^*)Q$      |$\frac12(10+P-2P^*)Q$|$\frac12\Delta P\Delta Q$|
+|0.50 |95000|120000    |47500        |167500    ||47500  | -120000        ||451250          | 0              |451250               |0                        |
+|2.00 |80000|120000    |40000        |160000    ||160000 | 0              ||320000          | 120000         |440000               |-11250                   |
+|5.25 |47500|120000    |23750        |143750    ||249375 | 105625         ||112812.5        | 225625         |338437.5             |-112812.5                |
+|0.50 |95000|250000    |47500        |297500    ||47500  | -250000        ||451250          | 0              |451250               |0                        |
+|5.25 |47500|250000    |23750        |273750    ||249375 | -24375         ||112812.5        | 225625         |338437.5             |-112812.5                |
+|6.84 |31558|250000    |15779        |265779    ||215986 | -49792.57      ||49792.56        | 200207.4       |250000               |-201250                  |
 
+```{r echo=FALSE}
+curve(10-0.0001*x, 0, 100000,col = "red",xlab ="Q", ylab ="P");text(40000,7, "MD")
+curve(10-0.0002*x, add = TRUE, col = "violet");text(40000,3, "MR")
+abline(h = 0.5, lty = 2);abline(h = 2, lty = 4)
+abline(v =95000, lty=2);text(95000,0.8, "(95000,0.5)")
+abline(v =47500, lty=2);text(50000,5.5, "(47500,5.25)");text(47500,0.8, "(47500,0.5)")
+abline(v =80000, lty=4);text(80000,2.5, "(80000,2)")
+polygon(x=c(47500,95000,47500), y=c(0.5,0.5,5.25), density=10, angle=45,lty =3);text(60000,2.5, "DWL")
+abline(v =31558, lty=4);text(35000,8, "(31558,6.8442)")
+polygon(x=c(0,31558,0), y=c(6.8442,6.8442,10), density=6, angle=90,lty =3);text(15000,8, "CS")
+polygon(x=c(0,31558,31558,0), y=c(0.5,0.5,6.8442,6.8442), density=6, angle=0,lty =3);text(15000,4, "PS")
+```
+
+```{r eval=FALSE, include=FALSE}
+uniroot(function(x)(-0.00005*x^2+9.5*x-250000), lower=0, upper=100000)
+```
+
+
+
+ 
+ 
 ## Problem Set 2
 
-1. Elasticities and Consumer Surplus 
+ 1. Elasticities and Consumer Surplus 
 
-In April of 1973, the Massachusetts Bay Transportation Authority (MBTA) initiated an experiment called “Dime Time.”(See attached article) On weekdays between the hours of 10am and 3pm, the fare for travel on the MBTA’s rail lines was reduced from 25 cents to 10 cents, but was 25 cents during all other hours. During the “Dime Time” experiment, which lasted until August1975, fares for bus travel remained at 20 cents per ride during all hours. The “Dime Time” experiment provided an unusual opportunity to evaluate the sensitivity of midday rail transit demand to a reduction in fare, a subject of interest to many transit operators and planners. 
+<span style="color:grey">In April of 1973, the Massachusetts Bay Transportation Authority (MBTA) initiated an experiment called “Dime Time.”(See attached article) On weekdays between the hours of 10am and 3pm, the fare for travel on the MBTA’s rail lines was reduced from 25 cents to 10 cents, but was 25 cents during all other hours. During the “Dime Time” experiment, which lasted until August1975, fares for bus travel remained at 20 cents per ride during all hours. The “Dime Time” experiment provided an unusual opportunity to evaluate the sensitivity of midday rail transit demand to a reduction in fare, a subject of interest to many transit operators and planners.Please use the mid-point method for all of your elasticity calculations. 
 
-Table 1: Average weekday MBTA rail transit passengers between 10am and 3pm with “Dime Time”, by previous mode of travel and income class
+Table 1: <span style="color:grey">Average weekday MBTA rail transit passengers between 10am and 3pm with “Dime Time”, by previous mode of travel and income class</span>
 
-|		| income class	
-|Previous travel mode| Low	| Moderate | high | total
+|	   |	 income class	
 |----|---|---|---|---
+|Previous travel mode| Low	| Moderate | high | total
 | MBTA rail transit	|  
 | 7am - 10 am	   |370	 | 215  |175  |	760
 |10 am - 3 pm    | 9500| 8250	|5100	|22850
@@ -147,444 +214,448 @@ Table 1: Average weekday MBTA rail transit passengers between 10am and 3pm with 
 |no previous trip|1850 | 570	|90	  |2510
 |Toatal          |15020| 10860|6410	|32290
 
- a. Using the data provided in Table 1, estimate the fare elasticity of total weekday demand for MBTA rail transit service during midday (10am¬3pm).
+<span style="color:grey">Note on interpretation of this table: This table shows the average number of people who traveled via rail between 10am and 3pm during the “Dime Time” experiment. The different categories tell us what mode these people used before switching to rail.
+So, for example, we know that the total number of people riding the rail system during off-peak hours under “Dime Time” was 32,290. Of these 32,290, 22,850 passengers rode during these hours before the lower fare was introduced. 2,100 of the 32,290 previously rode the bus, but switched over to rapid transit with the new lower fare.</span>
 
-Elasticity = %∆Demand/ % ∆Fare = [(32290-22850)/22850]/[(0.10 – 0.25)/0.25] = -0.6885
+  a. <span style="color:grey">Using the data provided in Table 1, estimate the fare elasticity of total weekday demand for MBTA rail transit service during midday (10am-3pm).</span>
 
-The fare elasticity of demand for midday rail transit service was about -0.6885. 
+$$\text{Elasticity }\eta=\frac{\Delta Q/Q}{\Delta P/P}=\frac{\frac{32290-22850}{(32290+22850)/2}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=-0.399468$$
 
+The fare elasticity of total weekday demand for MBTA rail transit service during midday (10am-3pm) is -0.399468. 
 
- b. According to this elasticity estimate, is the demand for midday rail transit service elastic or inelastic? Comment on your answer.
-
-Because |-0.6885| <- 1, the demand for midday rail transit service is inelastic. The value, -0.6885, means that a 1% decrease in fare would result in a 0.6885% increase in ridership. Because demand is inelastic, it indicates that the quantity demanded is not very sensitive to price changes.
-
- c. How does the elasticity of demand for midday rail transit service vary among the three income groups (low, moderate, and high) for whichridership data are reported inTable 1? Comment onthese variations.
-
-Elasticitylow = %∆Demand/ % ∆Fare = ((15020-9500)/9500)/((0.10-0.25)/0.25) = -0.9684
-
-Elasticitymid = %∆Demand/ % ∆Fare = ((10860-8250)/8250)/((0.10-0.25)/0.25) = -0.5272
-
-Elasticityhigh = %∆Demand/ % ∆Fare = ((6410-5100)/5100)/((0.10-0.25)/0.25) = -0.4281
-
-Results indicates that the fare elasticity of demand for midday rail transit service varies among income groups. Low income group has highest fare elasticity. The fare elasticity of moderate and high income groups are similar, --0.5272 and -0.4281 respectively.  If there is 1% decrease in fare, there will be 0.9684 ridership increase for low income group, 0.5272 ridership increase for moderate income group and 0.4281 increase for high income group.  Low income group is most sensitive to the fare change. 
-
- d. Table 1 also reports the prior behavior of MBTA rail transit passengers traveling during “Dime Time” hours. Boston’s regional transportation planning agency estimated that 233,760 auto trips (including both driver and passenger trips) were made in the MBTA service area on a typical weekday before the “Dime Time” program began. From these data, estimate the cross elasticity of demand for auto travel with respect to fare for midday rail transit trips. How do you interpret the arithmetic sign of this elasticity?
-
-Cross-Elasticity = %∆Demand/ % ∆Fare = ((-(1820+375))/233760)/((0.10-0.25)/0.25) = 0.0157
-The cross-elasticity of demand for auto travel with respect to fare for midday rail transit trips is 0.0157. The positive arithmetic sigh indicates that auto trips and rail transit trips are substitutes. If there is 1% decrease in transit fare, there will be 0.157% decrease in auto trips. 
-
-
- e. The MBTA estimated that prior to the “Dime Time” experiment, average weekday travel on the rail service during peak periods (7¬10am and 3¬6pm) was 203,670 passengers. Estimate the cross¬-elasticity of demand for peak-¬period rail travel with respect to the off¬-peak rail fare.
-
-Cross-Elasticity = %∆Demand/ % ∆Fare = ((-(760+555))/203670)/((0.10-0.25)/0.25) = 0.0107
-The cross-elasticity of demand for peak-period rail travel with respect to the off-peak rail fare is 0.0107. The positive arithmetic sigh indicates that peak-period rail travel and rail off-peak rail transit trips are substitutes. If there is 1% decrease in transit fare, there will be 0.0107% decrease in auto trips. 
-
- f. Please draw a demand curve andanswer the following questions using the diagram:
-
-  (i) Label the area of total daily benefits to riders, as measured by the increase in consumer surplus, of the “Dime Time” experiment?
-  
-  In above figure, point B represents the price (0.25) and ridership (22850) before Dime Time. Point A represents price (0.10) and ridership (32290). The area marked with oblique lines indicates the increase in consumer surplus because of Dime Time.   
-  
-  (ii) Label how much of the increase in consumer surplus represented fare savings to passengers who already traveled on the rail system during the midday at the initial fare?
-  
-  In above figure, point B represents the price (0.25) and ridership (22850) before Dime Time. Point A represents price (0.10) and ridership (32290). The area marked with oblique lines indicates increase in consumer surplus represented fare savings to passengers who already traveled on the rail system during the midday at the initial fare.   
-
-  (iii) Describe verbally how were the benefits in(ii) divided among riders in the three income groups?
-
-The increase in consumer surplus to passengers who already traveled on the rail transit can be divided among riders in the three income groups. The number of low income people is largest, 9500, 42%. The next is moderate income people, 8250, 36%. The number of high income group is 5100, which accounts for smallest share 22%. 
-
-  (iv) Label on the diagram how much of the total benefit was received by new riders (who were initially not using rail) who began to use the rail system when the midday fare was reduced to 10 cents?
-
-In above figure, point B represents the price (0.25) and ridership (22850) before Dime Time. Point A represents price (0.10) and ridership (32290). The area marked with oblique lines indicates increase in consumer surplus represented fare savings to new riders (who were initially not using rail) who began to use the rail system when the midday fare was reduced to 10 cents  
-
-  (v) Describe how were the benefits in(iv) divided among riders inthe three income groups? Why is it important to distinguishbetweenconsumer benefits to passengers who had beenusing the rail system at the higher fare and those received by new riders who beganto use the system inresponse to the fare change?
-
-Among the riders, there are 5220 (58%) low income people, 2610 (28%) moderate income people and 1310 (14%) high income people. The percentage of low income people is largest. 
-
-It is very important to distinguish between consumer benefits for existing passengers and new riders. Existing passengers were already willing to ride midday transit for the old fare, so their increase in consumer surplus from the program results in money saved but no behavioral change. New riders attracted by the new lower fare received some consumer surplus resulting from their travel mode change. The additional consumer surplus for the existing rail riders essentially translate into benefits for the consumer without any benefits for the transit agency. Besides, how policy attracts new riders can provide useful implication for policy-makers. 
-
-2. Using an aggregate demand model
-
-Lee’s 1980 study of gasoline demand in California yielded the following estimation results: (dependent variable is 1000s gallons of gasoline). 
-
-
- a. Two significant by-products of automobile use are air pollution and traffic congestion. In order to reduce the extent of each, suppose that the federal government raises the gasoline tax by $0.25. According to the above estimation results, what effect will this have on gasoline consumption in California? 
-
-∆GasDemand = β1* ∆RealGasolinePrice = -18552.8*0.25 = - 4638.2
-
-Based on the aggregate demand model, if gasoline price increases $0.25, there gasoline demand will decrease 4638200 gallons of gas in California. 
-
- b. Use budget lines and indifference curves to illustrate the effect of the tax increase on gasoline consumption and consumer welfare (utility). In addition to the total effect, please label the substitution and income effects.
+ ---
  
- The above figure illustrates the effect of the tax increase on gasoline consumption and consumer welfare (utility). Gasoline consumption is the X-axis. 
+  b. <span style="color:grey">According to this elasticity estimate, is the demand for midday rail transit service elastic or inelastic? Comment on your answer.</span>
+
+For $-0.399468\in(-1,1)$, the demand for midday rail transit service is inelastic. The result shows that the ridership will decrease -0.399468% when fare has 1% increase, which indicates that the consumers are not sensitive with fare change.
+
+ ---
+
+  c. <span style="color:grey">How does the elasticity of demand for midday rail transit service vary among the three income groups (low, moderate, and high) for which ridership data are reported inTable 1? Comment onthese variations.</span>
+
+$$\eta_{Low}=\frac{\Delta Q/Q}{\Delta P/P}=\frac{\frac{15020-9500}{(15020+9500)/2}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=-0.5252855$$
+
+$$\eta_{Mid}=\frac{\Delta Q/Q}{\Delta P/P}=\frac{\frac{10860-8250}{10860+8250}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=-0.3186813$$
+
+$$\eta_{Mid}=\frac{\Delta Q/Q}{\Delta P/P}=\frac{\frac{6410-5100}{(6410+5100)/2}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=-0.2655662$$
+
+The results show a negative relation between income group and absolute value of fare elasiticity of demand. The higher income group has lower absolute value of elasiticity which is closer to 0. It indicates the low income group is more sensitive to the change of fare.
+
+I also find the mean value of elasiticities is -0.3698443, which is larger than the overall elasticity. This result suggests that we may use different grouping methods to examine the data. If possible, using the value of income as a continue explainatory variable may be interesting.
+
+ ---
  
-Due to the tax increase, the budget line has pivoted from B1 to B2 and the consumption point has moved from A to C. The decrease in the quantity demanded can be divided into two effects. 
-In the above figure, from point A to point B is substitution effect. The substitution effect is when the consumer switches consumption patterns due to increase of gas price alone but remains on the same indifference curve. To identify the substitution effect a new budget line needs to be constructed. The budget line B1* is added, this budget line is parallel with the budget line B2 and tangential to I1. Therefore, the movement from Q1 to Q2 is purely due to the substitution effect. 
-
-In the above figure, from point B to point C is income effect. The income effect highlights how consumption will change due to the consumer having a change in purchasing power as a result of the price change. The higher price means the budget line is B2, hence the optimum consumption point is Q2. This point is on a lower indifference curve (I2). 
-
- c. Wanting to increase the price of gasoline but not reduce economic welfare, suppose that, in addition to the $0.25 cent tax on gasoline, the government also provides consumers with an income tax rebate amounting to $16.7 billion dollars (total amount).
-
-  (i) According to the estimation results above, what would be the effect of the gasoline tax and income tax policies on gasoline demand?
+  d. <span style="color:grey">Table 1 also reports the prior behavior of MBTA rail transit passengers traveling during “Dime Time” hours. Boston’s regional transportation planning agency estimated that 233,760 auto trips (including both driver and passenger trips) were made in the MBTA service area on a typical weekday before the “Dime Time” program began. From these data, estimate the cross elasticity of demand for auto travel with respect to fare for midday rail transit trips. How do you interpret the arithmetic sign of this elasticity?</span>
 
 
-∆GasDemand = β1* ∆RealGasolinePrice + β2* ∆RealIncome = -18552.8*0.25 + 227.3*16.7 
-= -4638.2 + 4630.91 = -7.29
+$$\eta_{Cross}=\frac{\Delta Q_{Auto}/Q_{Auto}}{\Delta P_{Rail}/P_{Rail}}=\frac{\frac{-1820-375}{233760}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=0.01095497$$
 
-The effect of the gasoline tax and income tax policies will decrease gasoline demand 7290 gallons. 
+The result shows a positve cross elasticity of demand, which prove auto trips and rail transit trips are substitute goods. The absolue value of cross elasticity is very close to 0 whcih indicate the number of auto users is very inelasitic with fare for rail transit.  Each percent decrease of fare for transit only brings 0.01095497% decrease in number of auto trips.
 
-  (ii) According to economic theory, would the gasoline tax rise combined with the welfare-offsetting income tax rebate produce any reduction in the demand for gasoline?
+ ---
 
-A gas tax increase would result in both substitution effect (reduction in gasoline demand because of higher gas price) and income effect (reduction in gasoline demand because of lower purchase power). The income tax rebate would simply result in an income effect (increase in gas demand because of higher income). The welfare-offsetting income tax rebate should offset the income effects of the gas tax, and should not offset the substitution effect (reduction in gasoline demand because of higher gas price).
+  e. <span style="color:grey">The MBTA estimated that prior to the “Dime Time” experiment, average weekday travel on the rail service during peak periods (7-10am and 3-6pm) was 203,670 passengers. Estimate the cross-elasticity of demand for peak-period rail travel with respect to the off-peak rail fare.</span>
 
-  (iii) Given your analysis in parts (i) and (ii), is it possible to implement a policy that is consistent with the goals of environmentalists and yet not reduce the economic welfare of consumers?
+$$\eta_{Cross}=\frac{\Delta Q_{Peak}/Q_{Peak}}{\Delta P_{Off}/P_{Off}}=\frac{\frac{-760-555}{203670}}{\frac{0.1-0.25}{(0.1+0.25)/2}}=0.00753261$$
 
-Yes. It is possible to implement a policy that is consistent with the goals of environmentalists (gasoline tax decrease gasoline demand) and yet not reduce the economic welfare of consumers (tax rebate keeps the same consumer welfare). 
+The result shows a positve cross elasticity of demand, which prove peak-period rail trips and off-peak trips are substitute goods. The absolue value of cross elasticity is closer to 0 than that of auto trips whcih indicate the number of peak-period tirps is very inelasitic with fare for rail transit.  Each percent decrease of fare for transit only brings 0.00753261% decrease in number of peak-period rail trips. It can be explain that commuting trips are not sensitive to the change of off-peak fare.
 
- d. Assuming that the dummy variables for the gasoline crises (DEC73 to MAR74) represent significant queuing during those months, we can estimate the estimated gasoline crisis queuing cost premiumper gallon for DEC73 as follows:
+```{r eval=FALSE, include=FALSE}
+(32290-22850)/(32290+22850)*(0.1+0.25)/(0.1-0.25)
+(15020-9500)/(15020+9500)*(0.1+0.25)/(0.1-0.25)
+(10860-8250)/(10860+8250)*(0.1+0.25)/(0.1-0.25)
+(6410-5100)/(6410+5100)*(0.1+0.25)/(0.1-0.25)
+((-1820-375)/233760)*(0.1+0.25)/(0.1-0.25)/2
+((-760-555)/203670)*(0.1+0.25)/(0.1-0.25)/2
+
+(-0.5252855-0.3186813-0.2655662)/3
+```
+
+ ---
  
- ∆QueuingCostJan74/∆Crisis=  τ_2/β_2 = -1629.7/(-18522.8)=0.0878
+  f. <span style="color:grey">Please draw a demand curve and answer the following questions using the diagram:</span>
+```{r echo=FALSE,fig.align = 'center'}
+plot(c(0,40000), c(0,0.4), type = "n",xlab ="# of Off-Peak rail trips", ylab ="Off-Peak fare ($)",xaxs = "i",yaxs = "i")
+curve(0.6130826+(0.1-0.25)/(32290-22850)*x, 10000, 35000, add = TRUE)
+points(22850, 0.25, pch =0);text(22850, 0.25,"Before",adj=c(-0.5,-0.5))
+points(32290, 0.10, pch =1);text(32290, 0.10,"After",adj=c(-0.5,-0.5))
+polygon(x=c(0,22850,22850,0), y=c(0.1,0.1,0.25,0.25), density=10, angle=-45,lty =3);text(10000,0.2, "Consumer Surplus
+for previous riders")
+polygon(x=c(22850,32290,22850), y=c(0.1,0.1,0.25), density=10, angle=45,lty =3);text(27000,0.13, "Consumer Surplus
+for new riders")
+```
 
-∆QueuingCostFeb74/∆Crisis=  τ_3/β_2 = -(-2313.1)/(-18552.8)=0.1247
+   (i) <span style="color:grey">Label the area of total daily benefits to off-peak riders, as measured by the increase in consumer surplus, of the “Dime Time” experiment?</span>
 
-∆QueuingCostMar74/∆Crisis=  τ_4/β_2 = -(-2524.1629.7)/(-18522.8)=0.1360
+The whole shadow areas represent the increse in off-peak consumer surplus, which equal $\frac12(22850+32290)\times(0.25-0.1)=4135.5$
+  
+   (ii) <span style="color:grey">Label how much of the increase in consumer surplus represented fare savings to passengers who already traveled on the rail system during the midday at the initial fare?</span>
 
-The queuing cost premium for each gallon of gasoline for JAN74, FEB74, MAR74 is 0.0878, 0.1247, 0.1360 respectively. 
+The left shadow area represents the increse in consumer surplus for previous passengers during the midday, which equals $22850\times(0.25-0.1)=3427.5$
 
- e. Calculate the income elasticity of demand, given that the sample mean for Income was $0.0011 billion dollars and gas demand was 0.35 thousand gallons.
+  (iii) <span style="color:grey">Describe verbally how were the benefits in (ii) divided among riders in the three income groups?</span>
+```{r echo=FALSE,fig.align = 'center'}
+plot(c(0,40000), c(0,0.4), type = "n",xlab ="# of Off-Peak rail trips", ylab ="Off-Peak fare ($)",xaxs = "i",yaxs = "i")
+curve(0.25-(0.1-0.25)/(15020-9500)*9500+(0.1-0.25)/(15020-9500)*x, 0, 35000, add = TRUE);text(21000,0.03, "Low
+income")
+curve(0.25-(0.1-0.25)/(10860-8250)*8250+(0.1-0.25)/(10860-8250)*x, 0, 35000, add = TRUE);text(14500,0.03, "Mid
+income")
+curve(0.25-(0.1-0.25)/(6410-5100)*5100+(0.1-0.25)/(6410-5100)*x, 0, 35000, add = TRUE);text(9000,0.03, "High
+income")
+curve(0.6130826+(0.1-0.25)/(32290-22850)*x, 0, 35000, add = TRUE)
+points(22850, 0.25, pch =0);text(22850, 0.25,"Before",adj=c(-0.5,-0.5))
+points(32290, 0.10, pch =1);text(32290, 0.10,"After",adj=c(-0.5,-0.5))
+polygon(x=c(0,6410,5100,0), y=c(0.1,0.1,0.25,0.25), density=10, angle=-45,lty =3)
+polygon(x=c(6410,10860,8250,5100), y=c(0.1,0.1,0.25,0.25), density=10, angle=45,lty =3)
+polygon(x=c(10860,15020,9500,8250), y=c(0.1,0.1,0.25,0.25), density=10, angle=0,lty =3)
+abline(h =0.25, lty=3);text(1000,0.27, "0.25");abline(h =0.1, lty=3);text(1000,0.12, "0.1")
+```
 
-Elasticitylow = %∆Demand/ % ∆Price = ∆G/∆P*  P/G= β_2*  P/G=177.3*0.0011/0.35=0.8715 
-The income elasticity of demand for gasoline was 0.872. If there is a 1% increase in income, there will be a 0.87% increase in gasoline demand. Because 0.08715 < 1, the elasticity of demand is inelastic. 
+|     |previous consumer surplus | new consumer surplus | total surplus
+| ---       | ---  | ---  | --- |
+|Low income |1425  |414   |1839 
+|Mid income |1237.5|195.75|1433.25
+|High income|765   |98.25 |863.25
+|Total      |3427.5|708   |4135.5
 
+The fare saving to passengers who already traveled on the rail transit are divided to 3 parts: 41.57549% (low income group); 36.10503% (mid income group); 22.31947% (high income group).
+
+   (iv) <span style="color:grey">Why is it important to distinguish between consumer benefits to passengers who had beenusing the rail system at the higher fare and those received by new riders who beganto use the system inresponse to the fare change?</span>
+
+The purpose of subsidies is to encourage more transit trips. The effect of reduction in fare by MBTA should be measured by the number of new passengers, who changed their travel behavior.
+
+```{r eval=FALSE, include=FALSE}
+(0.1-0.25)/(15020-9500)
+(0.1-0.25)/(10860-8250)
+(0.1-0.25)/(6410-5100)
+(15020+9500)*(0.25-0.1)/2
+(10860+8250)*(0.25-0.1)/2
+(6410+5100)*(0.25-0.1)/2
+(15020-9500)*(0.25-0.1)/2
+(10860-8250)*(0.25-0.1)/2
+(6410-5100)*(0.25-0.1)/2
+9500*(0.25-0.1)
+8250*(0.25-0.1)
+5100*(0.25-0.1)
+```
+
+ ---
+
+ 2. Using an aggregate demand model
+
+<span style="color:grey">Lee’s 1980 study of gasoline demand in California yielded the following estimation results: (dependent variable is 1000s gallons of gasoline $R^2=0.92$). 
+
+|Explanatory Variable|Constant|Real Gasoline Price(\$)|Real Income (billion \$)|Population (millinons)|DEC73|JAN74|FEB74|MAR74|APR74|
+| ---                | ---:   | ---:                  |  ---:                  |   ---:               |---: |---: |---: |---: |---: |
+|Coefficient Estimate|-25193.1|-18552.8               |277.3                   |1567.9  |-1801.5  |-1629.7  |-2313.1  |-2524.1  |162.7|
+
+$$G=-25193.1-18552.8Pr+277.3In+1567.9Pop-1801.5Dec-1629.7Jan-2313.1Feb-2524.1Mar+162.7Apr+\varepsilon$$
+
+  a. <span style="color:grey">Two significant by-products of automobile use are air pollution and traffic congestion. In order to reduce the extent of each, suppose that the federal government raises the gasoline tax by $0.25. According to the above estimation results, what effect will this have on gasoline consumption in California?</span>
+
+$$\widehat{\Delta G}=-18552.8*\Delta Pr=-18552.8\times0.25 =-4638.2$$
+
+According to the model, when gasoline tax increases $0.25, the expected amount of gasoline consumption in California will decrease 4.6382 million gallons. 
+
+ ---
+
+  b. <span style="color:grey">Use budget lines and indifference curves to illustrate the effect of the tax increase on gasoline consumption and consumer welfare (utility). In addition to the total effect, please label the substitution and income effects.</span>
+```{r echo=FALSE,fig.align = 'center'}
+plot(c(0,5), c(0,5), type = "n",xlab ="Gasline consumption", ylab ="Substitution Good",xaxs = "i",yaxs = "i")
+curve(x^(-2), 0, 8,col = "red",add = TRUE,);text(0.5,4.5, "U1");
+abline(a=3,b=-2, lty = 1);points(1,1, pch =1);text(1,1,"C",adj=c(-0.5,-0.5))
+curve(8*(x)^(-2), 0, 8,col = "red",add = TRUE,);text(1.5,4.5, "U2");
+abline(a=6,b=-2, lty=2);points(2,2, pch =2);text(2,2,"B",adj=c(-0.5,-0.5))
+abline(a=3,b=-2^(-1/2), lty=1);points(sqrt(8),1, pch =3);text(sqrt(8),1,"A",adj=c(-0.5,-0.5))
+arrows(sqrt(8),1.2,2.2,1.9, length = 0.1, code = 3, col ="blue", lty = 4)
+arrows(1.2,1.3,1.8,1.9, length = 0.1, code = 3, col ="blue", lty = 4)
+text(2.7,2, "substitution
+effect")
+text(1.6,1.2, "income
+effect")
+```
+
+ ---
+ 
+  c. <span style="color:grey">Wanting to increase the price of gasoline but not reduce economic welfare, suppose that, in addition to the \$0.25 cent tax on gasoline, the government also provides consumers with an income tax rebate amounting to \$16.7 billion dollars (total amount).</span>
+
+   (i) <span style="color:grey">According to the estimation results above, what would be the effect of the gasoline tax and income tax policies on gasoline demand?</span>
+
+$$\widehat{\Delta G}=-18552.8*\Delta Pr+277.3*\Delta In=-18552.8\times0.25+277.3\times16.7 =-7.29$$
+
+The result shows the effect of income tax policies offsets the effect of gasoline tax on gasoline demand. the gasoline consumption only decrease 7290 gallons. 
+
+   (ii) <span style="color:grey">According to economic theory, would the gasoline tax rise combined with the welfare-offsetting income tax rebate produce any reduction in the demand for gasoline?</span>
+
+The gasoline tax rise combined with the welfare-offsetting income tax rebate will not significently reduce the demand for gasoline. While the tax move the demand along the utility curve to left and change the slope of buget line, the income tax rebate will move the indifference curve to upper right. It negates the effect of policies.
+
+  (iii) <span style="color:grey">Given your analysis in parts (i) and (ii), is it possible to implement a policy that is consistent with the goals of environmentalists and yet not reduce the economic welfare of consumers?</span>
+
+A possible policy is a selective distribution of the welfare. Instead of inincome tax rebate, the subsidise on transit which is a substitute good for auto trips. Based on the question 1, we knew that the low income group will be more elastic with the change of price. In this way the policy is consistent with the goals of environmentalists and does not reduce the economic welfare of low-income riders.
+
+ ---
+ 
+  d. <span style="color:grey">Calculate the income elasticity of demand, given that the sample mean for Income was $0.0011 billion dollars and gas demand was 0.35 thousand gallons.</span>
+
+$$\eta=\frac{\Delta Q/Q}{\Delta In_{}/In_{}}=\beta_2\frac{In_{}}{Q_{}}=277.3\frac{0.0011}{0.35}=0.8715143$$
+
+the absolute value of income elasticity of demand is 0.8715143 that is less than 1. Each 1 percent increase of income makes 0.8715143% increase of demand. The gasoline consumption is inelastic for income.
+
+ ---
+
+ 3. Chicken or the egg
+
+<span style="color:grey">In class, we discussed the supply led and demand led views of transportation and economic development. There are nine major transportation projects listed below. While it is difficult to clearly define such projects as either demand led or supply led, some will display more characteristics of one or the other.
+
+  A. <span style="color:grey">CrossRail – this project is to build two new railway connections under central London. CrossRail 1, approved in 2007, will run east-west and is due to open in 2018. It will complement Thameslink services, which commenced north-south rail services through the re-opened Snow Hill tunnel in 1989.
+  B. Channel Tunnel – opened in 1995 and links Britain to France.
+  C. M6 Toll motorway – The opening of this tollway around Birmingham, UK, in 2003 effectively provides a Birmingham by-pass and considerably reduced through journey times.
+  D. Great Belt Link – opened in 1995 between the island of Zeeland and (in effect) the rest of Denmark, providing a road and rail link.
+  E. Golden Gate Bridge – this bridge opened in 1937 across the San Francisco Bay, providing the first fixed link northwards out of San Francisco.
+  F. Skye Bridge – this linked mainland Scotland to the island of Skye and was opened in 1995, originally with a highly controversial toll that was eventually abolished at the end of 2004.
+  G. Mundra container terminal – this is the first container terminal at the port of Mundra on the Gujarat coast in northwest India, and started its operations in 2005.
+  H. Jubilee line extension – this extension opened in 1999 and connected the London Underground system to then developing Docklands area in London
+  I. WES Commuter Rail – this diesel-powered commuter rail service began operating in 2009, and extends rail service from Portland to Tigard, Tualatin and Wilsonville for the first time.</span>
+
+   a. <span style="color:grey">Categorize each of these projects into supply or demand led projects, and explain the reasons why you came to that particular view. Note that in many cases you do not need to know the specifics regarding the particular project to come to an educated guess, although some basic Googling of the locations that you are not familiar with might help with your guess.</span>
+
+Supply led|CrossRail||M6 Toll motorway|Great Belt Link||||Jubilee line extension|WES Commuter Rail|
+| ---     | ---     | --- | --- | --- |---|---| ---|---|
+Demand led|         |Channel Tunnel|||Golden Gate Bridge|Skye Bridge|Mundra container terminal|
+
+   b. <span style="color:grey">From the example projects listed, what overall conclusions can you draw regarding supply led and demand led transportation initiatives, particularly the balance between the two?</span>
+
+The supply-led view treats transportation projects as one cause of economic development. Inversely, the demand-led opinion thinks that transportation project is one effect of economic growth. We know that economic development also depends on many factors other than transportation, while the purposes of transportation construction could be social or military. Rather than necessary causes or sufficient causes, they are contributory causal interactions among many co-occurrent conditions. As the definition by Mackie (1998), "cause" refers to "insufficient but non-redundant parts of a condition which is itself unnecessary but sufficient for the occurrence of the effect(INUS conditions)." 
+
+How to distinguish cause and effect? One answer is that causality is an asymmetric relation between cause and effect. In process philosophy, it needs to examine the process, event, becoming or happening to recognize the cause and every effect. Causal processes, which is more important than causal relationships or causal interactions, can be identified by their ability to transmit an alteration over space and time (Salmon, 1984).  There are many theories such as probabilistic causation, causal calculus, structure learning, etc. (Hernán MA, 2019). Here we use time series as a simple way to infer their relation and process.
+
+As many natural processes, The long economic cycles exhibit a progression from small beginnings that accelerates and approaches a climax over time, which synchronize with the diffusion of various innovations, infrastructures and energy source substitutions. It can be demonstrated by a logistic function or S-curve. For a given background including social, geographic and technology conditions, the x-axis is the time process and the y-axis represents the economic growth. If the transportation projects happened at the beginning or the end of the curve, the project is a relatively strong factor to the economy. We can say supply led transportation stimulates economic development. If the projects happened during the mid-segment of the curve, the project is a relatively weak factor and we would tend to use demand-led to explain this event.
+
+My conclusion is that the value of slope $=1$ is two balance points which relate to some critical stages. When the slope is approaching 1, which means the project may leverage the economic development; when the slope is away from 1 to the inflection point, the project may Lags behind the economy and need ahead investment. After the inflection point, the project will have less and less stimulating effects. When the slope is away from 1 again and convergent to 0, the policy decision for a megaproject should be more conservative.
+<img src=https://upload.wikimedia.org/wikipedia/commons/8/88/Logistic-curve.svg width="320" height="200">
+
+ * Reference
+
+  _[1] Gibbs, M.N. (2000). Variational Gaussian process classifiers. IEEE Transactions on Neural Networks. 11 (6): 1458–1464._
+
+  _[2] Hernán MA, Robins JM (2019). Causal Inference. Boca Raton: Chapman & Hall/CRC, forthcoming._
+
+  _[3] Mackie, John L. The Cement of the Universe: A study in Causation. Clarendon Press, Oxford, England, 1988._
+  
+  _[4] Salmon, W. (1984) Scientific Explanation and the Causal Structure of the World. Princeton University Press._
 
 
 
 ## Problem Set 3
 
 1. Using the Logit Model
+ 
+ The first step in the application of a Logit model is the specification (and estimation) of the utility functions for the utility functions for the utility functions for the utility functions for the utility functions for the alternative modes. Let’s assume that the following utility specifications are available:
 
-The first step in the application of a Logit model is the specification (and estimation) of the utility functions for the utility functions for the utility functions for the utility functions for the utility functions for the alternative modes. Let’s assume that the following utility specifications are available:
+$V_{auto}=-0.05-0.08TT_{auto}-0.105Cost_{parking}+0.00001Income_{HH}$
 
-V(auto) = –0.05–0.08*(auto TT)–0.105*(parking cost)+0.00001*(HH income)
+$V_{bus}=-0.08TT_{bus}-0.10WT_{bus}-0.65Fare_{bus}$
 
-V(bus)= –0.08*(bus TT)–0.10*(bus WT)– 0.65*(bus fare)
+where $V_{auto}$ and $V_{bus}$ are the systematic utilities of auto and bus respectively; $TT_{auto}$ is the travel time for mode (in minutes); $Income_{HH}$ is the household annual income (in dollars); $Cost_{parking}$ and $Fare_{bus}$ are in dollars; $TT_{bus}$ is the travel time for the bus (in minutes); $WT_{bus}$is the waiting time for bus (in minutes). For simplicity let’s assume average waiting time to be half the headway. 
 
-where
+Table 1 shows the characteristics of work trips for two population segments. (Think of segment A as people living near the center of a city and segment B as people living in the the the suburbs. People in both segments all work in the downtown area.) 
 
-  * V(auto) and V(bus) are the systematic utilities of auto and bus respectively;
-  
-  * (auto TT) is the travel time for mode (in minutes);
-  
-  * (HH income) is the household annual income (in dollars);
-  
-  * (parking cost) and (bus fare) are in dollars;
-  
-  * (bus TT) is the travel time for the bus (in minutes);
-  
-  * (bus WT) is the waiting time for bus (in minutes). For simplicity let’s assume average waiting time to be half the headway. 
+||Segment|A|Segment|B|
+| --- | --- | --- | --- | :--- |
+|Variable|Auto|Bus|Auto|Bus|
+|Auto Travel time(min)|25| - | 40 | - |
+|Parking cost(\$)|3.00| - | 8.00 | - |
+|Bus Travel time(min)| - | 40 | - | 60 |
+|Bus headway(min)| - |15| - | 20 |
+|Household annual income(\$)| |40000 | |80000 |
 
-Table 1 shows the characteristics of work trips for two population segments. (Think of segment A a segment A as people living near the center of a city and segment B as people living in the the the suburbs. People in bothboth segments all work in the downtown area.) 
-
-Table 1: Characteristics of work trips for two population segments
-
- a. Based on the information in Table 2, compute the probabilities that an individual belonging to each segment will choose auto for a work trip.
-
-For segment A population 
-
-V(auto) = -0.05-0.08*25-0.105*3+0.00001*40000 = -1.965 
-
-V(bus) = -0.08*40-0.10*0.5*15-0.65*0.85 = -4.5025
-
-Probabilityauto = e-1.965/( e-1.965 + e-4.5225) = 0.9267
-
-The probability that an individual belonging to segment A will choose auto for a auto trip is 0.9267. 
-
-For segment B population 
-
-V(auto) = -0.05-0.08*40-0.105*8+0.00001*80000 = -3.29
-
-V(bus) = -0.08*60-0.10*0.5*20-0.65*2 = -7.1
-
-Probabilityauto = e-3.29/( e-3.29 +e-7.1) = 0.9783 
-
-The probability that an individual belonging to segment B will choose auto for a auto trip is 0.9783.
-
-```{r eval=FALSE, include=T}
-
-aa <- -0.05-0.08*25-0.105*3+0.00001*40000
-ab <- -0.08*40-0.10*0.5*15-0.65*0.85
-
-aap <- exp(aa)/(exp(aa)+exp(ab))
-abp <-exp(ab)/(exp(aa)+exp(ab))
-
-ba <- -0.05-0.08*40-0.105*8+0.00001*80000
-bb <- -0.08*60-0.10*0.5*20-0.65*2
-
-bap <- exp(ba)/(exp(ba)+exp(bb))
-bbp <- exp(bb)/(exp(ba)+exp(bb))
-
+ a. Based on the information in Table 1, compute the probabilities that an individual belonging to each segment will choose auto for a work trip.
+ 
+$V_{auto}=\begin{cases}-0.05-0.08\times25-0.105\times3.00+0.00001\times40000=-1.965 & \text{Segment A} \\-0.05-0.08\times40-0.105\times8.00+0.00001\times80000=-3.29 & \text{Segment B} \end{cases}$
+ 
+$V_{bus}=\begin{cases}-0.08\times40-0.10\times\frac{15}2-0.65\times0.85=-4.5025 & \text{Segment A} \\-0.08\times60-0.10\times\frac{20}2-0.65\times2.00=-7.1 & \text{Segment B} \end{cases}$
+ 
+$P_{auto}=\frac{\mathrm{e}^{V_{auto}}}{\mathrm{e}^{V_{auto}}+\mathrm{e}^{V_{bus}}}=\begin{cases} \frac{\mathrm{e}^{-1.965}}{\mathrm{e}^{-1.965}+\mathrm{e}^{-4.5025}}=0.9267293=92.67293\% & \text{Segment A} \\\frac{\mathrm{e}^{-3.29}}{\mathrm{e}^{-3.29}+\mathrm{e}^{-7.1}}=0.9783317=97.83317\%& \text{Segment B} \end{cases}$
+```{r eval=FALSE, include=FALSE}
+-0.05-0.08*25-0.105*3.00+0.00001*40000
+-0.05-0.08*40-0.105*8.00+0.00001*80000
+-0.08*40-0.10*15/2-0.65*0.85
+-0.08*60-0.10*20/2-0.65*2.00
+exp(-1.965)/(exp(-1.965)+exp(-4.5025))
+exp(-3.29)/(exp(-3.29)+exp(-7.1))
 ```
 
+The probabilities of choosing auto for a work trip for an individual belonging to segment A is 92.67293%. That of segment B is 97.83317%.
 
- b. In order to increase transit ridership, the local transport authority considered the
-following options:
-
+ b. In order to increase transit ridership, the local transport authority is considering the following options
   i. Reducing the fare by 50 cents in both segments.
+
+$V'_{bus}=\begin{cases}-0.08\times40-0.10\times\frac{15}2-0.65\times(0.85-0.50)=-4.1775 & \text{Segment A} \\-0.08\times60-0.10\times\frac{20}2-0.65\times(2.00-0.50)=-6.775 & \text{Segment B} \end{cases}$
+
+$P'_{bus}=\frac{\mathrm{e}^{V'_{bus}}}{\mathrm{e}^{V_{auto}}+\mathrm{e}^{V'_{bus}}}=\begin{cases} \frac{\mathrm{e}^{-4.1775}}{\mathrm{e}^{-1.965}+\mathrm{e}^{-4.1775}}=0.09863359=9.863359\% & \text{Segment A} \\\frac{\mathrm{e}^{-6.775}}{\mathrm{e}^{-3.29}+\mathrm{e}^{-6.775}}=0.02974205=2.974205\%& \text{Segment B} \end{cases}$
+
+$\Delta P_{bus}=P'_{bus}-(1-P_{auto})=\begin{cases} 9.863359\%-(1-92.67293\%)=2.536289\% & \text{Segment A} \\2.974205\%-(1-97.83317\%)=0.807375\% & \text{Segment B} \end{cases}$
+
+$\frac{\Delta P_{busA}}{\Delta P_{busB}}=\frac{2.536289\%}{0.807375\%}=3.141401$
+
+```{r eval=FALSE, include=FALSE}
+-0.08*40-0.10*15/2-0.65*(0.85-0.50)
+-0.08*60-0.10*20/2-0.65*(2.00-0.50)
+exp(-4.1775)/(exp(-1.965)+exp(-4.1775))
+exp(-6.775)/(exp(-3.29)+exp(-6.775))
+9.863359-(100-92.67293)
+2.974205-(100-97.83317)
+(9.863359-(100-92.67293))/(2.974205-(100-97.83317))
+```
+
   ii. Doubling the number of buses on each route (which would halve the headways).
-  iii. Doubling parking costs
-  
+
+$V''_{bus}=\begin{cases}-0.08\times40-0.10\times\frac{15}4-0.65\times0.85=-4.1275 & \text{Segment A} \\-0.08\times60-0.10\times\frac{20}4-0.65\times2.00=-6.6 & \text{Segment B} \end{cases}$
+
+$P''_{bus}=\frac{\mathrm{e}^{V''_{bus}}}{\mathrm{e}^{V_{auto}}+\mathrm{e}^{V''_{bus}}}=\begin{cases} \frac{\mathrm{e}^{-4.1275}}{\mathrm{e}^{-1.965}+\mathrm{e}^{-4.1275}}=0.1031689=10.31689\% & \text{Segment A} \\\frac{\mathrm{e}^{-6.6}}{\mathrm{e}^{-3.29}+\mathrm{e}^{-6.6}}=0.03522972=3.522972\%& \text{Segment B} \end{cases}$
+
+$\Delta P_{bus}=P''_{bus}-(1-P_{auto})=\begin{cases} 9.863359\%-(1-92.67293\%)=2.98982\% & \text{Segment A} \\2.974205\%-(1-97.83317\%)=1.356142\% & \text{Segment B} \end{cases}$
+
+$\frac{\Delta P_{busA}}{\Delta P_{busB}}=\frac{2.98982\%}{1.356142\%}=2.204651$
+
+```{r eval=FALSE, include=FALSE}
+-0.08*40-0.10*15/4-0.65*0.85
+-0.08*60-0.10*20/4-0.65*2.00
+exp(-4.1275)/(exp(-1.965)+exp(-4.1275))
+exp(-6.6)/(exp(-3.29)+exp(-6.6))
+10.31689-(100-92.67293)
+3.522972-(100-97.83317)
+(10.31689-(100-92.67293))/(3.522972-(100-97.83317))
+```
+ 
+  iii. Increasing parking costs by 50% (i.e. \$3.00 parking cost increases to \$4.50)
 For each population segment, how will each of these strategies affect transit ridership (market share of transit), and which option will be most effective in increasing ridership?
 
-```{r eval=FALSE, include=T}
-# seg A
-	# i
-	ab2 <- -0.08*40-0.10*0.5*15-0.65*(0.85-0.5)
-	abp <- exp(ab)/(exp(aa)+exp(ab))
-	abp2 <- exp(ab2)/(exp(aa)+exp(ab2))
-	abp2 - abp
+$V'_{auto}=\begin{cases}-0.05-0.08\times25-0.105\times3.00\times1.5+0.00001\times40000=-2.1225 & \text{Segment A} \\-0.05-0.08\times40-0.105\times8.00\times1.5+0.00001\times80000=-3.71 & \text{Segment B} \end{cases}$
 
-	# ii  
-	ab2ii <- -0.08*40-0.10*0.5*15*0.5-0.65*0.85
-      abp2ii <- exp(ab2ii)/(exp(aa)+exp(ab2ii))
-      abp2ii - abp
+$P'_{auto}=\frac{\mathrm{e}^{V'_{auto}}}{\mathrm{e}^{V'_{auto}}+\mathrm{e}^{V_{bus}}}=\begin{cases} \frac{\mathrm{e}^{-2.1225}}{\mathrm{e}^{-2.1225}+\mathrm{e}^{-4.5025}}=0.9152894=91.52894\% & \text{Segment A} \\\frac{\mathrm{e}^{-3.71}}{\mathrm{e}^{-3.71}+\mathrm{e}^{-7.1}}=0.9673905=96.73905\%& \text{Segment B} \end{cases}$
 
-	# iii 
-      aa2iii <- -0.05-0.08*25-0.105*3*2+0.00001*40000
-      abp2iii <- exp(ab)/(exp(aa2iii)+exp(ab)) 
-      abp2iii -  abp
-# seg B 
+$\Delta P_{bus}=-\Delta P_{auto}=P_{auto}-P'_{auto}=\begin{cases} 92.67293\%-91.52894\%=1.14399\% & \text{Segment A} \\97.83317\%-96.73905\%=1.09412\% & \text{Segment B} \end{cases}$
 
-	# i 
-      bb2i  <-  -0.08*60-0.10*0.5*20-0.65*(2-0.5)
-      bbp <- exp(bb)/(exp(ba)+exp(bb))
-      bbp2i <- exp(bb2i)/(exp(ba)+exp(bb2i))
-      bbp2i - bbp
+$\frac{\Delta P_{busA}}{\Delta P_{busB}}=\frac{1.14399\%}{1.09412\%}=1.04558$
 
-	# ii 
-	bb2ii <- -0.08*60-0.10*0.5*20*0.5-0.65*2
-      bbp2ii <- exp(bb2ii)/(exp(ba)+exp(bb2ii))
-	bbp2ii - bbp
-
-      # iii 
-      ba2iii <- -0.05-0.08*40-0.105*8*2+0.00001*80000
-      bbp2iii <- exp(bb)/(exp(bb)+exp(ba2iii))
-      bbp2iii -bbp
-
-      
-0.08/0.65*60
+```{r eval=FALSE, include=FALSE}
+-0.05-0.08*25-0.105*3.00*1.5+0.00001*40000
+-0.05-0.08*40-0.105*8.00*1.5+0.00001*80000
+exp(-2.1225)/(exp(-2.1225)+exp(-4.5025))
+exp(-3.71)/(exp(-3.71)+exp(-7.1))
+92.67293-91.52894
+97.83317-96.73905
+(92.67293-91.52894)/(97.83317-96.73905)
 ```
 
-Population segment A 
+Based on the results, all of the options can increase market share of transit in both segment A and B. Comparing the three $\Delta P_{bus}$, doubling the number of buses on each route is most effective in increasing ridership for both segments. It is hard to say which option is best because the cost of each option is unknown. 
 
-  i. Reducing the fare by 50 cents in both segment 
+In this case, we can find the spatial difference of the effects between segement A and B, which may be called "location elasticity". $\frac{\Delta P_{busA}}{\Delta P_{busB}}=3.141401$ shows reducing fare in city center is much more effective than that in suburb. $\frac{\Delta P_{busA}}{\Delta P_{busB}}=2.204651$ also proves doubling the number of buses in city center is better than in subrub. Meanwhile, there is not significant difference of effect between segement A and B by increasing parking costs ($\frac{\Delta P_{busA}}{\Delta P_{busB}}=1.04558$).
 
-V(bus) = -0.08*40-0.10*0.5*15-0.65*(0.85-0.5) = -4.1775
 
-∆Probabilitybus = e-4.1775/( e-1.965 + e-4.1775) - e-4.5025/( e-1.965 + e-4.5025) = 0.09863 – 0.07327 = 0.02536
-
-For population segment A, reducing the fare by 50 cents will increase the probabilities that an individual will choose bus for a work trip by 0.02536. 
-
-  ii. Doubling the number of buses on each route (which would halve the headways) 
-
-V(bus) = -0.08*40-0.10*0.5*15*0.5-0.65*0.85 = -4.1275
-
-∆Probabilitybus  = e-4.1275/( e-1.965 + e-4.1275) - e-4.5025/( e-1.965 + e-4.5025) = 0.10316 – 0.07327 = 0.02990
-
-For population segment A, doubling the number of buses on each route will increase the probabilities that an individual will choose bus for a work trip by 0.02990. 
-
-  iii Doubling parking cost 
-
-V(auto) <- -0.05-0.08*25-0.105*3*2+0.00001*40000 = -2.28
-
-∆Probabilitybus  = e-4.5025/( e-2.28 + e-4.5025) - e-4.5025/( e-1.965 + e-4.5025) = 0.09775 - 0.07327 = 0.02448
-
-For population segment A, doubling parking cost will increase the probabilities that an individual will choose bus for a work trip by 0.02448.
-
-For population segment A, the doubling the number buses on each route is the most effective in increasing ridership. 
-
-Population segment B
-
-  i. reducing the fare by 50 cents in both segment 
-
-V(bus) = -0.08*60-0.10*0.5*20-0.65*(2-0.5) = -6.775
-
-∆Probabilitybus   = e-6.775/( e-3.29 +e-6.775) - e-3.29/( e-3.29 +e-7.1) = 0.02974 – 0.02167 = 0.0081
-
-For population segment B, reducing the fare by 50 cents in both segment will increase probabilities that an individual will choose bus for a work trip by 0.0081
-
-  ii. doubling the number of buses on each route (which would halve the headway)
-
- V(bus) = -0.08*60-0.10*0.5*20*0.5-0.65*2 = -6.6
+ ---
  
-∆Probabilitybus = e-6.6/( e-3.29 +e-6.6) - e-3.29/( e-3.29 +e-7.1) = 0.03523 – 0.02167 = 0.01356
+ c. Describe, using a few sentences, another policy that can be analyzed using this demand model.
 
-For population segment B, doubling the number of buses on each route will increase probabilities that an individual will choose bus for a work trip by 0.013
+According to the model, other possible policies include changing the travel time or changing the purchasing power of transit. Setting bus lanes can decrease the bus travel time. Providing discount bus tickets can drop the real bus fare while income stays same. Both of the policies can increase the transit share.
+ 
+ ---
+ 
+ d. What monetary value of bus travel time, measured in dollars per hour, is implied by the coefficients of this model?
 
-  iii. doubling parking costs 
+$$VOT =\frac{\frac{\Delta V_{bus}}{\Delta TT_{bus}}}{\frac{\Delta V_{bus}}{\Delta Fare_{bus}}}=\frac{-0.08}{-0.65}\times60=7.384615\$/hour$$
 
-V(bus) = -0.05-0.08*40-0.105*8*2+0.00001*80000 = -4.13 
+In this model, bus fare instead of $\frac{cost}{wage}$ measures the systematic utilities per dollar. The monetary value of bus travel time is 7.384615 \$/hour.
 
-∆Probabilitybus    = e-7.1/( e-4.13 +e-7.1) - e-3.29/( e-3.29 +e-7.1) = 0.02713 
-
-For population segment B, doubling parking costs will increase probabilities that an individual will choose bus for a work trip by 0.02713. 
-
-Based on above analysis, for population segment B, doubling parking costs is most effective in increasing ridership. 
-
- d. Describe, using a few sentences, another policy that can be analyzed using this demand model.
-
-Adding bus transit lane can reduce bus travel time. Such bus transit lane is fully dedicated to bus, so buses can avoid congestion and have higher speed to reducing bus travel time. 
-
- e. What monetary value of bus travel time, measured in dollars per hour, is implied by the coefficients of this model?
-
-Value of time in dollar per hour =  ∆V/∆time*  ∆cost/∆V=-0.08*(-1)/0.65*60=7.3846
-
-2. Accessibility and Economic Opportunity
-
-Kain’s spatial mismatch hypothesis (1968) describes the scenario where the spatial concentration of employment opportunities is separated from the concentration of suitable workers. We discussed several possible factors contributing to this spatial mismatch in class, and examined three policy directions for solving this problem: 
-
-(i) bringing jobs to people; 
-
-(ii) bringing people to jobs; 
-
-(iii) connecting people with jobs. Please propose one policy for each of these three directions using 1-2 paragraphs each. Describe the details of your proposed policy, how it would impact transportation accessibility and/or economic opportunity, and its impacts on equity. Finally, explain which policy has the best chances for success (in terms of political feasibility, economic efficiency, cost-effectiveness and equity).
-
-For bringing people to jobs, there is policy that implemented well in Netherlands. In Netherland, if employees’ commuting time is larger than 25 minutes, they need to pay a kind of tax; if employees’ commuting time is less than 25 minutes, they do not need to pay this tax. This policy is practical in Netherlands. This policy encourages employees to live close to workplace, so it reduces commuting transportation and its externalities. For equity, this policy impose monetary cost on employees who cannot live close to workplaces. And such policy may increase rent and housing prices around workplaces, which will impose cost on residents, especially for people who do not work. Further, how to use this tax revenue is still a question from the perspective of equity.
-
-For bringing jobs to people, governments can provide monetary incentives to attract businesses to locate certain areas. Such incentives can include tax rebates, lower land price and so on. This policy attracts businesses and encourages economic development in certain areas, so it can bring jobs to people in these areas. As for equity, it is still in question that where these monetary incentives come from. And these businesses may impose externality on residents who do not work, such as traffic congestion, noise and even pollution. 
-
-For connecting people with jobs, employers providing commuting bus is a practical policy. Employers provide commuting bus for employee. Employers pay this cost and employees do not need to pay. If some employers do not have enough employees, employers can get together to provide commuting bus. And the routine and schedule can adjust for employees. This policy provides commuting bus that connects people to jobs well. Such bus usually has higher speed than public transit and even can reduce auto dependence. As for equity, this policy even do not impose negative externality, and can generate some beneficial externality, because it may reduce auto usage and employers pay all cost. 
-
-In my opinion, the commuting bus has the best chances for success. This policy is quite feasible. Employers can decide how to implement this policy themselves. It does not need to rely on external factor. Employers that do not have enough employees can cooperate with other employers to provide commuting bus. In terms of economic efficiency, this policy is efficient. Commuting bus can reduce employees’ commuting cost and commuting time. Employees can spend on more efforts on their work, which is beneficial to employers. And this policy can reduce auto usage, which generates beneficial externalities. As for cost-effectiveness, this policy is effective. Providing commuting bus does not cost much. And the buses used for commuting can be used for other purposes during other periods. As for equity, most impacts of this policy is internalized. Employers pay such cost, and employers and employees get most benefits. And this policy even can generate beneficial externality for whole people, because it can reduce auto usage which reduce traffic congestion. 
-
-
-
-
-## Problem Set 4
-
-1. Transportation and Land Use
+2. Transportation and Land Use
 
 To examine the relationship between transportation cost and land use, consider the following example. A region produces coffee, tea, and wheat for world markets. All output is sold at the port for the current price. Assume that the only input is land and that each farmer gets to keep the price minus the transportation cost and must also pay rent on the land.
 
-|                               |Coffee| Tea| Wheat
-|   ------    |---|---|---
-Acres of land per unit of output|.2 |.25|.5
-Transport cost per unit per mile|8	|5	|1
-Price at the port (per unit)	  |100|100|100
+||Coffee|Tea|Wheat|
+| --- | --- | --- | --- |
+|Acres of land per unit of output|0.2|0.25|0.5|
+Transport cost per unit per mile |8  |5   |1|
+Price at the port| 100|100|100|
 
  a. In a competitive market, what is the land rent at each distance from the port? At what distance is each crop grown? (Specify the bid rent equation for each crop and the distances over which each will be highest. The latter part can be seen most easily by graphing the equations, but the distances should be calculated directly from the equations.)
 
-R(d) =  PQ – C – tQd
+Let $S$ is the land area for each crop. $R_{coffee}S=\frac{S}{0.2}P-\frac{S}{0.2}\cdot8D\implies$
 
-R(d)Coffee = 100*(1/0.2) – 8*(1/0.2)*d =  500 – 40d
+$$\begin{cases}R_{coffee}=\frac{100}{0.2}-\frac{8D}{0.2}=500-40D& D\in[0,12.5]\\
+R_{tea}=\frac{100}{0.25}-\frac{5D}{0.25}=400-20D& D\in[0,20]\\
+R_{wheat}=\frac{100}{0.5}-\frac{1D}{0.5}=200-2D& D\in[0,100]
+\end{cases}$$
 
-R(d)Tea  = 100*(1/0.25) – 5*(1/0.25)*d = 400 – 20d 
+From the bid-rent theory, only one type of land use with highest rent dominates the land for any distance.
 
-R(d)Wheat  = 100*(1/0.5) -1*(1/0.5)*d = 200 – 2d 
+suppose $R_{coffee}\ge R_{tea}$, then $500-40D\ge 400-20D\implies D\le5$,
 
-When 0 ≤ d < 5, profit of growing coffee is largest
+suppose $R_{tea}\ge R_{wheat}$, then $400-20D\ge 200-2D\implies D\le11.11111$
 
-When 5 < d < 11.11, profit of growing tea is largest
+Therefore, coffee lands dominate the distance with the port from 0 to 5 miles; tea lands dominate the distance with the port from  5 to 11.11 miles; wheat lands dominate the distance with the port from 11.11 to 100 miles.
 
-When 11.11 < d < 100, profit of growing wheat is largest
-
-
+```{r echo=FALSE, out.width='40%'}
+plot(c(0,25), c(0,500),xlab ="D", ylab ="R",xaxs = "i",yaxs = "i")
+curve(500-40*x, 0, 5,add = TRUE);text(2.5,250, "coffee
+0-5");points(5,300, pch =1)
+curve(400-20*x, 5,100/9,add = TRUE);text(8,200, "tea
+5-11.11");points(100/9,1600/9, pch =2)
+curve(200-2*x, 100/9,100,add = TRUE);text(15,120, "wheat
+11.11-100")
+abline(v=5, lty=3);abline(v=100/9, lty=3)
+```
+ 
  b. Land Owner owns 100 acres of land 15 miles from the port. What is the annual rental income? If the interest rate is 5% per year and all prices and costs are expected to remain the same forever, what is the market value of the land?
 
-When d is 15 miles, profit of growing wheat is largest. 
+For wheat is grown in the land 15 miles from the port, then
 
-Annual rental income = 100*(200-2*15) = 17,000
+$R_{wheat}S=(200-2\times15)\times100=\$17000$
 
-MV = 170000/0.05 = 340,000
+$MV=\frac{SR_{wheat}}i=\frac{\$17000}{0.05}=\$340000$
 
- c. Return to the assumptions of (a) but assume that the government decides to subsidize 50% of all transport costs. What happens to land rents and the distance each crop is grown? What would you conclude regarding the impact of transportation costs on city size?
+ c. Return to the assumptions of (a) but assume that the government decides to subsidize 50% of all transport costs. What happens to land rents and the distance each crop is grown? What would you conclude regarding the impact of transportation costs on city size? What is Land Owners' land worth now if the interest rate is 5%? Are the farmers any better off because of the subsidy? Who does benefit from the subsidy?
 
-R(d)Coffee = 100*(1/0.2) – 0.5*8*(1/0.2)*d =  500 – 20d
+$$\begin{cases}R'_{coffee}=\frac{100}{0.2}-\frac{8D}{0.2\times2}=500-20D'& D'\in[0,25]\\
+R'_{tea}=\frac{100}{0.25}-\frac{5D}{0.25\times2}=400-10D'& D'\in[0,40]\\
+R'_{wheat}=\frac{100}{0.5}-\frac{1D}{0.5\times2}=200-D'& D'\in[0,200]
+\end{cases}$$
 
-R(d)Tea  = 100*(1/0.25) – 0.5*5*(1/0.25)*d = 400 – 10d 
+For given $D$ is positive, $R'>R$ , the rents will be higher than before. For the same rents, $D'=2D$, the coffee lands dominate the distance with the port from 0 to 10 miles; tea lands dominate the distance with the port from 10 to 22.22 miles; wheat lands dominate the distance with the port from 22.22 to 200 miles. We get to know that lower transportation cost results in larger city size.
 
-R(d)Wheat  = 100*(1/0.5) -0.5*1*(1/0.5)*d = 200 – d 
+After subsidy, tea is grown in the land 15 miles from the port, then $MV'=\frac{(400-10\times15)\times100}{0.05}=\$500000$.
 
-Low transportation cost will enlarge city size. 
-
- d. Continuing from part (c), what is Land Owners' land worth now (interest rate = 5%)? Are the farmers any better off because of the subsidy? Who does benefit from the subsidy?
-
-Note that the rent bid for each acre will depend on the revenue from the output of an acre minus the transport cost for that output (since there are no non-land inputs in this problem). Thus, Rc(d) = Revenue – Transportation Cost = 5x100 – 8x5xd = 500 - 40d for coffee, where Rc is the rent bid for an acre of land used in coffee production and d is the distance from the port in part (a). Market value is related to constant annual rents by the equation MV = R/i where MV is market value, R is the net annual rent, and i is the interest rate.
-
-When government subsidizes 50% of all transport cost. 
-
-Annual rental income   = 100*(200 – 1*15) = 18,500
-
-MV = 18500/0.05=370,000
-
-
-2. Cost-Benefit Analysis
-
-Suppose that you are in charge of a project team proposing a bike-share program in Portland. There are multiple social, economic, health and transportation dimensions involved in the decision-making process for such a project.
-
- a. Describe the cost-benefit analysis that you would conduct for such a process, following the various steps described in class. In addition to listing the various costs and benefits (including externalities), please explain your methodology, and the advantages and disadvantages of this type of analysis. Limit your verbal description to 1-2 pages (10-12 point font, single-spaced).
-
-This section attempts to quantify net social benefits and costs of bike-share program. The analysis covers benefits and costs resulting from the implementation of the project, but do not include any transfers among different groups.
-First it is critical to define the attributes of the baseline scenario, which is about what is occurring before the implementation of bike-share program. And it is important to evaluate what are likely to happen after the implementation of bike-share program, because it provides the reference point against which the incremental societal costs and benefits of the bike-share project are measured. It is necessary to decide the study area and involved population. Both benefits and costs will be convert to monetary measurement in base year. 
-
-I attempt to use both survey approach and engineering approach to identify costs of bike-sharing project. The survey approach and engineering approach complement to each other. A survey is cheaper than engineering approach in this case and provides values for benefits or costs that are difficult to monetized, but it may not cover whole study areas. So I use both of them. The costs of bike-share project includes establishing sites, purchasing bike and other equipment, staff expenses, maintaining the whole bike-share system and so on. Although, there are other costs, these costs account for the major share of bike-share project.  
-
-Bike-share is an important part of active transportation planning. It will bring various benefits. Bike-share project will increase bike mode share. Thus it will reduce congestion, emission, pollution and fuel consumption. Bike-share is effective to solve the “last mile”, thus it may also increase transit ridership. Besides, bike-sharing will increase the mobility of people. Bike-share program will also increase people’s health. For long-term effects, bike-share is critical for mix land use and sustainable transportation. Multimodal transportation is a core goal of transportation in Portland. Bike-share program is useful to establish a multimodal transportation system, especially for increasing active modes. And bike-share program may also complement to transit system, so it will also increase transit ridership. Thus, bike-share program will decrease auto-dependence. A multimodal transportation is critical to encourage mixed land use. And a mixed land use contributes to sustainable development. Some benefits in this analysis is difficult to be measured as monetary measurement. Such long-effect are important for cost benefit anslysis. Some other necessary methods are needed for this analysis, such as hedonic analysis and cost-effectiveness analysis. 
-
-Lastly, it is important to estimate the terminal value of the project. The results of benefit-cost analysis vary with different span of analysis.  Another important issue is to decide discount rate. Discount rate is used to convert future benefits and costs into current measurement. Different rates make the results of analysis vary. With discount rate, we can calculate the net present value of project. Based our benefits, costs and discount rate, we can estimate the NPV for this bike share program. Finally, the results of benefit-cost analysis is useful for deciding program choice. 
-
-
- b. Suppose that we know it costs $195,000 to setup the bike-share program (in year 0) and $15,000 to maintain every year after set-up (from year 1 onwards). Assuming that we know there would be benefits in reduced environmental damages worth about $60,000 every year (including year 0). Assume that the discount rate is 4%. (Note that each NPV box represents the NPV for that particular year only, not the cumulative NPV.)
+The results show that the subsidy will transfer to the land value. The farmers have to pay more rent. Only the land owners can benefit from the subsidy.
  
-  i. Write down the formula for calculating NPV.
+ d. What happens in (c) if all prices for output fall by 50% as well?
 
-NPV=  NB/i
+$$\begin{cases}R''_{coffee}=\frac{100}{0.2\times2}-\frac{8D}{0.2\times2}=250-20D& D\in[0,12.5]\\
+R''_{tea}=\frac{100}{0.25\times2}-\frac{5D}{0.25\times2}=200-10D& D\in[0,20]\\
+R''_{wheat}=\frac{100}{0.5\times2}-\frac{1D}{0.5\times2}=100-D& D\in[0,100]
+\end{cases}$$
 
-NPV= ∑_(n=0)^N▒〖NB〗_n/〖(1+i)〗^n 
+The results show that the proportional changes of rent result same land use distribution as the beginning. Wheat is grown in the land 15 miles from the port, $R''=\frac12R=\$8500$, $MV''=\frac12MV=\$170000$.  
 
-$$NPV=\sum_{n=0}^N\frac{NB_n}{(1+n)^n}$$
+```{r echo=FALSE, out.width='40%',fig.show='hold'}
+plot(c(0,25), c(0,500),xlab ="D", ylab ="R",xaxs = "i",yaxs = "i",main = "50% tranport costs")
+curve(500-20*x, 0, 10,add = TRUE);text(5,250, "coffee
+0-10");points(10,300, pch =1)
+curve(400-10*x, 10,200/9,add = TRUE);text(15,200, "tea
+10-22");points(200/9,1600/9, pch =2)
+curve(200-x, 200/9,100,add = TRUE);text(23,120, "wheat
+22-200")
+abline(v=10, lty=3);abline(v=200/9, lty=3)
 
-  ii. Fill out the above table with the annual costs, benefits, net benefits and net present values (NPVs). In which year will this project break even?
-
-Table 2.1 Costs, benefits and NPV of program 
-
-|Years|	Costs |	Benefits|	Net Benefits|	NPV
-|---|      ---|    ---|      ---|---
-0   |	195,000	|60,000	|-135,000	|-135,000
-1   |  15,000	|60,000	|45,000	  |43,269.23
-2   |	15,000	|60,000	|45,000	  |41,605.03
-3   |	15,000	|60,000	|45,000	  |40,004.84
-4   |	15,000	|60,000	|45,000	  |38,466.19
-5   |	15,000	|60,000	|45,000	  |36,986.72
-
-According to table 2.1, this project will break even in 4th year. 
-
-  
-  iii. Briefly describe why we use a discount rate to calculate the NPV? What does it say about our preferences for the future versus the present?
-  
-Discount is closely related to the interest rate on financial assets. Presuming the costs and benefits occurring in later years are measured in real (that is, inflation=adjusted) money units, then the discount rate should also be real, meaning it is approximately the nominal rate less the rate of inflation. Discount rate is useful to convert future value into current value. It is consistent with the principle of willingness to pay: costs and benefits occurring in the future are valued less than those occurring today. 
-  
-  iv. Explain how differences in the terminal value of this project may make a difference in the cost benefit analysis.
-
-The terminal value of an asset is its anticipated value on a certain date in the future. According to Table 2.1, the value of project varies in different years.
-
- c. If the policy objective is to reduce carbon emissions in the Portland metropolitan area, describe how you would utilize a cost-effectiveness framework to evaluate the policy options (including establishing a bike-share program).
-
-In the short term, the bike-share program shift auto usage to bike usage and even transit usage. In the long-term, bike-share program will encourage mixed land use and establish multimodal transportation system. For the objective of reducing carbon emission in the Portland metropolitan area, I will calculate the carbon emission difference between baseline scenario and implementation bike-share program scenario. Then calculate the costs of per pound of reduced carbon. 
-
-3. [Optional] Transportation Costs
-
-Suppose that we estimated a long-run translog cost function for urban rapid rail transit systems across the US, and obtained the following cost function:
-
-ln C = 7.42 + 0.76 ln Y + 0.48 ln w + 0.52 ln pe + 0.10 ln N
-
-where Y is output (million vehicle-miles), w is wage rate ($ per hour), pe is price of energy ($ per kilowatt-hour), and N is number of nodes.
-
- a. According to this study, do rapid rail transit systems operate under increasing, decreasing or constant returns to scale? Explain using the example of a 10% increase in output (Y).
-
- b. Suppose that energy prices go up by 20% due to storms that damaged parts of energy production facilities in the region, what is the effect on cost?
+plot(c(0,25), c(0,500),xlab ="D", ylab ="R",xaxs = "i",yaxs = "i",main = "50% tranport costs and 50% price for output")
+curve(250-20*x, 0, 5,add = TRUE);text(2.5,120, "coffee
+0-5");points(5,150, pch =1)
+curve(200-10*x, 5,100/9,add = TRUE);text(8,80, "tea
+5-11");points(100/9,800/9, pch =2)
+curve(100-x, 100/9,100,add = TRUE);text(15,40, "wheat
+11-100")
+abline(v=5, lty=3);abline(v=100/9, lty=3)
+```
  
- c. What are the shares of the total cost for each factor?
+ e. Describe the potential impacts on land use if investments were made to the transportation infrastructure (increasing highway lanes) such that transportation costs are lowered.
  
- d. Do these systems display economies of density (increase in output, but not number of nodes)? Do these systems display economies of size (increase in output and nodes at the same time)? Explain.
-
- 
+The impacts on land use by transportation infrastructure are similar to that by a subsidy on transport costs. The land area for each crop will expand. The rents will be higher. The city size will be larger. The land owners will benifit from the investements. The difference is these impacts are not even. For example, the lands are closer to highway exits will be more like to change the land use to high output industries with higher rent and land value. The new transportation infrastructure changes the time distance for different locations, which will twist the pattern of concentric rings of land use from the bid-rent model.

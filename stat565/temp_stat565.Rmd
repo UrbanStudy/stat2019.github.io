@@ -1,0 +1,367 @@
+---
+title: 'STAT565 Practise'
+author: ""
+date: "Winter 2019"
+output: html_document
+---
+
+
+### Problem 1 
+
+A partial ANOVA table was found to be
+
+|Source|DF|SS|MS|F|
+| ---  | ---  | --- | --- | --- |
+|Factor|4 |987.71 |246.9275|33.0945|
+|Error |25|186.53 |7.4612|   
+|Total |29|1174.24|
+
+(1) Complete the ANOVA table.
+
+
+
+1174.24-186.53=987.71
+
+(987.71/4)/(186.53/25)
+
+(2) If it was a balanced design, what was number of levels for the factor in this study?
+$df_{Trt}=29-25=4$,$a=5$
+
+(3) If it was a balanced design, what was the number of observations for each factor level in this study?
+$n=6$
+
+(4) Write the overall hypotheses for this test.
+
+H0: $\mu_1=\mu_2=\mu_3=\mu_4=\mu_5$, or $\tau_1=\tau_2=\tau_3=\tau_4=\tau_5=0$
+H1: at least two of $\mu_i$ are different, or at least one of $\tau_i\neq0$
+
+(5) Write the name of probability distribution along with its parameter value(s) used to test the above overall hypotheses.
+$F_{(df_{Trt}=4,df_E=25)}=\frac{MS_{Trt}}{MS_{E}}$
+
+(6) Compute the standard error of the difference of two observed treatment means.
+$se(\bar y _{i.}-\bar y_{j.})=\sqrt{\frac{2MSE}n}=\sqrt{\frac{2\times7.4612}6}=1.577044$
+
+(7) If you were to compute 95% confidence interval for the difference of two true treatment means, provide the name and its parameter value(s) of the probability distribution.
+$T_{(\frac{0.05}2),df_E=25}$
+
+### Problem 2 
+
+A nutrition specialist is measuring the amount of patty acid present in blood when four different diets are used. Initially, forty subjects (uniform with respect to the fatty acid) were obtained and 10 were randomly assigned to each diet. After 3 week period, the fatty acid in their blood was measured. The following table gives numerical summaries for each diet group.
+
+| Diet| A  |  B  | C  | D  |
+| ----| ---| --- |--- |--- |
+| Mean|21.3|28.6 |25.7|20.4|
+
+|Source of Variance|Sum of Squares(SS)|Degrees of Freedom(df)|Mean Squares(MS)|F test|
+| --- | ---  | --- | --- | --- |
+|Diet |443   |3 |147.6667||
+|Error|11.91 |36|0.3308|   
+|Total|454.91|39|
+
+ (1) Complete the ANOVA table. (keep maximum of 4 decimal places)
+ 
+$\bar y_{..}=\frac{1}a\sum^a_{i=1}\bar y_{i.}=\frac{1}4(21.3+28.6+25.7+20.4=96)=24$
+
+$SS_{Trt}=n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2=10*((21.3-24)^2+(28.6-24)^2+(25.7-24)^2+(20.4-24)^210*44.3)=443$; 
+
+$SS_{T}=SS_{Trt}+SS_{E}=443+11.91=454.91$;
+
+$MS_{Trt}=\frac{SS_{Trt}}{a-1}=\frac{443}3=147.6667$; 
+
+$MS_{E}=\frac{SS_{E}}{N-a}=\frac{11.91}{36}=0.3308333$;
+
+ (2) If the diet effect was fixed, then
+  (a) Write the overall hypotheses for this test.
+  H0: $\mu_A=\mu_B=\mu_C=\mu_D$, or $\tau_A=\tau_B=\tau_C=\tau_D=0$
+  H1: at least two of $\mu_i$ are different or at least one $\tau_i=0$.
+  
+  (b) Write the name of probability distribution along with its parameter value(s) used to test the above overall hypotheses.
+  $F_{(df_{Trt}=3,df_E=36)}=\frac{MS_{Trt}}{MS_{E}}$
+  
+  (c) Compute the estimated variance of observed average fatty acid amount for each diet.
+  $\widehat{Var(\bar y_{i.})}=\frac{MS_{E}}n=0.3308/10=0.0331$
+  
+  (d) If you were to compute 95% confidence interval for the true mean of each treatment, provide the name and its parameter value(s) of the probability distribution.
+  $T_{\frac{0.05}2,df_E=36)}$
+  
+  (e) Write a contrast to test the average fatty acid for diets A, B is same as average fatty acid for diets C, D.
+  $\mu_A+\mu_B-\mu_C-\mu_D=0$
+  
+  (f) Write the probability distribution along with its parameter(s) used to test the above contrast.
+  $F_{(df_{C}=1,df_E=36)}=\frac{(\sum_{i=1}^ac_i\bar y_{i.})^2}{\frac{MS_{E}}n\sum_{i=1}^ac_i^2}$
+  
+  (g) Write a contrast that is orthogonal to the above contrast.
+  $\mu_A-\mu_B+\mu_C-\mu_D=0$
+  
+  (h) Compute the SS for each of the above contrasts. (Final answer is a number).
+  $$SS_C=\frac{(\sum_{i=1}^ac_i\bar y_i)^2}{\frac{1}n\sum_{i=1}^ac_i^2}=\frac{(21.3+28.6-25.7-20.4)^2}{\frac{1}{10}4}=36.1$$
+  $$SS_D=\frac{(\sum_{i=1}^ad_i\bar y_i)^2}{\frac{1}n\sum_{i=1}^ad_i^2}==\frac{(21.3-28.6+25.7-20.4)^2}{\frac{1}{10}4}=10$$
+  
+  
+ (3) If the diet effect was random, then
+  (a) Write the overall hypotheses for this test.
+  H0: $\sigma_{\tau}^2=0$, $E[MS_{Trt}]=\sigma^2$
+  H1: $\sigma_{\tau}^2>0$.
+  
+  (b) Write the name of probability distribution along with its parameter value(s) used to test the above overall hypotheses.
+    $F_{(df_{Trt}=3,df_E=36)}=\frac{MS_{Trt}}{MS_{E}}$
+  
+  (c) Compute the estimated variance of observed average fatty acid amount for each diet.
+  $\widehat{Var(\bar y_{i.})}=\sigma_{\tau}^2+\frac{\sigma^2}{n}=\frac{MS_{Trt}-MS_E}n+\frac{MS_{E}}n=\frac{MS_{Trt}}n=147.6667/10=14.76667$
+
+ ---
+
+### Problem 3 The partial ANOVA table given below was obtained from a balanced RCBD.
+
+|Source of Variance|Sum of Squares(SS)|Degrees of Freedom(df)|Mean Squares(MS)|F test|
+| --- | ---  | --- | --- | --- |
+|Trt   | 150 | 4|37.5|3.75|
+|Block | 200 | 5|40  |4|
+|Error | 200 |20|10  |   
+|Total | 550 |29|
+
+ (1) Complete the ANOVA table.
+ (2) What was the number of blocks in this study? 6
+ (3) What was the total number of observations in this study? 30
+ (4) If treatment and block effects were fixed,
+  (a) compute the estimated error variance. $\hat\sigma^2=MSE=10$
+  
+  (b) write the overall hypotheses about treatments for this study. 
+  H0: $\mu_1=\mu_2=\mu_3=\mu_4=\mu_5$, or $\tau_1=\tau_2=\tau_3=\tau_4=\tau_5=0$
+  H1: at least two of $\mu_i$ are different, or at least one $\tau\neq0$.
+  
+  (c) write the name of probability distribution along with its parameter value(s) used to test the above hypothesis. $F_{(df_{Trt}=4,df_E=20)}=\frac{SS_{Trt}}{SS_E}$
+  (d) write the overall hypothesis about blocks for this study. H0: $\beta_1=\beta_2=\beta_3=\beta_4=\beta_5=\beta_6=0$
+  (e) write the name of probability distribution along with its parameter value(s) used to test the above hypothesis. $F_{(df_{Blk}=5,df_E=20)}=\frac{SS_{Blk}}{SS_E}$
+  
+ (5) If treatment effect was fixed and block effect was random,
+  (a) compute the estimated variance for blocks.$\hat\sigma_{Blk}^2=\frac{MS_{Blk}-MS_{E}}{a}=\frac{40-10}5=6$
+  
+  (b) write the overall hypothesis about treatments for this study.
+  H0: $\mu_1=\mu_2=\mu_3=\mu_4=\mu_5$, or $\tau_1=\tau_2=\tau_3=\tau_4=\tau_5=0$
+  H1: at least two of $\mu_i$ are differentor at least one $\tau\neq0$.
+  
+  (c) write the name of probability distribution along with its parameter value(s) used to test the above hypothesis.
+  $F_{(df_{Trt}=4,df_E=20)}=\frac{SS_{Trt}}{SS_E}$
+  
+  (d) write the overall hypothesis about blocks for this study.
+  H0: $\sigma_{\beta}^2=0$, $E[MS_{Blk}]=\sigma^2$
+  H1: $\sigma_{\beta}^2>0$.
+  
+  (e) write the name of probability distribution along with its parameter value(s) used to test the above hypothesis.
+  $F_{(df_{Blk}=5,df_E=20)}=\frac{SS_{Blk}}{SS_E}$
+  
+ ---
+
+
+ 
+|     |$y_{ij}$  |$\bar y_{..}$|$\bar y_{i.}$|$\bar y_{.j}$|$MS_{Trt}$|$MS_{Blk}$|$MS_{E}$|
+| --- |   ---    |  ---        |  ---        |   ---       | ---      | ---      | ---    |
+|E[f.]  |  $\mu$   |  $\mu$      |$\mu+\tau_i$ |$\mu+\beta_j$|$\sigma^2+\frac{n}{a-1}\sum_{i=1}^a\tau_i^2$||$\sigma^2$|
+|V[f.]  |$\sigma^2$|$\frac{\sigma^2}{na}$|$\frac{\sigma^2}{n}$|
+|E[f.^2]|$\mu^2+\sigma^2$|$\mu^2+\frac{\sigma^2}{na}$|$\mu_i^2+\frac{\sigma^2}{n}$|
+|E[r.]|  $\mu$   |  $\mu$      |$\mu+\tau_i$ |             |$\sigma^2+\frac{b}{a-1}\sum_{i=1}^a\tau_i^2$|$\sigma^2+\frac{a}{b-1}\sum_{j=1}^b\beta_j^2$|
+|V[r.]|$\sigma^2+\sigma_\tau^2$|$\frac{\sigma_\tau^2}{a}+\frac{\sigma^2}{na}$|$\frac{\sigma^2}{n}+\sigma_\tau^2$|
+|E[r.^2]|$\mu^2+\sigma^2+\sigma_\tau^2$|$\mu^2+\frac{\sigma_\tau^2}{a}+\frac{\sigma^2}{na}$|$\mu_i^2+\frac{\sigma^2}{n}+\sigma_\tau^2$|
+
+|$\hat\mu_i$|$\hat\tau_i$|$\hat\beta_j$|$\hat y_{ij}$|$ε_{ij}$|$\hat\sigma^2$|$\hat\sigma_{Trt}^2$|$\hat\sigma_{Blk}^2$|$\widehat{Var(\bar y_{i.})}$|$\hat{X}$
+|    ---    | ---        |     ---     |   ---        |  ---  |  ---   |   ---       | ---      | ---      |
+|$\bar y_{..}$|$\bar y_{i.}-\bar y_{..}$|$\bar y_{.j}-\bar y_{..}$|$\bar y_{i.}+\bar y_{.j}-\bar y_{..}$|$\bar y_{ij}-\bar y_{..}$|$MSE$|$\frac{MS_{Trt}-MS_{E}}{n}$|$\frac{MS_{Blk}-MS_{E}}{a}$|$\frac{MS_{Trt}}{n}$|$\frac{ay'_{i.}+by'_{.j}-y_{..}'}{(a-1)(b-1)}$
+
+
+ - Least Squares Method
+
+$y_{ij}=\mu+\tau_{i}+\varepsilon_{ij}$, for $ε_{ij}\sim iid N(0,\sigma^2),i=1,2,…,a,j=1,2,…,n$, $\sum_{i=1}^a\tau_i=0$
+
+$SSE=\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i)^2$, $\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i-\beta_j)^2$,
+
+$\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i}=2\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0$,$y_{..}=an\hat\mu+n\sum_{i=1}^a\hat\tau_i$
+$\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i}=2\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0$,$y_{i.}=n\hat\mu+n\hat\tau_i$
+
+$\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{..}=ab\hat\mu+b\sum_{i=1}^a\hat\tau_i+a\sum_{j=1}^b\hat\beta_j$
+$\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{i.}=b\hat\mu+b\hat\tau_i+\sum_{j=1}^b\hat\beta_j$
+$\left.\frac{\partial SSE}{\partial\beta_j}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0$,$y_{.j}=a\hat\mu+\sum_{i=1}^a\hat\tau_i+a\hat\beta_j$
+
+ ---
+
+### Problem 4,5,6,7
+
+Note: For the given model in each of the following four problems, be able to derive the normal equations from the least squares parameter estimation method. Using ONLY the above given information and properties of expected value of a function of random variables, compute (DO NOT use any other distribution properties). $ε_{ij}$,$\tau_i$,$\beta_j$ are independent.
+
+|      |$y_{ij}$|$i$|$j$|$ε_{ij}$|$\tau_i$|$\beta_j$|$\bar y_{i.}$|$\bar y_{.j}$|$\bar y_{..}$|
+| ---  |   ---  |---|---|   ---  | ---    | ---     | ---         | ---         | ---         |
+|f-CRD |$\mu+\tau_{i}+ε_{ij}$|$1,..,a$|$1,..,n$|$N(0,σ^2)$|$\sum_{i=1}^a\tau_i=0$|.|$\frac{\sum_{j=1}^ny_{ij}}n$|.|$\frac{\sum_{i=1}^a\sum_{j=1}^ny_{ij}}{an}$|
+|r-CRD |$\mu+\tau_{i}+ε_{ij}$|$1,..,a$|$1,..,n$|$N(0,σ^2)$|$N(0,σ_{\tau}^2)$|.|$\frac{\sum_{j=1}^ny_{ij}}n$|.|$\frac{\sum_{i=1}^a\sum_{j=1}^ny_{ij}}{an}$|
+|f-RCBD|$\mu+\tau_{i}+\beta_j+ε_{ij}$|$1,..,a$|$1,..,b$|$N(0,σ^2)$|$\sum_{i=1}^a\tau_i=0$|$\sum_{j=1}^b\beta_j=0$|$\frac{\sum_{j=1}^by_{ij}}b$|$\frac{\sum_{i=1}^ay_{ij}}a$|$\frac{\sum_{i=1}^a\sum_{j=1}^by_{ij}}{ab}$|
+|r-RCBD|$\mu+\tau_{i}+\beta_j+ε_{ij}$|$1,..,a$|$1,..,b$|$N(0,σ^2)$|$\sum_{i=1}^a\tau_i=0$|$N(0,σ_{\beta}^2)$|$\frac{\sum_{j=1}^by_{ij}}b$|$\frac{\sum_{i=1}^ay_{ij}}a$|$\frac{\sum_{i=1}^a\sum_{j=1}^by_{ij}}{ab}$|
+
+ ---
+
+|$E[(y_{ij}-\bar y_{i.})^2]$|$=Var[y_{ij}-\bar y_{i.}]$|$+E[y_{ij}-\bar y_{i.}]^2$|$=$|
+| ---   |   ---               |---|---|
+|FT-CRD |$\frac{n-1}n\sigma^2$| $0$ |$\frac{n-1}n\sigma^2$|
+|RT-CRD |$\frac{n-1}n\sigma^2$| $0$ |$\frac{n-1}n\sigma^2$|
+|FB-RCBD|$\frac{(b-1)\sigma^2}b$|$\beta_{j}^2$|$\frac{(b-1)\sigma^2}b+\beta_{j}^2$|
+|RB-RCBD|$\frac{(b-1)(\sigma_{\beta}^2+\sigma^2)}b$|$0$|$\frac{(b-1)(\sigma_{\beta}^2+\sigma^2)}b$|
+|$E[(\bar y_{i.}-\bar y_{..})^2]$|$=Var[\bar y_{i.}-\bar y_{..}]$|$+E[\bar y_{i.}-\bar y_{..}]^2$|$=$|
+|FT-CRD |$\frac{(a-1)\sigma^2}{an}$| $\tau_i^2$ |$\frac{(a-1)\sigma^2}{an}+\tau_i^2$|
+|RT-CRD |$\frac{(n\sigma_{\tau}^2+\sigma^2)(a-1)}{an}$| $0$ |$\frac{(a-1)(n\sigma_{\tau}^2+\sigma^2)}{an}$|
+|FB-RCBD|$\frac{(a-1)\sigma^2}{ab}$|$\tau_i^2$|$\frac{(a-1)\sigma^2}{ab}+\tau_i^2$|
+|RB-RCBD|$\frac{(a-1)\sigma^2}{ab}$|$\tau_i^2$|$\frac{(a-1)\sigma^2}{ab}+\tau_i^2$|
+|$E[(y_{ij}-\bar y_{.j})^2]$|$=Var[y_{ij}-\bar y_{.j}]$|$+E[y_{ij}-\bar y_{.j}]^2$|$=$|
+|FB-RCBD|$\frac{(a-1)\sigma^2}a$|$\tau_i^2$|$\frac{(a-1)\sigma^2}a+\tau_i^2$|
+|RB-RCBD|$\frac{(a-1)\sigma^2}a$|$\tau_i^2$|$\frac{(a-1)\sigma^2}a+\tau_i^2$|
+|$E[(\bar y_{.j}-\bar y_{..})^2]$|$=Var[\bar y_{.j}-\bar y_{..}]$|$+E[\bar y_{.j}-\bar y_{..}]^2$|$=$|
+|FB-RCBD|$\frac{(b-1)\sigma^2}{ab}+\beta_{j}^2$|$\beta_{j}^2$|$\frac{(b-1)\sigma^2}{ab}+\beta_{j}^2$|
+|RB-RCBD|$\frac{(b-1)(a\sigma_{\beta}^2+\sigma^2)}{ab}$|$0$|$\frac{(b-1)(a\sigma_{\beta}^2+\sigma^2)}{ab}$|
+|$E[(y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..})^2]$|$=Var[y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..}]$|$+E[y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..}]^2$|$=$|
+|FB;RB-RCBD|$\frac{(ab-a-b-1)\sigma^2}{ab}$|$0$|$\frac{(a-1)(b-1)\sigma^2}{ab}$|
+
+ ---
+
+|$y_{ij}-\bar y_{i.}$|||||
+| ---                |   ---  |---|---|   ---  |
+|FT-CRD |$\mu+\tau_{i}+ε_{ij}-\frac{\sum_{j=1}^n(\mu+\tau_{i}+ε_{ij})}n$|$=\mu+\tau_{i}+ε_{ij}-\mu-\tau_{i}-\frac{\sum_{j=1}^nε_{ij}}n$|$=$|$ε_{ij}-\frac{\sum_{j=1}^nε_{ij}}n$
+|RT-CRD | | | | |
+|FB-RCBD|$\mu+\tau_{i}+\beta_j+ε_{ij}-\frac{\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}b$|$=\mu+\tau_{i}+\beta_j+ε_{ij}-\mu-\tau_{i}-0-\frac{ \sum_{j=1}^bε_{ij}}b$|$=\beta_j+$|$ε_{ij}-\frac{\sum_{j=1}^nε_{ij}}b$
+|RB-RCBD| |$\mu+\tau_{i}+\beta_j+ε_{ij}-\mu-\tau_{i}-\frac{\sum_{j=1}^b\beta_j}b -\frac{\sum_{j=1}^bε_{ij}}b$|$=\beta_j-\frac{ \sum_{j=1}^b\beta_j}b+$|$ε_{ij}-\frac{\sum_{j=1}^bε_{ij}}b$
+
+|$\bar y_{i.}-\bar y_{..}$||||
+| ---                |   ---  |---|---|
+|FT-CRD |$\frac{\sum_{j=1}^n(\mu+\tau_{i}+ε_{ij})}n-\frac{\sum_{i=1}^a\sum_{j=1}^n(\mu+\tau_{i}+ε_{ij})}{an}$|$=\tau_{i}+$|$\frac{\sum_{j=1}^nε_{ij}}n-\frac{\sum_{i=1}^a\sum_{j=1}^nε_{ij}}{an}$
+|RT-CRD | |$=\tau_{i}-\frac{\sum_{i=1}^a\tau_{i}}{a}+$|$\frac{\sum_{j=1}^nε_{ij}}n-\frac{\sum_{i=1}^a\sum_{j=1}^nε_{ij}}{an}$
+|FB-RCBD|$\frac{\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}b-\frac{\sum_{i=1}^a\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}{ab}$|$=\tau_{i}+$|$\frac{\sum_{j=1}^bε_{ij}}b-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}$
+|RB-RCBD| | | |
+
+|$y_{ij}-\bar y_{.j}$||||
+| ---                |   ---  |---|---|
+|FB-RCBD|$\mu+\tau_{i}+\beta_j+ε_{ij}-\frac{\sum_{i=1}^a(\mu+\tau_{i}+\beta_j+ε_{ij})}a$|$=\mu+\tau_{i}+\beta_j+ε_{ij}-\mu-0-\beta_j-\frac{ \sum_{i=1}^aε_{ij}}a$|$=\tau_{i}+ε_{ij}-\frac{\sum_{i=1}^aε_{ij}}a$|
+|RB-RCBD| | | |
+
+|$\bar y_{.j}-\bar y_{..}$||||
+| ---                |   ---  |---|---|
+|FB-RCBD|$\frac{\sum_{i=1}^a(\mu+\tau_{i}+\beta_j+ε_{ij})}a-\frac{\sum_{i=1}^a\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}{ab}$|$=\beta_j+$|$\frac{\sum_{i=1}^aε_{ij}}a-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}$
+|RB-RCBD| |$=\beta_j-\frac{\sum_{j=1}^b\beta_j}{b}+$|$\frac{\sum_{i=1}^aε_{ij}}a-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}$|
+
+||$y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..}$|||
+| ---   |   ---  |---|---|
+|FB-RCBD|$\mu+\tau_{i}+\beta_j+ε_{ij}-\frac{\sum_{i=1}^a(\mu+\tau_{i}+\beta_j+ε_{ij})}a-\frac {\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}b+\frac{\sum_{i=1}^a\sum_{j=1}^b(\mu+\tau_{i}+\beta_j+ε_{ij})}{ab}$|$=ε_{ij}-\frac{\sum_{i=1}^aε_{ij}}a-\frac{\sum_{j=1}^bε_{ij}}b+\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}$
+
+ ---
+
+|       |$E[y_{ij}-\bar y_{i.}]$|$=$|$E[\bar y_{i.}-\bar y_{..}]$|$=$|
+|  ---  | ---                   |---|  ---                       |---|
+|FT-CRD |$E[ε_{ij}]-\frac1{n}\sum_{j=1}^nE[ε_{ij}]$|$0$|$E[\tau_{i}]+\frac1{n}\sum_{j=1}^nE[ε_{ij}]-\frac1{an}\sum_{i=1}^a\sum_{j=1}^nE[ε_{ij}]$|$\tau_{i}$
+|RT-CRD |$E[ε_{ij}]-\frac1{n}\sum_{j=1}^nE[ε_{ij}]$|$0$|$E[\tau_{i}]-\frac1{a}\sum_{i=1}^aE[\tau_{i}]+\frac1n \sum_{j=1}^nE[ε_{ij}]-\frac1{an}\sum_{i=1}^a\sum_{j=1}^nE[ε_{ij}]$|$0$|
+|FB-RCBD|$E[\beta_j]+E[ε_{ij}]-\frac1{b}\sum_{j=1}^bE[ε_{ij}]$|$\beta_j$|$E[\tau_{i}]+\frac1{b}\sum_{j=1}^bE[ε_{ij}]-\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bE[ε_{ij}]$|$\tau_{i}$|
+|RB-RCBD|$E[\beta_j]-\frac1b \sum_{j=1}^bE[\beta_j]+E[ε_{ij}]-\frac1b \sum_{j=1}^bE[ε_{ij}]$|$0$|$E[\tau_{i}]+\frac1b \sum_{j=1}^bE[ε_{ij}]-\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bE[ε_{ij}]$|$\tau_{i}$|
+
+|       |$E[y_{ij}-\bar y_{.j}]$|$=$|$E[\bar y_{.j}-\bar y_{..}]$|$=$|
+|  ---  | ---                   |---|                       ---  |---|
+|FB-RCBD|$E[\tau_{i}]+E[ε_{ij}]-\frac1{a}\sum_{i=1}^aE[ε_{ij}]$|$\tau_{i}$|$E[\beta_j]+\frac1{a}\sum_{i=1}^aE[ε_{ij}]-\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bE[ε_{ij}]$|$\beta_j$|
+|RB-RCBD|$E[\tau_{i}]+E[ε_{ij}]-\frac1a \sum_{i=1}^aE[ε_{ij}]$|$\tau_{i}$|$E[\beta_j]-\frac1{a}\sum_{i=1}^aE[\beta_j]+\frac1a \sum_{i=1}^aE[ε_{ij}]-\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bE[ε_{ij}]$|$0$|
+
+FB-RCBD,$E[y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..}]=E[ε_{ij}]-\frac1{a}\sum_{i=1}^aE[ε_{ij}]-\frac1{b}\sum_{j=1}^bE[ε_{ij}]+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bE[ε_{ij}]=0$
+
+ ---
+
+
+
+|        |$ε_{ij}$|$\sum_{i=1}^aε_{ij}$|$\sum_{j=1}^bε_{ij}$|$\sum_{i=1}^a\sum_{j=1}^bε_{ij}$|
+|   ---  |   ---  |           ---      |       ---          |      ---                       |
+|$ε_{ij}$|$\sigma^2$|$\sigma^2$|$\sigma^2$|$\sigma^2$|
+|$\sum_{i=1}^aε_{ij}$||$a\sigma^2$|$\sigma^2$|$a\sigma^2$|
+|$\sum_{j=1}^bε_{ij}$|||$b\sigma^2$|$b\sigma^2$|
+|$\sum_{i=1}^a\sum_{j=1}^bε_{ij}$||||$ab\sigma^2$|
+
+
+$Cov[ε_{ij},ε_{ij}]=Cov[\sum_{i1}^aε_{ij},\sum_{j=1}^bε_{ij}]=\sigma^2$,$Cov[\tau_{i},\tau_{i}]=σ_{\tau}^2$,$Cov[\beta_{j},\beta_{j}]=σ_{\beta}^2$
+
+$Cov[ε_{ij},\tau_{i}]=Cov[ε_{ij},\beta_{j}]=Cov[\tau_{i},\beta_{j}]=Cov[ε_{ij},ε_{ik}]=0,k\neq j$
+
+$Cov[ε_{ij},\sum_{j=1}^nε_{ij}]=Cov[ε_{ij},(ε_{i1}+..+ε_{ij}..+ε_{in})]=Cov[ε_{ij},ε_{i1}]+..+Cov[ε_{ij},ε_{ij}]..+Cov[ε_{ij},ε_{in}]=\sigma^2$
+
+$Cov[\sum_{j=1}^nε_{ij},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]=Cov[(ε_{i1}+ε_{i2}..+ε_{in}),(ε_{i1}+ε_{i2}..+ε_{in})]=Cov[ε_{i1},ε_{i1}]+Cov[ε_{i2},ε_{i2}]..+Cov[ε_{in},ε_{in}]=n\sigma^2$
+
+
+$Var[y_{ij}-\bar y_{i.}]=$
+
+FT-CRD;RT-CRD
+
+$Var[ε_{ij}-\frac{\sum_{j=1}^nε_{ij}}n]=$,
+$Var[ε_{ij}]+\frac{\sum_{j=1}^nVar[ε_{ij}]}{n^2}-\frac{2Cov[ε_{ij},\sum_{j=1}^nε_{ij}]}n$,
+$=\sigma^2+\frac{\sigma^2}n-\frac2n\sigma^2=\frac{n-1}n\sigma^2$
+
+FB-RCBD
+
+$Var[\beta_{j}+ε_{ij}-\frac{\sum_{j=1}^bε_{ij}}b]=$,
+$Var[\beta_{j}]+Var[ε_{ij}]+\frac{\sum_{j=1}^bVar[ε_{ij}]}{b^2}-2Cov[\beta_{j},ε_{ij}]-\frac{2Cov[\beta_{j},\sum_{j=1}^bε_{ij}]}b-\frac{2Cov[ε_{ij},\sum_{j=1}^bε_{ij}]}b$,
+$=0+\sigma^2+\frac{\sigma^2}b-0-0-\frac{2\sigma^2}b=\frac{(b-1)\sigma^2}b$
+
+RB-RCBD
+
+$Var[\beta_{j}-\frac{\sum_{j=1}^b\beta_{j}}b+ε_{ij}-\frac{\sum_{j=1}^bε_{ij}}b]=$
+$Var[\beta_{j}]+\frac{\sum_{j=1}^bVar[\beta_{j}]}{b^2}+Var[ε_{ij}]+\frac{\sum_{j=1}^bVar[ε_{ij}]}{b^2}-\frac{2Cov[\beta_{j},\sum_{j=1}^b\beta_{j}]}b+2Cov[\beta_{j},ε_{ij}]-\frac{2Cov[\beta_{j},\sum_{j=1}^bε_{ij}]}b-\frac{2Cov[\sum_{j=1}^b\beta_{j},ε_{ij}]}b$
+$+\frac{2Cov[\sum_{j=1}^b\beta_{j},\sum_{j=1}^bε_{ij}]}{b^2}-\frac{2Cov[ε_{ij},\sum_{j=1}^bε_{ij}]}b$
+$=\sigma_{\beta}^2+\frac{\sigma_{\beta}^2}{b}-\frac{2\sigma_{\beta}^2}{b}+\sigma^2+\frac{\sigma^2}b-\frac{2\sigma^2}b=\frac{(\sigma_{\beta}^2+\sigma^2)(b-1)}b$
+
+ ---
+
+$Var[\bar y_{i.}-\bar y_{..}]=$
+
+FT-CRD
+
+$Var[\tau_{i}+\frac{\sum_{j=1}^nε_{ij}}n-\frac{\sum_{i=1}^a\sum_{j=1}^nε_{ij}}{an}]=$
+$Var[\tau_{i}]+\frac{\sum_{j=1}^nVar[ε_{ij}]}{n^2}+\frac{\sum_{i=1}^a\sum_{j=1}^nVar[ε_{ij}]}{a^2n^2}+\frac{2Cov[\tau_{i},\sum_{j=1}^nε_{ij}]}{n}-\frac{2Cov[\tau_{i},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]}{an}-\frac{2Cov[\sum_{j=1}^nε_{ij},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]}{an^2}$,
+$=0+\frac{\sigma^2}{n}+\frac{\sigma^2}{an}-\frac{2\sigma^2}{an}=\frac{(a-1)\sigma^2}{an}$
+
+RT-CRD
+
+$Var[\tau_{i}-\frac{\sum_{i=1}^a\tau_{i}}{a}+\frac{\sum_{j=1}^nε_{ij}}n-\frac{\sum_{i=1}^a\sum_{j=1}^nε_{ij}}{an}]=$
+$Var[\tau_{i}]+\frac{\sum_{i=1}^aVar[\tau_{i}]}{a^2}+\frac{\sum_{j=1}^nVar[ε_{ij}]}{n^2}+\frac{\sum_{i=1}^a\sum_{j=1}^nVar[ε_{ij}]}{a^2n^2}-\frac{2Cov[\tau_{i},\sum_{i=1}^a\tau_{i}]}a+\frac{2Cov[\tau_{i},\sum_{j=1}^nε_{ij}]}n-\frac{2Cov[\tau_{i},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]}{an}-\frac{2Cov[\sum_{i=1}^a\tau_{i},\sum_{j=1}^nε_{ij}]}{an}$
+$+\frac{2Cov[\sum_{i=1}^a\tau_{i},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]}{a^2n}-\frac{2Cov[\sum_{j=1}^nε_{ij},\sum_{i=1}^a\sum_{j=1}^nε_{ij}]}{an^2}$
+$=\sigma_{\tau}^2+\frac{\sigma_{\tau}^2}{a}-\frac{2\sigma_{\tau}^2}{a}+\frac{\sigma^2}{n}+\frac{\sigma^2}{an}-\frac{2\sigma^2}{an}=\frac{(n\sigma_{\tau}^2+\sigma^2)(a-1)}{an}$
+
+FB-RCBD;RB-RCBD
+
+$Var[\tau_{i}+\frac{\sum_{j=1}^bε_{ij}}b-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}]=$
+$Var[\tau_{i}]+\frac{\sum_{j=1}^bVar[ε_{ij}]}{b^2}+\frac{\sum_{i=1}^a\sum_{j=1}^bVar[ε_{ij}]}{a^2b^2}+\frac{2Cov[\tau_{i},\sum_{j=1}^bε_{ij}]}{b}-\frac{2Cov[\tau_{i},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab}-\frac{2Cov[\sum_{j=1}^bε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab^2}$
+$=0+\frac{\sigma^2}{b}+\frac{\sigma^2}{ab}-\frac{2\sigma^2}{ab}=\frac{(a-1)\sigma^2}{ab}$
+
+ ---
+
+$Var[y_{ij}-\bar y_{.j}]=$
+
+FB-RCBD; RB-RCBD
+
+$Var[\tau_{i}+ε_{ij}-\frac{\sum_{i=1}^aε_{ij}}a]=$
+$Var[\tau_{i}]+Var[ε_{ij}]+\frac{\sum_{i=1}^aVar[ε_{ij}]}{a^2}-\frac{2Cov[\tau_{i},ε_{ij}]}a-\frac{2Cov[\tau_{i},\sum_{i=1}^aε_{ij}]}a-\frac{2Cov[ε_{ij},\sum_{i=1}^aε_{ij}]}a$
+$=0+\sigma^2+\frac{\sigma^2}a-\frac{2\sigma^2}a=\frac{(a-1)\sigma^2}a$
+
+ ---
+
+$Var[\bar y_{.j}-\bar y_{..}]=$
+
+FB-RCBD
+
+$Var[\beta_{j}+\frac{\sum_{i=1}^aε_{ij}}a-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}]=$
+$Var[\beta_{j}]+\frac{\sum_{i=1}^aVar[ε_{ij}]}{a^2}+\frac{\sum_{i=1}^a\sum_{j=1}^bVar[ε_{ij}]}{a^2b^2}+\frac{2Cov[\beta_{j},\sum_{i=1}^aε_{ij}]}{a}-\frac{2Cov[\beta_{j},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab}-\frac{2Cov[\sum_{i=1}^aε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{a^2b}$
+$=0+\frac{\sigma^2}{a}+\frac{\sigma^2}{ab}-\frac{2\sigma^2}{ab}=\frac{(b-1)\sigma^2}{ab}$
+
+RB-RCBD
+
+$Var[\beta_{j}-\frac{\sum_{j=1}^b\beta_{j}}{b}+\frac{\sum_{i=1}^aε_{ij}}a-\frac{\sum_{i=1}^a\sum_{j=1}^bε_{ij}}{ab}]=$,
+$Var[\beta_{j}]+\frac{\sum_{j=1}^bVar[\beta_{j}]}{b^2}+\frac{\sum_{i=1}^aVar[ε_{ij}]}{a^2}+\frac{\sum_{i=1}^a\sum_{j=1}^bVar[ε_{ij}]}{a^2b^2}-\frac{2Cov[\beta_{j},\sum_{j=1}^b\beta_{j}]}b+\frac{2Cov[\beta_{j},\sum_{i=1}^aε_{ij}]}a-\frac{2Cov[\beta_{j},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab}-\frac{2Cov[\sum_{j=1}^b\beta_{j},\sum_{i=1}^aε_{ij}]}{ab}$
+$+\frac{2Cov[\sum_{j=1}^b\beta_{j},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab^2}-\frac{2Cov[\sum_{i=1}^aε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{a^2b}$
+$=\sigma_{\beta}^2+\frac{\sigma_{\beta}^2}{b}-\frac{2\sigma_{\beta}^2}{b}+\frac{\sigma^2}{a}+\frac{\sigma^2}{ab}-\frac{2\sigma^2}{ab}=\frac{(a\sigma_{\beta}^2+\sigma^2)(b-1)}{ab}$
+
+ ---
+
+$Var[y_{ij}-\bar y_{i.}-\bar y_{.j}+\bar y_{..}]=$
+FB-RCBD
+
+$Var[ε_{ij}-\frac1a\sum_{i=1}^aε_{ij}-\frac1b\sum_{j=1}^bε_{ij}+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^bε_{ij}]=$
+$Var[ε_{ij}]+\frac{\sum_{i=1}^aVar[ε_{ij}]}{a^2}+\frac{\sum_{j=1}^bVar[ε_{ij}]}{b^2}+\frac{\sum_{i=1}^a\sum_{j=1}^bVar[ε_{ij}]}{a^2b^2}-\frac{2Cov[ε_{ij},\sum_{i=1}^aε_{ij}]}{a}-\frac{2Cov[ε_{ij},\sum_{j=1}^bε_{ij}]}{b}+\frac{2Cov[ε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab}+\frac{2Cov[\sum_{i=1}^aε_{ij},\sum_{j=1}^bε_{ij}]}{ab}$
+$-\frac{2Cov[\sum_{i=1}^aε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{a^2b}-\frac{2Cov[\sum_{j=1}^bε_{ij},\sum_{i=1}^a\sum_{j=1}^bε_{ij}]}{ab^2}$
+$=\sigma^2+\frac{\sigma^2}{a}+\frac{\sigma^2}{b}+\frac{\sigma^2}{ab}-\frac{2\sigma^2}{a}-\frac{2\sigma^2}{b}+\frac{2\sigma^2}{ab}+\frac{2\sigma^2}{ab}-\frac{2\sigma^2}{ab}-\frac{2\sigma^2}{ab}=\frac{(ab-a-b+1)\sigma^2}{ab}$
+

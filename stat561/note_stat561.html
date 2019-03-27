@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2018-12-27" />
+<meta name="date" content="2019-03-10" />
 
 <title>Mathematical Statistics I</title>
 
@@ -308,7 +308,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Mathematical Statistics I</h1>
 <h3 class="subtitle"><em>STAT 561</em></h3>
-<h4 class="date"><em>December 27, 2018</em></h4>
+<h4 class="date"><em>March 10, 2019</em></h4>
 
 </div>
 
@@ -319,10 +319,7 @@ $(document).ready(function () {
 <h2>1 Prabability Theory</h2>
 <div id="set-theory" class="section level3">
 <h3>1.1 Set Theory</h3>
-<p><code>2018.9.25</code></p>
-<ol style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
+<p><code>2018.9.25</code> <code>p.1</code> Definition</p>
 <ul>
 <li><p>An <strong>experiment</strong> is a process that leads to one of several possible outcomes.</p></li>
 <li><p>The <strong>sample space</strong> (S) is the set of all possible outcomes of an experiment.</p></li>
@@ -382,38 +379,29 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-</div>
-<div id="axiomatic-foundations" class="section level3">
-<h3>1.2.1 Axiomatic Foundations</h3>
-<ol start="2" style="list-style-type: decimal">
-<li>Borel field</li>
-</ol>
+<div id="axiomatic-foundations" class="section level4">
+<h4>1.2.1 Axiomatic Foundations</h4>
+<p><code>p.2</code> Borel field</p>
 <p>A and B are <strong>disjoint</strong> or <strong>mutually exclusive</strong>, if <span class="math inline">\(A\cap B=\emptyset\)</span></p>
 <p>Let B be a subset of all possible subset of S. Then B is a <strong>Borel field</strong> or a <span class="math inline">\(\sigma\)</span>-algebra, if<br />
 (1). <span class="math inline">\(\emptyset\in B\)</span><br />
 (2). if <span class="math inline">\(A\in B, then\ A^c\in B\)</span><br />
 (3). if <span class="math inline">\(A_{1},A_{2},A_{3},...\in B, then\ \bigcup_{n=1}^{\infty}\in B\)</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Kolmogorov Axioms/of Probability</li>
-</ol>
+<p><code>p.3</code> Kolmogorov Axioms/of Probability</p>
 <p>let B be a <strong>Borel field</strong>. Then P is a <strong>probability set function</strong> if<br />
 (1). <span class="math inline">\(\forall A\in B,\ P(A)\ge0\)</span><br />
 (2). <span class="math inline">\(P(S)=1\)</span><br />
 (3). If <span class="math inline">\(A_{1},A_{2},A_{3}\)</span>,…are pairwise disjoint, then <span class="math inline">\(\ P(\bigcup_{n=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P(A_{i})\)</span></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Example Roll a 6-sides die <span class="math display">\[S=\{1,2,3,4,5,6\}\]</span> <span class="math display">\[B=\{\emptyset ,S,\{1,2\},\{3,4,5,6\}\}\]</span><br />
-is a well-defined <em>Borel field</em></li>
-</ol>
+<p><code>p.4</code> Example Roll a 6-sides die <span class="math display">\[S=\{1,2,3,4,5,6\}\]</span> <span class="math display">\[B=\{\emptyset ,S,\{1,2\},\{3,4,5,6\}\}\]</span><br />
+is a well-defined <em>Borel field</em></p>
 <p>Define： <span class="math inline">\(P(A)=\begin{cases}1&amp;if\ 2\in A \\o &amp;otherwise\end{cases}\)</span><br />
 This is a well-defined <em>probability function</em></p>
 <p>Define: <span class="math inline">\(P(A)=\frac{element in A}{6}\)</span><br />
 This is also a well-defined <em>probability function</em></p>
 </div>
-<div id="the-calculus-of-probabilities" class="section level3">
-<h3>1.2.2 The Calculus of Probabilities</h3>
-<ol start="5" style="list-style-type: decimal">
-<li>The properties of the probability function: Theorem 1.2.8</li>
-</ol>
+<div id="the-calculus-of-probabilities" class="section level4">
+<h4>1.2.2 The Calculus of Probabilities</h4>
+<p><code>p.5</code> The properties of the probability function: Theorem 1.2.8</p>
 <p>(1). <span class="math inline">\(\forall A\in B,\ P(A^c)=1-P(A)\)</span><br />
 (2). <span class="math inline">\(P(\emptyset)=0\)</span><br />
 (3). <span class="math inline">\(P(A)\le1\)</span></p>
@@ -426,9 +414,7 @@ This is also a well-defined <em>probability function</em></p>
 <p><span class="math inline">\(\emptyset\cap S=\emptyset\)</span><br />
 <span class="math inline">\(\emptyset\cup S=S\)</span><br />
 <span class="math inline">\(P(\emptyset\cup S)=P(\emptyset)+P(S)\)</span>; <span class="math inline">\(P(\emptyset\cup S)=P(S)=1\)</span></p>
-<ol start="6" style="list-style-type: decimal">
-<li>Theorem 1.2.9 (c).</li>
-</ol>
+<p><code>p.6</code> Theorem 1.2.9 (c).</p>
 <p>Let <span class="math inline">\(A_{1}\)</span> and <span class="math inline">\(A_{2}\)</span> the elements of B with <span class="math inline">\(A_{1}\subset A_{2}\)</span>, then<br />
 <span class="math inline">\(P(A_{1})\le P(A_{2})\)</span></p>
 <p>Proof:</p>
@@ -438,9 +424,7 @@ So <span class="math inline">\(P(A_{2})=P(A_{1})+P(A_{2}\cap A_{1}^c)\)</span><b
 <span class="math inline">\(P(A_{2}\cap A_{1}^c)\ge0\)</span><br />
 <span class="math inline">\(\therefore\ P(A_{2})\ge P(A_{1})\)</span></p>
 <p><code>2018.09.27</code></p>
-<ol style="list-style-type: decimal">
-<li>Theorem 1.2.9 (a)</li>
-</ol>
+<p><code>p.1</code> Theorem 1.2.9 (a)</p>
 <p>Define: <span class="math inline">\(A\backslash B =A\cap B^c\)</span></p>
 <p><span class="math inline">\(P(A\cap B^c)=P(A)-P(A\cap B)\)</span></p>
 <p>Proof:</p>
@@ -455,7 +439,7 @@ By K-3, <span class="math inline">\(P(A)=P(A\cap B)+P(A\cap B^c)\)</span><br />
 <span class="math inline">\(=(A\cup B)\cap(A\cup A^c)=A\cup B\)</span><br />
 <span class="math inline">\(P(A\cup B)=P(A)+ P(B\cap A^c)\)</span><br />
 <span class="math inline">\(=P(A)+P(B)-P(B\cap A)\)</span></p>
-<p>2.3. Law of Total Probability</p>
+<p><code>p.2-3</code> Law of Total Probability</p>
 <p>Theorem 1.2.11 (a). Define:</p>
 <p><span class="math inline">\(C_{1},C_{2},C_{3},...\)</span> form a partition of S if<br />
 (1). <span class="math inline">\(\bigcup_{i=1}^\infty C_i=S\)</span> and<br />
@@ -464,7 +448,7 @@ By K-3, <span class="math inline">\(P(A)=P(A\cap B)+P(A\cap B^c)\)</span><br />
 <span class="math inline">\(P(A)=\sum_{i=1}^\infty P(A\cap C_{i})\)</span></p>
 <p>Proof:</p>
 <p><span class="math inline">\(A=A\cap S=A\cap(\bigcup_{i=1}^\infty C_{i})=\bigcup_{i=1}^\infty(A\cap C_{i})\)</span> Since <span class="math inline">\(A\cap C_i\)</span> and <span class="math inline">\(A\cap C_j\)</span> are disjoint <span class="math inline">\(\forall i\ne j\)</span> <span class="math inline">\(\therefore P(A)= \sum_{i=1}^\infty P(A\cap C_{i})\)</span> [by Kolmogorov-3]</p>
-<p>4.5. Boole ’s Inequality</p>
+<p><code>p.4-5</code> Boole ’s Inequality</p>
 <p>Theorem 1.2.11 (b)</p>
 <p>Let <span class="math inline">\(A_{1}, A_{2}\)</span>,…be events, then<br />
 <span class="math inline">\(P(\bigcup_{i=1}^\infty A_i)\le\sum_{i=1}^\infty P(A_{i})\)</span></p>
@@ -480,7 +464,7 @@ So <span class="math inline">\(P(\bigcup_{i=1}^\infty A_i)=P(\bigcup_{i=1}^\inft
 <span class="math inline">\(=\sum_{i=1}^\infty P(A_i^*)\)</span><br />
 <span class="math inline">\(\le\sum_{i=1}^\infty P(A_i)\)</span><br />
 since <span class="math inline">\(A_i^*&lt;A_i\)</span> [By subset theorem]</p>
-<p>6.7. Bonferroni inequality Theorem 1.2.10</p>
+<p><code>p.6-7</code> Bonferroni inequality Theorem 1.2.10</p>
 <p>Suppose we have n events <span class="math inline">\(A_1, A_2,...A_n\)</span><br />
 with probabilities <span class="math inline">\(P_i=P(A_i)\)</span></p>
 <table>
@@ -501,50 +485,32 @@ with probabilities <span class="math inline">\(P_i=P(A_i)\)</span></p>
 <span class="math display">\[=\sum_{i=1}^\infty[1-P(A_i)]=n-\sum_{i=1}^\infty P(A_i)\]</span><br />
 <span class="math display">\[1-P(A_1\cap ...\cap A_n)\le n-\sum_{i=1}^\infty P(A_i)\]</span><br />
 <span class="math display">\[P(A_1\cap ...\cap A_n)\ge\sum_{i=1}^\infty P(A_i)-(n-1)\]</span></p>
-<ol start="8" style="list-style-type: decimal">
-<li>Example of usage: Question:If LHS is to the at least .95, then what must each <span class="math inline">\(P(A_i)\)</span> be to guarantee that? (v.2011)</li>
-</ol>
-<blockquote>
+<p><code>p.8</code> Example of usage: Question:If LHS is to the at least .95, then what must each <span class="math inline">\(P(A_i)\)</span> be to guarantee that? (v.2011)</p>
 <p>Assume <span class="math inline">\(P(A_i)=p \quad \forall i\)</span>, whtat must p be, in order to guarantee that <span class="math inline">\(P(A_1\cap ...\cap A_n)\ge 0.95\)</span></p>
-</blockquote>
 <p>Set <span class="math display">\[\sum_{i=1}^np_i-(n-1)=0.95\]</span> <span class="math display">\[np=0.95+n-1\]</span> <span class="math display">\[p=1-\frac{0.05}n\]</span></p>
 <p>Intepretation: If you do 10 simulations Confidence intervals, each at 99.5% Confidence, you will have joint confidence of at least 95%</p>
 </div>
-<div id="counting-rules" class="section level3">
-<h3>1.2.3 Counting Rules</h3>
-<ol start="9" style="list-style-type: decimal">
-<li>(1). Multiplication Rule</li>
-</ol>
-<p>Theorem 1.2.14:</p>
+<div id="counting-rules" class="section level4">
+<h4>1.2.3 Counting Rules</h4>
+<p><code>p.9-13</code></p>
+<p>(1). Theorem 1.2.14: Multiplication Rule</p>
 <p>If you have/perform a sequence of procedures, then the total number of outcomes is the product of the number of possible outcomes at each step <span class="math inline">\(N\)</span></p>
 <p>-Example: Flip 3 coins in sequence <span class="math inline">\(2\times2\times2=8\)</span></p>
-<ol start="10" style="list-style-type: decimal">
-<li>(2). Factorial Rule</li>
-</ol>
-<p>Theorem 1.2.16</p>
+<p>(2). Theorem 1.2.16: Factorial Rule</p>
 <p>The number of ways of arranging or ordering n objects/items is <span class="math inline">\(n!\)</span></p>
-<ol start="11" style="list-style-type: decimal">
-<li>(3). Permutation Rule</li>
-</ol>
+<p>(3). Permutation Rule</p>
 <p>Start with n objects. The number of ways of selecting and ordering r of them is</p>
 <p><span class="math display">\[P_r^n=n(n-1)(n-2)...(n-r+1)=\frac{n!}{(n-r)!}\]</span></p>
-<ol start="12" style="list-style-type: decimal">
-<li>(4). Combination Rule:</li>
-</ol>
-<p>Theorem 1.2.17</p>
+<p>(4). Theorem 1.2.17 Combination Rule:</p>
 <p>The number of ways of selecting r objects from n objects without regard to order, is “n choose r”. These numbers are also referred to as <strong>binomial coefficients</strong></p>
 <p><span class="math display">\[C_r^n=\binom nr=\frac{P_r^n}{r!}=\frac{n!}{r!(n-r)!}\]</span></p>
-<ol start="13" style="list-style-type: decimal">
-<li>(5). Permutation of like objects Rule:</li>
-</ol>
+<p>(5). Permutation of like objects Rule:</p>
 <p>If there are n objects of K different types, then the number of ways that they can be oredered is</p>
-<p><span class="math display">\[\frac{n!}{n_1!n_2!...n_k!}\]</span><br />
-&gt; Where <span class="math inline">\(n_i\)</span> is the number of items of type i<br />
-and <span class="math inline">\(n_1+...+n_k=n\)</span></p>
-<ol start="14" style="list-style-type: decimal">
-<li>Example</li>
-</ol>
-<p>How many differenct ways can the letters in “STATISTICS” be arranged? <span class="math display">\[\frac{10!}{3!3!1!2!1!}=\left(_{3 3 1 2 1}^{10}\right)=50400 \]</span></p>
+<p><span class="math display">\[\frac{n!}{n_1!n_2!...n_k!}\]</span></p>
+<p>Where <span class="math inline">\(n_i\)</span> is the number of items of type i and <span class="math inline">\(n_1+...+n_k=n\)</span></p>
+<p><code>p.14</code> Example</p>
+<p>How many differenct ways can the letters in “STATISTICS” be arranged?</p>
+<p><span class="math display">\[\frac{10!}{3!3!1!2!1!}=\left(_{3 3 1 2 1}^{10}\right)=50400 \]</span></p>
 <p>Number of possible arrangements of size r from n objects</p>
 <table>
 <thead>
@@ -568,34 +534,22 @@ and <span class="math inline">\(n_1+...+n_k=n\)</span></p>
 </tbody>
 </table>
 </div>
-<div id="enumerating-outcomes" class="section level3">
-<h3>1.2.4 Enumerating Outcomes</h3>
+<div id="enumerating-outcomes" class="section level4">
+<h4>1.2.4 Enumerating Outcomes</h4>
+</div>
 </div>
 <div id="conditional-probability" class="section level3">
 <h3>1.3 Conditional Probability</h3>
-<p><code>2018.10.2</code></p>
-<ol style="list-style-type: decimal">
-<li>Conditional Probability Definition 1.3.2</li>
-</ol>
-<p><span class="math inline">\(P(A|B)=\frac{P(A\cap B)}{P(B)}\)</span>, provided P(B)&gt;0</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Is this a vaild probability function?</li>
-</ol>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(\forall A, is P(A|B)\ge0\)</span> yes</li>
-<li><span class="math inline">\(P(S|B)=\frac{P(S\cap B)}{P(B)}=\frac{P(B)}{P(B)}=1\)</span> yes</li>
-<li>Suppose <span class="math inline">\(A_1\cap A_2=\emptyset\)</span></li>
-</ol>
+<p><code>2018.10.2</code> <code>p.1</code> Definition 1.3.2 Conditional Probability</p>
+<p><span class="math display">\[P(A|B)=\frac{P(A\cap B)}{P(B)},\quad \text{provided}\  P(B)&gt;0\]</span></p>
+<p><code>p.2</code> Is this a vaild probability function?</p>
+<p>(1). <span class="math inline">\(\forall A, is P(A|B)\ge0\)</span> yes (2). <span class="math inline">\(P(S|B)=\frac{P(S\cap B)}{P(B)}=\frac{P(B)}{P(B)}=1\)</span> yes (3). Suppose <span class="math inline">\(A_1\cap A_2=\emptyset\)</span></p>
 <p><span class="math display">\[P(A_1\cup A_2|B)=\frac{P[(A_1\cup A_2)\cap B]}{P(B)}=\frac{P[(A_1\cap B)\cup (A_2\cap B)]}{P(B)}=\frac{P[(A_1\cap B)+P(A_2\cap B)]}{P(B)}=P(A_1|B)+P(A_2|B)\]</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>statistically independent Definition 1.3.7</li>
-</ol>
+<p><code>p.3</code> Definition 1.3.7 Statistically Independent</p>
 <p>The events A and B are independent, if <span class="math inline">\(P(A\cap B)=P(A)P(B)\)</span></p>
 <p>Note: Suppose P(B)&gt;0 and that A and B are independent, then</p>
 <p><span class="math display">\[P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A)P(B)}{P(B)}=P(A)\]</span></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Example Roll 2 dice</li>
-</ol>
+<p><code>p.4</code> Example Roll 2 dice</p>
 <p><span class="math display">\[S=\begin{Bmatrix}
 11 &amp; 12 &amp; \cdots &amp; 16 \\ 
 21 &amp; 22 &amp; \cdots &amp; 26 \\ 
@@ -604,24 +558,19 @@ and <span class="math inline">\(n_1+...+n_k=n\)</span></p>
 <p>let A be the event that the 1st dice=6; B….=6.</p>
 <p><span class="math display">\[P(A)=\frac6{36},\quad P(B)=\frac6{36},\quad P(A\cap B)=\frac1{36}\]</span></p>
 <p>Since <span class="math inline">\(\frac1{36}=\frac16\frac16\)</span>, A adn B are independent.</p>
-<ol start="5" style="list-style-type: decimal">
-<li>Example Draw 2 cards</li>
-</ol>
+<p><code>p.5</code> Example Draw 2 cards</p>
 <p>Draw 2 cards from a deck of 52 without replacement.</p>
 <p>let A: 1st card is an ace; B: 2nd…</p>
 <p><span class="math display">\[P(A\cap B)=\frac{4\times 3}{52\times 51}=\frac1{13\times 17}\ne\frac1{13}\frac1{13}\]</span> <span class="math display">\[P(A)=\frac{4\times 51}{52\times 51}=\frac4{52}=\frac1{13}\]</span> <span class="math display">\[P(B)=\frac{4\times 3+48\times 4}{52\times 51}=\frac4{52}=\frac1{13}\]</span> Therefore A and B are dependent</p>
-<ol start="6" style="list-style-type: decimal">
-<li>(recall 1.2.2)</li>
-</ol>
+<p><code>p.6</code> (recall 1.2.2)</p>
 <p>According to the Law of Total Probability<br />
 Theorem 1.2.11 (a).<br />
 <span class="math display">\[P(A)=\sum_{i=1}^\infty{P(C_i)}P(A|C_i)\]</span></p>
-<ol start="7" style="list-style-type: decimal">
-<li>Bayes’ Rule</li>
-</ol>
-<p>Theorem 1.3.5 Select a particular index K where <span class="math inline">\(P(C_k)\ne0\)</span></p>
+<p><code>p.7</code></p>
+<p>Theorem 1.3.5 Bayes’ Rule</p>
+<p>Select a particular index K where <span class="math inline">\(P(C_k)\ne0\)</span></p>
 <p><span class="math display">\[P(C_k|A)=\frac{P(C_k\cap A)}{P(A)}=\frac{P(C_k)P(A|C_k) }{\sum_{i=1}^\infty{P(C_i)}P(A|C_i)}\]</span></p>
-<p>8-11. Example</p>
+<p><code>p.8-11</code> Example</p>
 <p>If the person does not hase the substance, the test results will be negative 96% of the time.</p>
 <p><span class="math display">\[P(B^c|A^c)=0.96\]</span></p>
 <p>Question: Given that the test results are positive, what is the prabability that the person uses the substance?</p>
@@ -631,42 +580,30 @@ Theorem 1.2.11 (a).<br />
 <p>If the person uses the substance, the test results will be positive 99% of the time. P(B|A)=0.99 <picture></p>
 <p>How does this use Bayes’s Rule?</p>
 <p><span class="math display">\[P(B|A)=\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^c)P(A^c)}=\frac{0.05\times 0.99}{0.05\times0.99+0.95\times0.04}=0.566 \]</span></p>
-<p><code>2018.10.4</code></p>
-<p>1.2. Two sons problem</p>
+<p><code>2018.10.4</code> <code>p.1-2</code> Two sons problem</p>
 <p>Assume P(M)=P(F)=0.5; Assume independent births</p>
 <p>You see a person with one of their children, a son. You know that they have 2 children. Find the probability that their other child is a son.</p>
 <p>Let A: 1st child is M; B: 2nd child is M, Find</p>
 <p><span class="math display">\[P(A\cap B|A\cup B)=\frac{P[(A\cup B)\cap(A\cup B)]}{P(A\cup B)}=\frac{P(A\cap B)}{P(A\cup B)}=\frac{\frac14}{\frac34}=\frac13\]</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Monty Hall problem</li>
-</ol>
+<p><code>p.3</code> Monty Hall problem</p>
 <p>You choose door #1. Monty Hall opens one of the 2 remaining doors to reveal a joke prize. He them gives you the chance to swith your choose. Should you?</p>
 <p>Swich <span class="math inline">\(\implies P(w)=\frac23\)</span></p>
 </div>
 <div id="random-variable" class="section level3">
 <h3>1.4 Random variable</h3>
-<ol start="4" style="list-style-type: decimal">
-<li>Random variable</li>
-</ol>
-<p>Definition 1.4.1</p>
+<p><code>p.4</code> Definition 1.4.1 Random variable</p>
 <p>A random variable is a function from the sample space into the set of real numbers</p>
 <p><span class="math display">\[X:S\to \mathbb{R}\]</span></p>
 <p>The range of the random variable X is the set of real numbers that X maps onto</p>
-<p>5.Example: Flip 2 coins</p>
-<p>S={HH, HT, TH, TT}</p>
+<p><code>p.5</code> Example: Flip 2 coins</p>
+<p><span class="math display">\[S=\{HH, HT, TH, TT\}\]</span></p>
 <p>let X be the # of heads</p>
 <p>X(HH)=2, X(HTH)=1, X(TH)=1, X(TT)=0. range of X is {0,1,2}</p>
-<ol start="6" style="list-style-type: decimal">
-<li>Definitions</li>
-</ol>
-<p>Definition 1.5.7</p>
-<p>If the range of X is countable (finite or countable infinite), then X is a <strong>discrete random variable</strong>.</p>
-<p>Definition 1.5.8</p>
-<p>If the range of X is an interval, then X is a <strong>continuous random variable</strong>.</p>
-<p>Definition of induced <strong>probability function</strong></p>
-<p>let A be a subset of the range of X.</p>
+<p><code>p.6</code> Definitions 1.5.7 If the range of X is countable (finite or countable infinite), then X is a <strong>discrete random variable</strong>.</p>
+<p>Definition 1.5.8 If the range of X is an interval, then X is a <strong>continuous random variable</strong>.</p>
+<p>Definition of induced <strong>probability function</strong> let A be a subset of the range of X.</p>
 <p><span class="math display">\[P_x(A)=P[\{s\in S: X(s)\in A\}]\]</span></p>
-<p>7.Example: Roll 2 coins</p>
+<p><code>p.7</code> Example: Roll 2 coins</p>
 <p><span class="math display">\[S=\begin{Bmatrix}
 11 &amp; 12 &amp; \cdots &amp; 16 \\ 
 21 &amp; 22 &amp; \cdots &amp; 26 \\ 
@@ -677,25 +614,19 @@ Theorem 1.2.11 (a).<br />
 </div>
 <div id="distribution-functions" class="section level3">
 <h3>1.5 Distribution Functions</h3>
-<ol start="8" style="list-style-type: decimal">
-<li>pmf $ cdf</li>
-</ol>
-<p>definition 1.6.1 &gt; let <span class="math inline">\(r_i\in range of X\)</span>, let <span class="math inline">\(p_x(r_i)=Px(\{r_i\}),\ p_x\)</span> is called a <strong>probability mass function</strong> (pmf)</p>
-<p>definition 1.5.1 &gt; let <span class="math inline">\(F_X(x)=PX\big[(-\infty,x])\big]\)</span>, this is called the <strong>cumulative distribution function</strong> (cdf) of the random variable X.</p>
-<p>9.10. Example: Flip 3 coins</p>
-<p>let x= # heads</p>
-<p>Find the pmf ; cdf for x</p>
-<p>S={HHH, HTH, HHT, HTT, THH, THT, TTH, TTT} ={3, 2, 2, 1, 2, 1, 1, 0}</p>
+<p><code>p.8</code></p>
+<p>Definition 1.6.1 let <span class="math inline">\(r_i\in range of X\)</span>, let <span class="math inline">\(p_x(r_i)=Px(\{r_i\}),\ p_x\)</span> is called a <strong>probability mass function</strong> (pmf)</p>
+<p>Definition 1.5.1 let <span class="math inline">\(F_X(x)=PX\big[(-\infty,x])\big]\)</span>, this is called the <strong>cumulative distribution function</strong> (cdf) of the random variable X.</p>
+<p><code>p.9-10</code> Example: Flip 3 coins</p>
+<p>let x= # heads, Find the pmf ; cdf for x</p>
+<p><span class="math display">\[S={HHH, HTH, HHT, HTT, THH, THT, TTH, TTT}\]</span> <span class="math display">\[ ={3,   2,   2,   1,   2,   1,   1,   0}\]</span></p>
 <p>pmf: <span class="math display">\[p_x(0)=\frac18\quad p_x(1)=\frac38\quad p_x(2)=\frac18\quad p_x(3)=\frac18\quad p_x(1.5)=0\]</span></p>
 <p>cdf <span class="math display">\[F(x)=P(X\le x)=0\]</span></p>
 </div>
 <div id="density-and-mass-functions" class="section level3">
 <h3>1.6 Density and Mass Functions</h3>
-<p><code>2018.10.9</code></p>
-<ol style="list-style-type: decimal">
-<li>cdf conditions Theorem 1.5.3</li>
-</ol>
-<p>A cdf F(x) should satisfy 3 conditions:</p>
+<p><code>2018.10.9</code> <code>p.1</code></p>
+<p>Theorem 1.5.3 A cdf F(x) should satisfy 3 conditions:</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(\lim_{x\to-\infty}F(x)=0\ \&amp; \lim_{x\to\infty}F(x)=1\)</span>;<br />
 </li>
@@ -703,53 +634,47 @@ Theorem 1.2.11 (a).<br />
 </li>
 <li>F is right-continuous, which means <span class="math inline">\(\lim_{x\to\infty}f(x)=f(x)\)</span></li>
 </ol>
-<p>2-6. proof condition c.</p>
-<p>let <span class="math inline">\(C_1,C_2\)</span>,…be a sequance of events such that <span class="math inline">\(C1\subset C_2\subset\)</span>…</p>
+<p><code>p.2-6</code> proof condition c.</p>
+<p>let <span class="math inline">\(C_1,C_2\)</span>,…be a sequance of events such that <span class="math inline">\(C1\subset C_2\subset..\)</span></p>
 <p>let <span class="math inline">\(A_1=C_1\)</span> and for <span class="math inline">\(n\ge2,\ A_n=C_n\setminus C_{n-1}\)</span>, then</p>
 <p><span class="math display">\[\bigcup_{i=1}^\infty A_i=\bigcup_{i=1}^\infty C_i\]</span></p>
 <p><span class="math display">\[P[\lim_{n\to\infty}C_n]=P[\lim_{n\to\infty}\bigcup_{i=1}^nC_i]=P[\bigcup_{i=1}^{\infty}C_i]=P[\bigcup_{i=1}^{\infty}A_i]=\sum_{i=1}^{\infty}P(A_i)=\lim_{n\to\infty}\sum_{i=1}^nP(A_i)\]</span></p>
 <p><span class="math display">\[=\lim_{n\to\infty}\Big[P(A_1)+\sum_{i=2}^nP(A_i)\Big]=\lim_{n\to\infty}\Bigg[P(C_1)+\sum_{i=2}^n\Big[P(C_i)-P(C_i\cap C_{i-1})\Big]\Bigg]\]</span></p>
 <p><span class="math display">\[=\lim_{n\to\infty}\Bigg[P(C_1)+\sum_{i=2}^n\Big[P(C_i)-P(C_{i-1})\Big]\Bigg]=\lim_{n\to\infty}P(C_n)\]</span></p>
 <p><span class="math display">\[So\quad P(\lim_{n\to\infty}C_n)=\lim_{n\to\infty}P(C_n)\]</span></p>
-<p>Now let <span class="math inline">\(B_1,B_2\)</span>,…be a sequance of events such that <span class="math inline">\(B1\supset B_2\supset\)</span>…</p>
-<p><span class="math display">\[Then\ B_1^c\subset B_2^c\subset...\]</span></p>
-<p><span class="math display">\[So\quad P(\lim_{n\to\infty}B_n^c)=\lim_{n\to\infty}P(B_n^c)\]</span></p>
-<p><span class="math display">\[left\quad P(\lim_{n\to\infty}B_n^c)=P\left(\lim_{n\to\infty}\bigcup_{i=1}^nB_i^c\right)=P\left(\bigcup_{i=1}^{\infty}B_i^c\right)=P\left({\bigcap_{i=1}^{\infty}B_i}^c\right)\]</span></p>
-<p><span class="math display">\[=1-P\left(\bigcap_{i=1}^{\infty}B_i\right)=1-P\left(\lim_{n\to\infty}\bigcap_{i=1}^nB_i\right)=1-P\left(\lim_{n\to\infty}B_n\right)\quad \]</span></p>
-<p><span class="math display">\[right\quad \lim_{n\to\infty}P(B_n^c)=\lim_{n\to\infty}(1-P(B_n))=1-\lim_{n\to\infty}P(B_n)\]</span></p>
-<p><span class="math display">\[So\quad \lim_{n\to\infty}P(B_n)=P(\lim_{n\to\infty}B_n)\]</span></p>
-<p>let <span class="math inline">\(B_n=(-\infty,\ x+\frac1n]\)</span>, n=1,2,3,… Note: <span class="math inline">\(B_i\supset B_2\supset\)</span>…</p>
+<p>Now let <span class="math inline">\(B_1,B_2\)</span>,…be a sequance of events such that <span class="math inline">\(B1\supset B_2\supset..\)</span>, then</p>
+<p><span class="math display">\[B_1^c\subset B_2^c\subset...\]</span> So <span class="math display">\[P(\lim_{n\to\infty}B_n^c)=\lim_{n\to\infty}P(B_n^c)\]</span> left <span class="math display">\[P(\lim_{n\to\infty}B_n^c)=P\left(\lim_{n\to\infty}\bigcup_{i=1}^nB_i^c\right)=P\left(\bigcup_{i=1}^{\infty}B_i^c\right)=P\left({\bigcap_{i=1}^{\infty}B_i}^c\right)\]</span></p>
+<p><span class="math display">\[=1-P\left(\bigcap_{i=1}^{\infty}B_i\right)=1-P\left(\lim_{n\to\infty}\bigcap_{i=1}^nB_i\right)=1-P\left(\lim_{n\to\infty}B_n\right)\quad \]</span> right <span class="math display">\[\lim_{n\to\infty}P(B_n^c)=\lim_{n\to\infty}(1-P(B_n))=1-\lim_{n\to\infty}P(B_n)\]</span> So <span class="math display">\[\lim_{n\to\infty}P(B_n)=P(\lim_{n\to\infty}B_n)\]</span></p>
+<p>let <span class="math inline">\(B_n=(-\infty,\ x+\frac1n],\ n=1,2,3,..\)</span>, Note: <span class="math inline">\(B_i\supset B_2\supset\)</span>…</p>
 <p><span class="math display">\[\lim_{n\to\infty}B_n=(-\infty,\ x]\]</span></p>
-<p><span class="math display">\[P\left(\lim_{n\to\infty}B_n\right)=P\left((-\infty,\ x]\right)=F_X(x)\]</span></p>
-<p><span class="math display">\[left\quad \lim_{n\to\infty}P(B_n)=\lim_{n\to\infty}P\left((-\infty,\ x+\frac1n]\right)=\lim_{n\to\infty}F_X(x+\frac1n)\]</span></p>
+<p><span class="math display">\[P\left(\lim_{n\to\infty}B_n\right)=P\left((-\infty,\ x]\right)=F_X(x)\]</span> left <span class="math display">\[\lim_{n\to\infty}P(B_n)=\lim_{n\to\infty}P\left((-\infty,\ x+\frac1n]\right)=\lim_{n\to\infty}F_X(x+\frac1n)\]</span></p>
 <p><span class="math display">\[\therefore \lim_{n\to\infty}F_X(x+\frac1n)=F_X(x)\]</span></p>
-<ol start="7" style="list-style-type: decimal">
-<li>Probability Density Function</li>
-</ol>
-<p>Definition 1.6.3</p>
-<ol start="8" style="list-style-type: decimal">
-<li>Example</li>
-</ol>
+<p><code>p.7</code> Definition 1.6.3 If there exists a function <span class="math inline">\(f_X(x)\)</span> that satisfies <span class="math inline">\(\int_{-\infty}^xf_X(t)dt=F_X(x)\)</span>, then <span class="math inline">\(f_X(x)\)</span> is the <strong>probability Density Function (pdf)</strong> for the random variable X。</p>
+<p>Note: If <span class="math inline">\(f_X(x)\)</span> has derivative <span class="math inline">\(\forall x\)</span>, then <span class="math inline">\(\frac{d}{dx}f_X(x)\)</span> will be the pdf by the Fundamental theorem of calculus.</p>
+<p><code>p.8-10</code> Example</p>
+<p>Let <span class="math inline">\(f_X(x)=\begin{cases}\frac12&amp;-1&lt;x&lt;1\\0&amp;\text{elsewhere}\end{cases}\)</span></p>
+<p>Let <span class="math inline">\(F_X(x)=\int_{-\infty}^xf_X(t)dt=\begin{cases}0 &amp;x\le-1\\\frac{x+1}2&amp;-1\le x\le1\\1&amp;x\ge1\end{cases}\)</span></p>
+<p>This satisfies the 3 conditions of the theorem, so <span class="math inline">\(F_X(x)\)</span> is a valid cdf.</p>
+<p>Note: Suppose <span class="math inline">\(F_X(x)\)</span>, (<span class="math inline">\(P(X\le x)\)</span>) is continuous, what happens fi you try to evaluate <span class="math inline">\(P(X=x)\)</span>. Consider <span class="math inline">\(P(X\le x)-P(X\le x-\frac1n)\)</span>, take lim as <span class="math inline">\(n\to\infty\)</span></p>
+<p><span class="math display">\[\lim_{n\to\infty}(F_X(x)-F_X(x-\frac1n))=0\]</span></p>
 </div>
 </div>
 <div id="transformation-expectations" class="section level2">
 <h2>2 Transformation &amp; Expectations</h2>
 <div id="distribution-of-functions-of-a-random-variable" class="section level3">
 <h3>2.1 Distribution of Functions of a Random Variable</h3>
-<p><code>2018.10.11</code></p>
-<p>1-3. Example</p>
+<p><code>2018.10.11</code> <code>p.1-3</code> Example</p>
 <p><span class="math display">\[F_X(x)=\begin{cases}0 &amp;x\le-1\\ \frac12(x+1) &amp;-1\le x\le1\\1 &amp;x\ge1\end{cases}\]</span></p>
 <p>Let <span class="math inline">\(Y=X^2\)</span>, find its cdf</p>
 <p><span class="math display">\[F_Y(y)=P(Y\le y)=P(X^2\le y)=P(-\sqrt y\le X\le\sqrt y)=P(X\le\sqrt y)-P(X\le-\sqrt y)=F_X(\sqrt y)-F_X(-\sqrt y)\]</span></p>
 <p><span class="math display">\[(X\le\sqrt y)\cap (X\le-\sqrt y)\]</span></p>
 <p>Note: remember that our F was continuous</p>
-<p><span class="math display">\[F_Y(y)=\begin{cases}0 &amp;y&lt;0\\ \frac12(\sqrt y+1)-\frac12(-\sqrt y+1) &amp;0\le x\le1\\1 &amp;x&gt;1\end{cases}=\begin{cases}0 &amp;y&lt;0\\ \sqrt y &amp;0\le x\le1\\1 &amp;x&gt;1\end{cases}\]</span></p>
+<p><span class="math display">\[F_Y(y)=\begin{cases}0 &amp;y&lt;0\\ \frac12(\sqrt y+1)-\frac12(-\sqrt y+1)=\sqrt y &amp;0\le x\le1\\1 &amp;x&gt;1\end{cases}\]</span></p>
 <p>Find the pdf for Y.</p>
 <p>Since <span class="math inline">\(F_Y(y)\)</span> was continuous, find</p>
 <p><span class="math display">\[f_Y(y)=\frac{d}{dy}F_Y(y)=\begin{cases}\frac1{2\sqrt y} &amp;0&lt; y\le1\\0 &amp;elsewhere\end{cases}\]</span></p>
-<p>4-7. Special cases</p>
-<p>Assume the cdf is continuous. Let Y=g(X) be a tranformation of X</p>
-<p>Suppose g increase (monotone increasing)</p>
+<p><code>p.4-7</code> Special cases</p>
+<p>Assume the cdf is continuous, let Y=g(X) be a tranformation of X. Suppose g increase (monotone increasing)</p>
 <p><span class="math display">\[F_Y(y)=P(Y\le y)=P(g(X)\le y)=P(X\le g^{-1}(y))=F_X(g^{-1}(y))\]</span></p>
 <p><span class="math display">\[Now,\ f_Y(y)=\frac{d}{dy}F_Y(y)=\frac{d}{dy}F_X(g^{-1}(y))=f_X(g^{-1}(y))\frac{d}{dy}g^{-1}(y)=f_X(x)\frac{dx}{dy}\]</span></p>
 <p><span class="math display">\[But\ y=g(x),\quad so x=g^{-1}(y)\]</span></p>
@@ -759,11 +684,13 @@ Theorem 1.2.11 (a).<br />
 <p><span class="math display">\[f_Y(y)=\frac{d}{dy}F_Y(y)=\frac{d}{dy}(1-F_X(g^{-1}(y)))=-f_X(g^{-1}(y))\frac{d}{dy}g^{-1}(y)=-f_X(x)\frac{dx}{dy}\]</span></p>
 <p>Summary: Case 1 g increase, Case 2 g decrease</p>
 <p><span class="math display">\[f_Y(y)=f_X(x)|\frac{dx}{dy}|\]</span></p>
-<p>8-9. Example</p>
-<p>let X be a continuous rv with pdf</p>
-<p><span class="math display">\[f_x(x)=\begin{cases}1 &amp;0&lt;x&lt;1\\0 &amp;elsewhere\end{cases}\]</span></p>
-<p><span class="math display">\[f_Y(y)=\begin{cases}\frac12e^{\frac{y}2} &amp;0&lt;y&lt;\infty\\0 &amp;elsewhere\end{cases}\]</span></p>
-<p>10-12. Example</p>
+<p><code>p.8-9</code> Example</p>
+<p>let X be a continuous rv with pdf <span class="math inline">\(f_X(x)=\begin{cases}1 &amp;0&lt;x&lt;1\\0 &amp;\text{elsewhere}\end{cases}\)</span>. Let <span class="math inline">\(Y=-2\ln X\)</span> (Note:<span class="math inline">\(\downarrow\)</span>), finde the pdf for Y</p>
+<p><span class="math display">\[f_Y(y)=f_X(x)|\frac{dx}{dy}|=1\cdot\frac12e^{-\frac{y}2}\]</span></p>
+<p><span class="math inline">\(y=-2l\ln x\)</span>, <span class="math inline">\(\ln x=-\frac12y\)</span>, <span class="math inline">\(x=e^{-\frac{y}2}\)</span>, <span class="math inline">\(\frac{dx}{dy}=e^{-\frac{y}2}\)</span></p>
+<p>for <span class="math inline">\(0&lt;x&lt;1\)</span>, <span class="math inline">\(0&lt;e^{-\frac{y}2}&lt;1\)</span>, <span class="math inline">\(-\infty&lt;-\frac{y}2&lt;0\)</span>, <span class="math inline">\(\infty&gt;y&gt;0\)</span></p>
+<p><span class="math display">\[f_Y(y)=\begin{cases}\frac12e^{\frac{y}2} &amp;0&lt;y&lt;\infty\\0 &amp;\text{elsewhere}\end{cases}\]</span></p>
+<p><code>p.10-12</code>Example</p>
 <p><span class="math display">\[f_x(x)=\frac1{\sqrt{2\pi}}e^{-\frac{x^2}2}\quad -\infty&lt;x&lt;\infty\]</span></p>
 <p>Let <span class="math inline">\(Y=X^2\)</span>, not monotone, so no shortcut</p>
 <p><span class="math display">\[F_Y(y)=P(Y\le y)=P(X^2\le y)=P(-\sqrt y\le X\le\sqrt y)=P(X\le\sqrt y)-P(X\le-\sqrt y)\]</span></p>
@@ -771,34 +698,29 @@ Theorem 1.2.11 (a).<br />
 <p><span class="math display">\[f_Y(y)=\frac{d}{dy}F_Y(y)=\frac{d}{dy}[F_X(\sqrt y)-F_X(-\sqrt y)]=f_x(\sqrt y)\frac1{2\sqrt y}-f_x(-\sqrt y)\frac{-1}{2\sqrt y}\]</span></p>
 <p><span class="math display">\[=\frac1{\sqrt{2\pi}}e^{-\frac{y}2}\frac1{2\sqrt y}+\frac1{\sqrt{2\pi}}e^{-\frac{y}2}\frac1{2\sqrt y}=\frac1{\sqrt{2\pi}}e^{-\frac{y}2}\frac1{\sqrt y}\quad for\ y&gt;0,\ -\infty&lt;x&lt;\infty\]</span></p>
 <p><span class="math display">\[f_Y(y)=\begin{cases}\frac1{\sqrt{2\pi y}}e^{-\frac{y}2} &amp;y&gt;0\\0 &amp;elsewhere\end{cases}\]</span></p>
-<p><code>2018.10.16</code></p>
-<p>1.2. Another transformation example</p>
+<p><strong>Theorem 2.1.10 (Probability integral transformation)</strong> Let <span class="math inline">\(X\)</span> have continuous cdf <span class="math inline">\(F_X(x)\)</span> and define the random variable <span class="math inline">\(Y\)</span> as <span class="math inline">\(Y=F_X(x)\)</span>. Then Y is uniformly distributed on <span class="math inline">\((0,1)\)</span>, that is, <span class="math inline">\(P(Y\le y)=y, 0&lt;y&lt;1\)</span></p>
+<p><strong>Proof of Theorem 2.1.10</strong></p>
+<p><code>2018.10.16</code> <code>p.1-2</code> Another transformation example</p>
 <p>Let X have cdf <span class="math inline">\(F_X(x)\)</span> and assume that F is continuous and monotone increasing. define Y=F(X). Find the pdf for Y</p>
 <p><span class="math display">\[f_Y(y)=f_X(x)|\frac{dx}{dy}|\quad and\quad \frac{dx}{dy}=\frac1{\frac{dy}{dx}}=\frac1{f_X(x)}\]</span></p>
 <p><span class="math display">\[So\quad f_Y(y)=f_X(x)\frac1{f_X(x)}=1\quad for\ 0\le y\le1\]</span></p>
 </div>
 <div id="expected-values" class="section level3">
 <h3>2.2 Expected Values</h3>
-<p><code>2018.10.16</code></p>
-<p>3.4. Expectation operator</p>
-<p>Definition:</p>
-<p>If X is discrete r.v. and g(X) is any function of X, then</p>
+<p><code>p.3-5</code> Expectation operator</p>
+<p>Definition: If X is discrete r.v. and g(X) is any function of X, then</p>
 <p><span class="math display">\[E(g(X))=\sum_{all\ x}g(x)p_x(x)\]</span></p>
 <p>(provided that <span class="math inline">\(\sum_{all\ x}|g(x)|p_x(x)&lt;\infty\)</span>)</p>
 <p>If X is continnuous r.v. and Y=g(X), then</p>
 <p><span class="math display">\[E(g(X))=\int_{-\infty}^{\infty}g(x)f_x(x)dx\]</span></p>
 <p>(provided that <span class="math inline">\(\int_{-\infty}^{\infty}g(x)f_x(x)dx&lt;\infty\)</span>)</p>
 <p>Special case:</p>
-<p><span class="math display">\[E(X)=\begin{cases}\sum_{all\ x}xp_x(x) &amp;descrete\\\int_{-\infty}^{\infty}xf_x(x)dx &amp;continuous\end{cases}\]</span></p>
-<p><span class="math display">\[E(X^n)=\begin{cases}\sum_{all\ x}x^np_X(x) &amp;descrete\\\int_{-\infty}^{\infty}x^nf_x(x)dx &amp;continuous\end{cases}\]</span></p>
-<p>Definition: E(X) is the mean of the random variable <span class="math inline">\(\mu=E(X)\)</span> (2011 version)</p>
-<p>Definition: E(X^n) is the n^th moment of the random variable X.</p>
-<p><span class="math display">\[Notation\quad\mu_n'=E(X^n),\quad (So\quad \mu_1'=E(X)=\mu)\]</span></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Example-Exponential_distribution</li>
-</ol>
-<p><span class="math display">\[Let\quad f_X(x)=\frac1\lambda e^{-\frac x\lambda},\ x&gt;0 \]</span></p>
-<p>Find E(X)</p>
+<p><span class="math display">\[E(X)=\begin{cases}\sum_{all\ x}xp_x(x) &amp;\text{descrete}\\\int_{-\infty}^{\infty}xf_x(x)dx &amp;\text{continuous}\end{cases}\]</span></p>
+<p><span class="math display">\[E(X^n)=\begin{cases}\sum_{all\ x}x^np_X(x) &amp;\text{descrete}\\\int_{-\infty}^{\infty}x^nf_x(x)dx &amp;\text{continuous}\end{cases}\]</span></p>
+<p><code>p.3-5</code></p>
+<p>Definition: <span class="math inline">\(E(X)\)</span> is the <strong>mean</strong> of the random variable <span class="math inline">\(\mu=E(X)\)</span> (2011 version)</p>
+<p>Definition: <span class="math inline">\(E(X^n)\)</span> is the <strong>nth moment</strong> of the random variable X. Notation <span class="math inline">\(\mu_n'=E(X^n)\)</span>,So <span class="math inline">\(\mu_1'=E(X)=\mu)\)</span>.</p>
+<p><code>p.6-7</code> Example: (Exponential distribution) Let <span class="math inline">\(f_X(x)=\frac1\lambda e^{-\frac x\lambda},\ x&gt;0\)</span>, Find E(X)</p>
 <table>
 <thead>
 <tr class="header">
@@ -817,8 +739,7 @@ Theorem 1.2.11 (a).<br />
 <p>let <span class="math inline">\(u=x,\ dv=\frac1\lambda e^{-\frac x\lambda}dx\)</span>, then <span class="math inline">\(du=dx,\ v=-e^{-\frac x\lambda}\)</span></p>
 <p><span class="math display">\[=\int_{0}^{\infty}udv=\left.uv\right|_0^\infty -\int_{0}^{\infty}vdu=-\left.x\frac1\lambda e^{-\frac x\lambda}\right|_0^\infty +\int_{0}^{\infty}e^{-\frac x\lambda}dx=\left.\frac{-x}{e^{\frac x\lambda}}\right|_0^\infty-\left.\lambda e^{\frac x\lambda}\right|_0^\infty=0-(0)-(0-\lambda)=\lambda\]</span></p>
 <p>use <strong>[integration by parts]</strong> and by <strong>L’Hospital’s rule</strong></p>
-<p>8-10. Example-Binomial_distribution</p>
-<p><span class="math display">\[let\quad p_X(x)=\binom{n}xp^x(1-p)^{n-x},\ x=0,1,2,...n,\ 0&lt;p&lt;1\]</span></p>
+<p><code>p.8-10</code> Example: (Binomialdistribution) let <span class="math inline">\(p_X(x)=\binom{n}xp^x(1-p)^{n-x},\ x=0,1,2,...n,\ 0&lt;p&lt;1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -833,38 +754,65 @@ Theorem 1.2.11 (a).<br />
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\text{By the Binomial Theorem}\quad \sum_{x=0}^n\binom{n}xp^x(1-p)^{n-x}=(p+(1-p))^n=1\]</span></p>
+<p>Binomial Theorem: <span class="math inline">\((a+b)^n=\sum_{i=0}^n\binom{n}ia^ib^{n-i}\)</span>, note: <span class="math display">\[\sum_{all\ x}p_X(x)=\sum_{x=0}^n\binom{n}xp^x(1-p)^{n-x}=(p+(1-p))^n=1\]</span></p>
 <p><span class="math display">\[E(X)=\sum_{x=0}^n\binom{n}xp^x(1-p)^{n-x}=\sum_{x=1}^n\binom{n}xp^x(1-p)^{n-x}\]</span></p>
 <p><span class="math display">\[E(X)=np\]</span></p>
-<p>11.12. Example-Cauchy_distribution</p>
-<p><span class="math display">\[Let\quad f_X(x)=\frac1\pi\frac1{1+x^2},\quad -\infty&lt;x&lt;\infty\]</span></p>
+<p><code>p.11-12</code> Example: (Cauchy distribution) Let <span class="math inline">\(f_X(x)=\frac1\pi\frac1{1+x^2},\quad -\infty&lt;x&lt;\infty\)</span>, Find E(X)</p>
 <p>E(X) is undefined</p>
-<ol start="13" style="list-style-type: decimal">
-<li>Properties of Expectation</li>
+<p><code>p.12-13</code> Properties of Expectation operator</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(E[K]=K\)</span></li>
+<li><span class="math inline">\(E[Kg(X)]=KE[g(X)]\)</span></li>
+<li><span class="math inline">\(E[g(X)+h(X)]=E[g(X)]+E[h(X)]\)</span></li>
 </ol>
-<p><span class="math display">\[E(K)=K\]</span></p>
-<p><span class="math display">\[E(Kg(X))=KE(g(X))\]</span></p>
-<p><span class="math display">\[E(g(X)+h(X))=E(g(X))+E(h(X))\]</span></p>
 <p>Note: Operators with properties (2)and(3) are called linear operator.</p>
-<p>14.15. Variance</p>
-<p>Definition: The Variance of a random variable is</p>
+<p><code>p.14-15</code></p>
+<p>Definition: The <strong>Variance</strong> of a random variable is</p>
 <p><span class="math display">\[\sigma^2=V(X)=Var(X)=E[(x-\mu)^2]\]</span></p>
 <p>Alternate form:</p>
 <p><span class="math display">\[\sigma^2=E[x^2-2x\mu+\mu^2]=E[x^2]-2\mu E(x)+\mu^2]=E[x^2]-2\mu^2+\mu^2]=E[x^2]-\mu^2=E[x^2]-(E[X])^2\]</span></p>
-<p><code>2018.10.18</code></p>
+<p><code>2018.10.18</code> <code>p.1</code></p>
+<p>Definition: <span class="math inline">\(E(X^n)\)</span> is the mean of the random variable.</p>
+<p><span class="math inline">\(\mu_n'=E(X^n),\quad note\quad \mu_1'=\mu\)</span></p>
+<p><code>p.2-4</code> Properties of V[X]</p>
 <ol style="list-style-type: decimal">
-<li>Properties</li>
+<li><span class="math inline">\(V[K]=0\)</span></li>
+<li><span class="math inline">\(V[aX]=a^2V[X]\)</span></li>
+<li><span class="math inline">\(V[g(X)+h(X)]=V[g(X)]+V[h(X)]+2\left\{E[g(X)h(X)]-E[g(X)]E[h(X)]\right\}\)</span>. The variance is a quadratic operator.</li>
+<li><span class="math inline">\(V[aX+b]=a^2V[X}\)</span></li>
 </ol>
 </div>
 <div id="moments-and-moment-generating-functions" class="section level3">
 <h3>2.3 Moments and Moment Generating Functions</h3>
-<ol start="3" style="list-style-type: decimal">
-<li>Monment</li>
+<p><code>p.5</code> Definition: <span class="math inline">\(M_X(t)=E[e^{tx}]\)</span> this is called the moment-generating function for the r.v. X.</p>
+<p><code>p.6-8</code> Propoties</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(M_X(0)=E[e^{0}]=1\)</span></li>
 </ol>
-<hr />
-<p>Definition: <span class="math inline">\(E(X^n)\)</span> is the mean of the random variable</p>
-<hr />
-<p><span class="math inline">\(\mu_n'=E(X^n),\quad note\quad \mu_1'=\mu\)</span></p>
+<p>Proof</p>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(M'_X(0)=E[X]\)</span></li>
+<li><span class="math inline">\(M''_X(0)=E[X^2]\)</span></li>
+</ol>
+<p><code>p.8-9</code> Example: <span class="math inline">\(f_X(x)=\frac1\lambda e^{-\frac{x}\lambda}\)</span>, <span class="math inline">\(x&gt;0\)</span></p>
+<p><span class="math display">\[M_X(t)=E[e^{tx}]=\cdots=\frac1{1-\lambda t}\]</span></p>
+<p>Check <span class="math inline">\(M_X(0)=1\)</span></p>
+<p><span class="math display">\[M'_X(t)=-(1-\lambda t)^{-2}(-\lambda)=\lambda(1-\lambda t)^{-2}\]</span></p>
+<p><span class="math display">\[M''_X(t)=\lambda(-2)(1-\lambda t)^{-3}(-\lambda)=2\lambda^2(1-\lambda t)^{-3}\]</span></p>
+<p><span class="math display">\[M'_X(0)=\lambda=E[X]\]</span></p>
+<p><span class="math display">\[M''_X(0)=2\lambda^2=E[X^2]\]</span></p>
+<p><span class="math display">\[\sigma^2=2\lambda^2-\lambda^2=\lambda^2\]</span></p>
+<p><code>p.10-11</code> Example: <span class="math inline">\(p_X(x)=\binom{n}xp^x(1-p)^{n-x}\)</span>, <span class="math inline">\(x=0,1,..n\)</span></p>
+<p><span class="math display">\[M_X(t)=E[e^{tx}]=\cdots={(pe^t+q)^n}\]</span></p>
+<p>Check <span class="math inline">\(M_X(0)=(p+q)^n=1\)</span></p>
+<p><span class="math display">\[M'_X(t)=\cdots=npe^t(pe^t+q)^{n-1}\]</span></p>
+<p><span class="math display">\[M''_X(t)=\cdots=np[e^t(n-1)(pe^t+q)^{n-2}pe^t+e^t(pe^t+q)^{n-1}]\]</span></p>
+<p><span class="math display">\[M'_X(0)=np=E[X]\]</span></p>
+<p><span class="math display">\[M''_X(0)=np[(n-1)p+1]=n(n-1)p^2+np=E[X^2]\]</span></p>
+<p><span class="math display">\[\sigma^2=\cdots=npq\]</span></p>
+<p><code>p.12</code></p>
+<p>Definition: The standard deciation of a r.v. X is <span class="math inline">\(\sigma=\sqrt{V[X]}\)</span></p>
+<p>Definition: The coefficient of varaition of a r.v. X is <span class="math inline">\(CV=\frac{\sigma}{\mu}\)</span></p>
 </div>
 <div id="diffenetiating-under-an-integral-sign" class="section level3">
 <h3>2.4 Diffenetiating Under an Integral Sign</h3>
@@ -872,6 +820,270 @@ Theorem 1.2.11 (a).<br />
 </div>
 <div id="families-of-distributions" class="section level2">
 <h2>3 Families of Distributions</h2>
+<div id="inequalities-and-identities" class="section level3">
+<h3>3.6 Inequalities and Identities</h3>
+<div id="probability-inequalities" class="section level4">
+<h4>3.6.1 Probability Inequalities</h4>
+<p><code>2018.10.18</code> <code>p.12-14</code> Chebyshev’s Theorem</p>
+<p><code>2018.10.23</code> <code>p.1-7</code> Chebyshev’s Inequality</p>
+<p><code>p.8</code> Jensen’s Inequality</p>
+<p><code>p.9-11</code> Example</p>
+</div>
+<div id="identities" class="section level4">
+<h4>3.6.2 Identities</h4>
+</div>
+</div>
+<div id="discrete-distributions" class="section level3">
+<h3>3.2 Discrete Distributions</h3>
+<div id="discrete-uniform-distribution" class="section level4">
+<h4>Discrete uniform distribution</h4>
+<p><code>p.12</code> Definition</p>
+<p><code>p.13</code> V[X], M_X[t]</p>
+<p>X take on the values {1,2,..,n} with probabilites <span class="math inline">\(\frac1N\)</span> each.</p>
+</div>
+<div id="bernoulli-distribution" class="section level4">
+<h4>Bernoulli distribution</h4>
+<p><code>p.14</code> Definition</p>
+</div>
+<div id="binomial-distribution" class="section level4">
+<h4>Binomial distribution</h4>
+<p><code>p.15-16</code> Definition: Binomial experiment</p>
+<ul>
+<li>sequence of n independent trials</li>
+<li>each trial results in one of 2 possible outcomes (0,1)</li>
+<li>the probability of a “1” is the same in each trial (p)</li>
+<li>X counts the number of 1s.</li>
+</ul>
+</div>
+<div id="geometric-distribution" class="section level4">
+<h4>Geometric distribution</h4>
+<p><code>2018.10.25</code></p>
+<p><code>p.1</code> Definition</p>
+<p>Run a sequence of independent trails, 2 possible outcoumes in each, constan success probability p.</p>
+<p>X= trial in which <span class="math inline">\(1^{st}\)</span> success occurs</p>
+<p><span class="math inline">\(p_X(x)=pq^{x-1}, x=1,2,3..\)</span></p>
+<p><code>p.2-4</code> <span class="math inline">\(M_X(t)\)</span>, <span class="math inline">\(\sigma^2\)</span></p>
+</div>
+<div id="negative-binomial-distribution" class="section level4">
+<h4>Negative Binomial distribution</h4>
+<p><code>p.4-5</code> Definition</p>
+<p>Run a sequance of Bernouli trials, X= trial in which the <span class="math inline">\(r^{th}\)</span> success occurs.</p>
+<p><code>p.6-7</code> <span class="math inline">\(M_X(t)\)</span>, <span class="math inline">\(E[X]\)</span>, <span class="math inline">\(V[X]\)</span></p>
+</div>
+<div id="hypergeometric" class="section level4">
+<h4>Hypergeometric</h4>
+<p><code>p.8-9</code> Definition</p>
+<p>Take a random sample of K objects, without replacement, from a population of N objects. In the population, M items are of a particular type. X counts the number of items of that type in the sample.</p>
+<p><span class="math inline">\(p_X(x)=\frac{\binom{m}{x}\binom{N-m}{k-x}}{\binom{N}{k}}, \max(0,K-N+M)\le x\le\min(K,M)\)</span></p>
+<p><code>2018.11.1</code></p>
+<p><code>p.1-4</code> Find E[X]</p>
+<p>Case 1: a=0</p>
+<p><span class="math inline">\(E[X]=K\frac{M}N\)</span></p>
+<p>Let y=x-1</p>
+<p><span class="math inline">\(V[X]=K\frac{M}N(1-\frac{M}N)\frac{N-K}{N-1}\)</span></p>
+<p><code>p.5-6</code> Hypergeometric and Binomial</p>
+<p>If <span class="math inline">\(N\rightarrow\infty\)</span> and hold <span class="math inline">\(\frac{M}N=p\)</span> constant.</p>
+</div>
+<div id="poisson" class="section level4">
+<h4>Poisson</h4>
+<p><code>p.7-14</code> let f(x,h) be the probability of seeing exactly x occurrences of a particular type in a time interval of length h.</p>
+<p><code>2018.11.6</code> <code>p.1-4</code></p>
+<p><code>p.5</code> pdf</p>
+<p><code>p.6</code> <span class="math inline">\(M_X(t)\)</span></p>
+<p><code>p.7</code> <span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\sigma^2\)</span></p>
+<p><code>p.8-9</code> Binom and Poisson</p>
+<p>let <span class="math inline">\(n\rightarrow\infty\)</span>,<span class="math inline">\(p\rightarrow0\)</span> (hold <span class="math inline">\(np=\mu\)</span> constant)</p>
+<p><code>p.10</code> Hypergeom and Binom and Poisson</p>
+<p><span class="math display">\[\left.\begin{array}\ Hypergeom \\Bernoulli \end{array} \right\} \rightarrow Bino \rightarrow Poisson\]</span></p>
+<p><span class="math display">\[Neg\ Hyper \rightarrow Neg\ Bino \rightarrow \begin{cases}?\\Geometric \end{cases}\]</span></p>
+<p><code>p.11-12</code> Numerical example</p>
+<p>Population of 10000 people take a sample of 1000, without replacement. In the population, 500 have blue eyes. Find the probability of getting exactly 45 people in the sample with blue eyes.</p>
+<p><span class="math inline">\(Hyper(N=10000, M=500, K=1000), P(X=45)=\frac{\binom{500}{45}\binom{9500}{955}}{\binom{10000}{1000}}=0.047136\)</span></p>
+<pre class="r"><code>dhyper(45, 500, 9500, 1000, log = FALSE)</code></pre>
+<pre><code>## [1] 0.04713584</code></pre>
+<p><span class="math inline">\(Binom(n=1000,p=0.05), P(X=45)=\binom{1000}{45}(0.05)^{45}(0.95)^{955}=0.046281\)</span></p>
+<pre class="r"><code>dbinom(45, 1000, 0.05, log = FALSE)</code></pre>
+<pre><code>## [1] 0.0462814</code></pre>
+<p><span class="math inline">\(Poisson(\mu=50), P(X=45)=\frac{50^{45}}{45!}e^{-50}=0.045826\)</span></p>
+<pre class="r"><code>dpois(45, 50, log = FALSE)</code></pre>
+<pre><code>## [1] 0.04582624</code></pre>
+<p><code>p.13-15</code> Poisson and Exponential</p>
+<p>Suppose we have a Poisson process, let T be the waiting time until the <span class="math inline">\(r^th\)</span> occurrences.</p>
+<p>Find P(T&gt;t)=P(there were at most r-1 occurrences in (0,t))=<span class="math inline">\(P(X\le r-1)\)</span>, where X has a Possion distribution with <span class="math inline">\(\mu=\lambda t\)</span>. (<span class="math inline">\(\lambda\)</span> expected number occurrences per unit time)</p>
+</div>
+</div>
+<div id="continuous-distributions" class="section level3">
+<h3>3.3 Continuous Distributions</h3>
+<div id="gamma-distribution" class="section level4">
+<h4>Gamma distribution</h4>
+<p><code>p.16</code> Definition: Gamma function</p>
+<p><span class="math inline">\(\Gamma(\alpha)=\int_0^\infty t^{\alpha-1}e^{-t}dt\)</span></p>
+<p><code>2018.11.8</code></p>
+<p><code>p.1</code> pdf</p>
+<p><span class="math inline">\(f_T(\alpha,\beta)=\frac{1}{\Gamma(a)\beta^{\alpha}}x^{a-1}e^{-\frac{x}\beta},t&gt;0,\beta&gt;0\)</span></p>
+</div>
+<div id="exponential" class="section level4">
+<h4>Exponential</h4>
+<p><code>p.2</code> Gamma and Exponential</p>
+<p><span class="math inline">\(f_T(t)=\frac1{\Gamma(1)\beta^1}t^0e^{-\frac{t}\beta},t&gt;0\)</span></p>
+<p><span class="math inline">\(\mu=\beta=\frac1\lambda\)</span></p>
+<p><span class="math inline">\(\sigma^2=\beta^2=\frac1{\lambda^2}\)</span></p>
+<p><code>p.3-5</code> mgf, <span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\sigma^2\)</span></p>
+<p><code>p.6</code> <span class="math inline">\(E[X^v]=\frac{\beta^v\Gamma(v+\alpha)}{\Gamma(\alpha)}\)</span></p>
+<p><code>p.6-9</code> Proof: <span class="math inline">\(\Gamma(0.5)=\sqrt\pi\)</span></p>
+<p><code>p.10-12</code> Gamma and Chi-squared distribution with k degrees of freedom</p>
+<p><span class="math inline">\(Gamma(\alpha=\frac{k}2,\beta=2)=\chi^2(k)\)</span></p>
+</div>
+<div id="normal-distribution" class="section level4">
+<h4>Normal Distribution</h4>
+<p><code>p.10-12</code> Normal density function</p>
+<p><code>p.13-14</code> <span class="math inline">\(M_X(t)\)</span></p>
+<p><code>p.16</code> Standard normal density</p>
+<p><code>2018.11.13</code> <code>p.1-2</code> Standard Normal and Gamma, Chi-squared</p>
+<p><span class="math inline">\(X\sim N(0,1);\ X=Y^2;\ Y\sim Gamma(\frac12,2)\sim\chi^2(1)\)</span></p>
+<p><code>p.3-6</code> Gamma and Poisson</p>
+<p><span class="math inline">\(T\sim Gamma(\alpha,\beta)\)</span></p>
+<p><span class="math inline">\(P(T&gt;t)=P(X\le\alpha-1)\)</span>, where <span class="math inline">\(T\sim Gamma(\alpha,\beta)\)</span>, <span class="math inline">\(X\sim Poisson(\lambda=\frac{t}\beta)\)</span></p>
+<p>That is, T is measuring the waiting time for the <span class="math inline">\(\alpha^{th}\)</span> occurrence in a Poisson process.</p>
+<p><code>p.6-7</code> Example: Pizza</p>
+<p>Suppose a pizza place gets 1 order every 3 miniutes, following a Poisson process. Assume that the driver is engaged when the 5th order arrives. Find the probability that this happen in 10 minutes or less.</p>
+<p>Let T=waiting time for 5 orders, <span class="math inline">\(T\sim Gamma(\alpha=5,\beta=3)\)</span> (later is expected time between occurences)</p>
+<p><span class="math display">\[P(T\le10)=1-P(T&gt;10)=1-P(X\le4)=1-0.7565=0.2435\]</span> Where <span class="math inline">\(X\sim Poisson(\lambda=\frac{t}\beta=\frac{10}3)\)</span></p>
+<pre class="r"><code>pgamma(10, 5, rate = 1/3, lower.tail = TRUE,log.p = FALSE)</code></pre>
+<pre><code>## [1] 0.2435058</code></pre>
+<pre class="r"><code>ppois(4, 10/3, lower.tail = TRUE, log.p = FALSE)</code></pre>
+<pre><code>## [1] 0.7564942</code></pre>
+<p><code>p.8-9</code> A property of the exponential distribution “Memoryless”</p>
+</div>
+<div id="beta-distribution" class="section level4">
+<h4>Beta distribution</h4>
+<p><code>p.10</code> Beta function and Beta pdf</p>
+<p><span class="math inline">\(B(\alpha,\beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1}dt\)</span></p>
+<p><span class="math inline">\(f_X(x)=\frac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}， x\in(0,1)\)</span></p>
+<p><code>p.11-13</code> How is theis related to the gamma function?</p>
+<p><span class="math display">\[\Gamma(\alpha)\Gamma(\beta)=\]</span> Let <span class="math inline">\(s=uv,t=(1-u)v\)</span>, <span class="math inline">\(u=\frac{s}v, t=(1-\frac{s}v)v=v-s\)</span>. So <span class="math inline">\(v=s+t, u=\frac{s}{s+t}\)</span></p>
+<p><span class="math display">\[J=\begin{vmatrix}\frac{\partial u}{\partial s} &amp; \frac{\partial u}{\partial t} \\ \frac{\partial v}{\partial s} &amp; \frac{\partial v}{\partial t} \end{vmatrix}= =\frac1v\]</span></p>
+<p><span class="math display">\[\Gamma(\alpha)\Gamma(\beta)=B(\alpha,\beta)\Gamma(\alpha+\beta)\]</span></p>
+<p><span class="math display">\[\therefore B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\]</span></p>
+<p><code>2018.11.15</code> <code>p.1-3</code></p>
+<p><span class="math inline">\(E[x^n]\)</span></p>
+<p><span class="math inline">\(E[x^n]=\int_0^1\frac{x^{n+x-1}}{B(\alpha,\beta)}(1-x)^{\beta-1}dx=\frac{B(n+\alpha,\beta)}{B(\alpha,\beta)}=\frac{\Gamma(a+n)\Gamma(a+b)}{\Gamma(a+b+n)\Gamma(a)}\)</span></p>
+<p><span class="math inline">\(E[x]=\frac{\alpha}{\alpha+\beta}\)</span></p>
+<p><span class="math inline">\(E[x^2]=\frac{a(a+1)}{(a+b)(a+b+1)}\)</span></p>
+<p><span class="math inline">\(\sigma^2=E[x^2]-\mu^2=\frac{ab}{(a+b)^2(a+b+1)}\)</span></p>
+</div>
+<div id="cauchy-diftribution" class="section level4">
+<h4>Cauchy diftribution</h4>
+<p><code>p.4</code></p>
+<p><span class="math display">\[f_X(x)=\frac1\pi\cdot\frac1{1+(x-\theta)^2},\quad -\infty&lt;x&lt;\infty\]</span></p>
+<p><span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> do not exist. <span class="math inline">\(\theta\)</span> is the median.</p>
+</div>
+<div id="uniform-distribution" class="section level4">
+<h4>uniform distribution</h4>
+<p><code>p.5-7</code> pdf</p>
+<p><span class="math inline">\(f_X(x)=\frac1{b-a}, a&lt;x&lt;b\)</span></p>
+<p><span class="math inline">\(E[x]=\frac{a+b}{2}\)</span></p>
+<p><span class="math inline">\(E[x^2]=\frac{b^2+ab+a^2}{3}\)</span></p>
+<p><span class="math inline">\(\sigma^2=E[x^2]-\mu^2=\frac{(b-a)^2}{12}\)</span></p>
+<p><span class="math inline">\(M_X(t)=\frac{e^{tb}-e^{ta}}{(b-a)t}\)</span></p>
+<p>Note: <span class="math inline">\(M_X(t)\)</span> is undefined at t=o, but the limit as <span class="math inline">\(t\rightarrow0\)</span> is 1.</p>
+</div>
+<div id="log-normal-distribution" class="section level4">
+<h4>log-normal distribution</h4>
+<p><code>p.8-10</code> log-normal and normal</p>
+<p>Let Y have a normal distribution <span class="math inline">\(N(\mu,\sigma^2)\)</span></p>
+<p>Let <span class="math inline">\(X=e^Y\)</span>, <span class="math inline">\(y=\ln x\)</span>, <span class="math inline">\(\frac{dy}{dx}=\frac1x\)</span></p>
+<p><span class="math inline">\(f_X(x)=g(y）|\frac{dy}{dx}|=\frac{1}{x\sigma \sqrt{2\pi}}e^{\frac{-(\ln x-\mu)^2}{2\sigma^2}}， x&gt;0\)</span></p>
+<p><span class="math inline">\(E[x]=e^{\mu+\frac{\sigma^2}2}\)</span></p>
+<p><span class="math inline">\(E[x^2]=e^{2\mu+2\sigma^2}\)</span></p>
+<p><span class="math inline">\(V[x]=E[x^2]-\mu^2=e^{2\mu+\sigma^2}(e^{\sigma^2}-1)\)</span></p>
+</div>
+<div id="double-exponential-laplace-distribution" class="section level4">
+<h4>double exponential (Laplace) distribution</h4>
+<p><code>p.11</code></p>
+<p><span class="math display">\[f_X(x)=\frac{1}{2\sigma} e^{-|\frac{x-\mu}{\sigma}|}, -\infty&lt;x&lt;\infty\]</span></p>
+<p><code>p.12-15</code></p>
+<p><span class="math display">\[M_X(t)=E[e^{tx}]=\int_{-\infty}^{\infty}e^{tx}\frac{1}{2\sigma} e^{-|\frac{x-\mu}{\sigma}|}dx=\]</span></p>
+<p><span class="math display">\[=\frac{e^{\mu t}}{1-\sigma^2t^2}\]</span></p>
+<p><span class="math inline">\(M'_X(t)=\frac{e^{\mu t}(\mu-\mu\sigma^2t^2+2\sigma^2t)}{(1-\sigma^2t^2)^2}\)</span></p>
+<p><span class="math inline">\(E[x]=\mu\)</span></p>
+<p><span class="math inline">\(E[x^2]=\mu^2+2\sigma^2\)</span></p>
+<p><span class="math inline">\(V[x]=2\sigma^2\)</span></p>
+</div>
+</div>
+<div id="exponential-family" class="section level3">
+<h3>3.4 Exponential family</h3>
+<p><code>2018.11.20</code></p>
+<p><code>p.1</code> Definition:</p>
+<p>Let f(x) be a density funtion with parameters <span class="math inline">\(\vec\theta=(\theta_1,\theta_2,..,\theta_a)\)</span>, then <span class="math inline">\(f(x|\vec\theta)\)</span> is an exponential family of densities if you can write</p>
+<p><span class="math display">\[f(x|\vec\theta)=h(x)c(\vec\theta)e^{\sum_{i=1}^kw_i(\vec\theta)t_i(x)}, -\infty&lt;x&lt;\infty\]</span></p>
+<p>If d=k, them the family is full.</p>
+<p>If d=k, them the family is curved.</p>
+<p><code>p.2</code> Example: Binom(n,p) with n known</p>
+<p><span class="math display">\[f(x|p),\ or\ f_p(x)=\binom{n}xp^x(1-p)^{n-x}, x=0,1,..n\]</span></p>
+<p>Let <span class="math display">\[I(x)=\begin{cases}1 &amp; if\ x=0,1..,n\\ 0 &amp; otherwise \end{cases}\]</span></p>
+<p><span class="math display">\[f(x|p)=\binom{n}xI(x)(1-p)^ne^{x\ln{p}-x\ln(1-p)}, -\infty&lt;x&lt;\infty\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(h(x)\)</span></th>
+<th><span class="math inline">\(c(\vec\theta)\)</span></th>
+<th><span class="math inline">\(w_1(\vec\theta)\)</span></th>
+<th><span class="math inline">\(t_1(x)\)</span></th>
+<th><span class="math inline">\(w_2(\vec\theta)\)</span></th>
+<th><span class="math inline">\(t_2(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\binom{n}xI(x)\)</span></td>
+<td><span class="math inline">\((1-p)^n\)</span></td>
+<td><span class="math inline">\(\ln{p}\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+<td><span class="math inline">\(\ln(1-p)\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[f(x|p)=\binom{n}xI(x)(1-p)^ne^{x\ln(\frac{p}{1-p})}, -\infty&lt;x&lt;\infty\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(h(x)\)</span></th>
+<th><span class="math inline">\(c(\vec\theta)\)</span></th>
+<th><span class="math inline">\(w_1(\vec\theta)\)</span></th>
+<th><span class="math inline">\(t_1(x)\)</span></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\binom{n}xI(x)\)</span></td>
+<td><span class="math inline">\((1-p)^n\)</span></td>
+<td><span class="math inline">\(\ln(\frac{p}{1-p})\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>p.3-4</code> Example: <span class="math inline">\(N(\mu,\sigma^2)\)</span></p>
+<p><code>p.5</code> Example: Unit(a,b)</p>
+<p><code>p.6</code> Theorem</p>
+</div>
+<div id="location-scale-family" class="section level3">
+<h3>3.5 Location-scale family</h3>
+<p><code>p.7-8</code> Definition:</p>
+<p><code>p.9</code> Example: <span class="math inline">\(Gamma(\alpha,\beta)\)</span></p>
+<p><code>p.10</code> Example: <span class="math inline">\(Cauchy(\theta)\)</span></p>
+<p><code>p.11</code> Theorem</p>
+<p>Let f(x) be a pdf, let <span class="math inline">\(\mu\)</span>,<span class="math inline">\(\sigma&gt;0\)</span> be constants,</p>
+<p><span class="math inline">\(\exists\)</span> a random variable Z with pdf f(z) and <span class="math inline">\(X=\sigma Z+\mu\)</span>,</p>
+<p>Then, X is a random variable with pdf <span class="math inline">\(g(x|\mu,\sigma)=\frac1\sigma f(\frac{x-\mu}{\sigma})\)</span></p>
+</div>
+<div id="table-of-common-distributions" class="section level3">
+<h3>Table of Common Distributions</h3>
 <table style="width:100%;">
 <colgroup>
 <col width="11%"></col>
@@ -906,6 +1118,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(p\)</span></td>
 <td><span class="math inline">\(pq\)</span></td>
 <td><span class="math inline">\(pe^t+q\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(Binom(n,p)\)</span></td>
@@ -915,6 +1129,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\mu(\mu+q)\)</span></td>
 <td><span class="math inline">\(\mu{q}\)</span></td>
 <td><span class="math inline">\((pe^t+q)^n\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Geom(p)\)</span></td>
@@ -924,6 +1140,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\frac{p+2q}{p^2}\)</span></td>
 <td><span class="math inline">\(\frac{q}{p^2}\)</span></td>
 <td><span class="math inline">\(\frac{pe^t}{1-qe^t},t&lt;-\ln{q}\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(Geom2(p)\)</span></td>
@@ -944,6 +1162,8 @@ Theorem 1.2.11 (a).<br />
 <td>$ $</td>
 <td><span class="math inline">\(\frac{rq}{p^2}\)</span></td>
 <td><span class="math inline">\((\frac{pe^t}{1-qe^t})^r\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(NBin2(r,p)\)</span></td>
@@ -953,6 +1173,8 @@ Theorem 1.2.11 (a).<br />
 <td>$ $</td>
 <td><span class="math inline">\(\frac{rq}{p^2}\)</span></td>
 <td><span class="math inline">\((\frac{p}{1-qe^t})^r, qe^t&lt;1\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Hgeom(N,m,k)\)</span></td>
@@ -961,6 +1183,9 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\frac{km}{N}\)</span></td>
 <td>$ $</td>
 <td><span class="math inline">\(\mu\frac{(N-m)(N-k)}{N(N-1)}\)</span></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(Hgeom(w,b,k)\)</span></td>
@@ -969,6 +1194,9 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\frac{kw}{w+b}\)</span></td>
 <td>$ $</td>
 <td><span class="math inline">\(\mu\frac{b(w+b-k)}{(w+b)(w+b-1)}\)</span></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Pois(\mu)\)</span></td>
@@ -989,6 +1217,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\frac{(n+1)(2n+1)}{6}\)</span></td>
 <td><span class="math inline">\(\frac{(n^2-1)}{12}\)</span></td>
 <td><span class="math inline">\(\frac{\sum_{i=1}^n{e^{ti}}}n\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Unif(a,b)\)</span></td>
@@ -998,6 +1228,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\frac{(b^2+ab+a^2)}{3}\)</span></td>
 <td><span class="math inline">\(\frac{(b-a)^2}{12}\)</span></td>
 <td><span class="math inline">\(\frac{e^{tb}-e^{ta}}{t(b-a)}\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(N(\mu,\sigma^2)\)</span></td>
@@ -1018,6 +1250,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(1\)</span></td>
 <td><span class="math inline">\(1\)</span></td>
 <td><span class="math inline">\(e^{\frac{t^2}2}\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(\mathcal{LN}(\mu,\sigma^2)\)</span></td>
@@ -1027,6 +1261,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(e^{2\mu+2\sigma^2}\)</span></td>
 <td><span class="math inline">\(\theta^2(e^{\sigma^2}-1)\)</span></td>
 <td><span class="math inline">\(\times\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Cauchy(\theta,\sigma^2)\)</span></td>
@@ -1036,6 +1272,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\theta\pm\sigma{quartiles}\)</span></td>
 <td><span class="math inline">\(\times\)</span></td>
 <td>$ $</td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(DExpo(\mu,\sigma^2)\)</span></td>
@@ -1046,6 +1284,7 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(2\sigma^2\)</span></td>
 <td><span class="math inline">\(\frac{e^{\mu t}}{1-\sigma^2t^2}\)</span></td>
 <td><span class="math inline">\(\frac{e^{\mu t}(\mu-\mu\sigma^2t^2+2\sigma^2t)}{(1-\sigma^2t^2)^2}\)</span></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Expo(\lambda)\)</span></td>
@@ -1055,6 +1294,8 @@ Theorem 1.2.11 (a).<br />
 <td>$ $</td>
 <td><span class="math inline">\(\frac{1}{\lambda^2}\)</span></td>
 <td><span class="math inline">\(\frac{\lambda}{\lambda - t}, t &lt; \lambda\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(Expo2(\beta)\)</span></td>
@@ -1075,6 +1316,8 @@ Theorem 1.2.11 (a).<br />
 <td></td>
 <td><span class="math inline">\(\frac{a}{\lambda^2}\)</span></td>
 <td><span class="math inline">\((\frac{\lambda}{\lambda - t})^a, t &lt; \lambda\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(Gam2(\alpha,\beta)\)</span></td>
@@ -1096,6 +1339,7 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\Gamma(\alpha+1)=\alpha\Gamma(\alpha)\)</span></td>
 <td><span class="math inline">\(\Gamma(-\frac12)=-2\Gamma(\frac12)\)</span></td>
 <td><span class="math inline">\(\Gamma(0)=\Gamma(-1)=\infty\)</span></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(B(\alpha,\beta)=\)</span></td>
@@ -1103,6 +1347,10 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(\int_0^1 t^{\alpha-1}(1-t)^{\beta-1}dt\)</span></td>
 <td>$ $</td>
 <td>$ $</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Beta(a, b)\)</span></td>
@@ -1123,6 +1371,8 @@ Theorem 1.2.11 (a).<br />
 <td><span class="math inline">\(2p+p^2\)</span></td>
 <td><span class="math inline">\(2p\)</span></td>
 <td><span class="math inline">\((1-2t)^{-\frac{p}2}, t&lt;\frac12\)</span></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(t_n\)</span></td>
@@ -1132,6 +1382,8 @@ Theorem 1.2.11 (a).<br />
 <td>$ $</td>
 <td><span class="math inline">\(\frac{n}{n-2},n&gt;2\)</span></td>
 <td><span class="math inline">\(\times\)</span></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1193,7 +1445,7 @@ Theorem 1.2.11 (a).<br />
 </tr>
 <tr class="odd">
 <td>dlnorm(x,m,s)</td>
-<td>PDF <span class="math inline">\(f(x)\)</span> for <span class="math inline">\(X \sim \mathcal{LN(m,s^2)\)</span></td>
+<td>PDF <span class="math inline">\(f(x)\)</span> for <span class="math inline">\(X \sim \mathcal{LN}(m,s^2)\)</span></td>
 </tr>
 <tr class="even">
 <td>dnorm(x,m,s)</td>
@@ -1209,310 +1461,69 @@ Theorem 1.2.11 (a).<br />
 </tr>
 </tbody>
 </table>
-<p><code>2018.10.18</code></p>
-<p><code>2018.10.23</code></p>
-<ol style="list-style-type: decimal">
-<li><p>Chebyshev’s Inequality</p></li>
-<li><p>Jensen’s Inequality</p></li>
-</ol>
-<div id="discrete-uniform-distribution" class="section level3">
-<h3>Discrete uniform distribution</h3>
-<ol start="12" style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-<p>X take on the values {1,2,..,n} with probabilites <span class="math inline">\(\frac1N\)</span> each.</p>
-</div>
-<div id="bernoulli-distribution" class="section level3">
-<h3>Bernoulli distribution</h3>
-<ol start="14" style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-</div>
-<div id="binomial-distribution" class="section level3">
-<h3>Binomial distribution</h3>
-<ol start="15" style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-<p>sequence of n independent trials; each trial results in one of 2 possible outcomes (0,1); the probability of a “1” is the same in each trial (p); X counts the number of 1’s.</p>
-</div>
-<div id="geometric-distribution" class="section level3">
-<h3>Geometric distribution</h3>
-<p><code>2018.10.25</code></p>
-<ol style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-<p>Run a sequence of independent trails, 2 possible outcoumes in each, constan success probability p.</p>
-<p>X= trial in which <span class="math inline">\(1^{st}\)</span> success occurs</p>
-<p><span class="math inline">\(p_X(x)=pq^{x-1}, x=1,2,3..\)</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li><span class="math inline">\(M_X(t)\)</span></li>
-</ol>
-</div>
-<div id="negative-binomial-distribution" class="section level3">
-<h3>Negative Binomial distribution</h3>
-<ol start="4" style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-<p>Run a sequance of Bernouli trials, X= trial in which the <span class="math inline">\(r^{th}\)</span> success occurs.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><span class="math inline">\(M_X(t)\)</span></li>
-</ol>
-</div>
-<div id="hypergeometric" class="section level3">
-<h3>Hypergeometric</h3>
-<ol start="8" style="list-style-type: decimal">
-<li>Definition</li>
-</ol>
-<p>Take a random sample of K objects, without replacement, from a population of N objects. In the population, M items are of a particular type. X counts the number of items of that type in the sample.</p>
-<p><span class="math inline">\(p_X(x)=\frac{\binom{m}{x}\binom{N-m}{k-x}}{\binom{N}{k}}, \max(0,K-N+M)\le x\le\min(K,M)\)</span></p>
-<p><code>2018.11.1</code></p>
-<ol style="list-style-type: decimal">
-<li>Find E[X]</li>
-</ol>
-<p>Case 1: a=0</p>
-<p><span class="math inline">\(E[X]=K\frac{M}N\)</span></p>
-<p><span class="math inline">\(V[X]=K\frac{M}N(1-\frac{M}N)\frac{N-K}{N-1}\)</span></p>
-<ol start="5" style="list-style-type: decimal">
-<li>Hypergeometric and Binomial</li>
-</ol>
-<p>If <span class="math inline">\(N\rightarrow\infty\)</span> and hold <span class="math inline">\(\frac{M}N=p\)</span> constant.</p>
-</div>
-<div id="poisson" class="section level3">
-<h3>Poisson</h3>
-<ol start="7" style="list-style-type: decimal">
-<li>let f(x,h) be the probability of seeing exactly x occurrences of a particular type in a time interval of length h.</li>
-</ol>
-<p><code>2018.11.6</code></p>
-<ol start="5" style="list-style-type: decimal">
-<li><p>pdf</p></li>
-<li><p>M_X(t)</p></li>
-<li><p>Binom and Poisson</p></li>
-</ol>
-<p>let <span class="math inline">\(n\rightarrow\infty\)</span>,<span class="math inline">\(p\rightarrow0\)</span> (hold <span class="math inline">\(np=\mu\)</span> constant)</p>
-<ol start="10" style="list-style-type: decimal">
-<li><p>Hypergeom and Binom and Poisson</p></li>
-<li><p>Numerical example</p></li>
-</ol>
-<p>Population of 10000 people take a sample of 1000, without replacement. In the population, 500 have blue eyes. Find the probability of getting exactly 45 people in the sample with blue eyes.</p>
-<p><span class="math inline">\(Hyper(N=10000, M=500, K=1000), P(X=45)=\frac{\binom{500}{45}\binom{9500}{955}}{\binom{10000}{1000}}=0.047136\)</span></p>
-<pre class="r"><code>dhyper(45, 500, 9500, 1000, log = FALSE)</code></pre>
-<pre><code>## [1] 0.04713584</code></pre>
-<p><span class="math inline">\(Binom(n=1000,p=0.05), P(X=45)=\binom{1000}{45}(0.05)^{45}(0.95)^{955}=0.046281\)</span></p>
-<pre class="r"><code>dbinom(45, 1000, 0.05, log = FALSE)</code></pre>
-<pre><code>## [1] 0.0462814</code></pre>
-<p><span class="math inline">\(Poisson(\mu=50), P(X=45)=\frac{50^{45}}{45!}e^{-50}=0.045826\)</span></p>
-<pre class="r"><code>dpois(45, 50, log = FALSE)</code></pre>
-<pre><code>## [1] 0.04582624</code></pre>
-<ol start="13" style="list-style-type: decimal">
-<li>Poisson and Exponential</li>
-</ol>
-<p>Suppose we have a Poisson process, let T be the waiting time until the <span class="math inline">\(r^th\)</span> occurrences.</p>
-<p>Find P(T&gt;t)=P(there were at most r-1 occurrences in (0,t))=<span class="math inline">\(P(X\le r-1)\)</span>, where X has a Possion distribution with <span class="math inline">\(\mu=\lambda t\)</span>. (<span class="math inline">\(\lambda\)</span> expected number occurrences per unit time)</p>
-</div>
-<div id="gamma-distribution" class="section level3">
-<h3>Gamma distribution</h3>
-<ol start="16" style="list-style-type: decimal">
-<li>Definition: Gamma function</li>
-</ol>
-<p><span class="math inline">\(\Gamma(\alpha)=\int_0^\infty t^{\alpha-1}e^{-t}dt\)</span></p>
-<p><code>2018.11.8</code></p>
-<ol style="list-style-type: decimal">
-<li>pdf</li>
-</ol>
-<p><span class="math inline">\(f_T(\alpha,\beta)=\frac{1}{\Gamma(a)\beta^{\alpha}}x^{a-1}e^{-\frac{x}\beta},t&gt;0,\beta&gt;0\)</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Gamma and Exponential</li>
-</ol>
-<p><span class="math inline">\(f_T(t)=\frac1{\Gamma(1)\beta^1}t^0e^{-\frac{t}\beta},t&gt;0\)</span></p>
-<p><span class="math inline">\(\mu=\beta=\frac1\lambda\)</span></p>
-<p><span class="math inline">\(\sigma^2=\beta^2=\frac1{\lambda^2}\)</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>mgf</li>
-</ol>
-<p><span class="math inline">\(E[X^v]=\frac{\beta^v\Gamma(v+\alpha)}{\Gamma(\alpha)}\)</span></p>
-<ol start="10" style="list-style-type: decimal">
-<li>Gamma and Chi-squared</li>
-</ol>
-<p><span class="math inline">\(Gamma(\alpha=\frac{k}2,\beta=2)=\chi^2(k)\)</span></p>
-<ol start="12" style="list-style-type: decimal">
-<li><p>Normal density function</p></li>
-<li><p>Standard normal density</p></li>
-</ol>
-<p><code>2018.11.13</code></p>
-<ol style="list-style-type: decimal">
-<li>Gamma and Standard Normal</li>
-</ol>
-<p><span class="math inline">\(X\sim N(0,1);\ X=Y^2;\ Y\sim Gamma(\frac12,2)\sim\chi^2(1)\)</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Gamma and Poisson</li>
-</ol>
-<p><span class="math inline">\(T\sim Gamma(\alpha,\beta)\)</span></p>
-<p><span class="math inline">\(P(T&gt;t)=P(X\le\alpha-1)\)</span>, where <span class="math inline">\(T\sim Gamma(\alpha,\beta)\)</span>, <span class="math inline">\(X\sim Poisson(\lambda=\frac{t}\beta)\)</span></p>
-<p>That is, T is measuring the waiting time for the <span class="math inline">\(\alpha^{th}\)</span> occurrence in a Poisson process.</p>
-<ol start="7" style="list-style-type: decimal">
-<li>Example: Pizza</li>
-</ol>
-<p>Suppose a pizza place gets 1 order every 3 miniutes, following a Poisson process. Assume that the driver is engaged when the 5th order arrives. Find the probability that this happen in 10 minutes or less.</p>
-<p>Let T=waiting time for 5 orders, <span class="math inline">\(T\sim Gamma(\alpha=5,\beta=3)\)</span> (later is expected time between occurences)</p>
-<p><span class="math display">\[P(T\le10)=1-P(T&gt;10)=1-P(X\le4)=1-0.7565=0.2435\]</span> Where <span class="math inline">\(X\sim Poisson(\lambda=\frac{t}\beta=\frac{10}3)\)</span></p>
-<pre class="r"><code>pgamma(10, 5, rate = 1/3, lower.tail = TRUE,log.p = FALSE)</code></pre>
-<pre><code>## [1] 0.2435058</code></pre>
-<pre class="r"><code>ppois(4, 10/3, lower.tail = TRUE, log.p = FALSE)</code></pre>
-<pre><code>## [1] 0.7564942</code></pre>
-</div>
-<div id="beta-distribution" class="section level3">
-<h3>Beta distribution</h3>
-<ol start="10" style="list-style-type: decimal">
-<li>pdf</li>
-</ol>
-<p><span class="math inline">\(B(\alpha,\beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1}dt\)</span></p>
-<p><span class="math inline">\(f_X(x)=\frac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}， x\in(0,1)\)</span></p>
-<p><span class="math inline">\(B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\)</span></p>
-<p><code>2018.11.15</code></p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(E[x^n]\)</span></li>
-</ol>
-<p><span class="math inline">\(E[x^n]=\int_0^1\frac{x^{n+x-1}}{B(\alpha,\beta)}(1_x)^{\beta-1}dx=\frac{B(n+\alpha,\beta)}{B(\alpha,\beta)}=\frac{\Gamma(a+n)\Gamma(a+b)}{\Gamma(a+b+n)\Gamma(a)}\)</span></p>
-<p><span class="math inline">\(E[x]=\frac{\alpha}{\alpha+\beta}\)</span></p>
-<p><span class="math inline">\(E[x^2]=\frac{a(a+1)}{(a+b)(a+b+1)}\)</span></p>
-<p><span class="math inline">\(\sigma^2=E[x^2]-\mu^2=\frac{ab}{(a+b)^2(a+b+1)}\)</span></p>
-</div>
-<div id="cauchy-diftribution" class="section level3">
-<h3>Cauchy diftribution</h3>
-<ol start="4" style="list-style-type: decimal">
-<li><span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> do not exist. <span class="math inline">\(\theta\)</span> is the median.</li>
-</ol>
-</div>
-<div id="uniform-distribution" class="section level3">
-<h3>uniform distribution</h3>
-<ol start="5" style="list-style-type: decimal">
-<li>pdf</li>
-</ol>
-<p><span class="math inline">\(f_X(x)=\frac1{b-a}, a&lt;x&lt;b\)</span></p>
-<p><span class="math inline">\(E[x]=\frac{a+b}{2}\)</span></p>
-<p><span class="math inline">\(E[x^2]=\frac{b^2+ab+a^2}{3}\)</span></p>
-<p><span class="math inline">\(\sigma^2=E[x^2]-\mu^2=\frac{(b-a)^2}{12}\)</span></p>
-<p><span class="math inline">\(M_X(t)=\frac{e^{tb}-e^{ta}}{(b-a)t}\)</span></p>
-<p>Note: <span class="math inline">\(M_X(t)\)</span> is undefined at t=o, but the limit as <span class="math inline">\(t\rightarrow0\)</span> is 1.</p>
-</div>
-<div id="log-normal-distribution" class="section level3">
-<h3>log-normal distribution</h3>
-<ol start="8" style="list-style-type: decimal">
-<li>log-normal and nroaml</li>
-</ol>
-<p>Let Y have a normal distribution <span class="math inline">\(N(\mu,\sigma^2)\)</span></p>
-<p>Let <span class="math inline">\(X=e^Y\)</span>, <span class="math inline">\(y=\ln x\)</span>, <span class="math inline">\(\frac{dy}{dx}=\frac1x\)</span></p>
-<p><span class="math inline">\(f_X(x)=g(y）|\frac{dy}{dx}|=\frac{1}{x\sigma \sqrt{2\pi}}e^{\frac{-(\ln x-\mu)^2}{2\sigma^2}}， x&gt;0\)</span></p>
-<p><span class="math inline">\(E[x]=e^{\mu+\frac{\sigma^2}2}\)</span></p>
-<p><span class="math inline">\(E[x^2]=e^{2\mu+2\sigma^2}\)</span></p>
-<p><span class="math inline">\(V[x]=E[x^2]-\mu^2=e^{2\mu+\sigma^2}(e^{\sigma^2}-1)\)</span></p>
-</div>
-<div id="double-exponential-laplace-distribution" class="section level3">
-<h3>double exponential (Laplace) distribution</h3>
-<ol start="11" style="list-style-type: decimal">
-<li><span class="math inline">\(f_X(x)=\frac{1}{2\sigma} e^{-|\frac{x-\mu}{\sigma}|}, -\infty&lt;x&lt;\infty\)</span></li>
-</ol>
-<p><span class="math inline">\(M_X(t)=E[e^{tx}]=\int_{-\infty}^{\infty}e^{tx}\frac{1}{2\sigma} e^{-|\frac{x-\mu}{\sigma}|}dx\)</span></p>
-<p><span class="math inline">\(=\frac{e^{\mu t}}{1-\sigma^2t^2}\)</span></p>
-<p><span class="math inline">\(M'_X(t)=\frac{e^{\mu t}(\mu-\mu\sigma^2t^2+2\sigma^2t)}{(1-\sigma^2t^2)^2}\)</span></p>
-<p><span class="math inline">\(E[x]=\mu\)</span></p>
-<p><span class="math inline">\(E[x^2]=\mu^2+2\sigma^2\)</span></p>
-<p><span class="math inline">\(V[x]=2\sigma^2\)</span></p>
-</div>
-<div id="exponential-family" class="section level3">
-<h3>Exponential family</h3>
-<p><code>2018.11.20</code></p>
-<ol style="list-style-type: decimal">
-<li>Definition:</li>
-</ol>
-<p>Let f(x) be a density funtion with parameters <span class="math inline">\(\vec\theta=(\theta_1,\theta_2,..,\theta_a)\)</span>, then <span class="math inline">\(f(x|\vec\theta)\)</span> is an exponential family of densities if you can write</p>
-<p><span class="math display">\[f(x|\vec\theta)=h(x)c(\vec\theta)e^{\sum_{i=1}^kw_i(\vec\theta)t_i(x)}, -\infty&lt;x&lt;\infty\]</span></p>
-<p>If d=k, them the family is full.</p>
-<p>If d=k, them the family is curved.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Example: Binom(n,p) with n known</li>
-</ol>
-<p><span class="math display">\[f(x|p),\ or\ f_p(x)=\binom{n}xp^x(1-p)^{n-x}, x=0,1,..n\]</span></p>
-<p>Let <span class="math display">\[I(x)=\begin{cases}1 &amp; if\ x=0,1..,n\\ 0 &amp; otherwise \end{cases}\]</span></p>
-<p><span class="math display">\[f(x|p)=\binom{n}xI(x)(1-p)^ne^{x\ln{p}-x\ln(1-p)}, -\infty&lt;x&lt;\infty\]</span></p>
-<table>
-<thead>
-<tr class="header">
-<th><span class="math inline">\(h(x)\)</span></th>
-<th><span class="math inline">\(c(\vec\theta)\)</span></th>
-<th><span class="math inline">\(w_1(\vec\theta)\)</span></th>
-<th><span class="math inline">\(t_1(x)\)</span></th>
-<th><span class="math inline">\(w_2(\vec\theta)\)</span></th>
-<th><span class="math inline">\(t_2(x)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\binom{n}xI(x)\)</span></td>
-<td><span class="math inline">\((1-p)^n\)</span></td>
-<td><span class="math inline">\(\ln{p}\)</span></td>
-<td><span class="math inline">\(x\)</span></td>
-<td><span class="math inline">\(\ln(1-p)\)</span></td>
-<td><span class="math inline">\(x\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[f(x|p)=\binom{n}xI(x)(1-p)^ne^{x\ln(\frac{p}{1-p})}, -\infty&lt;x&lt;\infty\]</span></p>
-<table>
-<thead>
-<tr class="header">
-<th><span class="math inline">\(h(x)\)</span></th>
-<th><span class="math inline">\(c(\vec\theta)\)</span></th>
-<th><span class="math inline">\(w_1(\vec\theta)\)</span></th>
-<th><span class="math inline">\(t_1(x)\)</span></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\binom{n}xI(x)\)</span></td>
-<td><span class="math inline">\((1-p)^n\)</span></td>
-<td><span class="math inline">\(\ln(\frac{p}{1-p})\)</span></td>
-<td><span class="math inline">\(x\)</span></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Example: <span class="math inline">\(N(\mu,\sigma^2)\)</span></p></li>
-<li><p>Example: Unit(a,b)</p></li>
-<li><p>Theorem</p></li>
-</ol>
-</div>
-<div id="location-scale-family" class="section level3">
-<h3>Location-scale family</h3>
-<ol start="7" style="list-style-type: decimal">
-<li><p>Definition:</p></li>
-<li><p>Example: <span class="math inline">\(Gamma(\alpha,\beta)\)</span></p></li>
-<li><p>Example: <span class="math inline">\(Cauchy(\theta)\)</span></p></li>
-<li><p>Theorem</p></li>
-</ol>
-<p>Let f(x) be a pdf, let <span class="math inline">\(\mu\)</span>,<span class="math inline">\(\sigma&gt;0\)</span> be constants,</p>
-<p><span class="math inline">\(\exists\)</span> a random variable Z with pdf f(z) and <span class="math inline">\(X=\sigma Z+\mu\)</span>,</p>
-<p>Then, X is a random variable with pdf <span class="math inline">\(g(x|\mu,\sigma)=\frac1\sigma f(\frac{x-\mu}{\sigma})\)</span></p>
 </div>
 </div>
 <div id="multiple-random-variables" class="section level2">
 <h2>4 Multiple Random Variables</h2>
 <div id="joint-and-marginal-distributions" class="section level3">
 <h3>4.1 Joint and Marginal Distributions</h3>
+<p><code>2018.11.27</code></p>
 <p><strong>Definition 4.1.1</strong> An n-dimensional random vector is a function from a sample space S into <span class="math inline">\(\mathbf{R^n}\)</span>, n-dimensional Euclidean space.</p>
+<p><code>p. 1</code> A random vector is discrete if its range in <span class="math inline">\(\mathbf{R^n}\)</span> is finite or countable infinite.</p>
+<p><code>p. 2</code></p>
+<p>For <span class="math inline">\(A\subset\mathbf{R^n}\)</span>, <span class="math inline">\(P(A)=P[\vec X\in A]\)</span></p>
+<p>For a discrete random vector, the joint probability mass function is</p>
+<p><span class="math display">\[p(x_1,x_2,..,x_n)=P[X_1=x_1\cap X_2=x_2\cap..\cap X_n=x_n]\]</span></p>
+<p>So <span class="math display">\[P(A)=\sum\sum\cdots\sum_{\substack{(x_1,..,x_n)\in A}} p(x_1,x_2,..x_n)\]</span></p>
 <p><strong>Definition 4.1.3</strong> Let (X,Y) be a discrete bivariate random vector. Then the function f(x,y) from <span class="math inline">\(\mathbf{R^2}\)</span> into <span class="math inline">\(\mathbf{R}\)</span> defined by <span class="math inline">\(f(x,y)=P(X=x,Y=y)\)</span> is called the joint probability mass function or joint pmf of (X,Y). If it is necessary to stress the fact that <span class="math inline">\(f\)</span> is the joint pmf of the vector (X,Y) rather than some other vector, the notation <span class="math inline">\(f_{x,y}(x,y)\)</span> will be used.</p>
+<p><code>p. 4</code> <span class="math display">\[p_1(x_1)=P[X_1=x_1]=P[X_1=x_1\cap -\infty\le x_2\le \infty]=\sum_{all\ x_2}P[X_1=x_1\cap X_2=x_2]=\sum_{all\ x_2}p(x_1,x_2)\]</span></p>
 <p><strong>Theorem 4.1.6</strong> Let (X,Y) be a discrete bivariate random vector with joint pmf <span class="math inline">\(f_{X,Y}(x,y)\)</span>. Then the marginal pmfs of X and Y, <span class="math inline">\(f_X(x)=P(X=x)\)</span> and <span class="math inline">\(f_Y(y)=P(Y=y)\)</span>, are given by</p>
-<p><span class="math inline">\(f_X(x)=\sum_{y\in\mathbf{R}}f_{X,Y}(x,y)\)</span> and <span class="math inline">\(f_Y(y)=\sum_{x\in\mathbf{R}}f_{X,Y}(x,y)\)</span></p>
+<p><span class="math display">\[f_X(x)=\sum_{y\in\mathbf{R}}f_{X,Y}(x,y)\ \text{and}\ f_Y(y)=\sum_{x\in\mathbf{R}}f_{X,Y}(x,y)\]</span></p>
+<p><code>p. 5</code> Continuous case: Assume every component of the random vector is conintinuous</p>
+<p><strong>Definition</strong>:f(x_1,..,x_n) is a joint probability density function if, <span class="math inline">\(\forall A\subset\mathbf{R^n}\)</span></p>
+<p><span class="math display">\[P[\vec X\in A]=\idotsint_Af(x_1,..,x_n)dx_1,..,dx_n\]</span></p>
 <p><strong>Definition 4.1.10</strong> A function f(x,y) from <span class="math inline">\(\mathbf{R^2}\)</span> into <span class="math inline">\(\mathbf{R}\)</span> is called a joint probability density function or joint pdf of the continuous bivariate random vector (X,Y) if, for every <span class="math inline">\(A\subset\mathbf{R^2}\)</span>,</p>
-<p><span class="math display">\[P((X,Y)\in A)=\int_A\int f(x,y)dxdy\]</span>.</p>
+<p><span class="math display">\[P((X,Y)\in A)=\iint_A f(x,y)dxdy\]</span>.</p>
+<p><span class="math display">\[f_X(x)=\int_{-\infty}^{\infty}f(x,y)dy, -\infty&lt;x&lt;\infty\quad f_Y(y)=\int_{-\infty}^{\infty}f(x,y)dx, -\infty&lt;x&lt;\infty\]</span></p>
+<p><code>p. 6</code> Example: <span class="math inline">\(f(x_1,x_2)=8x_1x_2, \quad 0&lt;x_1&lt;x_2&lt;1\)</span></p>
+<p>Check to see if <span class="math inline">\(f(x_1,x_2)\)</span> integrates to 1</p>
+<p><span class="math display">\[\int_0^1\int_0^{x_2}8x_1x_2dx_1dx_2\quad \text{ or }\int_0^1\int_{x_1}^{1}8x_1x_2dx_2dx_1=8\int_0^1x_2\left.\frac{x_1^2}2\right|_{x_1=0}^{x_2}dx_2=8\int_0^1\frac{x_2^3}2dx_2=\left.x_2^4\right|_0^1=1\]</span></p>
+<p><code>p. 7-8</code></p>
+<p>The marginal prob density fn for <span class="math inline">\(X_1, X_2\)</span> is</p>
+<p><span class="math display">\[f_1(x_1)=\int_{x_1}^1f(x_1,x_2)dx_2=\int_{x_1}^18x_1x_2dx_2=8x_1\left.\frac{x_2^2}2\right|_{x_2=x_1}^{1}=4x_1-4x_1^3,\ 0&lt;x_1&lt;1\]</span></p>
+<p><span class="math display">\[f_2(x_2)=\int_0^{x_2}8x_1x_2dx_1=8x_2\left.\frac{x_1^2}2\right|_{x_1=0}^{x_2}=4x_2^3,\ 0&lt;x_2&lt;1\]</span></p>
+<pre class="r"><code>plot(function(x){x}, from=-0.5, to=1.5, axes=FALSE, asp=1,xlab=&quot;x1&quot;,ylab=&quot;x2&quot;)
+axis(1, pos=0, xlab=&quot;x1&quot;);abline(v =0.6, lty = 2)
+axis(2, pos=0, ylab=&quot;x2&quot;);abline(h =0.8, lty = 2)
+polygon(x=c(0,1,0), y=c(0,1,1), density=10, angle=45)</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+<p><code>p. 9</code></p>
+<p>Let <span class="math inline">\(g(x_1,..,x_n)\)</span> be a new random variable</p>
+<p><strong>Definition</strong></p>
+<p><span class="math display">\[E[g(\vec X)]=\begin{cases}\sum\cdots\sum_{all\vec x} g(\vec x)p(\vec x) \\ \idotsint_{\mathbf{R^n}}g(\vec x)f(\vec x)d\vec x\end{cases}\]</span></p>
 <p><span class="math display">\[Eg(X,Y)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} g(x, y)f(x, y) dx dy\]</span>.</p>
+<p><code>2018.11.27``p. 10-11</code></p>
+<p>In our example, find <span class="math inline">\(E[X_1+X_2]\)</span></p>
+<ul>
+<li>Method 1</li>
+</ul>
+<p><span class="math display">\[E[X_1+X_2]=\int_0^1\int_0^{x_2}(x_1+x_2)8x_1x_2dx_1dx_2=\int_0^1\int_0^{x_2}(8x_1^2x_2+8x_1x_2^2)dx_1dx_2=\int_0^1\left.(\frac{8x_1^3x_2}3+\frac{8x_1^2x_2^2}2)\right|_{x_1=0}^{x_2}dx_2\]</span></p>
+<p><span class="math display">\[=\int_0^1(\frac{8x_2^4}3+\frac{8x_2^4}2)dx_2=\frac{20}3\int_0^1x_2^4dx_2=\frac{20}3\left.\frac{x_2^5}5\right|_0^1=\frac43\]</span></p>
+<p>Method 2</p>
+<p><span class="math display">\[E[X_1+X_2]=E[X_1]+E[X_2]=\int_0^1x_1(4x_1-4x_1^3)dx_1+\int_0^1x_24x_2^3dx_2=\frac8{15}+\frac45=\frac43\]</span></p>
+<p><code>2019.01.15``p.1</code></p>
+<p>The joint probability dist ribu tion of (X, Y) can be completely described with the <strong>joint cdf (cumulative distr ib ution function)</strong> rather than with the joint pmf or jointpdf. The joint cdf is the function <span class="math inline">\(F(x, y)\)</span> defined by <span class="math display">\[F(x,y) = P(X\le x, Y\le y)\]</span> for all <span class="math inline">\((x,y)\in\mathcal{R}\)</span>. The joint cdf is usually not very handy to use for a discrete random vector. But for a continuous bivariate random vector we have the important relationship , as in the univariate case,</p>
+<p><span class="math display">\[F(x,y) =\int_{-\infty}^{y}\int_{-\infty}^{x}f(s,t)dsdt\]</span></p>
+<p>From the bivariate Fundamental Theore m of Calcu lus, this implies that</p>
+<p><span class="math display">\[\frac{\partial^2F(x,y)}{\partial x\partial y}=f(x,y)\]</span></p>
+<p>at continuity points of <span class="math inline">\(f(x, y)\)</span>. This relationship is useful in sit uations where an expression for <span class="math inline">\(F(x,y)\)</span> can be found. The mixed partial derivative can be computed to find the joint pdf.</p>
 </div>
 <div id="conditional-distributions-and-independence" class="section level3">
 <h3>4.2 Conditional Distributions and Independence</h3>
+<p><code>2018.11.27``p. 12</code></p>
+<p><span class="math display">\[f(x_2|x_1)=\frac{f(x_1,x_2)}{f_1(x_1)};\quad p(x_2|x_1)=\frac{p(x_1,x_2)}{p_1(x_1)}\]</span></p>
+<p>Note:</p>
+<p><span class="math display">\[\int_{all\ x_2} f(x_2|x_1)dx_2=\int_{all\ x_2}\frac{f(x_1,x_2)}{f_1(x_1)}dx_2=\frac1{f_1(x_1)}\int_{all\ x_2}{f(x_1,x_2)}dx_2=1\]</span></p>
 <p><strong>Definition 4.2.1</strong> Let (X,Y) be a discrete bivariate random vector with joint pmf f(x,y) and marginal pmfs <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(f_Y(y)\)</span>. For any x such that <span class="math inline">\(P(X=x)=f_X(x)&gt;0\)</span>, the conditional pmf of Y given that <span class="math inline">\(X=x\)</span> is the function of y denoted by <span class="math inline">\(f(y|x)\)</span> are defined by</p>
 <p><span class="math display">\[f(y|x)=P(Y=y|X=x)=\frac{f(x,y)}{f_X(x)}\]</span></p>
 <p>For any y such that <span class="math inline">\(P(Y=y)=f_Y(y)&gt;0\)</span>, the conditional pmf of X given that <span class="math inline">\(Y=y\)</span> is the function of x denoted by <span class="math inline">\(f(x|y)\)</span> are defined by</p>
@@ -1523,22 +1534,72 @@ Theorem 1.2.11 (a).<br />
 <p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f_X(x)}\]</span></p>
 <p>For any y such that <span class="math inline">\(f_Y(y)&gt;0\)</span>, the conditional pdf of X given that <span class="math inline">\(Y=y\)</span> is the function of x denoted by <span class="math inline">\(f(x|y)\)</span> and defined by</p>
 <p><span class="math display">\[f(x|y)=\frac{f(x,y)}{f_Y(y)}\]</span></p>
+<p><code>2018.11.27``p. 13</code></p>
+<p>Let <span class="math inline">\(g(x_2)\)</span> be a function of <span class="math inline">\(X_2\)</span></p>
+<p><span class="math display">\[E(g(x_2)|x_1)=\sum_{all\ x_2}g(x_2)p(x_2|x_1)\quad \text{and}\quad E(g(x_2)|x_1)=\int_{all\ x_2}g(x_2)f(x_2|x_1)dx_2\]</span></p>
 <p>If g(Y) is a function of Y, then the conditional expected value of g(Y) given that <span class="math inline">\(X=x\)</span> is denoted by <span class="math inline">\(E(g(Y)|x)\)</span> and is given by</p>
-<p><span class="math inline">\(E(g(Y)|x)=\sum_yg(y)f(y|x)\)</span> and <span class="math inline">\(E(g(Y)|x)=\int_{-\infty}^{\infty}g(y)f(y|x)dy\)</span></p>
+<p><span class="math display">\[E(g(Y)|x)=\sum_yg(y)f(y|x)\quad \text{and}\quad E(g(Y)|x)=\int_{-\infty}^{\infty}g(y)f(y|x)dy\]</span></p>
+<p><code>2018.11.27``p. 14-16</code></p>
+<p>Example: <span class="math inline">\(f(x_1,x_2)=\frac12e^{-(x_1+x_2)}\)</span>, <span class="math inline">\(x_2&gt;0,x_2&gt;-2x_1\)</span>, find <span class="math inline">\(f(x_2|x_1)\)</span></p>
+<p><span class="math display">\[f_1(x_1)=\int_{all\ x_2}f(x_1,x_2)dx_2=\begin{cases}\int_0^{\infty}e^{-(x_1+x_2)}dx_2 &amp; x_1\ge0 \\ \int_{-2x_1}^{\infty}e^{-(x_1+x_2)}dx_2 &amp; x_1&lt;0 \end{cases}\]</span></p>
+<p><span class="math display">\[=\begin{cases}\frac12e^{-x_1}[{-e^{-x_2}}]_{x_2=0}^{\infty}=0-(-\frac12e^{-x_1})=\frac12e^{-x_1} &amp; x_1\ge0 \\ \frac12e^{-x_1}[{-e^{-x_2}}]_{x_2=-2x_1}^{\infty}=0+\frac12e^{-x_1}e^{2x_1}=\frac12e^{x_1} &amp; x_1&lt;0 \end{cases}=\frac12e^{-|x_1|},\ -\infty&lt;x_1&lt;\infty\]</span></p>
+<p><span class="math display">\[f(x_2|x_1)=\frac{f(x_1,x_2)}{f_1(x_1)}=\frac{\frac12e^{-(x_1+x_2)}}{\frac12e^{-|x_1|}}=e^{|x_1|-x_1-x_2},\quad x_2&gt;0,x_2&gt;-2x_1\]</span></p>
+<p><code>2018.11.29</code> <code>p. 1-2</code></p>
+<p>New example: <span class="math inline">\(f(x,y)=10xy^4\)</span>, <span class="math inline">\(0&lt;x&lt;1, 0&lt;y&lt;1\)</span>, find <span class="math inline">\(f(y|x)\)</span></p>
+<pre class="r"><code>plot(function(x){x}, from=-0.5, to=1.5, axes=FALSE, asp=1,xlab=&quot;x1&quot;,ylab=&quot;x2&quot;)
+axis(1, pos=0, xlab=&quot;x1&quot;)
+axis(2, pos=0, ylab=&quot;x2&quot;)
+polygon(x=c(0,1,1,0), y=c(0,0,1,1), density=10, angle=45)</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+<p>Check</p>
+<p><span class="math display">\[\int_0^1\int_0^110xy^4dxdy=\int_0^110y^4\left.\frac{x^2}2\right|_{x=0}^1dy=\int_0^110y^4\frac{1}2dy=5\left.\frac{y^5}5\right|_0^1=1\]</span></p>
+<p><span class="math display">\[f_X(x)=\int_0^1f(x,y)dy=\int_0^110xy^4dy=10x\left.\frac{x^5}5\right|_0^1=2x,\quad0&lt;x&lt;1\]</span></p>
+<p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{10xy^4}{2x}=5y^4,\quad 0&lt;x&lt;1,0&lt;y&lt;1\]</span></p>
 <p><strong>Example 4.2.4 (Calculating conditional pdfs)</strong></p>
 <p>The variance of the probability distribution described by <span class="math inline">\(f(y|x)\)</span> is called the conditional variance of Y given <span class="math inline">\(X=x\)</span>. Using the notation <span class="math inline">\(Var(y|x)\)</span> for this, we have, using the ordinary definition of variance,</p>
 <p><span class="math display">\[Var(y|x)=E(Y^2|x)-(E(Y|x))^2\]</span></p>
-<p><strong>Definition 4.2.5</strong> Let (X,Y) be a bivariate random vector with joint pdf or pmf f(x,y) and marginal pdfs or pmfs <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(f_Y(y)\)</span>. Then X and Y are called independent random variable if, for every <span class="math inline">\(x\in\mathbf{R}\)</span> and <span class="math inline">\(y\in\mathbf{R}\)</span>, <span class="math display">\[f(x,y) = f_X(x)f_Y(y)\]</span></p>
+<p><code>2019.1.8</code> <code>p. 1-2</code></p>
+<p><span class="math display">\[V[X|Y]=E[(X-E[X|Y])^2|Y]\]</span></p>
+<p><code>2018.11.29</code> <code>p. 3</code></p>
+<p><strong>Definition 4.2.5</strong> Let (X,Y) be a bivariate random vector with joint pdf or pmf f(x,y) and marginal pdfs or pmfs <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(f_Y(y)\)</span>. Then X and Y are called <strong>independent random variable</strong> if, for every <span class="math inline">\(x\in\mathbf{R}\)</span> and <span class="math inline">\(y\in\mathbf{R}\)</span>, <span class="math display">\[f(x,y) = f_X(x)f_Y(y)\]</span></p>
+<p><strong>Factorization Theorem</strong></p>
 <p><strong>Lemma 4.2.7</strong> Let (X,Y) be a bivariate random vector with joint pdf or pmf f(x,y). X and Y are independent random variables if and only if there exist functions g(x) and hey) such that, for every <span class="math inline">\(x\in\mathbf{R}\)</span> and <span class="math inline">\(y\in\mathbf{R}\)</span>,</p>
 <p><span class="math display">\[f(x,y)=g(x)h(y)\]</span></p>
+<p><code>2018.11.29``p. 4-6</code></p>
+<p>Proof: <span class="math inline">\(\Rightarrow\)</span> trivial, based on difinition</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: Suppose <span class="math inline">\(\exists\ g(x),h(y)\)</span> such that <span class="math inline">\(f(x,y)=g(x)h(y)\)</span>, then</p>
+<p><span class="math display">\[f_X(x)=\int_{-\infty}^{\infty}f(x,y)dy=\int_{-\infty}^{\infty}g(x)h(y)dy=g(x)\int_{-\infty}^{\infty}h(y)dy\]</span></p>
+<p><span class="math inline">\(\int_{-\infty}^{\infty}h(y)dy=k\)</span>, Now <span class="math inline">\(f_X(x)=kg(x)\)</span>. Also</p>
+<p><span class="math display">\[1=\int_{-\infty}^{\infty}f_X(x)dx=\int_{-\infty}^{\infty}kg(x)dx=k\int_{-\infty}^{\infty}g(x)dx,\quad \text{so } \int_{-\infty}^{\infty}g(x)dx=\frac1k\]</span></p>
+<p><span class="math display">\[f_Y(y)=\int_{-\infty}^{\infty}f(x,y)dx=\int_{-\infty}^{\infty}g(x)h(y)dx=h(y)\int_{-\infty}^{\infty}g(x)dx=\frac1kh(y)\]</span></p>
+<p><span class="math display">\[\therefore f(x,y)=g(x)h(y)=kg(x)\frac1kh(y)=f_X(x)f_Y(y)\]</span></p>
+<p>So X and Y are independent.</p>
+<p><code>2018.11.29``p. 7</code></p>
+<p>Example:</p>
+<ul>
+<li>Not independent</li>
+</ul>
+<p><span class="math display">\[f(x,y)=c(x+y),\quad 0&lt;x&lt;1, 0&lt;y&lt;1\]</span></p>
+<p><span class="math display">\[f(x,y)=cxy,\quad 0&lt;x&lt;y&lt;1\quad =cxyI_{0&lt;x&lt;y&lt;1}(x,y) \]</span></p>
+<ul>
+<li>Independent</li>
+</ul>
+<p><span class="math display">\[f(x,y)=ce^{-(x+y)},\quad x&gt;0, y&gt;0\]</span></p>
+<p><code>2019.01.08</code> <code>p. 7-8</code></p>
 <p><strong>Theorem 4.2.10</strong> Let X and Y be independent random variables.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>For any <span class="math inline">\(A\subset\mathbf{R}\)</span> and <span class="math inline">\(B\subset\mathbf{R}\)</span>, <span class="math inline">\(P(X\in A,Y\in B)=P(X\in A)P(Y\in B)\)</span> that is, the events {<span class="math inline">\(X\in A\)</span>} and {<span class="math inline">\(Y\in B\)</span>} are independent events.</p></li>
 <li><p>Let g(x) be a function only of x and h(y) be a function only of y. Then</p></li>
 </ol>
 <p><span class="math display">\[E(g(X)h(Y))=(Eg(X))(Eh(Y))\]</span></p>
+<p>Proof:</p>
+<p><span class="math inline">\(E(g(X)h(Y))=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)h(y)f(x,y)dxdy=\int_{-\infty}^{\infty}h(y)f_Y(y)\left[\int_{-\infty}^{\infty}g(x)f_X(x)dx\right]dy=E[g(x)]E[h(y)]=(Eg(X))(Eh(Y))\)</span></p>
+<p>In perticular, if X andY are independet, then <span class="math inline">\(E[XY]=E[X]E[Y]\)</span></p>
+<p><code>2019.01.08``p.11</code></p>
 <p><strong>Theorem 4.2.12</strong> Let X and Y be independent random variables with moment generating functions <span class="math inline">\(M_X(t)\)</span> and <span class="math inline">\(M_Y(t)\)</span>. Then the moment generating function of the random variable <span class="math inline">\(Z=X+Y\)</span> is given by</p>
 <p><span class="math display">\[M_Z(t)=M_X(t)M_Y(t)\]</span></p>
+<p>Proof:</p>
+<p><span class="math inline">\(M_W(t)=E[e^{tW}]=E[e^{t(X+Y)}]=E[e^{tX}+e^{tY}]=E[e^{tX}]+E[e^{tY}]=M_X(t)M_Y(t)\)</span></p>
 <p><strong>Theorem 4.2.14</strong> Let <span class="math inline">\(X\sim n(\mu,\sigma^2)\)</span> and <span class="math inline">\(Y\sim n(\gamma,\tau^2)\)</span> be independent normal random variables, Then the random variable <span class="math inline">\(Z=X+Y\)</span> has a <span class="math inline">\(n(\mu+\gamma,\sigma^2+\tau^2)\)</span> distribution.</p>
 </div>
 </div>

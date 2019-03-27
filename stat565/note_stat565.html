@@ -321,19 +321,58 @@ $(document).ready(function () {
 </div>
 <div id="some-typical-applications-of-experimental-design" class="section level3">
 <h3>1.2 Some Typical Applications of Experimental Design</h3>
+<ul>
+<li>Characterizing a Process</li>
+<li>Optimizing a Process</li>
+<li>Designing a Product</li>
+<li>Formulating a Product</li>
+<li>Designing a Web Page</li>
+</ul>
 </div>
 <div id="basic-principles" class="section level3">
 <h3>1.3 Basic Principles</h3>
+<ul>
+<li>randomization: both the allocation of the experimental material and the order in which the individual runs of the experiment are to be performed are randomly determined.</li>
+<li>replication: an independent repeat run of each factor combination. replication <span class="math inline">\(\neq\)</span> repeated measurements.</li>
+<li>blocking: a design technique used to improve the precision with which comparisons among the factors of interest are made.</li>
+<li>factorial</li>
+</ul>
 </div>
 <div id="guidelines-for-designing-experiments" class="section level3">
 <h3>1.4 Guidelines for Designing Experiments</h3>
+<ol style="list-style-type: decimal">
+<li>Recognition of and statement of the problem.</li>
+<li>Selection of the response variable.</li>
+<li>Choice of factors, levels, and range.</li>
+</ol>
+<ul>
+<li>potential design factors</li>
+<li>design factors</li>
+<li>held-constant factors</li>
+<li>allowed-to-vary factors</li>
+<li>nuisance factors</li>
+<li>controllable factors</li>
+<li>uncontrollable factors</li>
+<li>noise factors</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Choice of experimental design</li>
+<li>Performing the experiment</li>
+<li>Statistical analysis of the data</li>
+<li>Conclusions and recommendations</li>
+</ol>
 </div>
 <div id="a-brief-history-of-statistical-design" class="section level3">
 <h3>1.5 A Brief History of Statistical Design</h3>
 </div>
-<div id="summary" class="section level3">
-<h3>1.6 Summary</h3>
-<p>Using Statistical Techniques in Experimentation</p>
+<div id="summary-using-statistical-techniques-in-experimentation" class="section level3">
+<h3>1.6 Summary: Using Statistical Techniques in Experimentation</h3>
+<ol style="list-style-type: decimal">
+<li>Use your nonstatistical knowledge of the problem</li>
+<li>Keep the design and analysis as simple as possible</li>
+<li>Recognize the difference between practical and statistical significance</li>
+<li>Experiments are usually iterative</li>
+</ol>
 </div>
 </div>
 <div id="simple-comparative-experiments" class="section level2">
@@ -360,16 +399,17 @@ $(document).ready(function () {
 <div id="choice-of-sample-size" class="section level4">
 <h4>2.4.3 Choice of Sample Size</h4>
 </div>
-<div id="the-case-where" class="section level4">
-<h4>2.4.4 The Case Where</h4>
+<div id="the-case-where-sigma_12neqsigma_22" class="section level4">
+<h4>2.4.4 The Case Where <span class="math inline">\(\sigma_1^2\neq\sigma_2^2\)</span></h4>
 </div>
-<div id="the-case-where-a-nd-re-known" class="section level4">
-<h4>2.4.5 The Case Where a nd re Known</h4>
+<div id="the-case-where-sigma_1-and-sigma_2-are-known" class="section level4">
+<h4>2.4.5 The Case Where <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> are Known</h4>
 </div>
 <div id="comparing-a-single-mean-to-a-specified-value" class="section level4">
 <h4>2.4.6 Comparing a Single Mean to a Specified Value</h4>
+<p>If the population is normal with known variance, or if the population is nonnormal but the sample size is large enough so that the central limit theorem applies, then the hypothesis may be tested using a direct application of the normal distribution.</p>
 </div>
-<div id="summary-1" class="section level4">
+<div id="summary" class="section level4">
 <h4>2.4.7 Summary</h4>
 </div>
 </div>
@@ -390,25 +430,307 @@ $(document).ready(function () {
 <h2>3. ANOVA</h2>
 <div id="an-example" class="section level3">
 <h3>3.1 An Example</h3>
+<p>a single-factor experiment with <em>a</em> levels of the factor and <em>n</em> replicates</p>
 </div>
 <div id="the-analysis-of-variance" class="section level3">
 <h3>3.2 The Analysis of Variance</h3>
+<p><em>a</em> treatments or different <em>levels</em> of a <em>single factor</em>.</p>
+<p><span class="math display">\[\text{mean model}\quad y_{ij}=\mu_{i}+\varepsilon_{ij} \begin{cases}i=1,2,…,a\\j=1,2,…,n\end{cases}\]</span></p>
+<p>where <span class="math inline">\(y_{ij}\)</span> is the ijth observation, <span class="math inline">\(\mu_i\)</span> is the mean of the ith factor level or treatment, and <span class="math inline">\(\varepsilon_{ij}\)</span> is a random error component. <span class="math inline">\(E[y_{ij}]=\mu_i\)</span></p>
+<p><span class="math display">\[\text{effects model}\quad y_{ij}=\mu+\tau_{i}+\varepsilon_{ij} \begin{cases}i=1,2,…,a\\j=1,2,…,n\end{cases}\]</span></p>
+<p><span class="math inline">\(\mu\)</span> is a parameter common to all treatments called the overall mean, and <span class="math inline">\(\tau_{i}\)</span> is a parameter unique to the ith treatment called the ith treatment effect.</p>
+<p><span class="math display">\[y_{ij}\sim N(\mu+\tau_{i},\sigma^2) \]</span></p>
+<p><span class="math display">\[\begin{array}\ \text{linear statistical models} \\ \text{(one-way or single-factor analysis of variance (ANOVA) model)}\end{array} \begin{cases}
+\text{fixed effects model}\\ \\ \text{random effects model} \\ \text{(components of variancemodel)}\end{cases}\]</span></p>
 </div>
 <div id="analysis-of-the-fixed-effects-model" class="section level3">
 <h3>3.3 Analysis of the Fixed Effects Model</h3>
+<p><span class="math inline">\(y_{i.}\)</span> represents the total of the observations under the ith treatment. Let <span class="math inline">\(\bar y_{i.}\)</span> represent the average of the observations under the ith treatment. Similarly, let <span class="math inline">\(y_{..}\)</span> represent the grand total of all the observations and <span class="math inline">\(y_{..}\)</span> represent the grand average of all the observations. <span class="math display">\[y_{i.} =\sum^n_{j=1}y_{ij}\quad \bar y_{i.} = \frac{y_{i.}}n\quad i=1,2,..,a\]</span> <span class="math display">\[y_{..}=\sum^a_{i=1}\sum^n_{j=1}y_{ij}\quad \bar y_{..}=\frac{y_{..}}N=\frac{1}N\sum^a_{i=1}y_{i.}=\frac{1}a\sum^a_{i=1}\bar y_{i.}\]</span></p>
+<p>where <span class="math inline">\(N=an\)</span> is the total number of observations.</p>
+<p><span class="math display">\[y_{..}=\sum^a_{i=1}(y_{i.}=\sum^n_{j=1}y_{ij})\]</span> <span class="math display">\[\bar y_{..}=\frac{1}N\left[y_{..}=\sum^a_{i=1}(y_{i.}=\sum^n_{j=1}y_{ij})\right]=\frac{1}a\sum^a_{i=1}\left[\bar y_{i.}=\frac{1}n(y_{i.}=\sum^n_{j=1}y_{ij})\right]\]</span></p>
+<p><span class="math display">\[H_0: \mu_1=\mu_2=..=\mu_a\qquad H_A: \mu_i\neq\mu_j\quad \text{for at least one pair (i, j)}\]</span></p>
+<p><span class="math display">\[\frac{\sum_{i=1}^a\mu_i}{a}=\mu\quad \sum_{i=1}^a\tau_i=0\]</span></p>
+<p><span class="math display">\[H_0: \tau_1=\tau_2=..=\tau_a=0\qquad H_A: \mu_i\neq\mu_j\quad \text{for at least one pair (i, j)}\]</span></p>
 <div id="decomposition-of-the-total-sum-of-squares" class="section level4">
 <h4>3.3.1 Decomposition of the Total Sum of Squares</h4>
+<p><span class="math display">\[SST = \sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}[(\bar y_{i.}−\bar y_{..})+(y_{ij}−\bar y_{i.})]^2\]</span></p>
+<p><span class="math display">\[=n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2+\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2+2\sum^a_{i=1}\sum^n_{j=1}(\bar y_{i.}−\bar y_{..})(y_{ij}−\bar y_{i.})\]</span></p>
+<p><span class="math display">\[\because \sum^n_{j=1}(y_{ij}−\bar y_{i.})=y_{i.}-n\bar y_{i.}=y_{i.}-n\frac{y_{i.}}n=0\]</span> <span class="math display">\[\therefore \sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2+\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2\]</span></p>
+<p><span class="math display">\[SS_T = SS_{treatments} + SS_E\]</span></p>
+<p><span class="math display">\[SS_E=\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2=\sum^a_{i=1}\left[\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2\right]\]</span></p>
+<p><span class="math display">\[S_i^2=\frac{\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2}{n-1}\quad i=1,2,..,a\]</span></p>
+<table style="width:100%;">
+<colgroup>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>SS</th>
+<th>df</th>
+<th>MS</th>
+<th>F test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment(Between or Model)</td>
+<td><span class="math inline">\(SS_{Trt}\)</span></td>
+<td><span class="math inline">\(n\sum^a_{i=1}(\bar y_{i.}−\bar y_{..})^2=\frac1n\sum^a_{i=1}y_{i.}^2-\frac{y_{..}^2}N\)</span></td>
+<td><span class="math inline">\(a-1\)</span></td>
+<td><span class="math inline">\(\frac{SS_{Trt}}{a-1}\)</span></td>
+<td><span class="math inline">\(\frac{MS_{Trt}}{MS_E}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error(Within)</td>
+<td><span class="math inline">\(SS_E\)</span></td>
+<td><span class="math inline">\(\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2\)</span></td>
+<td><span class="math inline">\(N-a=a(n-1)\)</span></td>
+<td><span class="math inline">\(\frac{SS_E}{N-a}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(SS_T\)</span></td>
+<td><span class="math inline">\(\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}y_{ij}^2-\frac{y_{..}^2}N\)</span></td>
+<td><span class="math inline">\(N-1=na-1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="33%"></col>
+<col width="33%"></col>
+<col width="33%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>E(SS)</th>
+<th>E(MS)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td><span class="math inline">\((a-1)\sigma^2+n\sum^a_{i=1}\tau_i^2\)</span></td>
+<td><span class="math inline">\(\sigma^2+\frac{n}{a-1}\sum^a_{i=1}\tau_i^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Erro</td>
+<td><span class="math inline">\((N-a)\sigma^2\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="statistical-analysis" class="section level4">
 <h4>3.3.2 Statistical Analysis</h4>
 <p><strong>Theorem 3-1</strong> Cochran’s Theorem (p.72)</p>
 <p>Let <span class="math inline">\(Z_i\)</span> be NID(0,1) for <span class="math inline">\(i = 1, 2,..,\nu\)</span> and</p>
 <p><span class="math display">\[\sum_{i=1}^\nu Z_i^2 = Q_1 + Q_2 + · · · + Q_s\]</span></p>
-<p>where <span class="math inline">\(s\le\nu\)</span>, and <span class="math inline">\(Q_i\)</span> has <span class="math inline">\(\nu_i\)</span> degrees of freedom <span class="math inline">\((i= 1,2,..,s)\)</span>. Then <span class="math inline">\(Q_1,Q_2,..,Q_s\)</span> are independent chi-square random variables with <span class="math inline">\(\nu_1,\nu_2,.., \nu_s\)</span> degrees of freedom, respectively, if and only if <span class="math display">\[\nu_=\nu_1 +\nu_2+..+\nu_s\]</span></p>
-<p>####3.3.3 Estimation of the Model Parameters</p>
+<p>where <span class="math inline">\(s\le\nu\)</span>, and <span class="math inline">\(Q_i\)</span> has <span class="math inline">\(\nu_i\)</span> degrees of freedom <span class="math inline">\((i= 1,2,..,s)\)</span>. Then <span class="math inline">\(Q_1,Q_2,..,Q_s\)</span> are independent chi-square random variables with <span class="math inline">\(\nu_1,\nu_2,.., \nu_s\)</span> degrees of freedom, respectively, if and only if <span class="math display">\[\nu=\nu_1 +\nu_2+..+\nu_s\]</span></p>
+</div>
+<div id="estimation-of-the-model-parameters" class="section level4">
+<h4>3.3.3 Estimation of the Model Parameters</h4>
+<ul>
+<li>Least Squares Method I</li>
+</ul>
+<p><span class="math inline">\(y_{ij}=\mu+\tau_{i}+\varepsilon_{ij}\)</span>, for <span class="math inline">\(ε_{ij}\sim iid N(0,\sigma^2),i=1,2,…,a,j=1,2,…,n\)</span>, <span class="math inline">\(\sum_{i=1}^a\tau_i=0\)</span></p>
+<p><span class="math inline">\(SSE=\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i)^2\)</span>,or <span class="math inline">\(\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\mu-\tau_i-\beta_j)^2\)</span>,</p>
+<p><span class="math inline">\(\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i}=2\sum_{i=1}^a\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0\)</span>,<span class="math inline">\(y_{..}=an\hat\mu+n\sum_{i=1}^a\hat\tau_i\)</span> <span class="math inline">\(\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i}=2\sum_{j=1}^n(y_{ij}-\hat\mu-\hat\tau_i)(-1)=0\)</span>,<span class="math inline">\(y_{i.}=n\hat\mu+n\hat\tau_i\)</span></p>
+<p><span class="math inline">\(\left.\frac{\partial SSE}{\partial\mu}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0\)</span>,<span class="math inline">\(y_{..}=ab\hat\mu+b\sum_{i=1}^a\hat\tau_i+a\sum_{j=1}^b\hat\beta_j\)</span> <span class="math inline">\(\left.\frac{\partial SSE}{\partial\tau_i}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{j=1}^b(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0\)</span>,<span class="math inline">\(y_{i.}=b\hat\mu+b\hat\tau_i+\sum_{j=1}^b\hat\beta_j\)</span> <span class="math inline">\(\left.\frac{\partial SSE}{\partial\beta_j}\right|_{\hat\mu,\hat\tau_i,\hat\beta_j}=2\sum_{i=1}^a(y_{ij}-\hat\mu-\hat\tau_i-\hat\beta_j)(-1)=0\)</span>,<span class="math inline">\(y_{.j}=a\hat\mu+\sum_{i=1}^a\hat\tau_i+a\hat\beta_j\)</span></p>
+<p><span class="math display">\[\hat\mu=\frac1{an}y_{..}-\frac1{a}\sum_{i=1}^a\hat\tau_i=\bar y_{..}\]</span> <span class="math display">\[\hat\tau_i=\frac1{a}y_{i.}-\hat\mu=\bar y_{i.}-\bar y_{..}\]</span></p>
+<ul>
+<li>Least Squares Method II</li>
+</ul>
+<p><span class="math inline">\(y_{ij}=\mu_{i}+\varepsilon_{ij}\)</span>, for <span class="math inline">\(ε_{ij}\sim iid N(0,\sigma^2),i=1,2,…,a,j=1,2,…,n\)</span>, <span class="math inline">\(\sum_{i=1}^a\mu_i=au\)</span></p>
+<p><span class="math display">\[\vec y=\mathbf{X}\vecβ+\vecε\]</span></p>
+<p><span class="math inline">\(\mathbf{X'X}=nI_{a\times a}\)</span>,<span class="math inline">\(\mathbf{(X'X)^{-1}}=\frac1nI_{a\times a}\)</span>,<span class="math inline">\(\mathbf{X'}\vec{Y}=\vec{y_i}\)</span></p>
+<p><span class="math display">\[\vecβ=\mathbf{(X'X)^{-1}X}\vec{Y}=\vec{\hat{y_i}}=\vec{\hat{\mu_i}}\implies \hat\mu_i=\bar y_{i.};\ \hat\mu=\bar y_{..};\ \hat\tau_i=\bar y_{i.}-\bar y_{..}\]</span></p>
+<ul>
+<li>Confidence Interval for parameters</li>
+</ul>
+<p><span class="math inline">\(y_{ij}\sim NID(\mu+\tau_i,\sigma^2)\)</span>, <span class="math inline">\(\bar y_{i.}\sim NID(\mu+\tau_i,\frac{\sigma^2}n)\)</span>, <span class="math inline">\(\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}\sim N(0,1)\)</span></p>
+<p><span class="math inline">\(\frac{SS_E}{\sigma^2}\sim \chi^2_{df_E}\)</span>, and <span class="math inline">\(\bar y_{i.}\)</span> and <span class="math inline">\(\frac{SS_E}{\sigma^2}\)</span> are independent.</p>
+<p><span class="math display">\[\frac{\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}}{\sqrt{\frac{SS_E}{\sigma^2(N-a)}}}=\frac{y_{i.}-\mu_i}{\sqrt{\frac{SS_E}{n(df_E)}}}=\frac{y_{i.}-\mu_i}{\sqrt{\frac{MS_E}n}}\sim t_{df_E=N-a}\]</span></p>
+<p><span class="math inline">\(100(1-\alpha)\)</span>% confidence interval for ith treatment mean (<span class="math inline">\(\mu_i\)</span>) is <span class="math inline">\(\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n}}\)</span></p>
+<p><span class="math inline">\(\bar y_{i.}-\bar y_{j.}\sim N(\mu_i-\mu_j,\frac{2\sigma^2}n)\)</span>, <span class="math inline">\(\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\frac{2\sigma}{\sqrt{n}}}\sim N(0,1)\)</span></p>
+<p>if <span class="math inline">\(\hat\sigma^2=MS_E\)</span>, <span class="math inline">\(\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\sqrt{\frac{2MS_E}n}}\sim t_{df_E}\)</span></p>
+<p><span class="math inline">\(100(1-\alpha)\)</span>% confidence interval for the difference in ith and jth treatment means (<span class="math inline">\(\mu_i-\mu_j\)</span>) is <span class="math inline">\(\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{\frac{2MS_E}{n}}\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\hat\mu\)</span></th>
+<th><span class="math inline">\(\hat\mu_i\)</span></th>
+<th><span class="math inline">\(\hat\tau_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\bar y_{..}\)</span></td>
+<td><span class="math inline">\(\bar y_{i.}\)</span></td>
+<td><span class="math inline">\(\bar y_{i.}-\bar y_{..}\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="20%"></col>
+<col width="20%"></col>
+<col width="20%"></col>
+<col width="20%"></col>
+<col width="20%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(y_{ij}\)</span></th>
+<th><span class="math inline">\(\bar y_{i.}\)</span></th>
+<th><span class="math inline">\(\frac{y_{i.}-\mu_i}{\frac{\sigma}{\sqrt{n}}}\)</span></th>
+<th><span class="math inline">\(\frac{SS_E}{\sigma^2}\)</span></th>
+<th><span class="math inline">\(\frac{y_{i.}-\mu_i}{\sqrt{\frac{MS_E}n}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N(\mu+\tau_i,\sigma^2)\)</span></td>
+<td><span class="math inline">\(N(\mu+\tau_i,\frac{\sigma^2}n)\)</span></td>
+<td><span class="math inline">\(N(0,1)\)</span></td>
+<td><span class="math inline">\(\chi^2_{df_E}\)</span></td>
+<td><span class="math inline">\(t_{df_E=N-a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="33%"></col>
+<col width="33%"></col>
+<col width="33%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\bar y_{i.}-\bar y_{j.}\)</span></th>
+<th><span class="math inline">\(\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\frac{2\sigma}{\sqrt{n}}}\)</span></th>
+<th><span class="math inline">\(\frac{\bar y_{i.}-\bar y_{j.}-(\mu_i-\mu_j)}{\sqrt{\frac{2MS_E}n}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N(\mu_i-\mu_j,\frac{2\sigma^2}n)\)</span></td>
+<td><span class="math inline">\(N(0,1)\)</span></td>
+<td><span class="math inline">\(t_{df_E}\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="unbalanced-data" class="section level4">
 <h4>3.3.4 Unbalanced Data</h4>
+<table style="width:100%;">
+<colgroup>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+<col width="16%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>SS</th>
+<th>df</th>
+<th>MS</th>
+<th>F test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment(Between or Model)</td>
+<td><span class="math inline">\(SS_{Trt}\)</span></td>
+<td><span class="math inline">\(\sum^a_{i=1}\sum^{n_i}_{i=1}(\bar y_{i.}−\bar y_{..})^2=\sum^a_{i=1}\frac{y_{i.}^2}{n_i}-\frac{y_{..}^2}N\)</span></td>
+<td><span class="math inline">\(a-1\)</span></td>
+<td><span class="math inline">\(\frac{SS_{Trt}}{a-1}\)</span></td>
+<td><span class="math inline">\(\frac{MS_{Trt}}{MS_E}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error(Within)</td>
+<td><span class="math inline">\(SS_E\)</span></td>
+<td><span class="math inline">\(\sum^a_{i=1}\sum^n_{j=1}(y_{ij}−\bar y_{i.})^2\)</span></td>
+<td><span class="math inline">\(N-a=\sum_{i=1}^a(n_i-1)\)</span></td>
+<td><span class="math inline">\(\frac{SS_E}{N-a}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(SS_T\)</span></td>
+<td><span class="math inline">\(\sum^a_{i=1}\sum^{n_i}_{j=1}(y_{ij}−\bar y_{..})^2=\sum^a_{i=1}\sum^n_{j=1}y_{ij}^2-\frac{y_{..}^2}N\)</span></td>
+<td><span class="math inline">\(N-1=\sum_{i=1}^an_i-1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="33%"></col>
+<col width="33%"></col>
+<col width="33%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>E(SS)</th>
+<th>E(MS)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td><span class="math inline">\((a-1)\sigma^2+n\sum^a_{i=1}n_i\tau_i^2\)</span></td>
+<td><span class="math inline">\(\sigma^2+\frac{n}{a-1}\sum^a_{i=1}n_i\tau_i^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Erro</td>
+<td><span class="math inline">\((N-a)\sigma^2\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="33%"></col>
+<col width="33%"></col>
+<col width="33%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>CI</th>
+<th>balanced</th>
+<th>unbalanced</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu_i\)</span></td>
+<td><span class="math inline">\(\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n}}\)</span></td>
+<td><span class="math inline">\(\bar y_i\pm t_{\frac{\alpha}2}\sqrt{\frac{MS_E}{n_i}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu_i-\mu_j\)</span></td>
+<td><span class="math inline">\(\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{\frac{2MS_E}{n}}\)</span></td>
+<td><span class="math inline">\(\bar y_{i.}-\bar y_{j.}\pm t_{\frac{\alpha}2}\sqrt{MS_E(\frac{1}{n_i}+\frac{1}{n_j})}\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="model-adequacy-checking-verification" class="section level3">

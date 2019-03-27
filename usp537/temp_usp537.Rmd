@@ -5,66 +5,227 @@ date: "Winter 2019"
 output: html_document
 ---
 
-# 
+# {.tabset .tabset-fade .tabset-pills}
 
-## I. Introduction & Microeconomic Foundations
+## I. 
+Introduction & Microeconomic Foundations
 
-[GTW] Chap 11 – “The Urban Transportation Problem: A Reexamination and Update”
+### [GTW] Chap 11 – “The Urban Transportation Problem: A Reexamination and Update”
 
-Klein, Moore & Reja [KMR] Chap 1 – “Introduction”
+ - The History of Transit Technologies
+ 
+ - Land Use Changes, Car Ownership, and Declines in Transit Use
+ 
+ - Comparative Costs of Alternative Transit Modes
+ 
+   + Experience with Shared Bus, Carpool Facilities
+  
+   + Shared Bus-HOV Facilities vs. Exclusive Busways
+  
+   + Busway Operating Costs
+  
+   + At-Grade Busways in Developing Countries
+  
+   + High-Performance Bus vs. New Rail Systems
+  
+   + Predicted and Actual Ridership and Costs for New Rail Systems
+  
+ - The Effect of Public Policy (p.387)
+ 
+   + The Impact of Public Ownership and Subsidies
 
-[KMR] Chap 2 – “The Triumph of the Automobile”
+Public takeovers reduced the productivity and cost-effectiveness of transit systems serving the nation's cities and metropolitan areas.
 
-[KMR] Chap 3 – “The Fizzle of Traditional Transit”
+Analyses by Lave and others strongly suggest the level of subsidy might have been much smaller, if governments had responded to this dilemma by subsidizing private firms to provide the desired combinations of fares and service.
+
+Referring to comparative analyses of seventeen urban areas, they conclude that, on average, competitive services are nearly 60 percent less costly than noncompetitive bus services.
+
+In contrast, essentially no empirical support exists for the view that rail transit perse increases transit ridership.
+
+   + The Impact of Mispricing Street Space (p.393)
+  
+In the short run, motorists would make fewer trips, change their time of travel, and alter their destinations.
+
+In the long run, higher road user charges would eventually affect the dispersed patterns of workplaces and residences that were in part induced by congestion.
+
+The U.S. experience clearly demonstrates that massive highway construction programs can provide some congestion reliefbut much less than might be expected. One reason is that without appropriate road pricing, the higher speeds that result will induce commuters and other motorists to make longer and more frequent trips.
+
+If these analyses are correct, privatization, possibly in combination with somewhat higher fares, could eliminate the need for subsidy altogether in many situations.
+
+ - Conclusions
+
+Central city population and employment declines have continued; dramatic increases in the construction of
+office space in the central business districts of several large cities have not been accompanied by large increases in employment. In general, any gains in office employment that central business districts may
+have enjoyed have been more than offset by losses in manufacturing, wholesaling, and retailing employment.
+
+The most effective alternative policy would have been more explicit and aggressive pricing of congested and costly-to-expand road space in large and dense metropolitan areas.
+
+Further gains could have been achieved by retaining private transit operations rather than converting the largely private transit industry to public ownership and operation. 
+
+Finally, with or without road pricing or private ownership and operation of transit, large sums could have
+been saved or larger increases in transit ridership could have been achieved if transit operators had spent a larger fraction of available revenues on bus system improvements rather than on costly and ineffective rail systems.
+
+Even though land use patterns are slow to change, they have responded to the flawed transportation policies followed by governments in both this country and abroad during the last thirty years.
+
+begin charging road users the full social cost of their road use, for reversing the public ownership and operation of transit services, and for stopping wasteful expenditures on ineffective rail systems.
+
+### Klein, Moore & Reja [KMR] Chap 1 – “Introduction”
+
+The authors propose that urban transit be brought into the fold of market activity by establishing property rights not only in vehicles, but also in curb zones and transit stops.
+
+Once the system of curb rights is sensibly implemented, the authors conclude, the market process will take over. Then the invisible hand can do in transit what it does so well in other parts of the economy.
+
+We maintain that America needs to reform transit in the direction of free enterprise
+The spontaneous order of free enterprise 
+
+the success of a spontaneous order depends critically on the property rights framework within which it operates.
+
+FIGURE 1-1. Limiting Cases for the Continuum of Social Governance
+
+|Regulation or government ownership	|Property rights
+| --- | --- |
+|Regulation tells you what you may or may not do with your property |	Property rights tell others what they may and may not do with your property | 
+|Order created by central direction, regulation, or government enterprise |	Order emerges from decentralized interaction within property rights framework|
+
+Our goal is to reveal how the forms and effectiveness of transit services depend on the character of property rights as they exist in transit markets.
+
+Our reform proposals aim at bringing to transit markets the kinds of competition and entrepreneurship that operate in other markets. The nub of our proposals is to establish clear property rights in curb zones, but turnouts, and bus stops, creating a system of "curb rights." 
+
+### [KMR] Chap 2 – “The Triumph of the Automobile”
+
+Edge cities are one consequence of prosperity and the rise of the private automobile.
+
+flexibility, privacy, accommodation of diverse lifestyles, speed, and access to all points known to man and pavement. Even such critics of America's automobile culture.
+
+congestion, air pollution
+
+Research on mode choice shows that travelers value the following characteristics: short trip times, avoidance of transfers and waiting time, door-to-door service, reliability, comfort, seat availability, storage space, security, and flexibility.  Also of importance are psychological factors such as privacy and autonomy.
+
+The only desirable characteristics not readily associated with the automobile are accident safety, exposure to social interaction, and the ability to read or sleep or whatnot while traveling.
+
+As Melvin Webber has argued in "The Joys of Automobility," if transit is to compete it must emulate the private automobile.  Our property rights proposal would favor transit services more like the private automobile, blurring the distinction between the private car and mass transportation.
+
+### [KMR] Chap 3 – “The Fizzle of Traditional Transit”
+
+ - the early part of the twentieth century. 
+To allow the streetcar companies to recoup capital costs, local governments granted them route monopolies and regulated them as natural monopolies. The structure of monopoly regulation was inflexible to changes in demand and technology
+
+ - The Second World War
+ 
+government regulations did not allow transit companies to raise fares; they had to meet the increased demand by running vehicles overtime. After the war the streetcar companies spent a great deal of capital on replacement as ridership declined, but regulators continued to hinder them from reducing service or raising fares.
+ 
+ - By the 1950s
+ 
+Motorbus technology does not lend itself to increasing returns and natural monopoly, but the regulatory structure of the streetcars stayed the same. 
+ 
+ - in the 1950s and 1960s
+
+most transit companies went bankrupt.
+ 
+Urban Mass Transportation Act in 1964
+ 
+ - since the 1960s 
+ 
+ The market trend has been against public transit. Transit’s share of commuter trips declined from 12.6 percent in 1969 to 5.1 percent in 1990.
+ 
+ It is part of a dynamic mix of competition, rising incomes, and technological change.
+ 
+ Since the 1960s suburbanization has stretched development beyond the areas traditionally served by transit.
+ 
+ Simply put, public transit authorities have trended to overprovide their service.
+ 
+ Financial trends for transit services are even more discouraging.
+ 
+ Just two generations ago transit was earning its income from paying customers in the private enterprise economy. Today, about 70 percent of its money comes from taxpayers. And tax dollars, remember, are expensive dollars in that there are high transaction costs and distortions associated with the tax system; the Office of Management and Budget advises that government expenditures be multiplied by 1.25 to reflect these excess burdens. 
+ 
+ Except in dense metropolitan areas, the subsidization of transit has no significant impact on congestion.
+ 
+ because public transit's share of total passenger miles is so small, the contribution is insignificant. On the matter of energy conservation, transit is again no help. 
+ 
+ The transit market is contracting because of natural forces. 
+ 
+ The reasons lie in the troubled operation of public policy and government enterprise.
+ 
+## II. 
+Demand for Transportation - Week 3 (01/24) & Week 4 (01/31)
+
+### [GTW] Chap 2 – “The Demand for Transportation: Models and Applications”
+
+### Button, K. (2010) Transportation Economics. Chap 4 – “The Demand for Transport”
+
+ 4.1 Introduction
+ 4.2 Factors that influence travel demand
+ 
+$$D_a=f(P_aP_1,P_2,...,P_n,T,Y)$$
+ 
+ $$\ln Q_M=\alpha+\beta_1\ln P_M+\beta_2\ln Y+\beta_3\ln P_N$$
+
+Where $Q_M$ is the quantity of mode M demanded, $P_M$ is the price of mode M, Y is income, and  $P_N$ is the price of an alternative, N. THe price elasticity (defined as $\frac{\Delta Q/Q}{\Delta P/P}$) is the parameter $\beta_1$ in a double logarithmic equation, the income elasticity of demand, reflecting the sensitivity of the quantity demanded to income changes, is $\beta_2$, and $\beta_3$ is the cross-elasticity of demand.
+
+  - The Price of the Transport Service
+  - Trip purpose
+  - The methods of charging
+  - The time period under consideration
+  - The absolute level of the prive change
+  - Income Levels
+  - Tastes
+ 
+ 4.3 The notion of a "need" for transport
+ 4.4 The valuation of travel time savings
+
+$$\Delta A=-\alpha\Delta T- \beta_1\Delta C+\beta_2\Delta E$$
+
+where the relative attractiveness of the alternatives, $\Delta A$ is the difference between the travel time cost, $\Delta C$ and travel time, $\Delta T$. $\Delta E$ is differences in everything else. The coefficients $\alpha$ and $\beta_1$ are both negative because a decrease in either the time or cost of a trip is seen to generate positve utility.
+
+A simple equation of the general form:
+
+$$P_1=\frac{e^y}{1+e^y},\quad y=\alpha_0+\alpha_1(t_1t_2)+\alpha_2(c_1t_2)$$
+
+Where $P_1$ is the probability of choosing mode(route and so on) 1; y is choice of mode (route and so on); takes value of 1 for mode (route and so on) 1 and 0 for mode (route and so on) 2; $t_i$ is the door-to-door travel time by the jth mode (route and so on); $c_i$ is the door-to-door travel cost y the jth mode (route and so on).
+
+ 4.5 The demand for car ownership
+
+### [GTW] Chap 10 – “Determinants of Motorization and Road Provision”
+
+### [GTW] Chap 13 – “Accessibility and Economic Opportunity”
+
+### Graham, D. J., & Glaister, S. (2004). Road traffic demand elasticity estimates: a review. Transport reviews, 24(3), 261-274.
+
+### Litman, T. (2007). Transportation elasticities - How Prices and Other Factors Affect
 
 
-## II. Demand for Transportation
+## III. 
+Transportation and Land Use and Accessibility – Week 5 (02/07) & Week 6 (02/14)
 
-[GTW] Chap 2 – “The Demand for Transportation: Models and Applications”
+### [GTW] Chap 12 – “Transportation and Land Use”
 
-[GTW] Chap 10 – “Determinants of Motorization and Road Provision”
+### Gobillon, L., Selod, H., & Zenou, Y. (2007). The mechanisms of spatial mismatch. Urban studies, 44(12), 2401-2427.
 
-[GTW] Chap 13 – “Accessibility and Economic Opportunity”
+## IV. 
+Project Evaluation– Week 7 (02/21) & Week 8 (02/28)
 
-Graham, D. J., & Glaister, S. (2004). Road traffic demand elasticity estimates: a review. Transport reviews, 24(3), 261-274.
+### [GTW] Chap 5 – “Project Evaluation”
 
-Litman, T. (2007). Transportation elasticities - How Prices and Other Factors Affect
+### Liu, J.H. and Shi, W. (2017). Impact of Bike Facilities on Residential Property Prices. Transportation Research Record: Journal of the Transportation Research Board, 2662, 50-58.
 
+### Lakshmanan, T. R., & Chatterjee, L. R. (2005). Economic Consequences of Transport Improvements. Access, 26:28-33. University of California Transportation Center.
 
-## III. Transportation and Land Use
+### GAO (2005). Highlights from an Expert Panel - The Benefits and Costs of Highway and Transit Investments.
 
-[GTW] Chap 12 – “Transportation and Land Use”
+## V. 
+Supply and Pricing of Transportation – Week 9 (03/07)
 
-## IV. Project Evaluation
+### [GTW] Chap 3 – “Learning about Transport Costs”
 
-[GTW] Chap 5 – “Project Evaluation”
+### [GTW] Chap 4 – “Pricing”
 
-Lakshmanan, T. R., & Chatterjee, L. R. (2005). Economic Consequences of Transport Improvements. Access, 26:28-33. University of California Transportation Center.
+### Flyvbjerg, B., Holm, M. S., & Buhl, S. (2002). Underestimating costs in public works projects: Error or lie? Journal of the American Planning Association, 68(3), 279-295.
 
-GAO (2005). Highlights from an Expert Panel - The Benefits and Costs of Highway and Transit Investments.
+### Lave, C. (1994). It Wasn't Supposed To Turn Out Like This: Federal Subsidies and Declining Transit Productivity. Access 5, 21-25.
 
-## V. Supply of Transportation
+### Rufolo, A. M., &Bertini, R. L. (2003). Designing alternatives to state motor fuel taxes. Transportation Quarterly, 57(1), 33-46.
 
-[GTW] Chap 3 – “Learning about Transport Costs”
+## VI. 
+Financing Transportation Infrastructure – Week 10 (03/14)
 
-[GTW] Chap 4 – “Pricing”
-
-Flyvbjerg, B., Holm, M. S., & Buhl, S. (2002). Underestimating costs in public works projects: Error or lie? Journal of the American Planning Association, 68(3), 279-295.
-
-Lave, C. (1994). It Wasn't Supposed To Turn Out Like This: Federal Subsidies and Declining Transit Productivity. Access 5, 21-25.
-
-Rufolo, A. M., &Bertini, R. L. (2003). Designing alternatives to state motor fuel taxes. Transportation Quarterly, 57(1), 33-46.
-
-## VI. Pricing and Externalities
-
-[GTW] Chap 6 – “Congestion”
-
-[GTW] Chap 7 – “The Politics of Controlling Auto Air Pollution”
-
-[GTW] Chap 8 – “Fuel Economy and Auto Safety Regulations: Is the Cure Worse than the Disease?”
-
-Anas, A., & Lindsey, R. (2011). Reducing urban road transportation externalities: Road pricing in theory and in practice. Review of Environmental Economics and Policy.
-
-Taylor, B. D. (2002). Rethinking traffic congestion. Access, 21, 8-16.
-
-Small, K. (2005). Road pricing and public transit: Unnoticed lessons from London. Access, 26(3), 10-15.
+### Ardila-Gomez, A., & Ortegon-Sanchez, A. (2016). Sustainable Urban Transport Financing from the Sidewalk to the Subway: Capital, Operations, and Maintenance Financing. World Bank Publications.

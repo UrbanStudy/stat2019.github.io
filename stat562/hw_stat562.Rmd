@@ -1,6 +1,6 @@
 ---
 title: 'STAT562 Homework'
-author: ""
+author: "Shen Qu"
 date: "Winter 2019"
 output: html_document
 ---
@@ -9,272 +9,940 @@ output: html_document
 
 ## HW1
 
-> draft
-
-**4.4**  A pdf is defined by 
-
-f(x ) = c(x + 2y) if 0 <y< 1 and 0 < x < 2 , 
-
-0 otherwise.
+**4.4**  A pdf is defined by $f(x,y)=\begin{cases}C(x+2y)& 0<y<1,0<x<2 \\0 &otherwise\end{cases}$
 
  (a). Find the value of C.
- (b). Find the marginal distribution of X.
- (c). Find the joint cdf of X a.nd Y.
- (d). Find the pdf of the random variable Z=9/(X + 1)^2
 
----
+$$\because \int_0^1\int_0^2f(x,y)dxdy=\int_0^1\int_0^2C(x+2y)dxdy=C\int_0^1\left[\frac{x^2}2+2yx\right]_0^2dy=C\int_0^1(2+4y)dy=\left.C(2y+2y^2)\right|_0^1=4C=1$$
+
+$$\therefore C=\frac14$$
+
+  ---
+
+ (b). Find the marginal distribution of X.
+ 
+ $$f_X(x)=\begin{cases}\int_0^1f(x,y)dy=\int_0^1\frac14(x+2y)dy=\frac14\left[xy+y^2\right]_0^1=\frac14(x+1)& 0<x<2\\ 0 & otherwise \end{cases}$$
+
+  ---
+
+ (c). Find the joint cdf of X and Y.
+ 
+ let u=X, v=Y
+ 
+ $$F_{XY}(x,y)=P(X\le x,Y\le y)=\begin{cases}0& x\le0,y\le0\\\\\int_0^x\int_0^yf(u,v)dvdu&0<y<1,0<x<2\\\\1& x\ge2,y\ge1 \end{cases}$$
+ 
+$$=\begin{cases}0& y\le0,x\le0\\\int_0^x\int_0^y\frac14(u+2v)dvdu=\frac14\int_0^x[uv+v^2]_{v=0}^{y}du=\frac14\int_0^x(yu+y^2)du=\frac14[\frac{yu^2}2+y^2u]_{u=0}^x=\frac{x^2y}8+\frac{xy^2}4&0<y<1,0<x<2\\\int_0^2\int_0^y\frac14(u+2v)dvdu=\frac14\int_0^2[uv+v^2]_{v=0}^{y}du=\frac14\int_0^2(yu+y^2)du=\frac14[\frac{yu^2}2+y^2u]_{u=0}^2=\frac{y^2}2+\frac{y}2&0<y<1,2\le x\\\int_0^x\int_0^1\frac14(u+2v)dvdu=\frac14\int_0^x[uv+v^2]_{v=0}^{1}du=\frac14\int_0^x(u+1)du=\frac14[\frac{u^2}2+u]_{u=0}^x=\frac{x^2}8+\frac{x}{4}&1\le y,0<x<2 \\1& y\ge1,x\ge2\end{cases}$$
+
+  ---
+
+ (d). Find the pdf of the random variable $Z=9/(X + 1)^2$
+
+For $Z=g(x)=9/(X + 1)^2$ is monotone when $0<x<2$, $X=g^{-1}(z)=3Z^{-\frac12}-1$, $1<z<9$, $d(g^{-1}(z))=-\frac32z^{-\frac32}$
+
+$$f_Z(z)=\begin{cases}f_X(g^{-1}(z))|\frac{d}{dz}g^{-1}(z)|=\frac14(3z^{-\frac12}-1+1)|-\frac32z^{-\frac32}|=\frac98z^{-2}\quad1<z<9 \\0\qquad elsewhere\end{cases}$$
+
+  ---
 
 **4.11** Let U the number of trials needed to get the first head and V the number of trials needed to get two heads in repeated tosses of a fair coin. Are U and V independent random variables?
 
+For $U\sim Geom(p=\frac12),u=1,2..$ and $V\sim N Bin(p=\frac12,r=2),v=2,3..$, the distribution of (U,V) is $\{(u,v):u=1,2,..;v=u+1,u+2,..\}$, which is not a cross-product set. Given $U=u$, $V>u$ is always true and U and V are not independent.
 
----
+
+  ---
 
 **4.16** Let X and Y be independent random variables with the same geometric distribution.
 
- (a). Show that U and V are independent, where U and V are defined by
+ (a). Show that U and V are independent, where U and V are defined by $U=\min(X,Y)$ and $V=X-Y$.
 
-U = min(X, Y ) an d V = X - Y.
+$$f_{U,V}(u,v)=P(U=u,V=v)$$
 
- (b). Find the distribution of Z = X/(X + Y), where we define Z = 0 if X+Y=O.
+$$=\left\{\begin{array}{l} P(X=u+v,Y=u)=p(1-p)^{u+v-1}p(1-p)^{u-1}=p^2(1-p)^{2u+v-2} &\text{if } X>Y\\P(X=u,Y=u)=p^2(1-p)^{2(u-1)} &\text{if } X=Y \\P(X=u,Y=u-v)=p(1-p)^{u-1}p(1-p)^{u-v-1}=p^2(1-p)^{2u-v-2} &\text{if } X<Y\end{array}\right\}=(\frac{p}{1-p})^{2}(1-p)^{2u}(1-p)^{|v|},$$
+
+$u=1,2..,v=0,\pm1,\pm2,..$
+
+Since the joint pmf factors into a function of u and v, U and V are independent.
+
+  ---
+
+ (b). Find the distribution of $Z=X/(X+Y)$, where we define $Z=0$ if $X+Y=0$.
+
+Suppose r and s are positve integers, $r<s$, and $\frac{r}s$ is in reduced form. Let $Z=\frac{X}{X+Y}=\frac{ir}{is},i=1,2..$, then $x=ir,y=i(s-r)$
+
+$$P(Z=\frac{ir}{is})=\sum_{i=1}^{\infty}P(X=ir,Y=i(s-r))=\sum_{i=1}^{\infty}p(1-p)^{ir-1}p(1-p)^{i(s-r)-1}=(\frac{p}{1-p})^{2}\sum_{i=1}^{\infty}(1-p)^{is}$$
+
+This is a geometric series with common ratio $0<(1-p)^{s}<1$, therefore
+
+$$=(\frac{p}{1-p})^{2}\frac{(1-p)^{s}}{1-(1-p)^{s}}$$
+
+  ---
 
  (c). Find the joint pdf of X and X + Y.
 
----
+Let $U=X+Y$, then $Y=U-X$
 
-**4.17** Let X be an exponential( l ) random variable, and define Y to be the integer part of X + 1, that is
+$$P(X=x,U=x+y)=P(X=x,Y=u-x)=P(X=x)P(Y=u-x)=p(1-p)^{x-1}p(1-p)^{u-x-1}=(\frac{p}{1-p})^{2}(1-p)^{u}$$
 
-Y = i + l if and only if i S X < i + l , i = O, 1, 2, . . . .
+  ---
+
+**4.17** Let X be an exponential(1) random variable, and define Y to be the integer part of X + 1, that is $Y=i+1$ if and only if $i\le X<i+1, i=0,1,2,..$
 
 (a) Find the distribution of Y . What well-known distribution does Y have?
-(b) Find the conditional distribution of X -4 given $Y\ge5$.
 
----
+For $Y=X+1$, $X=Y-1$
 
-**4.20** Xl and X2 are independent $n(0, \sigma^2)$ random variables.
+$$P(Y=i+1)=\int_{i}^{i+1}e^{-x}dx=\left.-e^{-x}\right|_{x=i}^{i+1}=-e^{-i-1}+e^{-i}=(1-\frac1e)(\frac1e)^i$$
 
- (a). Find the joint distribution of Y1 and Y2 , where
+Which is a Geometric distribution with $p=1-\frac1e,x=0,1,2,..$
+
+  ---
+
+(b) Find the conditional distribution of $X-4$ given $Y\ge5$.
+
+For $f_X(x)=e^{-x}$, $F_X(x)=P(X\le x)=1-e^{-x}$ and $1-F_X(x)=P(X>x)=e^{-x}$
+
+$$P(X-4\le x|Y\ge5)=P(X\le x-4|X+1\ge5)=1-P(X\ge x+4|X\ge4)$$
+
+According to the 'memoryless' property of Exponential distribution,
+
+$$=1-P(X\ge x|X\ge4)=1-P(X\ge x)=P(X\le x)=1-e^{-x},\quad x\ge4$$
+
+  ---
+
+**4.20** $X_1$ and $X_2$ are independent $n(0, \sigma^2)$ random variables.
+
+ (a). Find the joint distribution of Y1 and Y2 , where $Y_1 = X_1^2 + X_2^2$ and $Y_2 =\frac{X_1}{\sqrt{Y_1}}$
  
-$Y_1 = X_1^2 + X_2^2$ and $Y_2 =\frac{X_1}{\sqrt{Y_1}}$
+Since $Y_2 =\frac{X_1}{\sqrt{Y_1}}=\frac{X_1}{\sqrt{X_1^2+ X_2^2}}=\pm\sqrt{1-\frac{X_2^2}{\sqrt{X_1^2+ X_2^2}}}$. Thus, $|y_2|<1$
 
- (b). Show that Y1 and Y2 are independent, and interpret this result geometrically.
+To let the transformation between the points $(x_1,x_2)$ and $(y_1,y_2)$ is one-to-one, let
+
+$$\left.\begin{array}\mathcal{A_0}=\{-\infty<x_1<\infty,x_2=0\}\\ \mathcal{A_1}=\{-\infty<x_1<\infty,x_2>0\} \\ \mathcal{A_2}=\{-\infty<x_1<\infty,x_2<0\} \\ \end{array}\right\}\to\mathcal{B}=\{0<y_1<\infty,|y_2|<1\}$$
+
+
+
+$$f_{Y_1,Y_2}(y_1,y_2)=\sum_{i=1}^kf_{X_1,X_2}(h_1(y_1,y_2),\ h_2(y_1,y_2))|J_i|$$
+
+$$h_1(y_1,y_2)=y_2\sqrt{y_1}$$
+$$h_2(y_1,y_2)=\pm\sqrt{(1-y_2^2)y_1}$$
+
+$$J_{1,2}=\begin{vmatrix}\frac{\partial h_1}{\partial y_1} & \frac{\partial h_2}{\partial y_2} \\ \frac{\partial h_1}{\partial y_1} & \frac{\partial h_2}{\partial y_2} \end{vmatrix}=\frac{\partial h_1}{\partial y_1}\frac{\partial h_2}{\partial y_2}-\frac{\partial h_2}{\partial y_1}\frac{\partial h_1}{\partial y_2}=\pm\frac12y_2y_1^{-\frac12}\cdot y_1^{\frac12}[\frac12(1-y_2^2)^{-\frac12}(-2y_2)]\mp \frac12y_1^{-\frac12}(1-y_2^2)^{\frac12}y_1^{\frac12}$$
+$$=\mp\frac{y_2^2}{2(1-y_2^2)^{\frac12}}\mp \frac{1-y_2^2}{2(1-y_2^2)^{\frac12}}=\mp\frac12(1-y_2^2)^{-\frac12}$$
+
+$$\therefore f_{Y_1,Y_2}(y_1,y_2)=f_{X_1,X_2}(h_1(y_1,y_2))\cdot f_{X_1,X_2}(h_2(y_1,y_2))(|J_1|+|J_2|)=\frac1{2\pi\sigma^2}e^{-\frac{y_2^2y_1+(1-y_2^2)y_1}{2\sigma^2}}(1-y_2^2)^{-\frac12}=\frac1{2\pi\sigma^2}e^{-\frac{y_1}{2\sigma^2}}(1-y_2^2)^{-\frac12}$$
+
+$\quad 0<y_1<\infty,|y_2|<1$
+
+  ---
+
+ (b). Show that $Y_1$ and $Y_2$ are independent, and interpret this result geometrically.
+
+The joint pdf, $f_{Y_1,Y_2}(y_1,y_2)$ factors into a function of $y_1$ and $y_2$. So $Y_1$ and $Y_2$ are independent. 
+
+
+$Y_1=X_1^2+X_2^2$ is the suqared distance of hypotenuse in Pythagorean equation, which represents the square of the distance from $(X_1,X_2)$ to the origin. 
+
+$Y_2=\frac{X_1}{\sqrt{Y_1}}$ is the ratio of the adjacent leg (the side of the triangle joining the angle to the right angle) to the hypotenuse, which represents the cosine of the angle between the positive $x_1$-axis and the line from $(X_1,X_2)$ to the origin. 
+
+It is ture that the distance from the origin is independent of the orientation - the angle.
 
 
 ## HW2
 
 **5.7** In Example 5.2. 10, a partial fraction decomposition is needed to derive the distribution of the sum of two independent Cauchy random variables. This exercise provides the details that are skipped in that example.
 
- (a). Find the constants A, B, C, and D that satisfy
+ (a). Find the constants A, B, C, and D that satisfy $\frac1{1+(\frac{w}\sigma)^2} \frac1{1+(\frac{z-w}{\tau})^2}=\frac{Aw}{1+(\frac{w}\sigma)^2}+\frac{B}{1+(\frac{w}\sigma)^2}-\frac{Cw}{1+(\frac{z-w}{\tau})^2}-\frac{D}{1+(\frac{z-w}{\tau})^2}$, where A, B, C, and D may depend on z but not on w.
 
-1 1
-1 + (W/U)2 1 + « z - w)/r)2
-Aw B Cw
-1 + (w/a)2 +
-1 + (w/aF - 1 + « z 􀤃 w)/r)2
+Transfer the equation to 
 
-where A, B, C, and D may depend on z but not on w.
+$$(1+\frac{(z-w)^2}{\tau^2})(Aw+B)-(1+\frac{w^2}{\sigma^2})(Cw+D)=1$$
 
- (b). Using the facts that
+Expand this equation
 
-D
-1 + « z - w)/r)2 '
-J 1 : t2 dt = 􀀦 log ( 1 + t2 ) + constant and J 􀁠
-2 dt = arctan(t) + constant,
-l + t
+$$\left(\frac{A}{\tau^2}-\frac{C}{\sigma^2}\right)w^3+\left(\frac{B-2Az}{\tau^2}-\frac{D}{\sigma^2}\right)w^2+\left(\frac{A\tau^2+Az^2-2Bz}{\tau^2}-C\right)w+\frac{B\tau^2+Bz^2}{\tau^2}-D-1=0$$
 
-evaluate (5.2.4) and hence verify (5.2.5).
+For A, B, C,and D are independent with w, let k is a constant, then
 
-(Note that the integration in part (b) is quite delicate. Since the mean of a Cauchy does not exist, the integrals J::::' 1+(:/'0")2 dw and J􀄌oo 1+« .°:)/1')2 dw do not exist.
-However, the integral of the difference does exist, which is all that is needed.)
+$$\begin{cases}\frac{A}{\tau^2}-\frac{C}{\sigma^2}=0 &(1)  \\
+-\frac{2\sigma^2z}{\tau^2}A+\frac{\sigma^2}{\tau^2}B-D=0 &(2)\\
+\frac{\tau^2+z^2}{\tau^2}A-\frac{2z}{\tau^2}B-C=0 &(3)\\
+\frac{\tau^2+z^2}{\tau^2}B-D-1=0 &(4)
+\end{cases}\implies \begin{cases} A=\frac{k}{\sigma^2} \\
+C=\frac{k}{\tau^2}\\
+B=\frac{(\tau^2+z^2-1)k}{2z}\\
+D=\frac{(\tau^2+z^2)(\tau^2+z^2-1)k-2z\tau^2}{2z\tau^2}
+\end{cases}$$
 
----
+It shows k exist. We can get k in question (b).
 
-**5.10** Let Xl , ... , Xn be a ra.ndom sample from a $n(\mu,\sigma2)$ population.
+ (b). Using the facts that evaluate (5.2.4) and hence verify (5.2.5).
+$\int\frac{t}{1+t^2}dt=\frac12\log(1+t^2)+$ constant and $\int\frac{1}{1+t^2}dt=\arctan(t)+$ constant
+(Note that the integration in part (b) is quite delicate. Since the mean of a Cauchy does not exist, the integrals $\int_{-\infty}^{\infty}\frac{Aw}{1+(\frac{w}\sigma)^2}dw$ and $\int_{-\infty}^{\infty}\frac{Cw}{1+(\frac{z-w}{\tau})^2}dw$ dw do not exist. However, the integral of the difference does exist, which is all that is needed.)
 
- (c). Calculate Var 82 a completely different (and easier) way: Use the fact that
-(n 1)82/(72 '" X-l '
+$$f_Z(z)=\int_{-\infty}^{\infty}\frac1{\pi\sigma}\frac1{1+(\frac{w}\sigma)^2}\frac1{\pi\tau}\frac1{1+(\frac{z-w}\tau)^2}dw=\frac1{\pi^2\sigma\tau}\int_{-\infty}^{\infty}\left(\frac{Aw}{1+(\frac{w}\sigma)^2}+\frac{B}{1+(\frac{w}\sigma)^2}-\frac{Cw}{1+(\frac{z-w}{\tau})^2}-\frac{D}{1+(\frac{z-w}{\tau})^2}\right)dw$$
 
----
+$$\begin{cases}\int_{-\infty}^{\infty}\left(\frac{Aw}{1+(\frac{w}\sigma)^2}+\frac{C(z-w)}{1+(\frac{z-w}{\tau})^2}\right)dw=\left[\frac{\sigma^2A}2\ln(1+(\frac{w}\sigma)^2)-\frac{\tau^2C}2\ln(1+(\frac{z-w}\tau)^2)\right]_{-\infty}^{\infty} &(1)  \\
+-\int_{-\infty}^{\infty}\frac{Cz}{1+(\frac{z-w}{\tau})^2}dw=Cz\tau\int_{-\infty}^{\infty}\frac{1}{1+(\frac{z-w}{\tau})^2}d\frac{z-w}{\tau}=Cz\tau[\arctan(\frac{z-w}{\tau})]_{-\infty}^{\infty}=-\pi\tau Cz &(2)\\
+\int_{-\infty}^{\infty}\frac{B}{1+(\frac{w}\sigma)^2}dw=B\sigma\int_{-\infty}^{\infty}\frac{1}{1+(\frac{w}\sigma)^2}d\frac{w}\sigma=B\sigma[\arctan(\frac{z-w}{\tau})]_{-\infty}^{\infty}=\pi\sigma B &(3)\\
+-\int_{-\infty}^{\infty}\frac{D}{1+(\frac{z-w}{\tau})^2}dw=D\tau\int_{-\infty}^{\infty}\frac{1}{1+(\frac{z-w}{\tau})^2}d\frac{z-w}{\tau}=D\tau[\arctan(\frac{z-w}{\tau})]_{-\infty}^{\infty}=-\pi\tau D &(4)
+\end{cases}$$
 
-**5.13** Let Xl , . . . , X". be iid n(J1., (72). Find a function of 82, the sample variance, say g(82),
-that satisfies Eg(82) (J". ( Hint: Try g(82) c..(S2, where c is a constant.)
+$$\therefore f_Z(z)=\frac1{\pi^2\sigma\tau}\left((1)+(2)+(3)+(4)\right)=\frac1{\pi(\sigma+\tau)}\frac1{1+(\frac{z}{\sigma+\tau})^2},\quad -\infty<z<\infty$$
 
----
+$$(1)+(2)+(3)+(4)=\frac{\pi\sigma\tau}{(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}$$
 
-**5.15** Establish the following recursion relations for means and variances. Let X.,. and 8! be the mean and variance, respectively, of Xl , . . . , Xn• Then suppose another observation, Xn+l , becomes available. Show that
+For A, B, C,and D are independent with w, then
 
- (a). X _ xn + l + n n+1 - X',,- n + 1
+$$\begin{cases} (1)=\left[\frac{\sigma^2A}2\ln(1+(\frac{w}\sigma)^2)-\frac{\tau^2C}2\ln(1+(\frac{z-w}\tau)^2)\right]_{-\infty}^{\infty}=0\\
+(2)+(3)+(4)=\pi\sigma B-\pi\tau D-\pi\tau Cz=\frac{\pi\sigma\tau}{(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}
+\end{cases}\implies \begin{cases} \sigma^2A=\tau^2C=k & k\text{ is a constant}\\
+\sigma B=\tau D=r & r\text{ is a constant}\\
+-\frac{\pi{z}}\tau k=\frac{\pi\sigma\tau}{(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}
+\end{cases}$$
+
+Therefore, when $r=\frac{\sigma\tau}{\sigma+\tau}$ and $k=\frac{-\sigma\tau^2}{z(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}$
+
+$$\begin{cases} A=\frac{k}{\sigma^2}=\frac{-\tau^2}{z\sigma(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}\\
+C=\frac{k}{\tau^2}=\frac{-\sigma}{z(\sigma+\tau)[1+(\frac{z}{\sigma+\tau})^2]}\\
+B=\frac{r}\sigma=\frac{\tau}{\sigma+\tau} \\
+D=\frac{r}\tau=\frac{\sigma}{\sigma+\tau}
+\end{cases}$$
 
 
- (b). n8n+l - (n - 1)8.. + n + - 2 1 (Xn+1 - Xn) .
+ ---
+
+**5.10** Let $X_1,..,X_n$ be a random sample from a $n(\mu,\sigma^2)$ population.
+
+ (c). Calculate $VarS^2$ a completely different (and easier) way: Use the fact that $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$
+
+For $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$ and $Var\chi^2_{n-1}=2(n-1)$, then
+
+$$Var[\frac{(n-1)S^2}{\sigma^2}]=\frac{(n-1)^2}{\sigma^4}Var[S^2]=2(n-1)\implies Var[S^2]=\frac{2\sigma^4}{n-1}$$
+
+ ---
+
+**5.13** Let $X_1,..,X_n$ be iid $n(\mu,\sigma^2)$. Find a function of $S^2$, the sample variance, say $g(S^2)$, that satisfies $Eg(S^2)=\sigma$. (Hint:Try $g(S^2)=c\sqrt{S^2}$, where c is a constant.)
+
+when $X_1,..,X_n$ be iid $n(\mu,\sigma^2)$, $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$. Let $u=(n-1)S^2/\sigma^2$, $h(u)=\sqrt u$, and $E[h(u)]=\int_0^{\infty}h(u)f(u)du$, then 
+
+$$E_(\sqrt{\frac{S^2(n-1)}{\sigma^2}})=\int_0^{\infty}\frac{\sqrt u}{\Gamma(\frac{n-1}2)2^{\frac{n-1}2}}u^{\frac{n-1}2-1}e^{-\frac{u}2}du$$
+
+Let $g(S^2)=c\sqrt{S^2}$, where c is a constant. then
+
+$$Eg(S^2)=E[c\sqrt{S^2}]=\frac{c\sigma}{\sqrt{n-1}}E\left[\sqrt{\frac{S^2(n-1)}{\sigma^2}}\right]=\frac{c\sigma}{\sqrt{n-1}}\int_0^{\infty}\frac{u^{\frac12}}{\Gamma(\frac{n-1}2)2^{\frac{n-1}2}}u^{\frac{n-1}2-1}e^{-\frac{u}2}du$$
+
+$$=\frac{c\sigma}{\sqrt{n-1}}\cdot\frac{\Gamma(\frac{n}2)2^{\frac{n}2}}{\Gamma(\frac{n-1}2)2^{\frac{n-1}2}}\cdot\int_0^{\infty}\frac1{\Gamma(\frac{n}2)2^{\frac{n}2}}u^{\frac{n}2-1}e^{-\frac{u}2}du=\frac{c\sigma}{\sqrt{n-1}}\cdot\frac{\Gamma(\frac{n}2)2^{\frac{1}2}}{\Gamma(\frac{n-1}2)}=\sigma$$
  
+$$\therefore c=\sqrt{\frac{n-1}{2}}\cdot\frac{\Gamma(\frac{n-1}2)}{\Gamma(\frac{n}2)}$$
+ 
+ ---
+
+**5.15** Establish the following recursion relations for means and variances. Let $\bar{X_n}$, and $S_n^2$ be the mean and variance, respectively, of $X_1,..,X_n$. Then suppose another observation, $X_{n+1}$ , becomes available. Show that
+
+ (a). $\bar X_{n+1}=\frac{X_{n+1}-n\bar X_n}{n+1}$
+
+$$\bar X_{n+1}=\frac{\sum_{i=1}^{n+1}X_{i}}{n+1}=\frac{\sum_{i=1}^{n}X_{i}+X_{n+1}}{n+1}=\frac{n\bar X_{n}+X_{n+1}}{n+1}$$
+
+ (b). $nS^2_{n+1}=(n-1)S_n^2+(\frac{n}{n+1})(X_{n+1}-\bar X_n)^2$
+
+For $S^2=\frac1{n-1}\sum_{i=1}^n(X_i^2-n\bar X^2)$ and the equation in (a),
+
+$$nS^2_{n+1}=\frac{n}{n+1-1}\left({\sum_{i=1}^{n+1}X_{i}^2}-(n+1)\bar X_{n+1}^2\right)=\left({\sum_{i=1}^{n}X_{i}}+X_{n+1}^2\right)-(n+1)\left(\frac{n\bar X_{n}+X_{n+1}}{n+1}\right)^2$$
+
+$$=\left(\sum_{i=1}^{n}X_{i}-n\bar X_n^2\right)+n\bar X_n^2+X_{n+1}^2-\frac{(n\bar X_{n}+X_{n+1})^2}{n+1}=(n-1)S_n^2+\frac{(n^2\bar X_n^2+n\bar X_n^2)+(nX_{n+1}^2+X_{n+1}^2)-(n^2\bar X_{n}^2+2n\bar X_{n}X_{n+1}+X_{n+1}^2)}{n+1}$$
+$$=(n-1)S_n^2+\frac{n\bar X_n^2+nX_{n+1}^2-2n\bar X_{n}X_{n+1}}{n+1}=(n-1)S_n^2+\frac{n}{n+1}(X_{n+1}-\bar X_n)^2$$
+
 
 ## HW3
 
-**5.22** Let X and Y be lid nCO, 1) random variables, and define Z = min(X, Y ) . Prove that Z2 '" XI
+**5.22** Let X and Y be $iid\ n(0,1)$ random variables, and define $Z=\min(X,Y)$. Prove that $Z^2\sim\chi_1^2$
 
----
+ - Method I
 
-**5.24** Let Xl , . . . , Xn be a random sample from a population with pdf
-fx(x) = {􀄋jO if 0 < x < ()
-otherwise.
-Let X(1) < . . . < X(n) be the order statistics. Show that X(l)j X(n) a.nd X(n) are
-independent random variables.
+Calculating the cdf of $Z^2$,
 
----
+$$F_{Z^2}(z)=P([\min(X,Y)]^2\le z)=P(−\sqrt z\le\min(X,Y)\le\sqrt z)=P(\min(X,Y)\le\sqrt z)-P(\min(X,Y)\le-\sqrt z)$$
 
-**5.25** As a generalization of the previous exercise, let Xl , . . . , Xn be iid with pdf 
+$$=[1−P(\min(X,Y)>\sqrt z)]−[1−P(\min(X,Y)>−\sqrt z)]=P(\min(X,Y)>−\sqrt z)−P(\min(X,Y)>\sqrt z)$$
 
-fx (x) = { a a - I:x if 0 < X < ()
-otherwise.
+For X and Y are independent,
 
-Let X(l) < . . . < X(n) be the order statistics. Show that X(lJlX(2J> X(2J1X(3), 
-X(n-lJl X(n), and X(n) are mutually independent random variables. Find the distribution of each of them.
+$$=P(X>−\sqrt z)P(Y>−\sqrt z)−P(X>\sqrt z)P(Y>\sqrt z)$$
+
+For X and Y are identically distributed, $P(X>a)=P(Y>a)=1−F_X(a)=F_X(-a)$,
+
+$$=[1−F_X(−\sqrt z)]^2−[1−F_X(\sqrt z)]^2 = 1−2F_X(−\sqrt z),$$
+
+Differentiating and substituting gives
+
+$$f_{Z^2}(z)=\frac{d}{dz}F_{Z^2}(z)=f_{X}(−\sqrt z)\frac{1}{\sqrt z}=\frac{1}{\sqrt{2\pi}}z^{-\frac12}e^{-\frac{z}2}$$
+
+Therefore, $Z^2\sim\chi^2_1$ 
+
+ - Method II
+
+$$P(Z^2\le z)=P([\min(X,Y)]^2\le z)=P(−\sqrt z\le\min(X,Y)\le\sqrt z)=P(-\sqrt z\le X\le\sqrt z,X\le Y)+P(-\sqrt z\le Y\le\sqrt z,Y\le X)$$
+
+X and Y are independent, and $P(Y\le X)=P(X\le Y)=\frac12$
+
+$$=P(-\sqrt z\le X\le\sqrt z|X\le Y)P(X\le Y)+P(-\sqrt z\le Y\le\sqrt z|Y\le X)P(Y\le X)=\frac12P(-\sqrt z\le X\le\sqrt z)+\frac12P(-\sqrt z\le Y\le\sqrt z)$$
+
+For X and Y are identically distributed,
+
+$$P(Z^2\le z)=P(-\sqrt z\le X\le\sqrt z)$$
+
+$$f_{Z^2}(z)=\frac{d}{dz}P(-\sqrt z\le X\le\sqrt z)=\frac{1}{\sqrt{2\pi}}\left(z^{-\frac12}\frac12e^{-\frac{z}2}+z^{-\frac12}\frac12e^{-\frac{z}2}\right)=\frac{1}{\sqrt{2\pi}}z^{-\frac12}e^{-\frac{z}2}$$
+
+Therefore, $Z^2\sim\chi^2_1$ 
+
+ ---
+
+**5.24** Let $X1,..,X_n$ be a random sample from a population with pdf $f_X(x)=\begin{cases}\frac1{\theta}&0<x<1\\0&\text{otherwise}\end{cases}$
+otherwise. Let $X_{(1)}<..<X_{(n)}$ be the order statistics. Show that $X_{(1)}/X_{(n)}$ and $X_{(n)}$ are independent random variables.
+
+For $f_X(x)=\frac1{\theta}$, $F_X(x)=\frac{x}{\theta},0<x<\theta$. Let $Y=X_{(n)},Z=X_{(1)}$
+
+From **Theorem 5.4.6**, 
+
+$$f_{X_{(i)},X_{(j)}}(u,v)=\frac{n!}{(i-1)!(j-1-i)!(n-j)!}f_X(u)f_X(v)[F_X(u)]^{i-1}[F_X(v)-F_X(u)]^{j-1-i}[1-F_X(v)]^{n-j}$$
+$$f_{X_{(1)},..,X_{(n)}}(x_1,..,x_n)=\begin{cases}n!f_X(x_1)\cdot...\cdot f_X(x_n) &-\infty<x_1<..<x_n<\infty\\0&\text{otherwise}\end{cases}$$
+
+$$f_{Z,Y}(z,y)=\frac{n!}{(1-1)!(n-1-1)!(n-n)!}\frac1{\theta}\frac1{\theta}[\frac{z}{\theta}]^{1-1}[\frac{y}{\theta}-\frac{z}{\theta}]^{n-1-1}[1-\frac{y}{\theta}]^{n-n}=\frac{n(n-1)}{\theta^n}(y-z)^{n-2},0<z<y<\theta$$
+
+Now let $W=\frac{Z}{Y}=\frac{X_{(1)}}{X_{(n)}},Q=Y=X_{(n)}$. Then $Y=Q,Z=WQ$. Therefore,
+
+$$J=\begin{vmatrix}\frac{\partial y}{\partial w} & \frac{\partial y}{\partial q} \\ \frac{\partial z}{\partial w} & \frac{\partial z}{\partial q} \end{vmatrix}=\begin{vmatrix}\ 0 & 1 \\ q & w \end{vmatrix}=q$$
+
+$$f_{W,Q}(w,q)=\frac{n(n-1)}{\theta^n}(q-wq)^{n-2}|q|=\frac{n(n-1)}{\theta^n}(1-w)^{n-2}q^{n-1},0<w<1,0<q<\theta$$
+
+The joint pdf factors into functions of $w$ and $q$, and, hence, $W=\frac{X_{(1)}}{X_{(n)}}$ and $Q=X_{(n)}$ are independent.
+
+ ---
+
+**5.25** As a generalization of the previous exercise, let $X_1,..,X_n$ be iid with pdf $f_X(x)=\begin{cases}\frac{a}{\theta^a}x^{a-1}&0<x<1\\0&\text{otherwise}\end{cases}$. Let $X_{(1)}<..<X_{(n)}$ be the order statistics. Show that $X_{(1)}/X_{(2)}, X_{(2)}/X_{(3)},..,X_{(n-1)}/X_{(n)}$ and $X_{(n)}$ are mutually independent random variables. Find the distribution of each of them.
+
+The joint pdf of $X_{(1)}<..<X_{(n)}$ is
+
+$$f(x_1,..,x_n)=\begin{cases}\frac{n!a^n}{\theta^{an}}x_1^{a-1}\cdots x_n^{a-1}& 0<x_1<..<x_n<\theta\\0&\text{otherwise}\end{cases}$$
+
+Make the one-to-one transformation to $Y_{1}=\frac{X_{(1)}}{X_{(2)}},..,Y_{n−1}=\frac{X_{(n−1)}}{X_{(n)}},Y_n=X_{(n)}$. Then $[X_{(n)}=Y_{n}],\ [X_{(n-1)}=Y_{(n)}Y_{(n-1)}],\ [X_{(n-2)}=Y_{(n)}Y_{(n-1)}Y_{(n-2)}],\ ..[X_{(1)}=Y_{(n)}\cdots Y_{(1)}]$
+
+
+$$J=\begin{vmatrix}\frac{\partial x_1}{\partial y_1} &\frac{\partial x_1}{\partial y_2}&\cdots& \frac{\partial x_1}{\partial y_n} \\
+\frac{\partial x_2}{\partial y_1} &\frac{\partial x_2}{\partial y_2}&\cdots& \frac{\partial x_2}{\partial y_n}\\
+\vdots &\vdots&\ddots& \vdots\\
+\frac{\partial x_n}{\partial y_1} &\frac{\partial x_n}{\partial y_2}&\cdots& \frac{\partial x_n}{\partial y_n}\\
+\end{vmatrix}=\begin{vmatrix}
+y_2y_3..y_n &y_1y_3..y_n&y_1y_2..y_n&\cdots& y_1y_2..y_{(n-1)} \\
+0 &y_3y_4..y_n&y_2y_4..y_n&\cdots& y_2y_3..y_{(n-1)}\\
+0 &0&y_4y_5..y_n&\cdots& y_3y_4..y_{(n-1)}\\
+\vdots &\vdots&\vdots&\ddots& \vdots\\
+0 &0&0&\cdots& 1\\
+\end{vmatrix}=y_2y_3^2\cdots y_n^{n-1}$$
+
+
+So the joint pdf of $Y_1,..,Y_n$ is
+
+$$f(y_1,..,y_n)=\frac{n!a^n}{\theta^{an}}(y_1\cdots y_n)^{a-1}(y_2\cdots y_n)^{a-1}\cdots y_n^{a-1}(y_2y_3^2\cdots y_n^{n-1})$$
+
+$$=\frac{n!a^n}{\theta^{an}}y_1^{a-1}y_2^{2a-1}\cdots y_n^{na-1}, 0<y_i<1,i=1,..,n-1,0<y_n<\theta$$
+
+For $f(y_1,..,y_n)$ can be factored to $Y_1,..,Y_n$, so $\frac{X_{(1)}}{X_{(2)}},\frac{X_{(2)}}{X_{(3)}},..,\frac{X_{(n-1)}}{X_{(n)}}$ are mutually independent. 
+
+When $i=1$, let $f_{Y_1}(y_1)=\int_0^1cy_1^{a-1}dy_1=c\int_0^1y_1^{a-1}dy_1=\frac{c}a[y_1^a]_0^1=1$. Then $c=a$. Therefore,
+
+$$f_{Y_1}(y_1)=\int_0^{\theta}\cdots\int_0^1f(y_1,..,y_n)dy_2dy_3\cdots dy_n=ay^{a−1}_1,0<y_1<1$$
+
+$$\implies f_{Y_2}(y_2)=ay^{2a−1}_2,\quad f_{Y_i}(y_i)=iay_i^{ia−1},0<y_i<1,i=1,2,..,n−1$$
+
+From Theorem 5.4.4, $f_{X_{(j)}}(x)=\frac{n!}{(j-1)!(n-j)!}f_X(x)[F_X(x)]^{j-1}[1-F_X(x)]^{n-j}$, the pdf of $Y_n$ is
+
+$$f_{Y_n}(y_n)=\frac{n!}{(n-1)!(n-n)!}f_X(x)[F_X(x)]^{n-1}[1-F_X(x)]^{n-n}=nf_X(x)[F_X(x)]^{n-1}$$
+$$=n\frac{a}{\theta^{a}}y_n^{a-1}\left[\frac1a\frac{a}{\theta^{a}}y_n^{a}\right]^{n-1}=\frac{an}{\theta^{a+an-a}}y_n^{a-1+an-a}=\frac{an}{\theta^{an}}y_n^{an-1}, 0<y_n<\theta$$
+
+$$\therefore f_{Y_1..Y_n}(y_1,..,y_n)=\begin{cases}iay_i^{ia−1}&0<y_i<1,i=1,2,..,n−1\\\frac{an}{\theta^{an}}y_n^{an-1}& 0<y_n<\theta\\0&\text{otherwise} \end{cases}$$
+
+
 
 ## HW4
 
 **5.35** Stirling's Formula (derived in Exercise 1.28), which gives an approximation for factorials, can be easily derived using the CLT.
 
- (a). Argue that, if Xi '" exponential ( I ) , i = 1 , 2, . . ., all independent, then for every x, 
+ (a). Argue that, if $X_i\sim exponential(1),i=1,2,..$, all independent, then for every x, $P\left(\frac{\bar X_n-1}{\frac1{\sqrt n}}\le x\right)\rightarrow P(Z\le x)$ where Z is a standard normal random variable.
+
+For $X_i\sim exponential(1), μ_X=\frac1\lambda=1,\sigma=VarX=\frac1{\lambda^2}=1$. 
+
+From the Central Limit Theorem, $\frac{\sqrt n(\bar X_n-\mu)}{\sigma}=\frac{\bar X_n−1}{\frac1{\sqrt{n}}}$  $\underrightarrow{\mathcal{D}}$ $Z\sim n(0,1)$. Then, for any x
+
+$$P(\frac{\bar X_n−1}{\frac1{\sqrt{n}}}\le x)\to P(Z\le x)$$
+
+ ---
  
- P (Xn - 1 )
-I /Vn
-:::; x ...... P (Z :::; x) ,
-
-where Z is a standard normal random variable.
-
  (b). Show that differentiating both sides of the approximation in part (a) suggests
+$\frac{\sqrt n}{\Gamma(n)}(x\sqrt n+n)^{n-1} e^{-(x\sqrt n+n)}\approx \frac1{\sqrt{2\pi}}e^{-\frac{x^2}2}$ and that x = 0 gives Stirling's Formula.
 
-Vn
-(xvn +n) ", - l e -C:z:vn+ n)  _1_ e -:Z:2/2 r(n) y'2;
+From **Example 5.2.8 Distribution of the mean** $\bar X\sim gamma(n\alpha,\beta/n)$. Let $W=\sum_{i=1}^nX_i\sim gamma(n,1)$,
 
-and that x = 0 gives Stirling's Formula.
+$$\frac{d}{dx}P(\frac{\bar X_n−1}{\frac1{\sqrt{n}}}\le x)=\frac{d}{dx}(\sum_{i=1}^nX_i\le x\sqrt{n}+n)=\frac{d}{dx} F_W(x\sqrt{n}+n)=f_W(x\sqrt{n}+n)\sqrt{n}=\frac{\sqrt{n}}{\Gamma(n)}(x\sqrt{n}+n)^{n-1}e^{-(x\sqrt{n}+n)}$$
+ 
+ $$\frac{d}{dx}P(Z\le x)=\frac{d}{dx}F_Z(x)= f_Z(x)=\frac1{\sqrt{2\pi}}e^{−\frac{x^2}2}$$
 
----
+Therefore, as $x\to\infty$,
+
+$$\frac{\sqrt{n}}{\Gamma(n)}(x\sqrt{n}+n)^{n-1}e^{-(x\sqrt{n}+n)}\approx \frac1{\sqrt{2\pi}}e^{−\frac{x^2}2}$$
+
+When $x=0$,
+
+$$\frac{\sqrt{n}}{(n-1)!}(n)^{n-1}e^{-n}\approx \frac1{\sqrt{2\pi}}\implies\sqrt{2\pi}n^{n+1/2}e^{-n}\approx n(n-1)!\implies n!\approx n^{n+\frac12}e^{−n}\sqrt{2\pi}$$
+
+ ---
 
 **5.39** This exercise, and the two following, will look at some o f the mathematical details of convergence.
 
- (a). Prove Theorem 5.5.4. (Hint: Since h is continuous, given e: > 0 we can find a 6
-such that Ih(xn) - h(x)1 < e: whenever Ix" - xl < 6. Translate this into probability
-statements. )
+ (a). Prove Theorem 5.5.4. (Hint: Since h is continuous, given $\varepsilon>0$ we can find a $\delta>0$ such that $|h(x_n)-h(x)|<\varepsilon$: whenever $|X_n-X|<\delta$. Translate this into probabilitystatements. )
 
- (b). In Example 5.5.B, find a subsequence of the XiS that converges almost surely, that is, that converges p ointwise.
+**Theorem 5.5.4** Suppose that $X_1, X2,..$ converges in probability to a random variable X and that h is a continuous function. Then $h(X_1),h(X2),..$ $\underrightarrow{\mathcal{P}}$ $h(X)$.
+
+Since h is continuous, given $\varepsilon>0$, there exits $\delta$ such that $|h(x_n)-h(x)|<\varepsilon$ for $|X_n-X|<\delta$.
+
+From **Definition 5.5.1** A sequence of random variables, $X_1,X_2,..$, $\underrightarrow{\mathcal{P}}$ $X$ if, for every $\varepsilon>0$, $\begin{cases}\lim_{n\to\infty}P(|X_n-X|\ge\varepsilon)=0\\\lim_{n\to\infty}P(|X_n-X|<\varepsilon)=1\end{cases}$
+
+Since $X_1,..,X_n$ $\underrightarrow{\mathcal{P}}$ $X$, then $\lim_{n\to\infty}P(|X_n-X|<\delta)=1$. Thus $\lim_{n\to\infty}P(|h(x_n)-h(x)|<\varepsilon)=1$
+
+ (b). In Example 5.5.8, find a subsequence of the $X_i$S that converges almost surely, that is, that converges pointwise.
+
+$X_1(s)=s+I_{[0,1]}(s)$,
+
+$X_2(s)=s+I_{[0,\frac12]}(s),\ X_3(s)=s+I_{[\frac12,1]}(s)$,
+
+$X_4(s)=s+I_{[0,\frac13]}(s),\ X_5(s)=s+I_{[\frac13,\frac23]}(s),\ X_6(s)=s+I_{[\frac23,1]}(s)$,
+
+$X_7(s)=s+I_{[0,\frac14]}(s),\ X_8(s)=s+I_{[\frac14,\frac12]}(s),\ X_9(s)=s+I_{[\frac12,\frac34]}(s),\ X_10(s)=s+I_{[\frac34,1]}(s)$,...
+
+Define the subsequence $X_j(s)=s+I_{[a,b]}(s)$ such that in $I_{[a,b]}$, $a$ is always start from 0, the subsequence $X_1,X_2,X_4,X_7,..$ For this subsequence
  
----
-
-**5.41** Prove Theorem 5.5.13; that is, show that
-
-P (IX" - J.LI > e) -t 0 for every e <=> P (X < x) -t {O f x < J.L
-n- 1 1f x  J.L.
-
- (a). Set e: = Ix - J.LI and show that if x > J.L, then P(Xn :0:; x)  P(I Xn - J.LI :0:; e), while
-if x < J.L, then P(X" :0:; x) :0:; P ( I X" - J.L I e) . Deduce the => implication.
-
-
- (b). Use the fact that {x : Ix J.LI > e:} ::: {x : x J.L < -e:} U {x : x - J.L > e} to deduce the *" implication.
+ $$X_j(s)=\begin{cases}s&s>0\\s+1& s=0\end{cases}$$
  
-(See Billingsley 1995, Section 25, for a detailed treatment of the above results.)
+ ---
+
+**5.41** Prove **Theorem 5.5.13** The sequence of random variables, $X_1,X_2,..$, converges in probability to a constant $\mu$ if and only if the sequence also converges in distribution to $\mu$.
+
+$$\forall\varepsilon>0, P(|X_n-\mu|>\varepsilon)\to0\iff P(X_n\le x)\to\begin{cases}0&x<\mu\\1&x\ge\mu\end{cases}$$
+
+ (a). Set $\varepsilon=|x-\mu|$ and show that if $x>\mu$, then $P(X_n\le x)\ge P(|X_n-\mu|\le\varepsilon)$, while if $x<\mu$, then $P(X_n\le x)\le P(|X_n-\mu|\ge\varepsilon)$. Deduce the $\implies$ implication.
+
+Let $\varepsilon=|x-\mu|$, $P(|X_n-\mu|>\varepsilon)=$
+
+$$\begin{cases}P(|X_n-\mu|>x-\mu)=P(X_n-\mu<-(x-\mu))+P(X_n-\mu>x-\mu)\ge P(X_n-\mu>x-\mu)=P(X_n>x)=1-P(X_n\le x)&x\ge\mu\\
+P(|X_n-\mu|>\mu-x)=P(X_n-\mu<x-\mu)+P(X_n-\mu>\mu-x)\ge P(X_n-\mu<x-\mu)=P(X_n\le x)&x<\mu
+\end{cases}$$
+
+$$\therefore \lim_{n\to\infty}P(|X_n-\mu|>\varepsilon)=0\ge\begin{cases}\lim_{n\to\infty}(1-P(X_n\le x))\implies\lim_{n\to\infty}P(X_n\le x)\ge1& \text{when } x\ge\mu\\
+\lim_{n\to\infty}P(X_n\le x)& \text{when }x<\mu\end{cases}$$
+
+
+ (b). Use the fact that $\{x: X-\mu>\varepsilon\}=\{x:x-\mu<-\varepsilon\}\cup\{x:x-\mu >\varepsilon\}$ to deduce the $\Leftarrow$ implication.(See Billingsley 1995, Section 25, for a detailed treatment of the above results.)
+ 
+ For every $\varepsilon>0$,
+ 
+ $$P(|X_n-\mu|>\varepsilon)\le P(X_n-\mu<-\varepsilon)+P(X_n-\mu>\varepsilon)=P(X_n<\mu-\varepsilon)+1-P(X_n\le\mu+\varepsilon)\to0 \text{ as }n\to\infty$$
+ 
+ $$\because P(X_n\le x)\to\begin{cases}0&x=\mu-\varepsilon<\mu\\1&x=\mu+\varepsilon\ge\mu\end{cases}\therefore\lim_{n\to\infty}[ P(X_n<\mu-\varepsilon)+1-P(X_n\le\mu+\varepsilon)]\to(0+1-1)=0$$
+ 
+ 
  
 ## HW5
 
-**6.6** Let Xl , . . . , Xn be a random sample from a gamma(o, t3) population. Find a two dimensional sufficient statistic for (0 . t3) .
+**6.6** <span style="color:grey">Let $X_1,..,X_n$ be a random sample from a $Gamma(\alpha,\beta)$ population. Find a two dimensional sufficient statistic for $(\alpha,\beta)$.</span>
 
----
+According to theorem 6.2.6 (Factorization Theorem) Let $f(\mathbf{x}|\alpha,\beta)$ denote the joint pdf of the sample $X_1,..,X_n$. The pdf of Gamma distribution is $\frac{x^{\alpha-1}}{\Gamma(\alpha)\beta^{\alpha}}e^{-\frac{x}{\beta}},x\in[0,+\infty),\alpha,\beta>0$, then
 
-**6.9** For each of the following distributions let Xl , . . . , Xn be a random sample. Find a minimal sufficient statistic for e.
+$$f(\mathbf{x}|\alpha,\beta)=\prod_{i=1}^nf(x_i)=\prod_{i=1}^n\frac{x_i^{\alpha-1}}{\Gamma(\alpha)\beta^{\alpha}}e^{-\frac{x_i}{\beta}}=\frac{1}{\Gamma(\alpha)^n\beta^{n\alpha}}\cdot(\prod_{i=1}^nx_i)^{\alpha}\cdot e^{-\frac{1}{\beta}\sum\limits_{i=1}^nx_i}\cdot \prod_{i=1}^nx_i^{-1}$$
 
- (a). j(xIO) -00 < x < 00, -00 < 0 < 00  (normal)
- (b). j(xIB) = e-(x-6) , B < x < 00, -00 < 0 < 00  (location exponential)
- (c). j (xIO) =-00 < x < 00, -00 < e < 00 (logistic)
- (d). j (xI O)1f[1+(x-6)2] ,-00 < X < 00, -00 < B < 00 (Cauchy)
- (e). j(xIO)'2I e- lx-81 ,-00 < x < 00, -00 < B < 00 (double exponential)
+$\prod_{i=1}^nx_i^{-1}$ is free of $(\alpha,\beta)$. Therefore, $T(\prod_{i=1}^nx_i,\sum_{i=1}^nx_i)$ is a sufficient statistic for $(\alpha,\beta)$
+
+ ---
+
+**6.9** For each of the following distributions let $X_1,..,X_n$ be a random sample. Find a minimal sufficient statistic for $\theta$.
+
+  (a). $f(x|\theta)=\frac{1}{\sqrt{2\pi}}\mathrm{e}^{-\frac{(x-\theta)^2}2} ,-\infty<x<\infty,-\infty<\theta<\infty$ (normal)
+  
+$$\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}=\frac{\prod_{i=1}^nf(x_i)}{\prod_{i=1}^nf(y_i)}=\frac{\frac{1}{(\sqrt{2\pi})^n}\mathrm{e}^{-\frac{\sum_{i=1}^n(x_i-\theta)^2}2}}{\frac{1}{(\sqrt{2\pi})^2}\mathrm{e}^{-\frac{\sum_{i=1}^n(y_i-\theta)^2}2}}=\mathrm{e}^{-\frac{\sum_{i=1}^n(x_i-\theta)^2}2+\frac{\sum_{i=1}^n(y_i-\theta)^2}2}=\mathrm{e}^{\frac12(\sum_{i=1}^ny_i^2-\sum_{i=1}^nx_i^2)-\theta(\sum_{i=1}^ny_i-\sum_{i=1}^nx_i)}$$
+
+According to theorem 6.2.13, if and only if $\sum_{i=1}^ny_i-\sum_{i=1}^nx_i=0$, the ratio $\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}$ for every two sample points x and y is constant as a function of $\theta$. Therefore, $T(\bar x)=T(\bar y)$ is a minimal sufficient statistic.
  
----
+ ---
  
-**6.10** Show that the minimal sufficient statistic for the uniform(O, 0 + 1 ) , found in Example 6.2.15, is not complete.
+  (b). $f(x|\theta)=\mathrm{e}^{-(x-\theta)} ,\theta<x<\infty,-\infty<\theta<\infty$ (location exponential)
 
----
+$$\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}=\frac{\prod_{i=1}^nf(x_i)}{\prod_{i=1}^nf(y_i)}=\frac{\prod_{i=1}^n[\mathrm{e}^{-(x_i-\theta)}I_{(\theta,\infty)}(x_i)]}{\prod_{i=1}^n[\mathrm{e}^{-(y_i-\theta)}I_{(\theta,\infty)}(y_i)]}=\frac{\mathrm{e}^{\sum_{i=1}^ny_i}I_{(\theta,\infty)}(\min x_i)}{\mathrm{e}^{\sum_{i=1}^nx_i}I_{(\theta,\infty)}(\min y_i)}$$
 
-**6.13** Suppose Xl and X2 are iid observations from the pdf j(xla) =, x > o, a >O. Show that (log XI )/(log X2) is an ancillary statistic.
+If and only if $\min\{x_1,..,x_n\} =\min\{y_1,..,y_n\}$, the ratio $\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}$ for every two sample points x and y is constant as a function of $\theta$. Therefore, $T(X)=\min\{X_1,..,X_n\}$ is a minimal sufficient statistic.
+ 
+ ---
+ 
+  (c). $f(x|\theta)=\frac{\mathrm{e}^{-(x-\theta)}}{(1+\mathrm{e}^{-(x-\theta)})^2} ,-\infty<x<\infty,-\infty<\theta<\infty$ (logistic)
+
+
+$$\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}=\frac{\prod_{i=1}^nf(x_i)}{\prod_{i=1}^nf(y_i)}=\frac{\frac{\mathrm{e}^{-\sum_{i=1}^n(x_i-\theta)}}{\prod_{i=1}^n(1+\mathrm{e}^{-(x_i-\theta)})^2}}{\frac{\mathrm{e}^{-\sum_{i=1}^n(y_i-\theta)}}{\prod_{i=1}^n(1+\mathrm{e}^{-(y_i-\theta)})^2}}=\mathrm{e}^{\sum_{i=1}^n(y_i-x_i)}\frac{\prod_{i=1}^n(1+\mathrm{e}^{-(y_i-\theta)})^2}{\prod_{i=1}^n(1+\mathrm{e}^{-(x_i-\theta)})^2}$$
+
+If and only if the order statistics for x are the same as the order statistics for y, the ratio $\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}$ for every two sample points x and y is constant as a function of $\theta$. Therefore, the order statistics are a minimal sufficient statistic.
+
+ ---
+
+  (d). $f(x|\theta)=\frac{1}{\pi[1+\mathrm{e}^{-(x-\theta)^2}]} ,-\infty<x<\infty,-\infty<\theta<\infty$ (Cauchy)
+
+$$\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}=\frac{\prod_{i=1}^nf(x_i)}{\prod_{i=1}^nf(y_i)}=\frac{\pi^n{\prod_{i=1}^n(1+\mathrm{e}^{-(y_i-\theta)})^2}}{\pi^n\prod_{i=1}^n(1+\mathrm{e}^{-(x_i-\theta)})^2}=\frac{\prod_{i=1}^n(1+\mathrm{e}^{-(y_i-\theta)})^2}{\prod_{i=1}^n(1+\mathrm{e}^{-(x_i-\theta)})^2}$$
+
+If and only if the order statistics for x are the same as the order statistics for y, the ratio $\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}$ for every two sample points x and y is constant as a function of $\theta$. Therefore, the order statistics are a minimal sufficient statistic.
+
+ ---
+ 
+  (e). $f(x|\theta)=\frac12\mathrm{e}^{-|x-\theta|} ,-\infty<x<\infty,-\infty<\theta<\infty$ (double exponential)
+ 
+$$\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}=\frac{\prod_{i=1}^nf(x_i)}{\prod_{i=1}^nf(y_i)}=\frac{2^n{\prod_{i=1}^n\mathrm{e}^{|y_i-\theta|}}}{2^n{\prod_{i=1}^n\mathrm{e}^{|x_i-\theta|}}}=\mathrm{e}^{\sum_{i=1}^n|y_i-\theta|-\sum_{i=1}^n|x_i-\theta|}$$
+
+Let $a(\theta)=$ the number of elements in $\mathcal{A}(\theta)$ and $b(\theta)=$ the number of elements in $\mathcal{B}(\theta)$. Set $\mathcal{A}(\theta)=\{i:x_i\le\theta\},\mathcal{B}(\theta)=\{i:y_i\le\theta\}$, then 
+
+$$\sum_{i=1}^n|y_i-\theta|-\sum_{i=1}^n|x_i-\theta|=\sum\limits_{i\in\mathcal{B}(\theta)}^n(\theta-y_i)+\sum\limits_{i\in\mathcal{B}(\theta)^C}^n(y_i-\theta)-\sum\limits_{i\in\mathcal{A}(\theta)}^n(\theta-x_i)-\sum\limits_{i\in\mathcal{A}(\theta)^C}^n(x_i-\theta)$$
+
+$$=\theta b(\theta)-\theta [n-b(\theta)]-\theta a(\theta)+\theta [n-a(\theta)]-\sum\limits_{i\in\mathcal{B}(\theta)}^ny_i+\sum\limits_{i\in\mathcal{B}(\theta)^C}^ny_i+\sum\limits_{i\in\mathcal{A}(\theta)}^nx_i-\sum\limits_{i\in\mathcal{A}(\theta)^C}^nx_i$$
+
+$$=2\theta b(\theta)-2\theta a(\theta)-\sum\limits_{i\in\mathcal{B}(\theta)}^ny_i+\sum\limits_{i\in\mathcal{B}(\theta)^C}^ny_i+\sum\limits_{i\in\mathcal{A}(\theta)}^nx_i-\sum\limits_{i\in\mathcal{A}(\theta)^C}^nx_i$$
+
+If and only if $a(\theta)=b(\theta)$, the first two term are constant. If and only if the order statistics for x are the same as the order statistics for y, the ratio $\frac{f(\mathbf{x}|\theta)}{f(\mathbf{y}|\theta)}$ for every two sample points x and y is constant as a function of $\theta$. Therefore, the order statistics are a minimal sufficient statistic.
+
+ ---
+ 
+**6.10** Show that the minimal sufficient statistic for the uniform(0, 0 + 1 ) , found in Example 6.2.15, is not complete.
+
+Example 6.2.15 (Uniform minimal sufficient statistic) Suppose $X_1,..,X_n$ are iid uniform observations on the interval $(0,0+1), -\infty<\theta<\infty$. Then the joint pdf of X is $f(\mathbf{x}|\theta)=\begin{cases}1&\theta<x_i<\theta+1,i=1,..n,\\0& \text{otherwise}\end{cases}$, or $f(\mathbf{x}|\theta)=\begin{cases}1&\max_ix_i-1<x_i<\min_ix_i\\0& \text{otherwise}\end{cases}$
+
+When $X_{(1)}=\min_iX_i$ and $X_{(n)}=\max_iX_i$, we have that $T(\mathbf{X})=(X_{(1)},X_{(n)})$ is a minimal sufficient statistic.
+
+According to example 6.2.17 (Uniform ancillary statistic), the range statistic, $R=X_{(n)}−X_{(1)}$, is an ancillary statistic which does not depend on $\theta$.
+
+The pdf of R is $h(r|\theta)=n(n-1)r^{n-2}(1-r),0<r<1$.  
+
+$h(r|\theta)\sim Beta(n-1,2)$.  $E[R]=\frac{n−1}{n+1}$ does not depend on $\theta$.
+
+Let $g[T(\mathbf{X})]=R−E[R]=X_{(n)}−X_{(1)}−\frac{n−1}{n+1}\not\equiv0$
+
+$Eg[T(\mathbf{X})]=E[R−ER]=E[R]−E[ER]=0$ for all $\theta$.
+
+Therefore, $T(\mathbf{X})=(X_{(1)},X_{(n)})$ is not complete. An ancillary statistic is not a complete sufficient statistic.
+
+ ---
+
+**6.13** Suppose $X_1$ and $X_2$ are iid observations from the pdf $f(x|\alpha)=\alpha x^{\alpha-1}\mathrm{e}^{-{x^\alpha}}, x>0o,\alpha>0$. Show that $(\log X_1)/(\log X_2)$ is an ancillary statistic.
+
+Let $Y_1=\ln X_1, Y_2 =\ln X_2$. Then $Y_1$ and $Y_2$ are iid, $X_1=\mathrm{e}^{y_1},X_2=\mathrm{e}^{y_2}$. From theorem 2.1.5, when $f(x|\alpha)$ is continuous and monotone, $f_Y(y)=f_X(x)|\frac{dx}{dy}|$, then
+
+$$f(y|\alpha)=f(x|\alpha)|\frac{dx}{dy}|=\alpha {(\mathrm{e}^{y})}^{\alpha-1}\mathrm{e}^{-(\mathrm{e}^{y})^\alpha}|\mathrm{e}^{y}|=\alpha \mathrm{e}^{\alpha y}\mathrm{e}^{-\mathrm{e}^{\alpha y}}$$
+
+The distributions of $Y_1,Y_2$ belong a scale family with scale parameter $\frac1{\alpha}$. From theorem 3.5.6, $Y$ is a random variable with pdf $\frac1{1/\alpha}f(\frac{y-\mu}{1/\alpha})$ if and only if there exist the $Y_1=\frac1{\alpha}Z_1,Y_2=\frac1{\alpha}Z_2$, where $Z_1$ and $Z_2$ are a random sample from $f(z|1)$. then
+
+$$\frac{\ln X_1}{\ln X_2}=\frac{Y_1}{Y_2}=\frac{\frac1{\alpha}Z_1}{\frac1{\alpha}Z_2}=\frac{Z_1}{Z_2}$$
+
+$\frac{Z_1}{Z_2}$ is free of $\alpha$. Therefore，$\frac{\ln X_1}{\ln X_2}$ is an ancillary statistic.
+
 
 ## HW6
 
-**6.30** Let Xl, . . . , Xn be a random sample from the pdf f(x ifJ.) = e-(x-!-') , where -00 < fJ. <x < 00.
+**6.30** Let $X_1,..,X_n$ be a random sample from the pdf $f(x|\mu) = e^{-(x-\mu)}$, where $-\infty<\mu<x<\infty$.
 
-(a). Show that X(l) = min; Xi is a complete sufficient statistic.
+(a). Show that $X_{(1)}=\min_iX_i$ is a complete sufficient statistic.
 
-(b). Use Basu's Theorem to show that X{!) and 82 are independent.
 
----
+For $F_X(x)=1-e^{-(x-\mu)}$ and from Theorem 5.4.4, $f_{X_{(j)}}(x)=\frac{n!}{(j-1)!(n-j)!}f_X(x)[F_X(x)]^{j-1}[1-F_X(x)]^{n-j}$, then,
 
-**7.6** Let Xl , . . . , Xn be a random sample from the pdf
+$$f_{X_{(1)}}(x)=\frac{n!}{(1-1)!(n-1)!}e^{-(x-\mu)}[1-e^{-(x-\mu)}]^{1-1}[1-(1-e^{-(x-\mu)})]^{n-1}=ne^{-n(x-\mu)}=ne^{n\mu}e^{-nx},x>\mu$$
 
-f(xIO) O -2 X , 0 < 0 􀀬 x < 00 .
+Suppose that $E[g(T)]=0, \forall\mu$,
 
- (a). What is a sufficient statistic for 87
- (b). Find the MLE of 8.
- (c). Find the method of moments estimator of O.
+$$\int_\mu^\infty g(x)f_{X_{(1)}}(x)dx=\int_\mu^\infty g(x)ne^{n\mu}e^{-nx}dx=ne^{n\mu}\int_\mu^\infty g(x)e^{-nx}dx=0$$
 
----
+For $ne^{n\mu}\neq0$, $\frac{d}{dx}\int_{v(x)}^{u(x)}{f(t)}dt=u'(x)f[u(x)]-v'(x)f[v(x)]$, then
 
-**7.10** The independent random variables X l , . . . , Xn have the common distribution
+$$0=\frac{d}{d\mu}E[g(T)]=\frac{d}{d\mu}\left[\int_\mu^\infty g(x)e^{-nx}dx\right]=0-\mu'[g(\mu)e^{-n\mu}]=-g(\mu)e^{-n\mu}$$
 
-if x < 0
-if O 􀃉 x 􀃉 jJ
-if x > jJ,
+So $g(\mu)=0,\forall\mu$, then $P(g(T)=0)=1$. Thus, $X_{(1)}$ is a complete statistic.
 
-where the parameters a and jJ are positive.
+ ---
 
- (a). Find a tW<rdimensional sufficient statistic for (a, jJ).
- (b). Find the MLEs of a and jJ.
- (c). The length (in millimeters) of cuckoos' eggs found in hedge sparrow nests can be modeled with this distribution. For the data
+(b). Use Basu's Theorem to show that $X_{(1)}$ and $S^2$ are independent.
+
+ (1) Proof $X_{(1)}=\min_iX_i$ is a minimal sufficient statistic
  
-22.0, 23.9, 20.9, 23.8, 25.0, 24.0, 21 .7, 23.8, 22.8, 23. 1, 23. 1 , 23.5, 23.0, 23.0,
+ $X\sim$ location $Expo(\mu)$, $\frac{f(\mathbf {x}|\mu)}{f(\mathbf {y}|\mu)}=\frac{\prod\limits_{i=1}^n(ne^{n\mu}e^{-nx_i})}{\prod\limits_{i=1}^n(ne^{n\mu}e^{-ny_i})}=\frac{\mathrm{e}^{\sum\limits_{i=1}^ny_i}I_{(\mu,\infty)}(\min x_i)}{\mathrm{e}^{\sum\limits_{i=1}^nx_i}I_{(\mu,\infty)}(\min y_i)}$
 
-find the MLEs of a and jJ.
+If and only if $\min\{x_1,..,x_n\} =\min\{y_1,..,y_n\}$, the ratio $\frac{f(\mathbf{x}|\mu)}{f(\mathbf{y}|\mu)}$ for every two sample points x and y is constant as a function of $\mu$. Therefore, $X_{(1)}=\min\{X_1,..,X_n\}$ is a minimal sufficient statistic.
+ 
+ (2) Proof $S^2$ is an ancillary statistic
+ 
+$f(x|\mu)$ is a location exponential family. Let $Z_i=X_i-\mu$ is a random sample from $f(x|0)$
 
----
+$S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2=\frac1{n-1}\sum_{i=1}^n((X_i-\mu)-(\bar X-\mu))^2=\frac1{n-1}\sum_{i=1}^n(Z_i-\bar Z)^2$
 
-**7.11** Let X! , . . . , X", be iid with pdf
+$S^2_{\mu}$ is a function of only $Z_1,..,Z_n$ and be free of $\mu$. $S^2$ is an ancillary statistic.
 
-f(xI9) = 9x9-t, 0 􀋁 X 􀁱 1 , 0 < (} < 00 .
+Therefore, an acillary statistc $S^2$ and a minimal sufficient statistic $X_{(1)}$ are independent by Basu's Theorem.
 
- (a). Find the MLE of 8, and show that its variance --+ 0 as n --+ 00.
+ ---
 
- (b). Find the method of moments estimator of (}.
+**7.6** Let $X_1,..,X_n$ be a random sample from the pdf $f(x|\theta)=\theta x^{-2}$, where $0<\theta\le x<\infty$.
+
+ (a). What is a sufficient statistic for $\theta$?
+
+Let $X_{(1)}=\min_iX_i$.
+
+$f(\mathbf{x}|\theta)=\prod_{i=1}^n\theta x_i^{-2}I_{[\theta,\infty)}(x_i)=\theta^n(\prod_{i=1}^n x_i^{-2})I_{[\theta,\infty)}(x_1)$
+
+$\prod_{i=1}^n x_i^{-2}$ is free of $\theta$. By the 6.2.6 Factorization Theorem, $X_{(1)}$ is a sufficient statistic for $\theta$
+
+ --- 
+
+ (b). Find the MLE of $\theta$.
+
+Let $L(\theta|\mathbf{x})=f(\mathbf{x}|\theta)=\theta^n(\prod_{i=1}^n x_i^{-2})I_{[\theta,\infty)}(x_1)$ was a increasing function of $\theta$. So to maximize $L(\theta|\mathbf{x})$, we should use the smallest possible value of $\mathbf{x}$. But when $\theta>X_{(1)}$, $I_{[\theta,\infty)}(x_1)=0$. Therefore, $\hat\theta_{MLE}=X_{(1)}$
+
+ ---
+ 
+ (c). Find the method of moments estimator of $\theta$.
+
+$$E[X]=\int_\theta^\infty x\theta x^{-2}dx=\left.\theta\ln x\right|_\theta^\infty\to \infty$$
+
+The method of moments estimator of $\theta$ does not exist.
+
+ ---
+
+**7.10** The independent random variables $X_1,..,X_n$ have the common distribution
+$P(X_i\le x|\alpha,\beta)=\begin{cases}0&\text{if }x<0\\(\frac{x}\beta)^{\alpha}&\text{if }0\le x\le\beta\\1&\text{if } x>\beta\end{cases}$
+where the parameters $\alpha$ and $\beta$ are positive.
+
+ (a). Find a two dimensional sufficient statistic for ($\alpha,\beta$).
+ 
+By given $F(\mathbf{x}|\alpha,\beta)$, $f(\mathbf{x}|\alpha,\beta)=\begin{cases}0&\text{if }x<0\\\frac{\alpha}{\beta^\alpha}x^{\alpha-1}&\text{if }0\le x\le\beta\\0&\text{if } x>\beta\end{cases}$. Let $X_{(1)}=\min_iX_i$, $X_{(n)}=\max_iX_i$.
+
+$$f(\mathbf{x}|\alpha,\beta)=\prod_{i=1}^n\frac{\alpha}{\beta^\alpha}x_i^{\alpha-1}I_{[0,\beta]}(x_i)=\frac{\alpha^n}{\beta^{n\alpha}}(\prod_{i=1}^n x_i)^{\alpha-1}I_{(-\infty,\beta]}(x_{(n)})I_{[0,\infty)}(x_{(1)})$$
+
+$I_{[0,\infty)}(x_{(1)})$ is free of $\alpha,\beta$. By 6.2.6 Facotrization Theorem, $(\prod_{i=1}^n x_i,x_{(n)})$ are sufficient statistic.
+
+ --- 
+ 
+ (b). Find the MLEs of $\alpha$ and $\beta$.
+ 
+Let $L(\alpha,\beta|\mathbf{x})=f(\mathbf{x}|\alpha,\beta)$
+
+$\forall\alpha$, $L(\alpha,\beta|\mathbf{x})=\begin{cases}0&\text{when}\beta<x_{(n)}\\\text{monotonically decreasing}&\text{when}\beta>x_{(n)}\end{cases}$. 
+
+Thus, $\hat\beta_{MLE}=X_{(n)}$.
+
+Derive the log likehood function. $l(\alpha,\beta|\mathbf{x})=\ln L(\alpha,\beta|\mathbf{x})=n\ln\alpha-n\alpha\ln\beta+(\alpha-1)\ln(\prod_{i=1}^n x_i)$
+
+Set $\frac{\partial}{\partial\alpha}l(\alpha,\beta|\mathbf{x})=\frac{n}\alpha-n\ln\beta+\ln(\prod_{i=1}^n x_i)=0$
+
+Set $\frac{\partial^2}{\partial^2\alpha}l(\alpha,\beta|\mathbf{x})=-\frac{n}{\alpha^2}=0$, no solution.
+
+Thus, $\hat\alpha_{MLE}=\frac{n}{n\ln\hat\beta_{MLE}-\ln\prod\limits_{i=1}^n x_i}=\frac{n}{[\ln X_{(n)}-\ln X_{(1)}]+..+[\ln X_{(n)}-\ln X_{(n)}]}=\frac{n}{\sum\limits_{i=1}^n[\ln X_{(n)}-\ln X_{(i)}]}$
+
+ ---
+ 
+ (c). The length (in millimeters) of cuckoos' eggs found in hedge sparrow nests can be modeled with this distribution. For the data, find the MLEs of $\alpha$ and $\beta$.
+
+$\hat\beta_{MLE}=X_{(n)}=25.0$
+
+$\hat\alpha_{MLE}=\frac{n}{\sum_{i=1}^n[\ln X_{(n)}-\ln X_{(i)}]}=12.59487$
+
+```{r collapse=TRUE}
+cuckoo_egg <- c(22.0, 23.9, 20.9, 23.8, 25.0, 24.0, 21.7, 23.8, 22.8, 23.1, 23.1, 23.5, 23.0, 23.0)
+max(cuckoo_egg)
+mean(log(max(cuckoo_egg))-log(cuckoo_egg))^(-1)
+```
+
+ ---
+
+**7.11** Let $X_1,..,X_n$, be iid with pdf $f(\mathbf{x}|\theta)=\theta x^{\theta-1}$, where $0\le x\le1,0<\theta<\infty$
+
+ (a). Find the MLE of $\theta$, and show that its variance $\to0$ as $n\to\infty$.
+
+Let $L(\theta|\mathbf{x})=f(\mathbf{x}|\theta)=\prod_{i=1}^n\theta x_i^{\theta-1}=\theta^n(\prod_{i=1}^n x_i)^{\theta-1}$
+
+Derive the log likehood function. $l(\theta|\mathbf{x})=\ln L(\theta|\mathbf{x})=n\ln\theta+(\theta-1)\ln\prod_{i=1}^n x_i$
+
+Set  $\frac{\partial}{\partial\theta}l(\theta|\mathbf{x})=\frac{n}\theta+\ln\prod_{i=1}^n x_i=0$
+
+Set  $\frac{\partial^2}{\partial^2\theta}l(\theta|\mathbf{x})=-\frac{n}{\theta^2}=0$, no solution.
+
+Thus, $\hat\theta_{MLE}=\frac{-n}{\ln(\prod_{i=1}^n x_i)}=\frac{-n}{\sum_{i=1}^n\ln x_i}$
+
+By 2.1.10 Probability integral transformation, let $U_i=F_X(\mathbf{x}|\theta)=\int_{-\infty}^x\theta x^{\theta-1}dx=\left.x^\theta\right|_{-\infty}^x=x^\theta \sim Uni(0,1)$. 
+
+By 5.6.3 the exponential-uniform transformation, $-\frac1\theta\ln{U}=-\ln x_i\sim Expo(\frac1\theta)$; $-\sum_{i=1}^n\ln x_i\sim Gamma(n,\frac1\theta)$; $(-\sum_{i=1}^n\ln x_i)^{-1}\sim Inv-Gamma(n,\theta)$.
+
+For a pdf of Inv-Gamma$(\alpha,\beta)$ is $f_{X}(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{-\alpha-1}e^{-\frac\beta{x}},x>0$, $E[x^n]=\frac{\beta^n}{(\alpha-1)\cdots(\alpha-n)}$.
+
+Thus,
+$\begin{cases}E[\hat\theta]=nE\left[(-\sum_{i=1}^n\ln x_i)^{-1}\right]=\frac{n\theta}{n-1}&\\E[\hat\theta^2]=n^2E\left[(-\sum_{i=1}^n\ln x_i)^{-2}\right]=\frac{n^2\theta^2}{(n-1)(n-2)}&\end{cases}$
+
+$V[\hat\theta]=E[\hat\theta^2]-E[\hat\theta]^2=\frac{n^2\theta^2}{(n-1)(n-2)}-\frac{n^2\theta^2}{(n-1)^2}=\frac{n^2\theta^2}{(n-1)^2(n-2)}$
+
+$\lim_\limits{n\to\infty}\frac{n^2\theta^2}{(n-1)^2(n-2)}=\lim_\limits{n\to\infty}\frac{2\theta^2n}{2(n-1)(n-2)+(n-1)^2}=\lim_\limits{n\to\infty}\frac{2\theta^2}{6n-8}=0$
+
+Therefore, when $n\to\infty$, $V[\hat\theta]\to0$
+
+ ---
+
+ (b). Find the method of moments estimator of $\theta$.
+
+$f(\mathbf{x}|\theta)=\theta x^{\theta-1}=\frac{\Gamma(\theta+1)}{\Gamma(\theta)\Gamma(1)}x^{\theta-1}(1-x)^{1-1}$.
+Thus, $X\sim Beta(\theta,1)$, $\mu'_1=E[X]=\frac{\theta}{\theta+1}$
+
+Set $\bar X=\frac1n\sum_{i=1}^nX_i=\mu'_1=\frac{\theta}{\theta+1}$.
+Therefore, $\hat\theta_{MOM}=\frac{\sum_{i=1}^nX_i}{n-\sum_{i=1}^nX_i}$
 
 ## HW7
 
-**5.59** Prove that the algorithm of Example 5.6.7 generates a beta( a, b) random variable.
+**5.59** Prove that the algorithm of Example 5.6.7(Beta random variable generation-I) generates a $Beta(a,b)$ random variable.
 
----
+If both a and b are integers, use the direct transformation method (5.6.5). Set $U_j$ are iid $uni(0,1)$ random variables, then
+$Y=\frac{\sum_{j=1}^a\ln U_j}{\sum_{j=1}^{a+b}\ln U_j}\sim Beta(a,b)$
 
-**5.60** Generalize the algorithm of Example 5.6.7 to apply to any bounded pdf; that is, for an arbitrary bounded pdf f(x) on [a, b), define c = maxa:<;z:9 f (x) . Let X and Y be independent, with X '" uniform(a, b) and Y '" uniform(O, c). Let d be a number greater than b, and define a new random variable
+If both a and b are not integers, To generate $Y\sim beta(a, b)$: 
 
-W = {X if Y < f(X)
-d if Y  f(X).
+a. Generate $(U,V)$ independent $uni(0,1)$. 
 
- (a). Show that pew 􀁱 w) = J: f(t)dt / [c(b - a)l for a 􀁱 w 􀁱 b.
+b. If $U<\frac1cf_Y(V)$, set $Y=V$; otherwise, return to step (a). Which means $F_Y(y)=F(V|U)$
 
- (b). Using part (a), explain how a random variable with pdf f(x) can be generated.
+$$P(Y\le y)= P(V\le y|U<\frac1cf_Y(V))=\frac{P(V\le y,U<\frac1cf_Y(V))}{P(U<\frac1cf_Y(V))}=\frac{\int^y_0\int^{\frac1cf_Y(v)}_0 dudv}{\frac1c}=\frac{\frac1c\int^y_0f_Y(v)dv}{\frac1c}=\int_0^y f_Y(v)dv$$
 
-(Hint: Use a geometric argument; a picture will help.)
+As long as $c\ge\max_{y}f_Y(y)$, $F_Y(y)=\int_0^yf_Y(t)dt$. By the definition 1.6.3 (pdf) , this algorithm generates a $beta(a,b)$ random variable.
 
+```{r echo=FALSE, out.width='50%',collapse=T, fig.show='hold'}
+plot(c(0,1), c(0,3), type = "n",main="beta(2,5)",xlab ="v", ylab ="u")
+curve(dbeta(x,2,5, ncp = 0, log = FALSE),0,1,add =T)
+polygon(c(0,seq(0,0.406901,0.001),0.406901) ,c(0,dbeta(seq(0,0.406901,0.001),2,5, ncp = 0, log = FALSE),0) ,density=10, angle=45,lty =3)
+abline(h=dbeta((2-1)/(2+5-2),2,5, ncp = 0, log = FALSE),lty=3);text(0,2.5, "c", col = 2, adj = c(0,0))
+abline(v=1/(dbeta((2-1)/(2+5-2),2,5, ncp = 0, log = FALSE)),lty=2);text(0.4,0, "y", col = 2, adj = c(-1,0))
+```
 
----
+**5.60** Generalize the algorithm of Example 5.6.7 to apply to any bounded pdf; that is, for an arbitrary bounded pdf $f(x)$ on $[a, b]$, define $c=\max\limits_{a\le x\le b}f(x)$. Let $X$ and $Y$ be independent, with $X \sim Uni(a,b)$ and $Y\sim Uni(0,c)$. Let $d$ be a number greater than $b$, and define a new random variable $W=\begin{cases}X&\text{if }Y<f(X)\\d&\text{if }Y\ge f(X)\end{cases}$.
 
-**7.22** This exercise will prove the assertions in Example 7.2.16, and more. Let Xl, . . . , X n be a random sample from a n(O, a2) population, and suppose that the prior distribution on 0 is n(#, 72). Here we assume that a2, #, and 72 are all known.
+ (a). Show that $P(W\le w)=\int_a^w\frac{f(t)dt}{c(b-a)}$ for $a\le x\le b$.
 
- (a). Find the joint pdf of X and 8. 
+For $Y\sim Uni(0,c)$ and $X \sim Uni(a,b)$, $f_Y(y)=\frac1{c}$ and $f_X(x)=\frac1{b-a}$. 
+
+For $X$ and $Y$ being independent, $f_{X,Y}(x,y)=\frac1{c}\frac1{b-a}$. 
+
+For $c=\max\limits_{a\le x\le b}f(x)$, $P(Y<f(X))=1$.
+
+If $Y<f(X)$, $W=X$ means 
+
+$$P(W\le w)=P(a\le X\le w|Y<f(X))=\frac{P(a\le X\le w,Y<f(X))}{P(Y<f(X))}=\frac{F_{X,Y}(x,y)}{1}=\int^w_a\int^{f(x)}_0f_{X,Y}(x,y) dsdt=\int_a^w \frac{f(t)}{c(b-a)}dt$$
+
+Otherwise, $W=d>b$, then $P(W\le w)=P(b<d\le w)=0$
+
+ (b). Using part (a), explain how a random variable with pdf $f(x)$ can be generated. (Hint: Use a geometric argument; a picture will help.)
  
- (b). Show that m(xia2, #, 72), the marginal distribution of X, is n(#, (a2 In) + 72).
+```{r echo=FALSE, out.width='50%',collapse=T, fig.show='hold'}
+plot(c(0,40), c(0,0.15), type = "n",main="Geom(1/4)",xlab ="n", ylab ="p")
+points(c(0:40),dgeom(c(0:40), 1/4, log = FALSE))
+lines(c(0:40), dgeom(c(0:40), 1/4, log = FALSE), col = 2)
+polygon(c(2,seq(2,7,1),7) ,c(0,dgeom(c(2:7), 1/4, log = FALSE),0) ,density=10, angle=45,lty =3)
+abline(h=dgeom(2, 1/4, log = FALSE),lty=2);text(0,0.14,"c", col = 2, adj = c(-.1,0))
+abline(v=1/(dgeom(2, 1/4, log = FALSE)),lty=2);text(7,0, "w", col = 2, adj = c(-.5,0))
+abline(v=2,lty=2);text(2,0, "a", col = 2, adj = c(1.5,0))
+abline(v=37,lty=2);text(37,0, "b", col = 2, adj = c(-.5,-1))
+```
 
- (c). Show that 1T(Oix, a2, #, 72), the posterior distribution of 0 , i s normal with mean and variance given by (7.2.10).
+Let $f(t)\sim Geom,x\in[a,b]$. The area of box is $c(b-a)$. $P(W\le w)$ is the probability of the shaded area.
 
----
+$$c(b-a)P(W\le w)=\int^w_a\int^{f(x)}_0 dsdt=\int_a^w f(t)dt$$
 
-**7.23** If 82 is the sample variance based on a sample of size n from a normal population, we know that (n - 1 ) 82/u2 has a X!-l distribution. The conjugate prior for u2 is the inverted gamma pdf, 10(a, {3), given by
+Thus, as long as $c\ge\max\limits_{a\le x\le b}f(x)$, $F_W(w)=\frac1{c(b-a)}\int_a^w f(t)dt$. By the definition 1.6.3 (pdf) , this algorithm generates a random variable with pdf $f(t)$ from the uniform random variables.
+
+Summary: To generate a random variable with pdf $f(t)$:
+
+a. Generate  independent $X\sim Uni(a,b)$, $Y\sim Uni(0,c)$.
+
+b. If $Y<f(X)$, set $W=X$ ; otherwise, set $W=d,(d>b)$.
+
+Let $N=$ number of $(X,Y)$ pairs required for one $W$, then $N$ is a $Geom$ random variable. Thus to generate one $W$, we expect to need $E(N)=c(b-a)$ pairs of $(X,Y)$ and in this sense minimizing $c(b-a)$ will optimize the algorithm.
+
+```{r eval=FALSE, collapse=T, include=FALSE}
+
+plot(c(0,1), c(0,3), type = "n",main="beta(2.7,6.3)",xlab ="x", ylab ="y")
+curve(dbeta(x,2.7,6.3, ncp = 0, log = FALSE),0,1,add =T)
+abline(h=dbeta((2.7-1)/(2.7+6.3-2),2.7,6.3, ncp = 0, log = FALSE),lty=3)
+abline(v=(2.7-1)/(2.7+6.3-2),lty=2);abline(v=0.5,lty=2)
+
+dbeta(0.2428571,2.7,6.3, ncp = 0, log = FALSE)
+qbeta(1/2.669744,2.7,6.3, ncp = 0, lower.tail = TRUE, log.p = FALSE)
+1-pbeta(1/2.669744,2.7,6.3, ncp = 0, lower.tail = TRUE, log.p = FALSE)
+
+dbeta(0.3291,2,5, ncp = 0, log = FALSE)
+qbeta(1/2,2,5, ncp = 0, lower.tail = TRUE, log.p = FALSE)
+pbeta(1/2,2,5, ncp = 0, lower.tail = TRUE, log.p = FALSE)
+```
+
+ ---
+
+**7.22** This exercise will prove the assertions in **Example 7.2.16 (Normal Bayes estimators)**, and more. Let $X_1,..,X_n$ be a random sample from a $n(\theta,\sigma^2)$ population, and suppose that the prior distribution on $\theta$ is $n(\mu,\tau^2)$. Here we assume that $\sigma^2, \mu, \tau^2$ are all known. The posterior distribution of $\theta$ is also normal, with mean and variance given by
+
+$$f(\theta|x)\sim N(\frac{\tau^2x+\sigma^2\mu}{\tau^2+\sigma^2},\frac{\sigma^2\tau^2}{\sigma^2+\tau^2}),\quad E[\theta|x]=\frac{\tau^2}{\tau^2+\sigma^2}x+\frac{\sigma^2}{\sigma^2+\tau^2}\mu,\quad V[\theta|x]=\frac{\sigma^2\tau^2}{\sigma^2+\tau^2}$$
+
+ (a). Find the joint pdf of $\bar X$ and $\theta$. 
+ 
+$$f(\bar x,\theta)=f(\bar x|\theta)\pi(\theta)=\frac{1}{\sqrt{2\pi\frac{\sigma^2}n}} e^{-\frac{(\bar x-\theta)^2}{2\frac{\sigma^2}n}}\cdot\frac{1}{\sqrt{2\pi\tau^2}} e^{-\frac{(\theta-\mu)^2}{2\tau^2}}$$
+ 
+ ---
+ 
+ (b). Show that $m(\bar x|\sigma^2,\mu,\tau^2)$, the marginal distribution of $\bar X$, is $n(\mu,\frac{\sigma^2}n+\tau^2)$.
+
+ - the denominator part in (a)
+
+$$\sqrt{2\pi\frac{\sigma^2}n}\cdot\sqrt{2\pi\tau^2}=\sqrt{\frac{2\pi\tau^2\frac{\sigma^2}n}{\tau^2+\frac{\sigma^2}n}}\cdot\sqrt{2\pi(\tau^2+\frac{\sigma^2}n)}$$
+
+ - the exponent part in (a)
+
+$-\frac{(\bar x-\theta)^2}{2\frac{\sigma^2}n}-\frac{(\theta-\mu)^2}{2\tau^2}=-\frac{(\tau^2+\frac{\sigma^2}n)\theta^2-2(\tau^2\bar x+\frac{\sigma^2}n\mu)\theta+\tau^2\bar x^2+\frac{\sigma^2}n\mu^2}{2\tau^2\frac{\sigma^2}n}$
+$=-\frac{(\tau^2+\frac{\sigma^2}n)^2\theta^2-2(\tau^2\bar x+\frac{\sigma^2}n\mu)(\tau^2+\frac{\sigma^2}n)\theta+\tau^2(\tau^2+\frac{\sigma^2}n)\bar x^2+\frac{\sigma^2}n(\tau^2+\frac{\sigma^2}n)\mu^2}{2\tau^2\frac{\sigma^2}n(\tau^2+\frac{\sigma^2}n)}$
+
+$$=-\frac{(\tau^2+\frac{\sigma^2}n)^2\theta^2-2(\tau^2\bar x+\frac{\sigma^2}n\mu)(\tau^2+\frac{\sigma^2}n)\theta+(\tau^4\bar x^2+\frac{\sigma^4}{n^2}\mu^2+2\tau^2\frac{\sigma^2}n\bar x\mu)+(\tau^2\frac{\sigma^2}n\bar x^2+\tau^2\frac{\sigma^2}n\mu^2-2\tau^2\frac{\sigma^2}n\bar x\mu)}{2\tau^2\frac{\sigma^2}n(\tau^2+\frac{\sigma^2}n)}$$
+
+$$=-\frac{(\tau^2+\frac{\sigma^2}n)^2\theta^2-2(\tau^2\bar x+\frac{\sigma^2}n\mu)(\tau^2+\frac{\sigma^2}n)\theta+(\tau^2\bar x+\frac{\sigma^2}n\mu)^2+\tau^2\frac{\sigma^2}n(\bar x-\mu)^2}
+{2\tau^2\frac{\sigma^2}n(\tau^2+\frac{\sigma^2}n)}
+=-\frac{\left(\theta-\frac{\tau^2\bar x+\frac{\sigma^2}n\mu}{\tau^2+\frac{\sigma^2}n}\right)^2}{\frac{2\tau^2\frac{\sigma^2}n}{\tau^2+\frac{\sigma^2}n}}
+-\frac{(\bar x-\mu)^2}{2(\tau^2+\frac{\sigma^2}n)}$$
+
+$$f(\bar x,\theta)=\frac{1}{\sqrt{2\pi\frac{\sigma^2}n}} e^{-\frac{(\bar x-\theta)^2}{2\frac{\sigma^2}n}}\cdot\frac{1}{\sqrt{2\pi\tau^2}} e^{-\frac{(\theta-\mu)^2}{2\tau^2}}=\frac{1}{\sqrt{\frac{2\pi\tau^2\frac{\sigma^2}n}{\tau^2+\frac{\sigma^2}n}}} e^{-\frac{\left(\theta-\frac{\tau^2\bar x+\frac{\sigma^2}n\mu}{\tau^2+\frac{\sigma^2}n}\right)^2}{\frac{2\tau^2\frac{\sigma^2}n}{\tau^2+\frac{\sigma^2}n}}}
+\cdot\frac{1}{\sqrt{2\pi(\tau^2+\frac{\sigma^2}n)}} e^{-\frac{(\bar x-\mu)^2}{2(\tau^2+\frac{\sigma^2}n)}}
+=\pi(\theta|\bar x,\sigma^2,\mu,\tau^2)m(\bar x|\sigma^2,\mu,\tau^2)$$
+
+Therefore,
+
+$$m(\bar x|\sigma^2,\mu,\tau^2)\sim N\left(\mu,(\tau^2+\frac{\sigma^2}n)\right)$$
 
 
-where a and {3 are positive constants. Show that the posterior distribution of u2 is 10 (a + n;l , [(n_)s2 + 􀀺l-l ) . Find the mean of this distribution, the Bayes estimator of u2•
+ (c). Show that $\pi(\theta|\bar x,\sigma^2,\mu,\tau^2)$, the posterior distribution of $\theta$, is normal with mean and variance given by (7.2.10).
+
+The result of (a) also shows
+
+$$\pi(\theta|\bar x,\sigma^2,\mu,\tau^2)\sim N\left(\frac{\tau^2\bar x+\frac{\sigma^2}n\mu}{\tau^2+\frac{\sigma^2}n},\frac{\tau^2\frac{\sigma^2}n}{\tau^2+\frac{\sigma^2}n}\right)$$
+
+ ---
+
+**7.23** If $S^2$ is the sample variance based on a sample of size n from a normal population, we know that $(n-1)S^2/\sigma^2$ has a $\chi^2_{n-1}$ distribution. The conjugate prior for $\sigma^2$ is the _inverted gamma_ pdf, $IG(\alpha,\beta)$, given by
+$\pi(\sigma^2)=\frac{1}{\Gamma(\alpha)\beta^\alpha}\frac{1}{(\sigma^2)^{\alpha+1}}\mathrm{e}^{-\frac1{\beta\sigma^2}},0<\sigma^2<\infty$
+where $\alpha,\beta$ are positive constants. Show that the posterior distribution of $\sigma^2$ is $IG(\alpha+\frac{n-1}2,[\frac{n-1}2S^2+\frac1\beta]^{-1})$. Find the mean of this distribution, the Bayes estimator of $\sigma^2$.
+
+Let $X=\frac{n-1}{\sigma^2}S^2\sim\chi^2_{n-1}$, $Y=S^2=\frac{\sigma^2}{n-1}X$, we have $f_{Y}(y)=f_X(x)|\frac{dx}{dy}|$
+
+By given $\sigma^2$ and the pdf of $\chi^2_{n-1}$ is $f(x)=\frac{1}{2^{\frac{p}2}\Gamma(\frac{p}2)}x^{\frac{p}2-1}e^{-\frac{x}2}$
+
+$$f_Y(S^2|\sigma^2)=f_X(\frac{n-1}{\sigma^2}S^2|\sigma^2)\left|\frac{d(\frac{n-1}{\sigma^2}S^2)}{d(S^2)}\right|=\frac{1}{2^{\frac{n-1}2}\Gamma(\frac{n-1}2)}\left(\frac{n-1}{\sigma^2}S^2\right)^{\frac{n-1}2-1}e^{-\frac{n-1}{2\sigma^2}S^2}\cdot\frac{n-1}{\sigma^2}$$
+
+Fot the kernel of a function is the main part of the function, the part that remains when constants are disregarded (Example 2.3.8). that is 
+
+$$\pi(\sigma^2|S^2)=f(S^2|\sigma^2)\pi(\sigma^2)\propto  \frac{1}{(\sigma^2)^{\frac{n-1}2}}e^{-\frac{n-1}{2\sigma^2}S^2}\cdot\frac{1}{(\sigma^2)^{\alpha+1}}\mathrm{e}^{-\frac1{\beta\sigma^2}}\propto\frac{1}{(\sigma^2)^{\frac{n-1}2+\alpha+1}}\mathrm{e}^{-\frac1{\sigma^2}(\frac{n-1}2S^2+\frac1{\beta})}$$
+
+The posterior distribution of $\sigma^2$ is $IG(\alpha+\frac{n-1}2,[\frac{n-1}2S^2+\frac1\beta]^{-1})$, then
+$E[\sigma^2|S^2]=\frac{\frac{n-1}2S^2+\frac1\beta}{\alpha+\frac{n-1}2-1}$
 
 
+
+
+
+## HW8
+
+Consider $\frac{\sum(X_i-\bar X)^2}{k}$ as an estimator of $\sigma^2$ (under normality). Find the K that minimizes MSE
+
+For $X_1,..X_i\sim iid\ n(\mu,\sigma^2)$, then $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$, $S^2=\frac{\sum(X_i-\bar X)^2}{n-1}$.
+
+We have $E[S^2]=\sigma^2$ and $Var[\frac{(n-1)S^2}{\sigma^2}]=2{n-1}$, $Var[S^2]=\frac{2\sigma^4}{n-1}$.
+
+Let $M=\frac{\sum(X_i-\bar X)^2}{k}=\frac{(n-1)}{k}S^2$, then
+
+$Var[M]=Var[\frac{(n-1)}{k}S^2]=\frac{(n-1)^2}{k^2}Var[S^2]=\frac{2(n-1)\sigma^4}{k^2}$
+
+$E[M]=E[\frac{(n-1)}{k}S^2]=\frac{(n-1)}{k}E[S^2]=\frac{n-1}{k}\sigma^2$
+
+$Bias[M]=E[M]-\sigma^2=\frac{n-k-1}{k}\sigma^2$
+
+$MSE[M]=Var[M]+Bias^2[M]=\frac{2(n-1)}{k^2}\sigma^4+\frac{(n-k-1)^2}{k^2}\sigma^4=\frac{n^2+k^2-2nk+2k-1}{k^2}\sigma^4$
+
+Set derivtive $MSE'[M]=\frac{(2k-2n+2)k^2-2k(n^2+k^2-2nk+2k-1)}{(k^2)^2}=\frac{2(nk-k+1-n^2)}{k^3}=0$, get $k=n+1$.
+
+Therefore, when $k=n+1$, $\min{MSE[M]}=\frac2{n+1}\sigma^4$
+
+## 
+
+**7.12** Let $X_1,..,X_n$, be a random sample from a population with pmf
+
+$$P_{\theta}(X=x)=\theta^x(1-\theta)^{1-x}, x=0\ or\ 1, 0\le \theta\le\frac12$$
+
+(a) Find the method of moments estimator and MLE of $\theta$
+
+$X_i\sim iid Bernoulli(\theta), 0\le \theta\le\frac12$
+
+method of moments:
+
+$$EX=\theta=\frac1n\sum_iX_i=\bar X )\implies\hat\theta=\bar X$$
+
+MLE: In Example 7.2.7, we showed that $L(|x)$ is increasing for $\theta<\bar x$ and is decreasing for $\theta\ge\bar x$. For $0\le \theta\le\frac12$. Therefore, when $\bar X\le1/2$, $\bar X$ is the MLE of $\theta$, because ¯X is the overall maximum of $L(|\mathbf{x})$. When $\bar X > 1/2$, $L(\theta|\mathbf{x})$ is an increasing function of $\theta$ on $[0, 1/2]$ and obtains its maximum at the upper bound of $\theta$ which is $1/2$. So the MLE is $\hat\theta=\min\{\bar X,1/2\}$.
+
+ ---
+ 
+(b) Find the mean squared errors of each of the estimators.
+
+The MSE of $\tilde\theta$is $MSE(\tilde\theta) = Var\tilde\theta + bias(\tilde\theta)^2=((1−\theta)/n)+0^2=(1−\theta)/n$. There is no simple formula for $MSE(\theta)$, but an expression is 
+
+$$MSE(\hat\theta) = E(\hat\theta-\theta)^2=\sum^n_{y=0}(\hat\theta-\theta)^2{n\choose y}\theta^y(1−\theta )^{n−y}=\sum^\frac{n}2_{y=0}(\frac{y}n−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y} +\sum^n_{y=\frac{n}2+1}(\frac12−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y}$$
+where $Y=\sum_iX_i\sim binomial(n,\theta)$ and $[\frac{n}2]=\frac{n}2$, if n is even, and $[\frac{n}2]=\frac{n-1}2$, if $n$ is odd.
+
+ ---
+ 
+(c) Which estimator is preferred? Justify your choice
+
+Using the notation used in (b), we have
+
+$$MSE(\tilde\theta) = E(\bar X-\theta)^2=\sum^n_{y=0}(\frac{y}n−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y}$$
+Therefore,
+$$MSE(\tilde\theta) − MSE(\hat\theta)=\sum^n_{y=[\frac{n}2]+1}\left[(\frac{y}n−\theta)^2-(\frac12−\theta)^2\right]\binom{n}{y}\theta^y(1−\theta)^{n−y}=\sum^n_{y=[\frac{n}2]+1}(\frac{y}n+\frac12−\theta)(\frac{y}n-\frac12)\binom{n}{y}\theta^y(1−\theta)^{n−y}$$
+ 
+The facts that y/n > 1/2 in the sum and     1/2 imply that every term in the sum is positive.
+Therefore $MSE(\hat\theta)<MSE(\tilde\theta)=0$ for every $\theta$ in $0<\tilde\theta<\frac12$. (Note: $MSE(\hat\theta)=MSE(\tilde\theta)=0$ at $\theta=0$.)
+  
+  
+
+**7.30** The EM algorithm is useful in a variety of situation, and the definition of "missing data" can be stretched to accommodate many different models. Suppose that we have a mixture density $pf(x) + (1 p)g(x)$, where $p$ is unknown. If we observe $X = (X_1,..,X_n)$, the sample density is $\Pi_{i=1}^n[pf(x_i)+(1-p)g(x_i)$ which could be difficult to deal with. (Actually, a mixture of two is not terrible, but consider what the likelihood would look like with a mixture $L:=l P;Ji(X)$ for large k.)
+The EM solution is to augment the observed (or incomplete) data with $Z (Z_1,..,Z_n)$, where $Z_i$ tells which component of the mixture $X_i$ came from; that is,
+
+$X_i|z_i=1\sim f(X_i)$ and $X_i|z_i=0\sim g(x_i)$,and $P(Z_i=1)=p$
+
+(a) Show that the joint density of $(X,Z)$ is given by $\sum^n_{i=1}[pf(x_i)^{z_i}][(1-p)g(x_i)^{1-z_i}]$.
+
+Joint density $f(x,y)=f(x|y)f(y)$,
+
+$$f(\vec x,\vec z)=f(\vec x|\vec z)f(\vec z)=\prod^n_{i=1}f(x_i|z_i)f(z_i)=\prod^n_{i=1}[pf(x_i)]^{z_i}[(1-p)g(x_i)]^{1-z_i}$$
+
+(b) Show that the missing data distribution, the distribution of $Z_i|x_i,p$ is Bernoulli with success probability $\frac{pf(x_i)}{pf(x_i)+(1-p)g(x_i)}$.
+
+Conditional density $f(x|y)=\frac{f(x,y)}{f(y)}$,
+
+$$P(Z_i=1|X_i,p)=\frac{f(x_i,1|p)}{f(x_i|p)}=\frac{pf(x_i)}{pf(x_i)+(1-p)g(x_i)}$$
+
+(c) Calculate the expected complete-data log likelihood, and show that the EM sequence is given by
+
+$$f(\vec x,\vec z)\propto p^{\sum^n_{i=1}z_i}(1-p)^{\sum^n_{i=1}(1-z_i)}$$
+
+which is a Bernoulli joint pdf. For complete data,
+
+$$\hat p=\frac1n\sum Z_i$$
+
+Replacing the missing data with its expectation,
+
+$$E(Z_i|X_i,p)=P(Z_i=1|X_i,p)$$
+
+Through r times iteration,
+
+$$\hat p^{(r+1)}=\frac1n\sum_{i=1}^n\frac{\hat p^{(r)}f(x_i)}{\hat p^{(r)}f(x_i)+(1-\hat p^{(r)})g(x_i)}$$
