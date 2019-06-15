@@ -1,0 +1,908 @@
+---
+title: ''
+author: "STAT563 HW1 Shen Qu"
+date: ""
+output: html_document
+---
+
+#  {.tabset .tabset-fade .tabset-pills}
+
+## HW1
+
+**7.12** Let $X_1,..,X_n$, be a random sample from a population with pmf
+$P_{\theta}(X=x)=\theta^x(1-\theta)^{1-x}, x=0\ or\ 1, 0\le \theta\le\frac12$
+
+(a) Find the method of moments estimator and MLE of $\theta$
+
+For $X_i\sim iid Bernoulli(\theta), 0\le \theta\le\frac12$, We have $EX=\theta, VX=\theta(1-\theta)$
+
+ - method of moments: 
+ 
+Set $EX=\theta=\frac1n\sum_iX_i=\bar X \implies\hat\theta_{MOM}=\bar X$
+
+ - MLE: 
+
+$L(\theta)=\prod\theta^{x_i}(1-\theta)^{1-x_i}=\theta^{\sum x_i}(1-\theta)^{n-\sum x_i}$
+
+$l(\theta)=\sum_{i=1}^nx_i\ln\theta+(n-\sum x_i)\ln(1-\theta)$
+
+$l'(\theta)=\frac1\theta\sum_{i=1}^nx_i+\frac1{1-\theta}(n-\sum x_i)\overset{\text{set}}{=}0$
+
+$l''(\theta)<0$
+
+
+From Example 7.2.7, $L(|x)$ is increasing for $\theta<\bar x$ and is decreasing for $\theta\ge\bar x$. 
+
+For $0\le \theta\le\frac12$, when $\bar X\le1/2$, $\max{L(|\mathbf{x})}=\bar X$, $\hat\theta_{MLE}=\bar X$. 
+
+When $\bar X>1/2$, $L(\theta|\mathbf{x})$ is an increasing function of $\theta$ on $[0, 1/2]$, $\max{L(|\mathbf{x})}=1/2$, $\hat\theta_{MLE}=1/2$. 
+
+So $\hat\theta_{MLE}=\min\{\bar X,1/2\}$.
+
+ ---
+ 
+(b) Find the mean squared errors of each of the estimators.
+
+$MSE(\hat\theta) = E(\hat\theta-\theta)^2$
+
+Let $y=\sum^n_{i=1}X_i=n\bar X\sim Binomial(n,\theta)$, then $\begin{cases}y\le[n/2]&when\bar X\le1/2\\y\ge[n/2]+1&when\bar X>1/2\end{cases}$
+
+$MSE(\hat\theta_{MOM}) = E(\bar X-\theta)^2=\sum^n_{y=0}(\frac{y}n-\theta)^2{n\choose y}\theta^y(1−\theta )^{n−y}$
+
+$MSE(\hat\theta) = E(\hat\theta_{MLE}-\theta)^2=\sum^{[\frac{n}2]}_{y=0}(\frac{y}n−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y} +\sum^n_{y=[\frac{n}2]+1}(\frac12−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y}$
+
+<!--Note: The MSE of $\tilde\theta$is $MSE(\tilde\theta) = Var\tilde\theta + bias(\tilde\theta)^2=((1−\theta)/n)+0^2=(1−\theta)/n$. There is no simple formula for $MSE(\theta)$. $[\frac{n}2]=\frac{n}2$, if n is even, and $[\frac{n}2]=\frac{n-1}2$, if $n$ is odd.-->
+
+ ---
+ 
+(c) Which estimator is preferred? Justify your choice
+
+$MSE(\hat\theta_{MOM})−MSE(\hat\theta_{MLE})=\sum^n_{y=0}(\frac{y}n-\theta)^2{n\choose y}\theta^y(1−\theta )^{n−y}-\sum^{[\frac{n}2]}_{y=0}(\frac{y}n−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y} -\sum^n_{y=[\frac{n}2]+1}(\frac12−\theta)^2\binom{n}{y}\theta^y(1−\theta)^{n−y}$
+
+
+$$=\sum^n_{y=[\frac{n}2]+1}\left[(\frac{y}n−\theta)^2-(\frac12−\theta)^2\right]\binom{n}{y}\theta^y(1−\theta)^{n−y}=\sum^n_{y=[\frac{n}2]+1}(\frac{y}n+\frac12−2\theta)(\frac{y}n-\frac12)\binom{n}{y}\theta^y(1−\theta)^{n−y}$$
+ 
+For $y/n>1/2, y/n-1/2>0$. For $\theta\le1/2$, $y/n+1/2>1\ge2\theta$
+
+Therefore, $MSE(\hat\theta_{MOM})−MSE(\hat\theta_{MLE})\ge0$, $MSE(\hat\theta_{MOM})\ge MSE(\hat\theta_{MLE})$. $MSE(\hat\theta_{MLE})$ is better.
+
+ ---  
+
+**7.48** Suppose that $X_i, i=1,..,n$, are iid $Bernoulli(p)$.
+
+(a) Show that the variance of the MLE of $p$ attains the Cramer-Rae Lower Bound.
+
+ -MLE of p
+
+$L(p)=\prod p^{x_i}(1-p)^{1-x_i}=p^{\sum x_i}(1-p)^{n-\sum x_i}$
+
+$l(p)=\sum_{i=1}^nx_i\ln p+(n-\sum x_i)\ln(1-p)$
+
+$l'(p)=\frac1p\sum_{i=1}^nx_i+\frac1{1-p}(n-\sum x_i)\overset{\text{set}}{=}0$
+
+$l''(p)<0$
+
+$\hat p_{MLE}=\bar X$
+
+$E[\hat p_{MLE}]=E[\bar X]=p$
+
+$V[\hat p_{MLE}]=V[\bar X]=\frac{p(1-p)}{n}$
+
+Let $w=\bar x$, then $k(p)=E[w]=p$, $f(x|p)=p^x(1-p)^{1-x}\sim Bern(p)$
+
+$\ln f(x|p)=x\ln p+(1-x)\ln(1-p)$
+
+$\frac\partial{\partial{p}}\ln f(x|p)=\frac{x}p-\frac{1-x}{1-p}$
+
+$\frac{\partial^2}{\partial{p}}\ln f(x|p)=-\frac{x}{p^2}-\frac{1-x}{(1-p)^2}$
+
+$I(p)=-E[\frac{\partial^2}{\partial{p}}\ln f(x|p)]=-E[-\frac{x}{p^2}-\frac{1-x}{(1-p)^2}]=\frac{1}{p(1-p)}$
+
+By Cramer-Rao Inequality,
+
+$$Var_p(W)\ge\frac{(\frac{\partial}{\partial p}E_p[W])^2}{nI(p)}=\frac{(k'(p))^2}{n\frac{1}{p(1-p)}}=\frac{p(1-p)}{n}$$
+
+ ---
+
+(b) For $n\ge4$, show that the product $X_1X_2X_3X_4$ is an unbiased estimator of $p^4$, and use this fact to find the best unbiased estimator of $p^4$.
+
+$E(x_1x_2x_3x_4)=\prod_{i=1}^4 EX_i=p^4$ which is a unbiased estimator.
+
+$T(\vec x)=\sum_{i=1}^n X_i\sim Bino(n,p)$ is a complete sufficient statistic.
+
+By Rao-Blackwell and Lehmann-Scheffe Theorem, $E[x_1x_2x_3x_4|\sum_{i=1}^n X_i=t]$ is MUVE of $p^4$.
+
+$E[x_1x_2x_3x_4|\sum_{i=1}^n X_i=t]=\sum_{x_1=0}^1\sum_{x_2=0}^1\sum_{x_3=0}^1\sum_{x_4=0}^1x_1x_2x_3x_4P(x_1x_2x_3x_4|\sum_{i=1}^n X_i=t)$
+
+$=P(x_1=x_2=x_3=x_4=1|\sum_{i=1}^n X_i=t)=\frac{P(x_1=x_2=x_3=x_4=1,\sum_{i=1}^n X_i=t)}{P(\sum_{i=1}^n X_i=t)}$
+
+$=\frac{P(x_1=x_2=x_3=x_4=1,\sum_{i=5}^n X_i=t-4)}{P(\sum_{i=1}^n X_i=t)}=\frac{p^4{n-4\choose t-4}p^{t-4}(1−p)^{n−t}}{{n\choose t}p^{t}(1−p)^{n−t}}=\frac{n-4\choose t-4}{n\choose t}$
+
+ ---
+
+**7.59** Let $X_1,..,X_n$ be iid $n(\mu, \sigma^2)$. Find the best unbiased estimator of $\sigma^2$, where $p$ is a known positive constant, not necessarily an integer.
+
+ - Find the complete sufficient statistic for $\sigma^p$ called $T$
+
+Let $T=(n-1)S^2/\sigma^2\sim \chi^2_{n-1}=Gamma(\frac{n-1}2,2)$, then 
+
+ Form Theorem 6.2.25, in the exponential familiy, $T=(n-1)S^2/\sigma^2$ is a complete sufficient statistic.
+ 
+ - Find the function of $T$ that is an unbiased estimator of $\sigma^p$
+ 
+$E[T^{\frac{p}2}]=\frac{1}{\Gamma(\frac{n-1}2)2^{\frac{n-1}2}}\int_0^\infty t^{\frac{p+n-1}2-1}e^{-t/2}dt=\frac{2^{\frac{p}2}\Gamma(\frac{p+n-1}2)}{\Gamma(\frac{n-1}2)}$
+
+$E[T^{\frac{p}2}]=E[(\frac{(n-1)S^2}{\sigma^2})^{\frac{p}2}]=E[\frac{(n-1)^{\frac{p}2}S^p}{\sigma^p}]$
+
+$$\therefore E[\frac{(n-1)^{\frac{p}2}S^p}{\sigma^p}]=\frac{2^{\frac{p}2}\Gamma(\frac{p+n-1}2)}{\Gamma(\frac{n-1}2)}\implies E[{(\frac{n-1}2})^{\frac{p}2}\frac{\Gamma(\frac{n-1}2)}{\Gamma(\frac{p+n-1}2)}S^p]=\sigma^p$$
+ 
+ ${(\frac{n-1}2})^{\frac{p}2}\frac{\Gamma(\frac{n-1}2)}{\Gamma(\frac{p+n-1}2)}S^p$ is an unbiased estimator of $\sigma^p$.
+
+By Rao-Blackwell and Lehmann-Scheffe Theorem, when a function of T is an unbiased estimator of $\sigma^p$ and $T$ is a complete sufficient statistic for $\sigma^p$,  this function is the best unbiased estimator.
+
+## HW2
+
+**8.5** A random sample, $X_1,..,X_n$. , is drawn from a Pareto population with pdf $f(x|\theta,\nu)=\frac{\theta\nu^{\theta}}{x^{\theta+1}}I_{[\nu,\infty)}(x),\theta>0,\nu>0$
+
+(a) Find the MLEs of $\theta$ and $\nu$.
+
+When $x_{(1)}=\min_i x_i$,
+
+$$L(\theta,\nu|x)=\frac{\theta^n\nu^{n\theta}}{\prod_i x_i^{\theta+1}}$$
+$$\ln L(\theta,\nu|x)=n\ln\theta+n\theta\ln\nu-(\theta+1)\ln(\prod_i x_i), \nu\le x_{(1)}$$
+
+Which is an increasing function of $\nu$ $\forall \theta$. So both the restricted and unrestricted $\hat\nu_{MLE}=x_{(1)}$.
+
+$$\frac{\partial}{\partial\theta}\ln L(\theta,x_{(1)}|x)=\frac{n}\theta+n\ln x_{(1)}-\ln(\prod_i x_i)\overset{set}{=}0$$
+
+$$\frac{\partial^2}{\partial\theta^2}\ln L(\theta,x_{(1)}|x)=-\frac{n}{\theta^2}<0$$
+
+$$\hat\theta_{MLE}=\frac{n}{\ln(\prod_i x_i)-n\ln x_{(1)}}=\frac{n}{\ln(\frac{\prod_i x_i}{x_{(1)}^n})}=\frac{n}T$$
+
+ ---
+
+(b) Show that the LRT of $H_0:\theta=1, \nu$ unknown, versus $H_1: \theta\ne1,\nu$ unknown, has critical region of the form $\{x:T(x)\le C_1 or T(x)\ge c_2\}$, where $0<C_1<C_2$ and
+$T=\ln\left[\frac{\prod_{i=1}^n X_i}{(\min\limits_{i} X_i)^n}\right]$
+
+$T=\ln\left[\frac{\prod_{i=1}^n X_i}{(\min\limits_{i} X_i)^n}\right]\implies e^T=\frac{\prod_{i=1}^n X_i}{(\min\limits_{i} X_i)^n}\implies\prod_{i=1}^n X_i=(\min\limits_{i} X_i)^ne^T=x_{(1)}^ne^T$
+
+Under $H_0$, $\hat\theta_{MLE}=1$, $\hat\nu_{MLE}=x_{(1)}$. The likelihood ratio statistic is
+
+$$\Lambda=\frac{\sup L(\hat\theta_0|x)}{\sup L(\hat\theta_{MLE}|x)}=\frac{\frac{1^nx_{(1)}^{n}}{\prod_i x_i^{1+1}}}{\frac{(\frac{n}T)^nx_{(1)}^{n\frac{n}T}}{\prod_i x_i^{\frac{n}T+1}}}=(\frac{T}n)^n\cdot x_{(1)}^{n-\frac{n^2}T}\cdot\prod_i x_i^{\frac{n}T-1}=(\frac{T}n)^n\cdot x_{(1)}^{n-\frac{n^2}T}\cdot x_{(1)}^{\frac{n^2}T-n}\cdot e^{n-T}=(\frac{T}n)^ne^{n-T}$$
+
+$$\ln\Lambda=n\ln T-n\ln n+n-T$$
+$$\frac{\partial}{\partial T}\ln\Lambda=\frac{n}{T}-1\begin{cases}>0&\text{if }T\le n\\<0&\text{if }T\ge n\end{cases}$$
+
+Hence, $\Lambda$ is increasing if $T\le n$ and decreasing if $T\ge n$.
+Thus, $T\le c$ is equivalent to $T\le c_1$ or $T\ge c_2$, for appropriately chosen constants $c_1$ and $c_2$.
+
+ ---
+ 
+(c) Show that, under $H_0, 2T$ has a $\chi^2$ distribution, and find the number of degrees of freedom. 
+(Hint: Obtain the joint distribution of the $n-1$ nontrivial terms $X_i/(\min_i X_i)$ conditional on $\min_i X_i$. Put these $n-1$ terms together, and notice that the distribution of $T$ given $\min_i X_i$ does not depend on $\min_i X_i$, so it is the unconditional distribution of $T$.)
+
+Under $H_0$, $f(x|1,\nu)=\frac{\nu}{x^2}I_{[\nu,\infty)}(x),\nu>0$ is monotone when $x>\nu>0$
+
+Let $Y_i=\ln X_i, i=1,..,n$. $X_i=e^{y_i}$, $\frac{dx}{dy}=e^y$, then
+
+$f(y|1,\nu)=f(x|1,\nu)|\frac{dx}{dy}|=\frac{\nu}{x^2}e^y=ve^{-y}, y>0$
+
+$F(y|1,\nu)=\int_0^{\infty}ve^{-y}dy=1-ve^{-y}$
+
+$f_{Y_{(1)}}(y)=\frac{n!}{(1-1)!(n-1)!}f_Y(y)[F_Y(y)]^{1-1}[1-F_Y(y)]^{n-1}=n\cdot\nu e^{−y}\cdot(\nu e^{−y})^{n-1}=n\nu^ne^{−ny}$
+
+Let $Z_1=Y_{(1)}$, $Z_2,..,Z_i$ equal to the remaining $Y_i$s. $Z_1$ and $Z_i$ are independent.
+
+$f_{Z_1,Z_i}(y_{(1)},y_i)=f_{Y_{(1)}}(y_{(1)})f_{Y_i}(y_i)=n\nu^ne^{−ny_{(1)}}\nu e^{-y_i}=n\nu^{n+1}e^{−(ny_{(1)}+y_i)}, i=2,..,n$
+
+Let $W_1=Z_{1}=n\nu^ne^{−ny}$ and $W_i=Z_i−Z_{1}, i=2,..,n$, then $Z_{1}=w_1, Z_i=w_1+w_i$. $|J|=\begin{vmatrix}1 & 0 \\ 1 & 1 \end{vmatrix}=1$
+
+$$f_{W_1,W_i}(w_1,w_i)=f_{Z_{1},Z_i}(w_1,w_1+w_i)|J|=n\nu^{n+1}e^{−(nw_1+w_1+w_i)}=n\nu^{n+1}e^{−(n+1)w_1}e^{−w_i}$$
+
+$f_{W_1}(w)=n\nu^{n+1}e^{−(n+1)w}, w>\ln\nu$, $f_{W_i}(w)=e^{-w}$, $W_1, W_i$ are independent.
+
+$W_i=Z_i−Z_{1}=e^{-w_i}\sim Expo(1), i=2,..,n$. 
+
+$T=\sum_{i=1}^n(Y_i-Y_{(1)})=Y_1-Y_{(1)}+\sum_{i=2}^n(Y_i-Y_{(1)})=\sum_{i=2}^n(Z_i−Z_{1})=\sum_{i=2}^nW_i\sim Gam(n−1, 1)$
+
+$$2T\sim Gam(n−1, 2)=\chi^2_{2(n−1)}$$
+
+ ---
+ 
+**8.17** Suppose that $X_1,..,X_n$ are iid with a $beta(\mu,1)$ pdf and $Y_1,..,Y_m$ are iid with a $beta(\theta,1)$ pdf. Also assume that the $X$s are independent of the $Y$s.
+
+(a) Find an LRT of $H_0: \theta=\mu$ versus $H_1: \theta\ne\mu$.
+
+$f_X(x)=\frac{1}{B(\mu,1)}x^{\mu-1}(1-x)^{1-1}=\frac{\Gamma(\mu+1)}{\Gamma(\mu)\Gamma(1)}x^{\mu-1}=\mu x^{\mu-1}$
+
+$f_Y(y)=\theta y^{\theta-1}$
+
+$$L(\mu,\theta|x,y)=\mu^n(\prod_{i=1}^nx_i)^{\mu-1}\theta^m(\prod_{j=1}^my_j)^{\theta-1}$$
+$$\ln L(\mu,\theta|x,y)=n\ln\mu+(\mu-1)\ln(\prod_{i=1}^nx_i)+m\ln\theta+(\theta-1)\ln(\prod_{j=1}^my_j)$$
+
+$$\frac{\partial}{\partial\mu}\ln L(\mu,\theta|x,y)=\frac{n}\mu+\sum_{i=1}^n\ln x_i\overset{set}{=}0\implies\hat\mu_{MLE}=-\frac{n}{\sum_{i=1}^n\ln x_i}$$
+$$\frac{\partial}{\partial\theta}\ln L(\mu,\theta|x,y)=\frac{m}\theta+\sum_{j=1}^m\ln y_j\overset{set}{=}0\implies\hat\theta_{MLE}=-\frac{m}{\sum_{j=1}^m\ln y_j}$$
+
+Under $H_0$, $\theta=\mu$
+
+$$L(\theta|x,y)=\theta^{n+m}(\prod_{i=1}^nx_i\prod_{j=1}^my_j)^{\theta-1}$$
+$$\ln L(\theta|x,y)=(n+m)\ln\theta+(\theta-1)\ln(\prod_{i=1}^nx_i\prod_{j=1}^my_j)^{}$$
+$$\frac{\partial}{\partial\theta}\ln L(\theta|x,y)=\frac{n+m}\theta+\sum_{i=1}^n\ln x_i+\sum_{j=1}^m\ln y_j\overset{set}{=}0\implies\hat\theta_{0}=-\frac{n+m}{\sum_{i=1}^n\ln x_i+\sum_{j=1}^m\ln y_j}$$
+
+The LRT statistic is
+
+$$\Lambda=\frac{\sup L(\hat\theta_0|x,y)}{\sup L(\hat\mu_{MLE},\hat\theta_{MLE}|x,y)}=\frac{\hat\theta_0^{n+m}(\prod_{i=1}^nx_i\prod_{j=1}^my_j)^{\hat\theta_{0}-1}}{\hat\mu_{MLE}^n(\prod_{i=1}^nx_i)^{\hat\mu_{MLE}-1}\hat\theta_{MLE}^m(\prod_{j=1}^my_j)^{\hat\theta_{MLE}-1}}=\frac{\hat\theta_0^{n+m}}{\hat\mu_{MLE}^n\hat\theta_{MLE}^m}\cdot(\prod_{i=1}^nx_i)^{\hat\theta_0-\hat\mu_{MLE}}(\prod_{j=1}^my_j)^{\hat\theta_0-\hat\theta_{MLE}}$$
+
+ ---
+ 
+(b) Show that the test in part (a) can be based on the statistic
+$T=\frac{\sum\ln X_i}{\sum\ln X_i+\sum\ln Y_i}$
+
+Substituting $(\prod_{i=1}^nx_i)^{\hat\theta_0-\hat\mu_{MLE}}(\prod_{j=1}^my_j)^{\hat\theta_0-\hat\theta_{MLE}}=1$
+
+$$\Lambda=\frac{\hat\theta_0^{n+m}}{\hat\mu_{MLE}^n\hat\theta_{MLE}^m}=\frac{(-\frac{n+m}{\sum_{i=1}^n\ln x_i+\sum_{j=1}^m\ln y_j})^{n+m}}{(-\frac{n}{\sum_{i=1}^n\ln x_i})^n(-\frac{m}{\sum_{j=1}^m\ln y_j})^m}=(\frac{n+m}{n})^n(\frac{n+m}{m})^m(\frac{\sum_{i=1}^n\ln x_i}{\sum_{i=1}^n\ln x_i+\sum_{j=1}^m\ln y_j})^{n}(\frac{\sum_{j=1}^m\ln y_j}{\sum_{i=1}^n\ln x_i+\sum_{j=1}^m\ln y_j})^{m}$$
+$$=(\frac{n+m}{n})^n(\frac{n+m}{m})^mT^n(1-T)^m$$
+
+which is an unimodal function of $T$, so rejecting $H_0$ when $\Lambda\le c$ equivalent to rejecting $H_0$ when $T\le c_0$ or $T\ge c_1$ where $c_0,c_1$ are appropriate chosen constants.
+
+ ---
+
+(c) Find the distribution of $T$ when $H_0$ is true, and then show how to get a test of size $\alpha=.10$.(Hint: Exercise 4.19)
+
+For $X_i\sim Beta(\mu,1), Y_i\sim Beta(\theta,1)$, $-\ln X_i\sim Expo(1/\mu),-\ln Y_i\sim Expo(1/\theta)$, then
+
+$W=-\sum_{i=1}^n\ln X_i\sim Gamma(n,1/\mu),V=-\sum_{j=1}^m\ln Y_i\sim Gamma(m,1/\theta)$. For $\mu=\theta$, $W$ and $V$ are independent, $T=\frac{W}{W+V}\sim Beta(n,m)$.
+
+Solving this equations
+
+$$\begin{cases}P(T\le c_0)+P(T\ge c_1)=\alpha=0.10\\c_01^{n}(1-c_0)^{m}=c_1^{n}(1-c_1)^{m}\end{cases}$$
+The test $\Lambda\le c_0,\Lambda\ge c_1$ is most powerful $\forall\theta\neq\mu$, so it is a UMP level $\alpha=0.10$ test.
+
+ ---
+ 
+**8.19** The random variable $X$ has pdf $f(x)=e^{-x}, x>0$. One observation is obtained on the random variable $Y=X^{\theta}$, and a test of $H_0:\theta=1$ versus $H_1:\theta=2$ needs to be constructed. Find the UMP level $\alpha=.10$ test and compute the Type II Error probability.
+
+$f(x)=e^{-x}$ is monotone when $x>0$. $X=Y^{1/\theta}$, $\frac{dx}{dy}=\frac1\theta y^{\frac1\theta-1}$, then
+
+$$f(y|\theta)=f(x|\theta)|\frac{dx}{dy}|=e^{-y^{1/\theta}}\frac1\theta y^{\frac1\theta-1}, y>0$$
+
+
+Neyman-Pearson Theorem says a test of $H_0:\theta_0=1$ versus $H_1:\theta_1=2$, i.e., $\Omega=\{1,2\},\Omega_0=\{1\}$ 
+
+$$\Lambda=\frac{L(\theta_0|y)}{L(\theta_1|y)}=\frac{e^{-y^{1}} y^{1-1}}{e^{-y^{1/2}}\frac12 y^{1/2-1}}=2e^{(y^{1/2}-y)}y^{1/2}\overset{set}{\le}c$$
+
+$$\frac{d}{dy}\Lambda=2e^{(y^{1/2}-y)}(\frac12y^{-1/2}-1)y^{1/2}+e^{(y^{1/2}-y)}y^{-1/2}=e^{(y^{1/2}-y)}(1-2y^{1/2}+y^{-1/2})\begin{cases}>0&\text{if }y< 1\\<0&\text{if }y>1\end{cases}$$
+
+Thus $\Lambda$ is an unimodal function of $y$, $\max\Lambda=2$ when $y=1$.
+The rejection region is $R=\{\vec y:\Lambda\le c\}$, and $c$ is chosen so that $P_{H_0}(\vec y\in R)=\alpha$, which equivalent to
+
+$$\begin{cases}P(Y\le c_0|\theta_0)+P(Y\ge c_1|\theta_0)=\alpha& (1)\\2e^{(c_0^{1/2}-c_0)}c_0^{1/2}=2e^{(c_1^{1/2}-c_1)}c_1^{1/2}& (2)\end{cases}$$
+
+$(1)=\int_{-\infty}^{c_0}e^{-y}dy+\int_{c_1}^{\infty}e^{-y}dy=\left.-e^{-y}\right|_{-\infty}^{c_0}+1-(\left.-e^{-y}\right|_{-\infty}^{c_1})=1-e^{-c_0}+e^{-c_1}=0.10\implies c_1-c_0=\ln0.90$
+
+$(2)\implies c_0^{1/2}-c_0+\frac12\ln c_0=c_1^{1/2}-c_1+\frac12\ln c_1$, get $c_0=0.076546, c_1=3.637798$.
+
+```{r eval=FALSE, include=FALSE}
+# log(a) + log(b) = log(5)
+# 0.5 * (loga + 2 * log(b)) = log(10)
+m <- matrix(c(1, .5, 1, 1), 2)
+exp(solve(m, c(log(5),log(10))))
+
+-exp(-3.637798^0.5)+exp(-0.076546^0.5)
+```
+
+The test $\Lambda\le c_0=0.076546$,$\Lambda\ge c_1=3.637798$ is most powerful $\forall\theta_1\notin\Omega_0$, so it is a UMP level $\alpha=0.10$ test.
+
+The Type II error probability is
+
+$$P(c_0<Y<c_1|\theta_1)=\int_{c_0}^{c_1}\frac12e^{-y^{1/2}} y^{-1/2}dy=\left.-e^{-y^{1/2}}\right|_{c_0}^{c_1}=e^{-c_0^{1/2}}-e^{-c_1^{1/2}}=0.609824$$
+
+## HW3
+
+**8.28** Let $f(x|\theta)$ be the logistic location pdf $f(x|\theta)=\frac{e^{x-\theta}}{(1+e^{x-\theta})^2},-\infty<x<\infty,-\infty<\theta<\infty$
+
+(a) Show that this family has an MLR.
+
+Let $\theta_2>\theta_1$,
+
+$$\Lambda=\frac{f(x|\theta_2)}{f(x|\theta_1)}=\frac{\frac{e^{x-\theta_2}}{(1+e^{x-\theta_2})^2}}{\frac{e^{x-\theta_1}}{(1+e^{x-\theta_1})^2}}=e^{\theta_1-\theta_2}\left[\frac{1+e^{x-\theta_1}}{1+e^{x-\theta_2}}\right]^2$$
+
+Take the derivative of the part in brackets.
+
+$$\frac{d}{dx}(\frac{1+e^{x-\theta_1}}{1+e^{x-\theta_2}})=\frac{(1+e^{x-\theta_1})'(1+e^{x-\theta_2})-(1+e^{x-\theta_1})(1+e^{x-\theta_2})'}{(1+e^{x-\theta_2})^2}=\frac{e^{x-\theta_1}(1+e^{x-\theta_2})-(1+e^{x-\theta_1})e^{x-\theta_2}}{(1+e^{x-\theta_2})^2}=\frac{e^{x-\theta_1}-e^{x-\theta_2}}{(1+e^{x-\theta_2})^2}$$
+
+For $\theta_2>\theta_1$, $\Lambda$ is a monotone function. This family has a Monotone Likelihood ratio (MLR).
+
+ ---
+
+(b) Based on one observation, $X$, find the most powerful size $\alpha$ test of $H_0:\theta=0$ versus $H_1:\theta=1$. For $\alpha=.2$, find the size of the Type II Error.
+
+The MLR $\frac{f(x|\theta_2)}{f(x|\theta_1)}=\frac{f(x|1)}{f(x|0)}$ is increasing in $x$. The best test is to reject $H_0$ when $\frac{f(x|1)}{f(x|0)}>k$, which is equivalent to rejecting if $x>k'$
+
+$F(x|\theta)=\int_{-\infty}^{x}\frac{e^{x-\theta}}{(1+e^{x-\theta})^2}dx=\left.\frac{e^{x-\theta}}{1+e^{x-\theta}}\right|^x_{-\infty}=\left.1-\frac{1}{1+e^{x-\theta}}\right|^x_{-\infty}=1-\frac{1}{1+e^{x-\theta}}$
+
+For $\alpha=P(\text{Type I})=P(\text{Reject }H_0|H_0\text{ is ture})=1-F(k'|0)=1-(1-\frac{1}{1+e^{k'}})=\frac{1}{1+e^{k'}}=0.2$, 
+
+$k'=\ln{\frac{1-\alpha}{\alpha}}=\ln{\frac{1-0.2}{0.2}}=1.386294$
+
+Type II Error $\beta=P(\text{Type II})=P(\text{Fail to reject }H_0|H_1\text{ is ture})=F(k'|1)=1-\frac{1}{1+e^{k'-1}}=0.5953902$
+
+```{r eval=FALSE, include=FALSE}
+log(4)
+exp(1.386294-1)/(1+exp(1.386294-1))
+```
+
+ ---
+
+(c) Show that the test in part (b) is UMP size $\alpha$ for testing $H_0:\theta\le0$ versus $H_1:\theta>0$. What can be said about UMP tests in general for the logistic location family?
+
+From part (a), the logistic location family of pdfs $\{f(x|\theta):\theta\in\Theta\}$ of $X$ has a MLR.
+
+For testing $H_0:\theta\le0$ versus $H_1:\theta>0$, $X$ is a sufficient statistic for $\theta$.
+
+From **Theorem 8.3.17 (Karlin-Rubin)**, if and only if $x>k'$ is a UMP level $\alpha$ test, where $\alpha= P_{\theta_0}(x>k')$,
+
+then for any $k'$, the test rejects $H_0$. Thus, this method can apply on the logistic lcoation family.
+
+ ---
+ 
+**8.33** Let $X_1,..,X_n$ be a random sample from the $uniform(\theta,\theta+1)$ distribution. $T_0$ test $H_0:\theta=0$ versus $H_1:\theta>0$, use the test reject $H_0$ if $Y_n\ge1$ or $Y_1\ge k$, where k is a constant, $Y_1= \min\{X_1,..,X_n\}, Y_n= \max\{X_1,..,X_n\}$.
+
+(a) Determine k so that the test will have size $\alpha$.
+
+$f_{X}(x|\theta)=\frac{1}{\theta+1-\theta}=1,\quad F_{X}(x|\theta)=\frac{x-\theta}{\theta+1-\theta}=x-\theta$
+
+From theorems 5.4.4 and 5.6.6, the marginal pdf of $Y_{1},Y_{n}$, the joint pdf of $(Y_1,Y_n) are$
+
+$f_{Y_{1}}(y_1|\theta)=\frac{n!}{(1-1)!(n-1)!}f_{X}(y_1|\theta)[F_{X}(y_1|\theta)]^{1-1}[1-F_{X}(y_1|\theta)]^{n-1}=n[1+\theta-y_1]^{n-1},\ \theta\le y_1\le\theta+1$
+
+$f_{Y_{n}}(y_n|\theta)=\frac{n!}{(n-1)!(n-n)!}f_{X}(y_n|\theta)[F_{X}(y_n|\theta)]^{n-1}[1-F_{X}(y_n|\theta)]^{n-n}=n[y_n-\theta]^{n-1},\ \theta\le y_n\le\theta+1$
+
+$f_{Y_{1},Y_{n}}(y_1,y_n|\theta)=\frac{n!f_{X}(y_1|\theta)f_{X}(y_n|\theta)}{(1-1)!(n-1-1)!(n-n)!}[F_{X}(y_1|\theta)]^{1-1}[F_{X}(y_n|\theta)-F_{X}(y_1|\theta)]^{n-1-1}[1-F_{X}(y_n|\theta)]^{n-n}$
+$$=n(n-1)(y_n-y_1)^{n-2},\ \theta\le y_1<y_n\le\theta+1$$
+
+Under $H_0:\theta=0, 0\le k\le Y_1\le Y_n\le\theta+1=1$, $P(Y_n\ge1)=0$, 
+
+$$\alpha=P(Y_1\ge k\cup Y_n\ge 1|\theta=0)=\int_k^1n[1+\theta-y_1]^{n-1}dy_1=(1-k)^n$$
+Thus, use $k=1-\alpha^{1/n}, 0\le k\le1$ to have a size $\alpha$ test.
+
+ ---
+ 
+(b) Find an expression for the power function of the test in part (a) .
+
+The rejection regions are $Y_1\ge k$ and $Y_n\ge 1$. 
+
+When $\theta+1\le k\le1$, all $Y_1$ and $Y_n$ locate outside the rejection region, the power function$=P(\text{reject} H_0|H_1\text{true})=0$
+
+When $0< k\le\theta$, all $Y_1$ and $Y_n$ locate inside the rejection region, the power function$=P(Y_1\ge k\cup Y_n\ge 1|\theta>0)=1$
+
+When $\theta< k\le\theta+1\le1$, a part of $Y_1$ locate inside the $k\le Y_1$ rejection region. All $Y_n$ locate outside the $1\le Y_n$ rejection region, 
+the power function $=P(Y_1\ge k|\theta>0)+0=\int_k^{\theta+1}n(\theta+1-y_1)^{n-1}dy_1=(\theta+1-k)^n$
+
+When $\theta\le k\le1\le\theta+1$, a part of $Y_1$ locate inside the $k\le Y_1\le\theta+1$ rejection region, a part of $Y_n$ locate inside the $1\le Y_n$ rejection region.
+The power function$=P(k\le Y_1\le\theta+1|\theta>0)+P(\theta\le Y_1\le k,1\le Y_n\le\theta+1 |\theta>0)=\int_k^{\theta+1}n(\theta+1-y_1)^{n-1}dy_1+\int_\theta^k\int_1^{\theta+1}n(n-1)(y_n-y_1)^{n-2}dy_ndy_1$ $=(\theta+1-k)^n+\int_\theta^kn[(\theta+1-y_1)^{n-1}-(1-y_1)^{n-1}]dy_1=(\theta+1-k)^n-(\theta+1-k)^n+1+(1-k)^n-(1-\theta)^{n}=1+\alpha-(1-\theta)^n$
+
+ ---
+ 
+(c) Prove that the test is UMP size $\alpha$.
+
+For $f_{Y_{1},Y_{n}}(y_1,y_n|\theta)=n(n-1)(y_n-y_1)^{n-2},\ \theta\le y_1<y_n\le\theta+1$, $(y_n-y_1)^{n-2}$ is free of $\theta$,
+$(Y_1, Y_n)$ are sufficient statistics for $\theta$.
+
+For $0<\theta<1$, the ratio of pdfs is
+
+$$\frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}=\begin{cases}0& \text{if }\ 0<y_1\le\theta,y_1<y_n<1 \\1& \text{if }\ \theta<y_1<y_n<1 \\\infty& \text{if }\ \theta<y_1<y_n, 1\le y_n<\theta+1 \end{cases}$$
+
+For $1\le\theta$, the ratio of pdfs is
+
+$$\frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}=\begin{cases}0& \text{if }\ y_1<y_n<1\le\theta \\\infty& \text{if }\ 1\le\theta<y_1<y_n<\theta+1 \end{cases}$$
+
+For $0<\theta<k$, use $k'=1$, 
+
+$$\begin{cases}\text{reject}& \text{if }\ \frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}>1 \\\text{fail to reject}& \text{if }\ \frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}<1 \end{cases}$$
+
+For $\theta\ge k$, use $k'=0$,
+
+$$\begin{cases}\text{reject}& \text{if }\ \frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}>0 \\\text{fail to reject}& \text{if }\ \frac{f_{Y_{1},Y_{n}}(y_1,y_n|\theta)}{f_{Y_{1},Y_{n}}(y_1,y_n|0)}<0 \end{cases}$$
+
+Form **Corollary 8.3.13**, $(Y_1,Y_n)$ is a sufficient statistic for $\theta$ and $f(y_1,y_n|\theta)$ is the pdf of $(Y_1,Y_n)$ corresponding to $\theta_0,\theta_1$.  if it satisfies 
+$y_1\in S_1$, $y_n\in S_n$ when $f(y_1,y_n|\theta_1)>kf(y_1,y_n|\theta_0)$ and when $f(y_1,y_n|\theta_1)<kf(y_1,y_n|\theta_0)$ for some $k\ge 0$, where $\alpha=P_{\theta_0}(y_1\in S_1,y_n\in S_n)$,
+
+then, the test based on $(Y_1,Y_n)$ with rejection regions $Y_1\ge k$ and $Y_n\ge 1$ is a UMP level a test.
+
+ ---
+ 
+(d) Find values of n and k so that the UMP .10 level test will have power at least .8 if $\theta>1$.
+
+When $0< k\le\theta$, all $Y_1$ and $Y_n$ locate inside the rejection region, the power function$=1>0.8$.
+
+$$k=1-\alpha^{1/n}=1-0.1^{1/n}=0.9, 0.68377, 0.53584,...,n=1,2,3...$$
+
+## HW4
+
+**9.4** Let $X_1,..,X_n$ be a random sample from a $n(0,\sigma_X^2)$ , and let $Y_1,..,Y_m$ be a random sample from a $n(0,\sigma_Y^2)$, independent of the $X$s. Define $\lambda=\sigma^2_Y/\sigma^2_X$.
+
+(a) Find the level $\alpha$ LRT of $H0:\lambda=\lambda_0$ versus $H1:\lambda\neq\lambda_0$.
+
+$f_X(x)=\frac{1}{\sqrt{2\pi\sigma_X^2}}e^{-x^2/2\sigma_X^2}$, $f_Y(y)=\frac{1}{\sqrt{2\pi\sigma_Y^2}}e^{-x^2/2\sigma_Y^2}$
+
+$L(\sigma_X^2|x)=\prod_{i=1}^n(2\pi\sigma_X^2)^{-1/2}e^{-x_i^2/2\sigma_X^2}=(2\pi\sigma_X^2)^{-n/2}e^{-\sum_{i=1}^n{x_i^2/2\sigma_X^2}}$
+$l(\sigma_X^2|x)=-\frac{n}2\ln(2\pi\sigma_X^2)-\sum_{i=1}^n\frac{x_i^2}{2\sigma_X^2}$
+$l'(\sigma_X^2|x)=-\frac{n}{2\sigma_X^2}+\frac{\sum_{i=1}^nx_i^2}{2\sigma_X^4}\overset{set}{=}0$
+$$\hat\sigma_{X-MLE}^2=\frac{\sum_{i=1}^nx_i^2}{n}$$
+
+By the same way, the unrestricted MLEs
+
+$$\hat\sigma_{Y-MLE}^2=\frac{\sum_{i=1}^my_i^2}{m}$$
+
+Under $H0:\lambda=\lambda_0$, $\lambda_0=\sigma^2_Y/\sigma^2_X$, $\sigma^2_Y=\lambda_0\sigma^2_X$
+
+$L(\sigma^2_X,\sigma^2_Y|x,y)=L(\sigma^2_X,\lambda_0\sigma^2_X|x,y)=(2\pi\sigma_X^2)^{-\frac{n}2}e^{{\frac{-\sum_{i=1}^nx_i^2}{2\sigma_X^2}}}(2\pi\lambda_0\sigma^2_X)^{-\frac{m}2}e^{{\frac{-\sum_{i=1}^my_i^2}{2\lambda_0\sigma^2_X}}}=(2\pi\sigma_X^2)^{-(m+n)/2}\lambda_0^{-m/2}e^{\frac{-\lambda_0\sum_{i=1}^nx_i^2-\sum_{i=1}^my_i^2}{2\lambda_0\sigma^2_X}}$
+
+$l(\sigma^2_X,\sigma^2_Y|x,y)=-\frac{m+n}2\ln(2\pi\sigma_X^2)-\frac{m}2\ln\lambda_0-\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{2\lambda_0\sigma^2_X}$
+
+Differentiating the log likelihood
+
+$\frac{\partial}{\partial\sigma^2_X}l(\sigma^2_X,\sigma^2_Y|x,y)=-\frac{m+n}{2\sigma_X^2}+\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{2\lambda_0\sigma^4_X}\overset{set}{=}0$
+
+$$\hat\sigma^2_{0}=\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(m+n)}$$
+
+The second derivative
+
+$\frac{\partial^2}{\partial(\sigma^2_X)^2}l(\sigma^2_X,\sigma^2_Y|x,y)=\frac{m+n}{2\sigma_X^4}-\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(\sigma^2_X)^3}$
+
+When $\sigma^2_X=\hat\sigma^2_{0}$,
+
+$$l''=\frac{m+n}{2(\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(m+n)})^2}-\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(m+n)})^3}=\frac{(m+n)^3\lambda_0^2}{(\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2)^2}(\frac12-1)<0$$
+
+For $l'$ is decreasing, $\hat\sigma^2_{0}=\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(m+n)}$ is MLE.
+
+The LRT statistic is
+
+$$\Lambda=\frac{\sup\limits_{\lambda=\lambda_0} L(\sigma^2_X,\sigma^2_Y|x,y)}{\sup\limits_{\lambda\in(0,+\infty)}  L(\sigma^2_X,\sigma^2_Y|x,y)}=\frac{(2\pi\hat\sigma_0^2)^{-(m+n)/2}\lambda_0^{-m/2}e^{\frac{-\lambda_0\sum_{i=1}^nx_i^2-\sum_{i=1}^my_i^2}{2\lambda_0\hat\sigma^2_0}}}{(2\pi\hat\sigma_X^2)^{-n/2}e^{-\sum_{i=1}^n{x_i^2/2\hat\sigma_X^2}}(2\pi\hat\sigma_Y^2)^{-m/2}e^{-\sum_{i=1}^m{y_i^2/2\hat\sigma_Y^2}}}=\frac{(\hat\sigma_X^2)^{n/2}(\hat\sigma_Y^2)^{m/2}}{\lambda_0^{m/2}(\hat\sigma_0^2)^{(m+n)/2}}$$
+
+Tthe test is: Reject $H_0$ if $\Lambda<k$, where $k$ is chosen to give the test size $\alpha$.
+
+ ---
+
+(b) Express the rejection region of the LRT of part (a) in terms of an $F$ random variable.
+
+Under $H_0$, $\sum_{i=1}^nX_i^2/\sigma_X^2\sim\chi^2_n$, $\sum_{i=1}^mY_i^2/\sigma_Y^2\sim\chi^2_m$. They are independent.
+
+Let $F=\frac{\sum_{i=1}^mY_i^2/(\lambda_0\sigma_X^2m)}{\sum_{i=1}^nX_i^2/(\sigma_X^2n)}\sim F_{m,n}$
+
+$$\Lambda=\frac{(\frac{\sum_{i=1}^nx_i^2}{n})^\frac{n}2(\frac{\sum_{i=1}^my_i^2}{m})^\frac{m}2}{\lambda_0^\frac{m}2(\frac{\lambda_0\sum_{i=1}^nx_i^2+\sum_{i=1}^my_i^2}{\lambda_0(m+n)})^{\frac{m+n}2}}=\frac{(m+n)^{\frac{m+n}2}}{(n+m\frac{\sum_{i=1}^mY_i^2/(\lambda_0\sigma_X^2m)}{\sum_{i=1}^nX_i^2/(\sigma_X^2n)})^{\frac{n}2}(m+n\frac{\sum_{i=1}^nX_i^2/(\sigma_X^2n)}{\sum_{i=1}^mY_i^2/(\lambda_0\sigma_X^2m)})^\frac{m}2}=\frac{(m+n)^{\frac{m+n}2}}{(n+mF)^{\frac{n}2}(m+nF^{-1})^\frac{m}2}$$
+
+The rejection region is
+$$\left\{ (x,y):\frac{(m+n)^{\frac{m+n}2}}{(n+mF)^{\frac{n}2}(m+nF^{-1})^\frac{m}2}<c_{\alpha} \right\}$$
+
+where c is chosen to satisfy
+$$P\left[ (x,y):\frac{(m+n)^{\frac{m+n}2}}{(n+mF)^{\frac{n}2}(m+nF^{-1})^\frac{m}2}<c_{\alpha} \right]=\alpha$$
+
+ ---
+
+(c) Find a $1-\alpha$ confidence interval for A.
+
+Let $k=\sum_{i=1}^my^2_i/\sum_{i=1}^nx^2_i$, $k>0$, $F=\frac{kn}{m\lambda}$, then
+
+$$c(\lambda)=\frac{(m+n)^{\frac{m+n}2}\lambda^{\frac{n}2}k^{\frac{m}2}}{n^{\frac{n}2}m^{\frac{m}2}(\lambda+k)^{\frac{m+n}2}}\quad\lim\limits_{\lambda\to0}c(\lambda)=0\quad\lim\limits_{\lambda\to\infty}c(\lambda)=0$$
+
+$$\ln c(\lambda)=\ln(\frac{(m+n)^{\frac{m+n}2}k^{\frac{m}2}}{n^{\frac{n}2}m^{\frac{m}2}})+\frac{n}2\ln\lambda-\frac{m+n}2\ln(\lambda+k)$$
+
+$$\frac{\partial\ln c(\lambda)}{\partial\lambda}=\frac{n}{2\lambda}-\frac{m+n}{2(\lambda+k)}=\frac{nk-m\lambda}{2\lambda(\lambda+k)}$$
+
+The derivative is  a parabola. For $\lambda\ge0,k>0,m>0,n>0$.  The parabola changes sign from positive to negative, then $c(\lambda)$ firstly increase then decrease.
+
+Hence, the function is an upside-down bowl, and the set $\left\{\lambda:\frac{(m+n)^{\frac{m+n}2}\lambda^{\frac{n}2}k^{\frac{m}2}}{n^{\frac{n}2}m^{\frac{m}2}(\lambda+k)^{\frac{m+n}2}}\ge c_{\alpha} \right\}$ is a $1-\alpha$ confidence interval for $\lambda$.
+
+
+ ---
+ 
+ 
+**9.7** 
+
+(a) Find the $1-\alpha$ confidence set for $\alpha$ that is obtained by inverting the LRT of $H0:a=a_0$ versus $H1:a\neq a_0$ based on a sample $X_1,..,X_n$ from a $n(\theta,a\theta)$ family, where $\theta$ is unknown.(Exercise 8.8)
+
+$f_X(x)=\frac{1}{\sqrt{2\pi a\theta}}e^{-(x-\theta)^2/2a\theta}$, 
+
+$L(a,\theta|x)=\prod_{i=1}^n(2\pi a\theta)^{-1/2}e^{-(x_i-\theta)^2/2a\theta}=(2\pi a\theta)^{-n/2}e^{-\sum_{i=1}^n{(x_i-\theta)^2/2a\theta}}$
+
+$l(a,\theta|x)=-\frac{n}2\ln(2\pi a\theta)-\sum_{i=1}^n\frac{(x_i-\theta)^2}{2a\theta}$
+
+$\frac{\partial}{\partial a}l(a,\theta|x)=-\frac{n}{2a}+\frac{1}{2\theta a^2}\sum_{i=1}^n(x_i-\theta)^2\overset{set}{=}0$
+
+$\frac{\partial}{\partial\theta}l(a,\theta|x)=-\frac{n}{2\theta}+\frac{1}{2a\theta^2}\sum_{i=1}^n(x_i-\theta)^2+\frac{1}{a\theta}\sum_{i=1}^n(x_i-\theta)=-\frac{n}{2\theta}+\frac{1}{2a\theta^2}\sum_{i=1}^n(x_i-\theta)^2+\frac{n\bar x-n\theta}{a\theta}$
+
+$a=\frac{\sum_{i=1}^n(x_i-\theta)^2}{n\theta}$
+
+$\frac{\partial}{\partial\theta}l(a,\theta|x)=-\frac{n}{2\theta}+\frac{n}{2a\theta}+\frac{n\bar x-n\theta}{a\theta}\overset{set}{=}0\implies\hat\theta=\bar x$
+
+Thus
+
+$$\hat a=\frac{\sum_{i=1}^n(x_i-\bar x)^2}{n\bar x}=\frac{\hat\sigma^2}{\bar x}$$
+
+$\hat\theta=\bar x$ and $\hat a=\hat\sigma^2/\bar x$ are the unrestricted MLEs.
+
+Under $a=a_0$, the restricted MLE of $\theta$ is
+
+$\hat\theta_0=-\frac12a_0+\frac12\sqrt{a_0^2+4\sum_{i=1}^nx_i^2/n}$
+
+The LRT statistic is
+
+$$\Lambda=\frac{(1/a_0\hat\theta_0)^{n/2}e^{-\sum_{i=1}^n(x_i-\hat\theta_0)^2/(2a_0\hat\theta_0)}}{(1/\hat a\hat\theta)^{n/2}e^{-\sum_{i=1}^n(x_i-\hat\theta)^2/(2\hat a\hat\theta)}}=(\frac1{2\pi a_0\hat\theta_0})^{n/2}e^{n/2}e^{-\sum_{i=1}^n(x_i-\hat\theta_0)^2/(2a_0\hat\theta_0)}$$
+
+The rejection region of a size $\alpha$ test is $\{x:\lambda(x)\le c_{\alpha}\}$, and a $1-\alpha$ confidence set is $\{a_0:\lambda(x)\ge c_{\alpha}\}$.
+
+ ---
+
+(b) A similar question can be asked about the related family, the $n(\theta,a\theta^2)$ family. If $X_1,..,X_n$ are iid $n(\theta,a\theta^2)$, where $\theta$ is unknown, find the $1-\alpha$ confidence set based on inverting the LRT of $H_0:a=a_0$ versus $H_1:a\neq a_0$.
+
+$f_X(x)=\frac{1}{\sqrt{2\pi a\theta^2}}e^{-(x-\theta)^2/2a\theta^2}$, 
+
+$L(a,\theta|x)=\prod_{i=1}^n(2\pi a\theta^2)^{-1/2}e^{-(x_i-\theta)^2/2a\theta^2}=(2\pi a\theta^2)^{-n/2}e^{-\sum_{i=1}^n{(x_i-\theta)^2/2a\theta^2}}$
+
+$l(a,\theta|x)=-\frac{n}2\ln(2\pi a\theta^2)-\sum_{i=1}^n\frac{(x_i-\theta)^2}{2a\theta^2}$
+
+$\frac{\partial}{\partial a}l(a,\theta|x)=-\frac{n}{2a}+\frac{1}{2a^2\theta^2 }\sum_{i=1}^n(x_i-\theta)^2\overset{set}{=}0$
+
+$\frac{\partial}{\partial\theta}l(a,\theta|x)=-\frac{n}{\theta}+\frac{1}{a\theta^3}\sum_{i=1}^n(x_i-\theta)^2+\frac{1}{a\theta^2}\sum_{i=1}^n(x_i-\theta)$
+
+$a=\frac{\sum_{i=1}^n(x_i-\theta)^2}{n\theta^2}$
+
+$\frac{\partial}{\partial\theta}l(a,\theta|x)=-\frac{n}{\theta}+\frac{n}{\theta}+\frac{n\sum_{i=1}^n(x_i-\theta)}{\sum_{i=1}^n(x_i-\theta)^2}\overset{set}{=}0\implies\hat\theta=\bar x$
+
+Thus
+
+$$\hat a=\frac{\sum_{i=1}^n(x_i-\bar x)^2}{n\bar x^2}=\frac{\hat\sigma^2}{\bar x^2}$$
+
+The unrestricted MLEs are $\hat\theta=\bar x$ and $\hat a=\hat\sigma^2/\bar x^2$
+
+Under $a=a_0$, 
+
+$\frac{\partial}{\partial\theta}l(a,\theta|x)=-\frac{n}{\theta}+\frac{\sum_{i=1}^n(x_i-\theta)^2}{\theta^3}+\frac{\sum_{i=1}^n(x_i-\theta)}{\theta^2}\overset{set}{=}0\implies-\theta^2+\sigma^2+(\bar x-\theta)^2+\theta(\bar x-\theta)=0$
+
+The restricted MLE of $\theta$ is
+
+$$\hat\theta_R=\bar x+\frac1{2a_0}\sqrt{\bar x+4a_0(\hat\sigma^2+\bar x^2)}$$
+
+The LRT statistic is
+
+$$\Lambda=(\hat\sigma^2/\hat\theta_R)^ne^{n/2}e^{-\sum_{i=1}^n(x_i-\hat\theta_R)^2/(2\hat\theta_R)}$$
+
+The rejection region of a size $\alpha$ test is $\{x:\lambda(x)\le c_{\alpha}\}$, and a $1-\alpha$ confidence set is $\{a_0:\lambda(x)\ge c_{\alpha}\}$.
+ 
+ ---
+ 
+**9.17** Find a $1-\alpha$ confidence interval for $\theta$, given $X_1,..,X_n$ iid with pdf
+
+
+(a) $f(x|\theta)=1, \theta-\frac12<x<\theta+\frac12$
+
+$-\frac12<x-\theta<\frac12$, $X\sim uniform(−1/2, 1/2)$, 
+
+Let $P(-\frac12<x-\theta<\frac12) = b − a$. 
+
+$\forall a,b$, $b-a=1−\alpha$
+
+One choice is $\begin{cases}a=\alpha/2−1/2\\b=\alpha/2+1/2\end{cases}$, or $\begin{cases}a=\alpha/2−1/4\\b=\alpha/2+3/4\end{cases}$
+
+ ---
+
+(b) $f(x|\theta)=2x/\theta^2, 0<x<\theta, \theta>0$
+
+Let $T = X/\theta$, $X=T\theta$. $|\frac{dx}{dt}|=\theta$. $f(t)=f(x)|\frac{dx}{dt}|=2(t\theta)/\theta^2\cdot\theta=2t, 0\le t\le 1$.
+
+$P(a\le X/\theta\le b) =\left.\int_b^a2tdt=t^2\right|_a^b=b^2−a^2$.
+
+$\forall a,b$, $b^2-a^2=1−\alpha$. 
+
+One choice is $\begin{cases}a=\sqrt{\alpha/2}\\b=\sqrt{1-\alpha/2}\end{cases}$
+
+## HW5
+
+**12.2** Show that the extrema of 
+$f(b)=\frac1{1+b^2}{[S_{yy} -2bS_{xy}+ b^2S_{xx}]}$
+are given by
+$b=\frac{-(S_{xx}-S_{yy}) + \sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}$
+Show that the "+" solution gives the minimum of $f(b)$.
+
+$f(b)=\frac1{1+b^2}{[S_{yy}-S_{xx} -2bS_{xy}+(1+b^2)S_{xx}]}=\frac{S_{yy}-S_{xx}}{1+b^2}-\frac{2bS_{xy}}{1+b^2} +S_{xx}$
+
+$$\frac{\partial f(b)}{\partial b}=(-1)(2b)\frac{S_{yy}-S_{xx}}{(1+b^2)^2}-2S_{xy}\frac{1+b^2-b(2b)}{(1+b^2)^2}+0=\frac{2(S_{xx}-S_{yy})b+2S_{xy}b^2-2S_{xy}}{(1+b^2)^2}\overset{set}{=}0$$
+
+$$S_{xy}b^2+(S_{xx}-S_{yy})b-S_{xy}=0$$
+
+Then, we get the extrema of $f(b)$ when
+
+$$b=\frac{-(S_{xx}-S_{yy}) \pm \sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}$$
+
+For $b(S_{xx}-S_{yy})=S_{xy}(1-b^2)$
+
+$$\frac{\partial^2 f(b)}{\partial b^2}=\frac{[2(S_{xx}-S_{yy})+4bS_{xy}](1+b^2)^2-[2(S_{xx}-S_{yy})b+2S_{xy}b^2-2S_{xy}][2(1+b^2)(2b)]}{(1+b^2)^4}$$
+
+$$=\frac{2}{(1+b^2)^3}[(S_{xx}-S_{yy})(1-3b^2)+2bS_{xy}(3-b^2)]=\frac{2S_{xy}}{(1+b^2)^3}[\frac{(1-b^2)(1-3b^2)}b+2b(3-b^2)]$$
+
+
+$$=\frac{2S_{xy}}{b(1+b^2)^3}(1+2b^2+b^4)=\frac{2S_{xy}}{b(1+b^2)}=\frac{4S_{xy}^2}{(1+b^2)[-(S_{xx}-S_{yy}) +\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}]}>0$$
+
+For $-(S_{xx}-S_{yy}) +\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}]>0$, $b=\frac{-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}$ has gives the minimum of $f(b)$.
+
+ ---
+
+**12.4** Consider the MLE of the slope in the EIV model
+$\hat\beta(\lambda)=\frac{-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}{2\lambda S_{xy}}$
+where $\lambda=\sigma^2_\delta/\sigma^2_\varepsilon$ is assumed known.
+
+(a) Show that $\lim\limits_{\lambda\to0}\hat\beta(\lambda)=S_{xy}/S_{xx}$, the slope of the ordinary regression of y on x.
+
+$\hat\beta(\lambda)=\frac{-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}{2\lambda S_{xy}}=\frac{\left[-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}\right]\left[(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}\right]}{2\lambda S_{xy}\left[(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}\right]}$
+
+$=\frac{-(S_{xx}-\lambda S_{yy})^2+(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}{2\lambda S_{xy}\left[(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}\right]}=\frac{2S_{xy}}{(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}$
+
+$$\lim\limits_{\lambda\to0}\hat\beta(\lambda)=\frac{2S_{xy}}{(S_{xx}-0) + \sqrt{(S_{xx}-0)^2 +0}}=S_{xy}/S_{xx}$$
+
+ ---
+ 
+(b) Show that  $\lim\limits_{\lambda\to\infty}\hat\beta(\lambda)=S_{yy}/S_{xy}$ the reciprocal of the slope of the ordinary regression of x on y.
+
+$$\hat\beta(\lambda)=\frac{-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}{2\lambda S_{xy}}=\frac{-(\frac{S_{xx}}{\lambda}-S_{yy}) + \sqrt{(\frac{S_{xx}}{\lambda}- S_{yy})^2 +\frac{4S_{xy}^2}{\lambda}}}{2S_{xy}}$$
+
+$$\lim\limits_{\lambda\to\infty}\hat\beta(\lambda)=\frac{-(0-S_{yy}) + \sqrt{(0- S_{yy})^2 +0}}{2S_{xy}}=S_{yy}/S_{xy}$$
+
+ ---
+ 
+(c) Show that $\hat\beta(\lambda)$ is, in fact, monotone in $\lambda$ and is increasing if $S_{xy}>0$ and decreasing if $S_{xy}<0$.
+
+$\frac{d}{d\lambda}\hat\beta(\lambda)=\frac{-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}{2\lambda S_{xy}}=-\frac{S_{xx}}{2S_{xy}\lambda}+\frac{S_{yy}}{2S_{xy}}+[(\frac{S_{xx}}{2S_{xy}\lambda}-\frac{S_{yy}}{2S_{xy}})^2 +\frac1\lambda]^{\frac12}$
+
+$=\frac{S_{xx}}{2S_{xy}\lambda^2}+\frac12[(\frac{S_{xx}}{2S_{xy}\lambda}-\frac{S_{yy}}{2S_{xy}})^2 +\frac1\lambda]^{-\frac12}[(\frac{S_{xx}}{S_{xy}\lambda}-\frac{S_{yy}}{S_{xy}})(-\frac{S_{xx}}{2S_{xy}\lambda^2})-\frac1{\lambda^2}]$
+
+$=\frac{S_{xx}}{2S_{xy}\lambda^2}+\frac12[(\frac{S_{xx}}{2S_{xy}\lambda}-\frac{S_{yy}}{2S_{xy}})^2 +\frac1\lambda]^{-\frac12}\frac1{2S_{xy}^2\lambda^2}[S_{yy}S_{xx}-S_{xx}^2-2S_{xy}^2]$
+
+$=\frac{S_{xx}}{2S_{xy}\lambda^2}+\frac{S_{yy}S_{xx}\lambda-S_{xx}^2-2\lambda S_{xy}^2}{2S_{xy}\lambda^2[4S_{xy}^2\lambda +(S_{xx}-S_{yy}\lambda)^2]^{\frac12}}=\frac{1}{2S_{xy}\lambda^2}(S_{xx}+\frac{S_{yy}S_{xx}\lambda-S_{xx}^2-2\lambda S_{xy}^2}{[4S_{xy}^2\lambda +(S_{xx}-S_{yy}\lambda)^2]^{\frac12}})$
+
+For $S_{yy}S_{xx}>S_{xy}^2$, $S_{xx}^2>\lambda S_{xy}^2$, $S_{yy}S_{xx}\lambda-S_{xx}^2-2\lambda S_{xy}^2>0$
+
+When $S_{xy}>0$, $\frac{d}{d\lambda}\hat\beta(\lambda)>0$; when $S_{xy}<0$, $\frac{d}{d\lambda}\hat\beta(\lambda)<0$. 
+
+Therefore, $\hat\beta(\lambda)$ is monotone in $\lambda$ and is increasing if $S_{xy}>0$ and decreasing if $S_{xy}<0$.
+
+ ---
+
+(d) Show that the orthogonal least squares line $\lambda=1$ is always between the lines given by the ordinary regressions of y on x and of x on y.
+
+For $\lambda=1$, $S_{yy}\ge0$, $S_{xx}\ge0$, $S_{yy}S_{xx}>S_{xy}^2$, and the formula in (a), when $S_{xy}>0$,
+
+$\hat\beta(\lambda)=\frac{-(S_{xx}-S_{yy}) + \sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}\le\frac{S_{yy}-S_{xx}+ \sqrt{(S_{yy}-S_{xx})^2+4S_{xx}S_{yy}}}{2S_{xy}}=\frac{S_{yy}-S_{xx}+|S_{yy}+S_{xx}|}{2S_{xy}}=\frac{S_{yy}}{S_{xy}}$
+
+$\hat\beta(\lambda)=\frac{2S_{xy}}{(S_{xx}-S_{yy}) + \sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}\ge\frac{2S_{xy}}{S_{xx}-S_{yy}+ \sqrt{(S_{xx}-S_{yy})^2+4S_{xx}S_{yy}}}=\frac{2S_{xy}}{S_{xx}-S_{yy}+ |S_{yy}+S_{xx}|}=\frac{S_{xy}}{S_{xx}}$
+
+When $S_{xy}<0$, $\frac{-S_{xy}}{S_{xx}}<-\hat\beta(\lambda)<\frac{S_{yy}}{-S_{xy}}$, then,
+
+$$\frac{|S_{xy}|}{S_{xx}}<|\hat\beta(\lambda)|<\frac{S_{yy}}{|S_{xy}|}$$
+
+
+Therefore, the orthogonal least squares line $\lambda=1$ is always between the lines given by the ordinary regressions of y on x and of x on y.
+
+ ---
+
+(e) The following data were collected in a study to examine the relationship between brain weight and body weight in a number of animal species.
+
+Species: Arctic fox, Owl monkey, Mountain beaver, Guinea pig, Chinchilla, Ground squirrel, Tree hyrax, Big brown bat
+
+Body weight (kg):(x) 3.385, .480, 1 .350, 1 .040, .425, .101, 2.000, .023
+Brain weight (g):(y) 44.50, 15.50, 8.10, 5.50, 6.40, 4.00, 12.30, .30
+
+Caiculate the MLE of the slope assuming the EIV model. Also, calculate the least squares slopes of the regressions of y on x and of x on y, and show how these quantities bound the MLE.
+
+```{r include=FALSE}
+x <-c(3.385, .480, 1.350, 1.040, .425, .101, 2.000, .023) 
+y <-c(44.50, 15.50, 8.10, 5.50, 6.40, 4.00, 12.30, .30) 
+s_xx <- sum((x-mean(x))^2)
+s_yy <- sum((y-mean(y))^2)
+s_xy<- sum((x-mean(x))*(y-mean(y)))
+var(x)
+var(y)
+```
+
+```{r collapse=T, include=FALSE}
+s_xx
+s_yy
+s_xy
+(s_yy-s_xx+sqrt((s_xx-s_yy)^2+4*s_xy^2))/(2*s_xy)
+var(x)/var(y)
+lambda <- s_xx/s_yy
+
+(lambda*s_yy-s_xx+sqrt((s_xx-lambda*s_yy)^2+4*lambda*s_xy^2))/(2*lambda*s_xy)
+s_xy/s_xx
+s_yy/s_xy
+```
+
+$S_{xx}=\sum_{i=1}^8(x_i-\bar x)^2=9.095278$
+
+$S_{yy}=\sum_{i=1}^8(y_i-\bar y)^2=1358.255$
+
+$S_{xy}=\sum_{i=1}^8(y_i-\bar y)(x_i-\bar x)=96.1501$
+
+If $\lambda=1$,
+$\hat\beta(\lambda)=\frac{-(S_{xx}-S_{yy}) + \sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}=14.10272$
+
+If $\hat\lambda=\hat\sigma^2_{\delta}/\hat\sigma^2_{\varepsilon}=\frac{S_{xx}/n}{S_{yy}/n}=0.006696296$
+
+$\hat\beta(\lambda)=\frac{-(S_{xx}-\lambda S_{yy}) + \sqrt{(S_{xx}-\lambda S_{yy})^2 +4\lambda S_{xy}^2}}{2\lambda S_{xy}}=12.22032$
+
+The slope of the ordinary regression of y on x is $S_{xy}/S_{xx}=10.57143$.
+
+The reciprocal of the slope of the ordinary regression of x on y is $S_{yy}/S_{xy}=14.1264$ 
+
+The results show that the MLE of the slope assuming the EIV model locates in the boundaries between the slopes of the ordinary regression of x on y and of y on x.
+
+
+
+## HW6
+
+Another way in which underlying assumptions can be violated is if there is correlation in the sampling, which can seriously affect the properties of the sample mean. Suppose we introduce correlation in the case discussed in Exercise 10.2.1; that is, we observe $X_1,..,X_n$, where $X_i\sim n(\theta,\sigma^2)$, but the $X_i$s are no longer independent.
+
+(a) For the equicorrelated case, that is, $Corr(X_i,X_j)=\rho$ for $i\neq j$, show that 
+$Var(\bar X)=\frac{\sigma^2}{n}+\frac{n-1}{n}\rho\sigma^2$
+so $Var(\bar X)\not\to0$ as $n\to\infty$.
+
+The variance of $\bar X$ is
+
+$$Var[\bar X]=E[\bar X-\mu]^2=E[\frac1n\sum_{i=1}^nX_i-\mu]^2=E[\frac1n(\sum_{i=1}^nX_i-n\mu)]^2$$
+
+$$=\frac1{n^2}E[(X_1-\mu)^2+\cdots+(X_n-\mu)^2+2(X_1-\mu)(X_2-\mu)+\cdots+2(X_{n-1}-\mu)(X_n-\mu)]$$
+
+$$=\frac1{n^2}\sum_{i=1}^nE[(X_i-\mu)^2+\frac2{n^2}\binom{n}{2}Cov(X_i,X_j)=\frac{1}{n^2}\sum_{i=1}^n\sigma^2+\frac2{n^2}\frac{n(n-1)}{2}\sigma^2Cor(X_i,X_j)=\frac{\sigma^2}{n}+\frac{(n-1)}{n}\sigma^2\rho$$
+
+
+ ---
+
+(b) If the $X_i$S are observed through time (or distance), it is sometimes assumed that the correlation decreases with time (or distance) , with one specific model being  $Corr(X_i,X_j)=\rho^{|i-j|}$. Show that in this case
+$Var(\bar X)=\frac{\sigma^2}{n}+\frac{2\sigma^2}{n^2}\frac{\rho}{1-\rho}(n+\frac{1-\rho^n}{1-\rho})$
+so $Var(\bar X)\not\to0$ as $n\to\infty$. (See Miscellanea 5.8.2 for another effect of correlation.)
+
+
+
+$$Var[\bar X]=\frac{\sigma^2}{n}+\frac2{n^2}\underline{E[(X_1-\mu)(X_2-\mu)+\cdots+(X_{n-1}-\mu)(X_n-\mu)]}$$
+
+The part of underline:
+
+$$=E\begin{bmatrix}
+ (X_{1}-\mu)(X_2-\mu) & (X_{1}-\mu)(X_3-\mu) & (X_{1}-\mu)(X_4-\mu) & \cdots & (X_{1}-\mu)(X_n-\mu) \\
+  0 & (X_{2}-\mu)(X_3-\mu) & (X_{2}-\mu)(X_4-\mu) & \cdots & (X_{2}-\mu)(X_n-\mu) \\
+  \vdots & \vdots  & \vdots  & \ddots & \vdots  \\
+  0 & 0 & 0 & \cdots & (X_{n-1}-\mu)(X_n-\mu)
+ \end{bmatrix}_{(n-1)\times(n-1)}$$
+
+$$=(n-1)\rho\sigma^2+(n-2)\rho^{2}\sigma^2+\cdots+\rho^{n-1}\sigma^2=\sigma^2\sum_{i=1}^{n-1}(n-i)\rho^{i}$$
+$$=\sigma^2[\sum_{i=1}^{n-1}n\rho^{i}-\sum_{i=1}^{n-1}i\rho^{i}]=\sigma^2[n\frac{1-\rho^{n}}{1-\rho}-\frac{n(-1+\rho)\rho^{n}+\rho(1-\rho^{n})}{(1-\rho)^2}]=\frac{\sigma^2[n\rho(1-\rho)-\rho(1-\rho^{n})]}{(1-\rho)^2}=\frac{\rho\sigma^2}{1-\rho}(n-\frac{1-\rho^n}{1-\rho})$$
+
+Note: The partial sum of the geometric series is
+$(1.5.4)\qquad \sum_{k=1}^nt^{k-1}=\frac{1-t^n}{1-t},\ t\neq1$, 
+$\sum_{k=0}^{n-1}kt^{k}=\frac{t-nt^{n}+(n-1)t^{n+1}}{(1-t)^2}=\frac{n(-1+t)t^{n}+t(1-t^{n})}{(1-t)^2}$
+
+Therefore,
+
+$$Var[\bar X]=\frac{\sigma^2}{n}+\frac2{n^2}\frac{\rho\sigma^2}{1-\rho}(n-\frac{1-\rho^n}{1-\rho})$$
+
+ ---
+ 
+(c) The correlation structure in part (b) arises in an autoregressive $AR(1)$ model, where we assume that $X_{i+1}=\rho X_i+\delta_i$, with $\delta_i\sim iid\ n(0,1)$. If $|\rho_i|<1$ and we define $\sigma^2=1/(1-\rho^2)$, show that $Corr(X_1,X_i) =\rho^{|i-1|}$.
+
+For $\delta_i\sim iid\ n(0,1)$, $E[\delta_i]=0$, $Var[\delta_i]=1$,
+
+$$E[X_i]=E[E(X_i|X_{i−1})]=E[E(\rho X_{i-1}+\delta_{i-1}|X_{i−1})]= E[\rho X_{i−1}]=\rho^2E[ X_{i−2}]=\cdots=\rho^{i−1}E[X_1]$$
+
+For $X_1\sim n(\theta,\sigma^2)$,$Var[X_1]=\sigma^2$, $X_i,\delta_i$ are independent, and $\sigma^2-\rho^2\sigma^2=1$,
+
+$Var[X_i]=Var[E(X_i|X_{i−1})]+ E[Var(X_i|X_{i−1})]=Var[E(\rho X_{i-1}+\delta_{i-1}|X_{i−1})]+ E[Var(\rho X_{i-1}+\delta_{i-1})|X_{i−1})]$
+ 
+$$=Var[\rho^{i−1}EX_1|X_{i−1}]+E(\rho^2 Var[X_{i-1}]+Var[\delta_{i-1}]+2\rho Cov[X_{i-1},\delta_{i-1}]|X_{i−1})$$
+$Var[X_{i−1}]=\cdots$
+
+$\cdots$
+
+$Var[X_{2}]=Var[\rho EX_1|X_{1}]+E(\rho^2 Var[X_{1}]+Var[\delta_{1}]+2\rho Cov[X_{1},\delta_{1}]|X_{1})=0+\rho^2\sigma^2+1+0=\sigma^2$
+
+$\cdots$
+
+$Var[X_{i−1}]=0+\rho^2\sigma^2+1+0=\sigma^2$
+
+$Var[X_i]=0+\rho^2\sigma^2+1+0=\sigma^2$
+
+$X_1$ and $X_i$ are independent conditional on $X_{i−1}$, then
+
+$$E[X_1X_i]= E[E(X_1X_i|X_{i−1})] = E[E(X_1|X_{i−1})E(X_i|X_{i−1})]=E[E(X_1)\rho E(X_{i−1})]=\rho E[X_1X_{i−1}]=\cdots=\rho^{i-1} E[X_1X_{1}]$$
+
+
+$$Corr(X_1,X_i)=\frac{Cov[X_1,X_i]}{\sqrt{VarX_1VarX_i}}=\frac{E[X_1X_i]-E[X_1]E[X_i]}{\sqrt{\sigma^2\sigma^2}}=\frac{\rho^{i-1}E[X_1^2]-E[X_1]\rho^{i-1}E[X_1]}{\sigma^2}$$
+
+$$=\frac{\rho^{i−1}}{\sigma^2}[EX_1^2−(EX_1)^2]=\frac1{\sigma^2}{\rho^{i−1}\sigma^2}=\rho^{i−1}$$
+
+##
+
+$$E[\sum_{i>j}(X_i-\mu)(X_j-\mu)]=\sigma^2\sum_{i=2}^n\sum_{j=1}^{i-1}\rho^{i-j}$$
+
+In the double sum $\rho$ appears $n−1$ times, $\rho^2$ appears $n−2$ times, etc.. so
+
+$$\sum_{i=2}^n\sum_{j=1}^{i-1}\rho^{|i-j|}=\sum_{i=1}^{n-1}(n-i)\rho^{i}=\frac{\rho}{1-\rho}(n-\frac{1-\rho^n}{1-\rho})$$
+
+ ---
+
+The mean and variance of $X_i$ are
+$$E[X_i]=E[E(X_i|X_{i−1})] = E[\rho X_{i−1}] =\cdots=\rho^{i−1}E[X_1]$$
+and
+$$Var[X_i]= Var[E(X_i|X_{i−1})]+ E[Var(X_i|X_{i−1})]=\rho^2\sigma^2+1=\sigma^2$$
+
+for $\sigma^2=1/(1−\rho^2)$. Also, by iterating the expectation
+$$E[X_1X_i]= E[E(X_1X_i|X_{i−1})] = E[E(X_1|X_{i−1})E(X_i|X_{i−1})] =\rho E[X_1X_{i−1}]$$,
+
+where we used the facts that $X_1$ and $X_i$ are independent conditional on $X_{i−1}$. Continuing with the argument we get that $E[X_1X_i]=\rho^{i−1}EX_1^2$. Thus,
+
+$$Corr(X_1,X_i)=\frac{\rho^{i−1}EX_1^2−\rho^{i−1}(EX_1)^2}{\sqrt{VarX_1VarX_i}}=\frac{\rho^{i−1}\sigma^2}{\sqrt{\sigma^2\sigma^2}}=\rho^{i−1}$$
+
+ ---
+ 
+
+
+ ---
+
+$$\frac{\partial f(b)}{\partial b}=\frac{2(S_{xx}-S_{yy})b}{(1+b^2)^2}+\frac{2S_{xy}}{1+b^2}-\frac{4S_{xy}}{(1+b^2)^2}$$
+
+$$\frac{\partial^2 f(b)}{\partial b^2}=2(S_{xx}-S_{yy})\frac{(1+b^2)^2-b(2)(1+b^2)(2b)}{(1+b^2)^4}+\frac{2S_{xy}(-1)(2b)}{(1+b^2)^2}-\frac{4S_{xy}(-1)(2b)}{(1+b^2)^3}\overset{set}{=}c$$
+
+$$=\frac{2(S_{xx}-S_{yy})(1-3b^2)}{(1+b^2)^3}-\frac{4bS_{xy}(1+b^2)}{(1+b^2)^3}+\frac{16bS_{xy}}{(1+b^2)^3}=\frac{2}{(1+b^2)^3}[(S_{xx}-S_{yy})(1-3b^2)+2bS_{xy}(3-b^2)]=c$$
+
+
+
+When $b=\frac{-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}$
+
+$$\frac{(1+b^2)^3}{2}c=(S_{xx}-S_{yy})(1-3\left[\frac{-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}\right]^2)+2\left[\frac{-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}\right] S_{xy}(3-\left[\frac{-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}}\right]^2)$$
+
+$$\frac{(1+b^2)^3}{2}c=(S_{xx}-S_{yy})(1-3\frac{(S_{xx}-S_{yy})^2+2S_{xy}^2-(S_{xx}-S_{yy})\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}^2})+\left[-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}\right](3-\frac{(S_{xx}-S_{yy})^2+2S_{xy}^2-(S_{xx}-S_{yy})\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}^2})$$
+
+$$\frac{(1+b^2)^3}{2}c=-5(S_{xx}-S_{yy})+4\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}-\frac{3(S_{xx}-S_{yy})^3-3(S_{xx}-S_{yy})^2\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}^2}+\left[-(S_{xx}-S_{yy})+\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}\right](-\frac{(S_{xx}-S_{yy})^2-(S_{xx}-S_{yy})\sqrt{(S_{xx}-S_{yy})^2 +4S_{xy}^2}}{2S_{xy}^2})$$
+
+
+1. Show $\sum C_id_i=0$
+
+
+2. Repeat with $\hat\beta_0$, i.e. show $Cov(\hat\beta_0,\hat\varepsilon_j)=0$
+
+
+Show that $\hat x=\frac{by+x-ab}{1+b^2}; \hat y=a+\frac b{1+b^2}(by+x-ab)$
+
+
+**7.30** The EM algorithm is useful in a variety of situation, and the definition of "missing data" can be stretched to accommodate many different models. Suppose that we have a mixture density $pf(x) + (1 p)g(x)$, where $p$ is unknown. If we observe $X = (X_1,..,X_n)$, the sample density is $\Pi_{i=1}^n[pf(x_i)+(1-p)g(x_i)$ which could be difficult to deal with. (Actually, a mixture of two is not terrible, but consider what the likelihood would look like with a mixture $L:=l P;Ji(X)$ for large k.)
+The EM solution is to augment the observed (or incomplete) data with $Z (Z_1,..,Z_n)$, where $Z_i$ tells which component of the mixture $X_i$ came from; that is,
+
+$X_i|z_i=1\sim f(X_i)$ and $X_i|z_i=0\sim g(x_i)$,and $P(Z_i=1)=p$
+
+(a) Show that the joint density of $(X,Z)$ is given by $\sum^n_{i=1}[pf(x_i)^{z_i}][(1-p)g(x_i)^{1-z_i}]$.
+
+Joint density $f(x,y)=f(x|y)f(y)$,
+
+$$f(\vec x,\vec z)=f(\vec x|\vec z)f(\vec z)=\prod^n_{i=1}f(x_i|z_i)f(z_i)=\prod^n_{i=1}[pf(x_i)]^{z_i}[(1-p)g(x_i)]^{1-z_i}$$
+
+(b) Show that the missing data distribution, the distribution of $Z_i|x_i,p$ is Bernoulli with success probability $\frac{pf(x_i)}{pf(x_i)+(1-p)g(x_i)}$.
+
+Conditional density $f(x|y)=\frac{f(x,y)}{f(y)}$,
+
+$$P(Z_i=1|X_i,p)=\frac{f(x_i,1|p)}{f(x_i|p)}=\frac{pf(x_i)}{pf(x_i)+(1-p)g(x_i)}$$
+
+(c) Calculate the expected complete-data log likelihood, and show that the EM sequence is given by
+
+$$f(\vec x,\vec z)\propto p^{\sum^n_{i=1}z_i}(1-p)^{\sum^n_{i=1}(1-z_i)}$$
+
+which is a Bernoulli joint pdf. For complete data,
+
+$$\hat p=\frac1n\sum Z_i$$
+
+Replacing the missing data with its expectation,
+
+$$E(Z_i|X_i,p)=P(Z_i=1|X_i,p)$$
+
+Through r times iteration,
+
+$$\hat p^{(r+1)}=\frac1n\sum_{i=1}^n\frac{\hat p^{(r)}f(x_i)}{\hat p^{(r)}f(x_i)+(1-\hat p^{(r)})g(x_i)}$$

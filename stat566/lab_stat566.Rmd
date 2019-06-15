@@ -1,0 +1,381 @@
+---
+title: ""
+author: ''
+date: ""
+output: html_document
+---
+
+#  {.tabset .tabset-fade .tabset-pills}
+
+
+## lab1 
+
+ - general Factorial Design and obtain Normal Probability plot of effects
+
+Install and load FrF2 package 
+
+FrF2 stands for Fractional Factor 2-level design which will be learned later 
+
+Here we use 4 factors with total of 16 observations
+
+```{r echo=TRUE, message=FALSE, collapse=TRUE, out.width='25%', results='hold'}
+library(FrF2)
+lab1_design <- FrF2(nruns=16, nfactors=4, randomize = FALSE)
+lab1_response <- c(1.92, 11.28, 1.09, 5.75, 2.13, 9.53, 1.03, 5.35, 1.60, 11.73, 1.16, 4.68, 2.16, 9.11, 1.07, 5.30)
+lab1_table<- add.response(lab1_design, response =lab1_response)
+lab1_table
+```
+Check the design. Note that the output is in the standard order of treatment combinations
+
+Here the data are effect, should not be used as response variable.
+
+```{r echo=TRUE, message=FALSE, collapse=TRUE, out.width='25%', results='hold'}
+lab1_model <-lm( lab1_response ~ A * B * C * D, data =lab1_table) 
+lab1_effects <- coef(lab1_model)[2:16]
+library(daewr) 
+halfnorm(lab1_effects, names(lab1_effects), alpha = 0.05)
+library(AlgDesign)
+gen.factorial(levels = 2, nVars = 5, varNames=c("A","B","C","D","E"))
+library(ggplot2)
+library(gghalfnorm)
+gghalfnorm(x =lab1_effects,labs =names(lab1_effects), nlab = 3)+ theme_light()
+
+qqnorm(lab1_effects, pch=16, ylab="Estimated Effects", xlab="Normal Scores", main="Normal Probability Plot of Treatment Effects")
+qqline(lab1_effects)
+```
+
+```{r echo=TRUE, message=FALSE, collapse=TRUE, out.width='30%', results='hold'}
+# hw1_3 <- tribble(~factors, ~effect, "A",76.95, "B", -67.52,"C",-7.84, "D",-18.73, "AB", -51.32, "AC", 11.69, "AD",9.78, "BC", 20.78, "BD", 14.74, "CD", 1.27, "ABC", -2.82, "ABD", -6.5, "ACD",10.2, "BCD",-7.98, "ABCD",-6.25)
+
+factors <-c("A","B","C","D","AB","AC","AD","BC","BD","CD","ABC","ABD", "ACD","BCD","ABCD")
+effect <- c(76.95,-67.52,-7.84,-18.73,-51.32,11.69,9.78,20.78,14.74,1.27,-2.82,-6.5,10.2,-7.98,-6.25)
+hw1_3 <- data.frame(factors,effect)
+library(dplyr)
+
+hw1_3_qq<-ggplot(hw1_3, aes(sample = effect),label=factors) + stat_qq()
+hw1_3_new<-ggplot_build(hw1_3_qq)$data[[1]]
+#### hw1_3_new$name<-hw1_3_new$name[order(hw1_3$effect)]
+hw1_3_new%>%mutate(name=hw1_3$factors[order(hw1_3$effect)])%>%
+ggplot(aes(theoretical,sample,label=name))+geom_text()+stat_qq_line(aes(sample = y), line.p = c(0.25, 0.75),linetype=4, col = "red")+ theme_light()
+library(gghalfnorm)
+gghalfnorm(x = hw1_3$effect,labs = as.character(hw1_3$factors), nlab = 3)+ theme_light()
+library(daewr) 
+halfnorm(hw1_3$effect, names(as.character(hw1_3$factors)), alpha = 0.05)
+```
+
+
+## lab2
+
+ - Confounded Factorial Design Exercise 6.22
+
+This experiment was redesigned so that AC and BD interaction effect (and hence ABCD effect) are confounded with 4 blocks.
+
+Install and load FrF2 package 
+
+Use FrF2 function as shown below to create the deign 
+
+blocks option is used to indicate confounding factor effects. Here AD and BC are confounded 
+
+nruns is for the number of runs, must be a power of 2
+
+```{r}
+library(FrF2)
+lab2_des <- FrF2(nruns=16, nfactors = 4, blocks = c("AD", "BC"), randomize = FALSE)
+lab2_des
+```
+
+Note the Blocks are sorted so that both negative (AD-, Bc-), (AD+, BC-), (Ad-,BC+), and both positive
+
+Change the order of AD and BC in the FrF2 function above and see the difference in the output design
+
+If the given data file is sorted by Block, then sort the above design accordingly
+
+If the given data file is sorted by standard order of trt combinations, then sort the above design accordingly 
+Sort Design by Block and each factor to get standard order within each block
+
+```{r}
+lab2_des_sort1 <- lab2_des[order(lab2_des$Blocks, lab2_des$D ,lab2_des$C ,lab2_des$B,lab2_des$A ),]
+lab2_des_sort1
+```
+
+Sort Design by each factor to get standard order
+
+```{r}
+Design_Sort2 <- lab2_des[order(lab2_des$D ,lab2_des$C ,lab2_des$B,lab2_des$A),]
+Design_Sort2
+```
+
+Import the Example Excel file
+
+```{r}
+lab2_example <- readxl::read_xlsx("Example.xlsx")
+```
+This data file is in the standard order
+
+Therefore, use the Design_Sort2 to combine response
+```{r}
+lab2_obs <- cbind(Design_Sort2,lab2_example)
+lab2_obs
+```
+
+Note the Block numbers are different in the design and the actual data file 
+
+Therefore, use Block numbers in the actual data file for the analysis
+
+First, change it to a factor
+
+```{r}
+lab2_obs$Blk <-as.factor(lab2_obs$Block)
+
+lab2_fit1 <- aov(UEC ~ Blk + A * B * C * D, data =lab2_obs)
+lab2_effects <- coef(lab2_fit1)
+lab2_effects
+lab2_l <- length(lab2_effects)
+```
+
+Selects the non-block effects that do not have the value of NA 
+
+```{r echo=TRUE, message=FALSE, collapse=TRUE, out.width='25%', results='hold'}
+lab2_effects <-lab2_effects[5:lab2_l]
+#lab2_effects <-lab2_effects[!is.na(d)]
+qqnorm(lab2_effects, pch=16) 
+qqline(lab2_effects)
+library(ggplot2)
+library(gghalfnorm)
+gghalfnorm(x =lab2_effects,labs =names(lab2_effects), nlab=4)+ theme_light()
+library(daewr) 
+halfnorm(lab2_effects, names(lab2_effects), alpha = 0.15)
+lab2_fit2<- aov(UEC ~ Blk + A + C + D + A:C, data = lab2_obs)
+summary(lab2_fit2)
+plot(lab2_fit2, pch=16) 
+```
+
+
+## lab3 
+
+ - Example 8.2
+
+Design a 2^5 one-half fractional factorial design with resolution IV and I=ABCDE generator 
+Install and load FrF2 package 
+
+```{r, collapse=T, out.width='25%', results='hold'}
+library(FrF2)
+design_lab3_1 <- FrF2(nfactors = 5, resolution =5, alias.block.2fis = TRUE, randomize = FALSE)
+summary(design_lab3_1)
+```
+
+The same design can be obtained from the following options too
+
+Here nruns and generators are given and resolution is not given 
+
+Since I=ABCDE the generator which is equivalent to E=ABCD, the column E is created using ABCD 
+
+```{r, collapse=T, out.width='25%', results='hold'}
+design_lab3_2 <- FrF2(nfactors = 5, nruns=2^4, generators = "ABCD", alias.block.2fis = TRUE, randomize = FALSE)
+summary(design_lab3_2)
+```
+
+```{r, collapse=T, out.width='25%', results='hold'}
+lab3_y <- c(8, 9, 34, 52,16,22,45,60, 6, 10, 30, 50, 15, 21, 44, 63)
+table_lab3 <- add.response(design_lab3_1,lab3_y)
+table_lab3
+model_lab3 <- aov(lab3_y ~ A*B*C*D*E, data= table_lab3)
+```
+
+The coefficients in this fitted model gives only half of the estimated effect
+
+because each factor has two levels and the coefficient is only for one level of factor
+
+The true value of estimated effect is double of the following effects
+
+However, it does not affect the normal plot because each effect is half of its true value
+
+```{r, collapse=T, out.width='30%', results='hold'}
+effect_lab3 <-coef(model_lab3)
+qqnorm(effect_lab3[2:length(effect_lab3)], pch=16)
+qqline(effect_lab3[2:length(effect_lab3)])
+daewr::halfnorm(effect_lab3[2:length(effect_lab3)], names(effect_lab3[2:length(effect_lab3)]), alpha = 0.05)
+```
+
+
+
+## Lab4 
+
+- Mixed Models
+
+See Chapter 13-Part 4 Note for the description of data.
+
+```{r}
+lab4_table <- readxl::read_xlsx("Table13_9.xlsx")
+lab4_table$A <- as.factor(lab4_table$Temp)
+lab4_table$B <- as.factor(lab4_table$Operator)
+lab4_table$C <- as.factor(lab4_table$Gauge)
+```
+
+```{r}
+ggpubr::ggline(data = lab4_table, x = "A", y = "y", add = c("mean", "jitter"), shape= "B", color = "C", linetype = "C", ylab= "Response", xlab="Temperature")
+
+ggplot(data = lab4_table, aes(x = A, y = y, shape = B, color=C)) + stat_summary() + labs(y= "Mean Response", x="Temperature", shape="Operator", color = "Gauge")
+```
+
+```{r}
+library(lme4)
+lab4_model1 <- lmer(formula = y ~ A + (1|B) + A:(1|B) + (1|C) + A:(1|C) + (1|B:C) + A:(1|B:C), data=lab4_table, REML = TRUE)
+summary(lab4_model1)
+anova(lab4_model1)
+confint(lab4_model1)
+```
+
+```{r}
+lab4_model2 <- lmer(formula = y ~ A + (1|B) + (1|A:B) + (1|C) + (1|A:C) + (1|B:C) + (1|A:B:C), data=lab4_table, REML = TRUE)
+summary(lab4_model2)
+anova(lab4_model2)
+confint(lab4_model2)
+```
+
+```{r}
+lab4_residual <- rstudent(lab4_model2)
+plot(lab4_residual)
+lab4_y_hat <- fitted(lab4_model2)
+plot(lab4_y_hat,lab4_residual)
+qqnorm(lab4_residual)
+qqline(lab4_residual)
+plot(lab4_model2)
+```
+
+```{r}
+library(emmeans)
+lsmeans(lab4_model2, pairwise ~ A, adjust = c("tukey"))
+```
+
+```{r}
+lab4_model3 <- lmer(y ~ A + (1|B) + (1|A:B) + (1|C) + (1|A:C) + (1|B:C) + (1|A:B:C), data=lab4_table, REML = FALSE)
+
+summary(lab4_model3)
+anova(lab4_model3)
+```
+
+
+
+## Lab5 
+
+- Split-Plot Design
+
+```{r}
+table14_16 <- readxl::read_xlsx("Table14_16.xlsx")
+table14_16$R <- as.factor(table14_16$Rep)
+table14_16$A <- as.factor(table14_16$Pulp)
+table14_16$B <- as.factor(table14_16$Temp)
+```
+
+Fit the model assuming RepxAxB is negligible and use to compute error
+
+Fit the model assuming all the terms containing both Rep and B are negligible and use to compute error
+
+```{r}
+library("lme4")
+model_lab5_1 <- lmer(formula = Strength ~ (1|R) + A + (1|R:A) + B + (1|R:B) + A:B, data=table14_16, REML = TRUE)
+summary(model_lab5_1)
+anova(model_lab5_1)
+plot(model_lab5_1)
+
+model_lab5_2 <- lmer(formula = Strength ~ (1|R) + A + (1|R:A) + B + A:B, data=table14_16, REML = TRUE)
+summary(model_lab5_2)
+anova(model_lab5_2)
+plot(model_lab5_2)
+```
+
+In this example, you may not see a difference in F values of B and AB because RxB variance is estimated to be zero.
+If it was not zero, then results in two models would be different
+
+```{r}
+library("GAD")
+table14_16$RR <- as.random(table14_16$Rep)
+table14_16$AA <- as.fixed(table14_16$Pulp)
+table14_16$BB <- as.fixed(table14_16$Temp)
+```
+
+This gives complete ANOVA table and does not give estimated variances
+
+Fit the model assuming all the terms containing both Rep and B are negligible and use to compute error
+
+```{r}
+model_lab5_3 <- aov(formula = Strength ~ RR + AA + AA%in%RR + BB + AA:BB, data=table14_16)
+gad(model_lab5_3)
+plot(model_lab5_3)
+```
+
+
+
+
+## Lab6
+
+ - Nested & Crossed Design
+ 
+ An industrial engineer is studying the hand insertion of electronic components on printed circuit boards to improve the speed of the assembly operation. The engineer has designed three assembly fixtures and two workplace layouts that seem promising.
+ 
+Operators are required to perform the assembly, and it is decided to randomly select four operators for each fixture–layout combination. However, because the workplaces are in different locations within the plant, it is difficult to use the same four operators for each layout. Therefore, the four operators chosen for layout 1 are different individuals from the four operators chosen for layout 2.
+
+Because there are only three fixtures and two layouts, but the operators are chosen at random, this is a mixed model. The treatment combinations in this design are run in random order, and two replicates are obtained. The assembly times are measured in seconds.
+
+In this experiment, operators are nested within the levels of layouts, whereas fixtures and layouts are arranged in a factorial.
+
+```{r}
+lab6_table <- readxl::read_xlsx("Table14_10.xlsx")
+lab6_table$A <- as.factor(lab6_table$Fixture)
+lab6_table$B <- as.factor(lab6_table$Layout)
+lab6_table$C <- as.factor(lab6_table$Operator)
+```
+
+```{r}
+lab6_model1 <- lmer(formula = Time ~ A*B +(1|B:C) + (1|A:B:C), data=lab6_table, REML = TRUE)
+summary(lab6_model1)
+anova(lab6_model1)
+plot(lab6_model1)
+
+confint(lab6_model1)
+```
+
+```{r}
+lab6_model11 <- lmer(formula = Time ~ A*B +(1|B:C) + A:(1|B:C), data=lab6_table, REML = TRUE)
+summary(lab6_model11)
+anova(lab6_model11)
+plot(lab6_model11)
+
+confint(lab6_model11)
+```
+
+```{r}
+lab6_residual1 <- rstudent(lab6_model1)
+lab6_y_hat1 <- fitted(lab6_model1)
+plot(lab6_residual1)
+plot(lab6_y_hat1,lab6_residual1)
+qqnorm(lab6_residual1) ; qqline(lab6_residual1)
+```
+
+```{r}
+lab6_model2 <- lmer(formula = Time ~ A*B +(1|B:C) + (1|A:B:C), data=lab6_table, REML = FALSE)
+summary(lab6_model2)
+anova(lab6_model2)
+plot(lab6_model2)
+confint(lab6_model2)
+```
+
+```{r}
+lab6_residual2 <- rstudent(lab6_model2)
+lab6_y_hat2 <- fitted(lab6_model2)
+plot(lab6_residual2)
+plot(lab6_y_hat1,lab6_residual2)
+qqnorm(lab6_residual2) ; qqline(lab6_residual2)
+```
+
+```{r}
+lab6_table$AA <- as.fixed(lab6_table$Fixture)
+lab6_table$BB <- as.fixed(lab6_table$Layout)
+lab6_table$CC <- as.random(lab6_table$Operator)
+
+lab6_model3 <- aov(formula = Time ~ AA*BB + CC%in%BB + CC%in%BB*AA, data=lab6_table)
+gad(lab6_model3)
+plot(lab6_model3)
+```
+

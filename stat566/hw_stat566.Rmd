@@ -1,0 +1,1262 @@
+---
+title: ""
+author: ''
+date: ""
+output: html_document
+---
+
+#  {.tabset .tabset-fade .tabset-pills}
+
+```{r setup, include=F}
+
+knitr::opts_chunk$set(message=FALSE, warning=F, echo=F)
+options(width = 2000)
+options(repos="https://cran.rstudio.com")
+
+```
+
+## HW1
+
+### Problem 1: 
+In a home economic experiment, two temperatures (factor A) and two lengths of washing time (factor B) gave the following treatment means. The experiment was conducted as a completely randomized design with n=5 for teach treatment combination. The variable of interest was the amount of impurities (in grams) remaining in the material washed. Assume fixed effects for both factors.
+
+```{r echo=FALSE}
+library(kableExtra)
+Factor <- c("(1)","a","b","ab")
+Mean <- c(6.2,14.1,5.4,7.8)
+kable(t(data.frame(Factor,Mean)))%>%kable_styling("condensed",full_width = F, position = "center")
+```
+
+<!--|     |(1) |a	  |b	 |ab
+| --- | -- | -- | -- | --
+|Mean	|6.2 |14.1|5.4 |7.8-->
+
+(i) Compute the numerical values of the following effects and interpret in terms of question context:
+
+a. main effect of A
+
+$A=\frac12(-\bar y_{(1)}+\bar y_a-\bar y_b+\bar y_{ab})=\frac12(-6.2+14.1-5.4+7.8)=5.15$
+
+The average amount of impurities remaining in the material washed increase by 5.15 grams as the temperatures changes from low to high. 
+
+b. main effect of B
+
+$B=\frac12(-\bar y_{(1)}-\bar y_a+\bar y_b+\bar y_{ab})=\frac12(-6.2-14.1+5.4+7.8)=-3.55$
+
+The average amount of impurities remaining in the material washed decrease by 3.55 grams as the lengths of washing time changes from short to long. 
+
+c. interaction effect of A and B
+	
+$AB=\frac12(\bar y_{(1)}-\bar y_a-\bar y_b+\bar y_{ab})=\frac12(6.2-14.1-5.4+7.8)=-2.75$
+
+The change in average amount of impurities remaining in the material washed when the temperatures changes from low to high at long wsahing time is smaller by 2.75 grams than short washing time. 
+
+(ii) Explain which effect is highest from the effects in part (i).
+
+The main effect of A is highest and main effect of B is smaller than that while it is higher than interaction effect.
+
+(iii) Compute the sum of square for each effect in part (i).
+
+$SS_A=\frac{n}4C_A^2=\frac{n}4(-\bar y_{(1)}+\bar y_a-\bar y_b+\bar y_{ab})^2=\frac54(-6.2+14.1-5.4+7.8)^2=132.6125$
+
+$SS_B=\frac{n}4C_B^2=\frac{n}4(-\bar y_{(1)}-\bar y_a+\bar y_b+\bar y_{ab})^2=\frac54(-6.2-14.1+5.4+7.8)^2=63.0125$
+
+$SS_{AB}=\frac{n}4C_{AB}^2=\frac{n}4(\bar y_{(1)}-\bar y_a-\bar y_b+\bar y_{ab})^2=\frac54(6.2-14.1-5.4+7.8)^2=37.8125$
+
+```{r eval=FALSE, include=FALSE}
+(14.1+7.8-6.2-5.4)^2*5/4
+(5.4+7.8-6.2-14.1)^2*5/4
+(7.8+6.2-14.1-5.4)^2*5/4
+29.8*16+132.6125+63.0125+37.8125
+
+132.6125/29.8
+63.0125/29.8
+37.8125/29.8
+
+df(132.6125/29.8, 1, 16,log= FALSE)
+df(63.0125/29.8, 1, 16,log= FALSE)
+df(37.8125/29.8, 1, 16,log= FALSE)
+
+pf(132.6125/29.8, 1, 16, lower.tail =F, log.p = FALSE)
+pf(63.0125/29.8, 1, 16, lower.tail =F, log.p = FALSE)
+pf(37.8125/29.8, 1, 16, lower.tail =F, log.p = FALSE)
+
+1-pf(132.6125/29.8, 1, 16, lower.tail = TRUE, log.p = FALSE)
+1-pf(63.0125/29.8, 1, 16, lower.tail = TRUE, log.p = FALSE)
+1-pf(37.8125/29.8, 1, 16, lower.tail = TRUE, log.p = FALSE)
+```
+
+(iv) If the MSE = 29.8, then compute all the terms of the ANOVA table for this study.
+
+|Source of Variation|   SS          |      df      | MS     | F      |P-value   |
+|         ---       |   ---         |   ---        | ---    | ---    | ---      |
+|Factor A           |132.6125       |   $2-1=1$    |132.6125|$\frac{132.6125}{29.8}=4.450084$|0.0510038 |
+|Factor B           | 63.0125       |   $2-1=1$    | 63.0125|$\frac{63.0125}{29.8}=2.114513$|0.1652436 |
+|Interaction AB     | 37.8125       |$(2-1)(2-1)=1$| 37.8125|$\frac{37.8125}{29.8}=1.268876$|0.2765897 |
+|Error              |$29.8*16=476.8$|$4*(5-1)=16$  | 29.8   |
+|     |$132.6125+63.0125+37.8125$|
+|Total|$+476.8=710.2375$|$2^2*5-1=19$  |
+
+(v) Based on your ANOVA table, explain which of effects in part (i) are statistically significant at 5% significance level.
+
+Based on the ANOVA table, all the P-value are larger than 0.05. There is no factor has significant effects at 5% significance level.
+
+### Problem 2: 
+
+(i) Create a table of plus and minus for a $2^5$ factorial design. Make sure to use standard order of letter assignments for treatment combinations.
+
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQA5d57ghgj2L4D_2ZpRG1InfBd-3naBrFaJzFwXe78CL5jQ5sH-BTJ8A3DXLwuGV744-4588cxGBKJ/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" height="780" width="105%" frameborder="0" scrolling="no"></iframe>
+
+<!--|     | A	| B	| C | D | E | AB | AC | AD | AE | BC | BD | BE | CD | CE | DE | ABC | ABD | ABE | ACD | ACE | ADE | BCD | BCE | BDE | CDE | ABCD | ABCE | ABDE | ACDE | BCDE | ABCDE |
+| --- | --| --| --| --| --| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | --  | --  | --  | --  | --  | --  | --  | --  | --  | --  |  --  |  --  |  --  |  --  |  --  |  --   |
+|(1)  | - | - | - | - | - | +  | +  | +  | +  | +  | +  | +  | +  | +  | +  | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |  +   |  +   |  +   |  +   |  +   |  -    |
+|a    | + | - | - | - | - | -  | -  | -  | -  | +  | +  | +  | +  | +  | +  | +   | +   | +   | +   | +   | +   | -   | -   | -   | -   |  -   |  -   |  -   |  -   |  +   |  +    |
+|b    | - | + | - | - | - | -  | +  | +  | +  | -  | -  | -  | +  | +  | +  | +   | +   | +   | -   | -   | -   | +   | +   | +   | -   |  -   |  -   |  -   |  +   |  -   |  +    |
+|ab   | + | + | - | - | - | +  | -  | -  | -  | -  | -  | -  | +  | +  | +  | -   | -   | -   | +   | +   | +   | +   | +   | +   | -   |  +   |  +   |  +   |  -   |  -   |  -    |
+|c    | - | - | + | - | - | +  | -  | +  | +  | -  | +  | +  | -  | -  | +  | +   | -   | -   | +   | +   | -   | +   | +   | -   | +   |  -   |  -   |  +   |  -   |  -   |  +    |
+|ac   | + | - | + | - | - | -  | +  | -  | -  | -  | +  | +  | -  | -  | +  | -   | +   | +   | -   | -   | +   | +   | +   | -   | +   |  +   |  +   |  -   |  +   |  -   |  -    |
+|bc   | - | + | + | - | - | -  | -  | +  | +  | +  | -  | -  | -  | -  | +  | -   | +   | +   | +   | +   | -   | -   | -   | +   | +   |  +   |  +   |  -   |  -   |  +   |  -    |
+|abc  | + | + | + | - | - | +  | +  | -  | -  | +  | -  | -  | -  | -  | +  | +   | -   | -   | -   | -   | +   | -   | -   | +   | +   |  -   |  -   |  +   |  +   |  +   |  +    |
+|d    | - | - | - | + | - | +  | +  | -  | +  | +  | -  | +  | -  | +  | -  | -   | +   | -   | +   | -   | +   | +   | -   | +   | +   |  -   |  +   |  -   |  -   |  -   |  +    |
+|ad   | + | - | - | + | - | -  | -  | +  | -  | +  | -  | +  | -  | +  | -  | +   | -   | +   | -   | +   | -   | +   | -   | +   | +   |  +   |  -   |  +   |  +   |  -   |  -    |
+|bd   | - | + | - | + | - | -  | +  | -  | +  | -  | +  | -  | -  | +  | -  | +   | -   | +   | +   | -   | +   | -   | +   | -   | +   |  +   |  -   |  +   |  -   |  +   |  -    |
+|cd   | - | - | + | + | - | +  | -  | -  | +  | -  | -  | +  | +  | -  | -  | +   | +   | -   | -   | +   | +   | -   | +   | +   | -   |  +   |  -   |  -   |  +   |  +   |  -    |
+|abd  | + | + | - | + | - | +  | -  | +  | -  | -  | +  | -  | -  | +  | -  | -   | +   | -   | -   | +   | -   | -   | +   | -   | +   |  -   |  +   |  -   |  +   |  +   |  +    |
+|acd  | + | - | + | + | - | -  | +  | +  | -  | -  | -  | +  | +  | -  | -  | -   | -   | +   | +   | -   | -   | -   | +   | +   | -   |  -   |  +   |  +   |  -   |  +   |  +    |
+|bcd  | - | + | + | + | - | -  | -  | -  | +  | +  | +  | -  | +  | -  | -  | -   | -   | +   | -   | +   | +   | +   | -   | -   | -   |  -   |  +   |  +   |  +   |  -   |  +    |
+|abcd | + | + | + | + | - | +  | +  | +  | -  | +  | +  | -  | +  | -  | -  | +   | +   | -   | +   | -   | -   | +   | -   | -   | -   |  +   |  -   |  -   |  -   |  -   |  -    |
+|e    | - | - | - | - | + | +  | +  | +  | -  | +  | +  | -  | +  | -  | -  | -   | -   | +   | -   | +   | +   | -   | +   | +   | +   |  +   |  -   |  -   |  -   |  -   |  +    |
+|ae   | + | - | - | - | + | -  | -  | -  | +  | +  | +  | -  | +  | -  | -  | +   | +   | -   | +   | -   | -   | -   | +   | +   | +   |  -   |  +   |  +   |  +   |  -   |  -    |
+|be   | - | + | - | - | + | -  | +  | +  | -  | -  | -  | +  | +  | -  | -  | +   | +   | -   | -   | +   | +   | +   | -   | -   | +   |  -   |  +   |  +   |  -   |  +   |  -    |
+|ce   | - | - | + | - | + | +  | -  | +  | -  | -  | +  | -  | -  | +  | -  | +   | -   | +   | +   | -   | +   | +   | -   | +   | -   |  -   |  +   |  -   |  +   |  +   |  -    |
+|de   | - | - | - | + | + | +  | +  | -  | -  | +  | -  | -  | -  | -  | +  | -   | +   | +   | +   | +   | -   | +   | +   | -   | -   |  -   |  -   |  +   |  +   |  +   |  -    |
+|abe  | + | + | - | - | + | +  | -  | -  | +  | -  | -  | +  | +  | -  | -  | -   | -   | +   | +   | -   | -   | +   | -   | -   | +   |  +   |  -   |  -   |  +   |  +   |  +    |
+|ace  | + | - | + | - | + | -  | +  | -  | +  | -  | +  | -  | -  | +  | -  | -   | +   | -   | -   | +   | -   | +   | -   | +   | -   |  +   |  -   |  +   |  -   |  +   |  +    |
+|ade  | + | - | - | + | + | -  | -  | +  | +  | +  | -  | -  | -  | -  | +  | +   | -   | -   | -   | -   | +   | +   | +   | -   | -   |  +   |  +   |  -   |  -   |  +   |  +    |
+|bce  | - | + | + | - | + | -  | -  | +  | -  | +  | -  | +  | -  | +  | -  | -   | +   | -   | +   | -   | +   | -   | +   | -   | -   |  +   |  -   |  +   |  +   |  -   |  +    |
+|bde  | - | + | - | + | + | -  | +  | -  | -  | -  | +  | +  | -  | -  | +  | +   | -   | -   | +   | +   | -   | -   | -   | +   | -   |  +   |  +   |  -   |  +   |  -   |  +    |
+|cde  | - | - | + | + | + | +  | -  | -  | -  | -  | -  | -  | +  | +  | +  | +   | +   | +   | -   | -   | -   | -   | -   | -   | +   |  +   |  +   |  +   |  -   |  -   |  +    |
+|abce | + | + | + | - | + | +  | +  | -  | +  | +  | -  | +  | -  | +  | -  | +   | -   | +   | -   | +   | -   | -   | +   | -   | -   |  -   |  +   |  -   |  -   |  -   |  -    |
+|abde | + | + | - | + | + | +  | -  | +  | +  | -  | +  | +  | -  | -  | +  | -   | +   | +   | -   | -   | +   | -   | -   | +   | -   |  -   |  -   |  +   |  -   |  -   |  -    |
+|acde | + | - | + | + | + | -  | +  | +  | +  | -  | -  | -  | +  | +  | +  | -   | -   | -   | +   | +   | +   | -   | -   | -   | +   |  -   |  -   |  -   |  +   |  -   |  -    |
+|bcde | - | + | + | + | + | -  | -  | -  | -  | +  | +  | +  | +  | +  | +  | -   | -   | -   | -   | -   | -   | +   | +   | +   | +   |  -   |  -   |  -   |  -   |  +   |  -    |
+|abcde| + | + | + | + | + | +  | +  | +  | +  | +  | +  | +  | +  | +  | +  | +   | +   | +   | +   | +   | +   | +   | +   | +   | +   |  +   |  +   |  +   |  +   |  +   |  +    | 
+-->
+
+```{r echo=FALSE, message=FALSE,}
+library(dplyr)
+five_factor <- tribble(
+~effect, ~A, ~B, ~C, ~D, ~E, ~AB, ~AC, ~AD, ~AE, ~BC, ~BD, ~BE, ~CD, ~CE, ~DE, ~ABC, ~ABD, ~ABE, ~ACD, ~ACE, ~ADE, ~BCD, ~BCE, ~BDE, ~CDE, ~ABCD, ~ABCE, ~ABDE, ~ACDE, ~BCDE, ~ABCDE,
+"1" , "[-]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]","[+]","[+]","[+]","[+]","[+]","[-]" ,
+"a"   , "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]","[-]","[-]","[-]","[-]","[+]","[+]" ,
+"b"   , "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]","[-]","[-]","[-]","[+]","[-]","[+]" ,
+"ab"  , "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]","[+]","[+]","[+]","[-]","[-]","[-]" ,
+"c"   , "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]","[-]","[-]","[+]","[-]","[-]","[+]" ,
+"ac"  , "[+]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]","[+]","[+]","[-]","[+]","[-]","[-]" ,
+"bc", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]","[+]","[+]","[-]","[-]","[+]","[-]" ,
+"abc", "[+]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[+]","[-]","[-]","[+]","[+]","[+]","[+]" ,
+"d" , "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]","[-]","[+]","[-]","[-]","[-]","[+]" ,
+"ad", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[+]","[+]","[-]","[+]","[+]","[-]","[-]" ,
+"bd", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]","[+]","[-]","[+]","[-]","[+]","[-]" ,
+"cd", "[-]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]","[+]","[-]","[-]","[+]","[+]","[-]" ,
+"abd", "[+]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]","[-]","[+]","[-]","[+]","[+]","[+]" ,
+"acd", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]","[-]","[+]","[+]","[-]","[+]","[+]" ,
+"bcd", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]","[-]","[+]","[+]","[+]","[-]","[+]" ,
+"abcd" , "[+]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]","[+]","[-]","[-]","[-]","[-]","[-]" ,
+"e" , "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[+]","[+]","[-]","[-]","[-]","[-]","[+]" ,
+"ae", "[+]", "[-]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]","[-]","[+]","[+]","[+]","[-]","[-]" ,
+"be", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[+]","[-]","[+]","[+]","[-]","[+]","[-]" ,
+"ce", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]","[-]","[+]","[-]","[+]","[+]","[-]" ,
+"de", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]","[-]","[-]","[+]","[+]","[+]","[-]" ,
+"abe", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]","[+]","[-]","[-]","[+]","[+]","[+]" ,
+"ace", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]","[+]","[-]","[+]","[-]","[+]","[+]" ,
+"ade", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]","[+]","[+]","[-]","[-]","[+]","[+]" ,
+"bce", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]","[+]","[-]","[+]","[+]","[-]","[+]" ,
+"bde", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[-]","[+]","[+]","[-]","[+]","[-]","[+]" ,
+"cde", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[+]","[+]","[+]","[+]","[-]","[-]","[+]" ,
+"abce" , "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]","[-]","[+]","[-]","[-]","[-]","[-]" ,
+"abde" , "[+]", "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[+]", "[+]", "[-]", "[-]", "[+]", "[-]", "[-]", "[+]", "[-]","[-]","[-]","[+]","[-]","[-]","[-]" ,
+"acde" , "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[+]","[-]","[-]","[-]","[+]","[-]","[-]" ,
+"bcde" , "[-]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[+]", "[+]", "[+]", "[+]","[-]","[-]","[-]","[-]","[+]","[-]" ,
+"abcde", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]", "[+]","[+]","[+]","[+]","[+]","[+]","[+]"
+)
+
+five_factor%>%mutate(ABCD=cell_spec(ABCD,background=ifelse(ABCD=="[-]","#EAFAF1","#f9ece9")))%>%kable(,"html",escape = F) %>%kable_styling("condensed",font_size = 9, full_width = F)
+
+```
+
+(ii) Write a contrast statement for the four factor interaction effect using standard order of letters as we did in class. Assume n replications for each treatment combination.
+
+$$ABCD=\bar y_{(1)}-\bar y_a-\bar y_b+\bar y_{ab}-\bar y_c+\bar y_{ac}+\bar y_{bc}-\bar y_{abc}-\bar y_d+\bar y_{ad}+\bar y_{bd}+\bar y_{cd}-\bar y_{abd}-\bar y_{acd}-\bar y_{bcd}+\bar y_{abcd}$$
+$$+\bar y_e-\bar y_{ae}-\bar y_{be}-\bar y_{ce}-\bar y_{de}+\bar y_{abe}+\bar y_{ace}+\bar y_{ade}+\bar y_{bce}+\bar y_{bde}+\bar y_{cde}-\bar y_{abce}-\bar y_{abde}-\bar y_{acde}-\bar y_{bcde}+\bar y_{abcde}$$
+
+### Problem 3:
+
+(a). contruct a normal probability plot of these effects. Then explain and name the effects that are neglegible.
+
+```{r echo=FALSE,message=FALSE, results='hold', out.width='30%'}
+# hw1_3 <- tribble(~factors, ~effect, "A",76.95, "B", -67.52,"C",-7.84, "D",-18.73, "AB", -51.32, "AC", 11.69, "AD",9.78, "BC", 20.78, "BD", 14.74, "CD", 1.27, "ABC", -2.82, "ABD", -6.5, "ACD",10.2, "BCD",-7.98, "ABCD",-6.25)
+
+factors <-c("A","B","C","D","AB","AC","AD","BC","BD","CD","ABC","ABD", "ACD","BCD","ABCD")
+effect <- c(76.95,-67.52,-7.84,-18.73,-51.32,11.69,9.78,20.78,14.74,1.27,-2.82,-6.5,10.2,-7.98,-6.25)
+hw1_3 <- data.frame(factors,effect)
+
+library(ggplot2)
+# hw1_3_qq<-ggplot(hw1_3, aes(sample = effect),label=factors) + stat_qq()
+# hw1_3_new<-ggplot_build(hw1_3_qq)$data[[1]]
+#### hw1_3_new$name<-hw1_3_new$name[order(hw1_3$effect)]
+# hw1_3_new%>%mutate(name=hw1_3$factors[order(hw1_3$effect)])%>%
+# ggplot(aes(theoretical,sample,label=name))+geom_text()+stat_qq_line(aes(sample = y), line.p = c(0.25, 0.75),linetype=4, col = "red")+ theme_light()
+library(gghalfnorm)
+gghalfnorm(x = hw1_3$effect,labs = as.character(hw1_3$factors), nlab = 3)+ theme_light()
+# library(daewr) 
+# halfnorm(hw1_3$effect, names(as.character(hw1_3$factors)), alpha = 0.05)
+```
+
+Based on the normal QQ plot, only the effects of $A, B, AB$ are non-negligible. The reset factors gather around the quantile-quantile line. The effects or interaction effects of rest factors are negligible.
+
+(b).Identify a tentative model, based on the plot of the effects in part (a) write the theoretical model fit for these data without neglegible terms.
+
+The single replicate $2^4$ factorial model with fixed effects and replications, and without neglegible terms is:
+
+$$y_{ijk}=\mu+\tau_i+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$$
+for $i=1,2$ ; $j=1,2$; $k=1,2,3,4$, where 
+
+$\tau_i$ is fixed main effect of $i^{th}$ level of  Factor A;
+
+$\beta_j$ is fixed main effect of $j^{th}$ level of Factor B;
+
+$(\tau\beta)_{ij}$ is fixed interaction effect of $i^{th}$ level of Factor A and $j^{th}$ level of Factor B;
+
+$\varepsilon_{ijk}$ is random error for the single replicate Exerimental Unit when $i^{th}$ level of Factor A and $j^{th}$ level of Factor B are applied.
+
+$y_{ijk}$ is response for the 4 replicate EU when  $i^{th}$ level of Factor A and  $j^{th}$ level of Factor B are applied.
+
+Assumptions:
+
+$\varepsilon_{ijk}\sim iid N(0,\sigma^2)$; $\sum_i^2\tau_i=0$; $\sum_j^2\beta_j=0$; $\sum_i^2(\tau\beta)_{ij}=0$; $\sum_j^2(\tau\beta)_{ij}=0$
+
+## HW2
+
+### Problem 1: 
+Note: This is a $2^3$ design with replications for each treatment combination. Analyze the data as a typical 3-factor factorial design.
+In part (a), do all the necessary tests and report conclusions along with p values appropriately.
+
+The plot shows that the 3rd class mail with black-and-white brochures and \$19.95 price; or 1st class mail with color brochures and \$24.95 price get most orders.
+
+```{r echo=F, message=F,collapse=T,results='hold', out.width='45%'}
+library(dplyr)
+hw2_1_table <- readxl::read_excel("Table6_6.xlsx")
+hw2_1_table <- hw2_1_table%>%mutate(hw2_1_rep=c(rep(c(1,2),8)))
+
+hw2_1_table$A <- factor(hw2_1_table$A, labels=c("3rd","1st"))
+hw2_1_table$B <- factor(hw2_1_table$B, labels=c("B&W","Colored"))
+hw2_1_table$C <- factor(hw2_1_table$C, labels=c("$19.95","$24.95"))
+
+library(kableExtra)
+kable(t(hw2_1_table))%>%kable_styling("striped", full_width = F)
+
+library(ggpubr)
+ggline(data = hw2_1_table, x = "A", y = "y", add = c("mean", "jitter"),shape= "B",  color = "C", linetype = "C", ylab= "y", xlab="A")+facet_grid(B~C)
+
+library(ggplot2)
+ggplot(hw2_1_table,aes(A,y))+geom_point(aes(col=B,shape=C),size = 5) + scale_colour_grey()+
+  labs(y = "Numbers of Orders", x="Class", color ="Type", shape ="Offered price")+theme_light()
+
+
+hw2_1_model <- aov(y~A*B*C,hw2_1_table)
+library(pander)
+pander(summary(hw2_1_model))
+```
+
+Based on ANOVA table, factor C, AB, AC, BC have significant effects on average value of y at 0.05 significance level. Their P-values are 0.01391,0.009613, 0.0009777, 0.006712 respectivly. That means, effect of class of mail, type of mail, and offered price on average number of orders are not independent. Therefore, simple effects examinations are recommended.
+
+```{r echo=F, message=F,collapse=T, results='hold', out.width='30%'}
+
+# library(mosaic)
+# kable(favstats(y ~ A, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+# kable(favstats(y ~ B, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+# kable(favstats(y ~ A+B, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+# kable(favstats(y ~ A+C, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+# kable(favstats(y ~ B+C, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+# kable(favstats(y ~ A+B+C, data=hw2_1_table)) %>%kable_styling("striped", full_width = F,font_size = 6)
+
+hw2_1_model <- aov(y~A*B*C,hw2_1_table)
+# library(emmeans)
+# a_b <- pairs(lsmeans(hw2_1_model,~ A|B))
+# a_c <- pairs(lsmeans(hw2_1_model,~ A|C))
+# b_c <- pairs(lsmeans(hw2_1_model,~ B|C))
+# kable(test(rbind(a_b,a_c,b_c),adjust="tukey")[1:6,])%>%kable_styling("condensed",full_width=F,font_size = 8)
+
+kable(TukeyHSD(hw2_1_model,conf.level = 0.95)[4:6])%>%kable_styling("condensed",full_width=F,font_size = 12)
+
+#  %>% mutate('p adj' = ifelse('p adj' < 0.05,
+#                 cell_spec('p adj', color = "red", bold = T),
+#                 cell_spec('p adj', color = "gray")))
+
+```
+
+The results show that:
+
+The change in average number of orders placed when the brochure is black-and-white at 1st class is smaller by 5.00 than 3rd class at 0.05 significance level (P-value=0.0149155).
+
+The change in average number of orders placed when mail class is 1st at color brochure is larger by 4.00 than black-and-white at 0.05 significance level(P-value=0.0457222)
+
+The change in average number of orders placed when offered price is \$19.95 at 1st class is smaller by 6.75 than 3rd class at 0.05 significance level (P-value=0.0025205).
+
+The change in average number of orders placed when mail class is 1st at \$24.95 price is larger by 4.75.00 than 3rd class at \$19.95 price at 0.05 significance level(P-value=0.0196196)
+
+The change in average number of orders placed when mail class is 1st at \$24.95 price is larger by 8.00 than \$19.95 at 0.05 significance level(P-value=0.0008250)
+
+The change in average number of orders placed when  brochure is colored at \$24.95 price is larger by 6.50 than \$19.95 at 0.05 significance level(P-value=0.0031989)
+
+The change in average number of orders placed when offered price is $24.95 at color brochure is larger by 4.25 than black-and-white at 0.05 significance level (P-value=0.0343721).
+
+ ---
+
+In part (b), provide plots along with your answer.
+
+```{r echo=F, message=F, results='hold', out.width='30%'}
+hw2_1_table$y_resid<- rstudent(hw2_1_model)
+hist(hw2_1_table$y_resid, breaks =12)
+plot(hw2_1_model)
+```
+
+The histogram of residuals and the QQ plot didn't show obvious violation of normality.
+
+The plot of residuals versus fitted value shows the residuals are evenly distributed about zero at each prededict value (zero mean). A few outliers are acceptable.
+
+The plot of studentized residuals versus fitted value shows vertical deviations of residuals from zero are almost the same for each predicted value (constant variance) with respect to the small sample size.
+
+ ---
+
+In Part(c), clearly recommend which factor levels appropriately in question context and provide reasons.
+
+Based on the results before, factor AB, AC, BC have significant interactive effects. We find when black-and-white brochures or \$19.95 price applied, the 3rd class have more orders than 1st (average 5, 6.75 more orders). When 1rd class or color brochures price applied, the \$24.95 price have more orders than \$19.95 (average 8 or 6.5 more orders). We recommend two combinations focusing on different consumer groups: 3rd class mail with black-and-white brochures and \$19.95 price; or 1st class mail with color brochures and \$24.95 price. Because some economic consumers prefer simple decor and preferential price. Meanwhile, some others are easier be impressed by exquisite packaging and are price insensitive. The two combinations can cover the two consumer groups best.
+
+
+
+<!-- Based on the half-normal quantiles plot, only the effects of A, AC are non-negligible. The reset factors gather around the quantile-quantile line. The effects or interaction effects of rest factors are negligible. 
+
+```{r echo=F, message=F, results='hold', out.width='30%'}
+
+hw2_1_effect<- coef(hw2_1_model)[2:8]
+daewr::halfnorm(hw2_1_effect,alpha=0.55)
+
+hw2_1_model_ac<- aov(y~A*C,hw2_1_table)
+pander(summary(hw2_1_model_ac))
+
+# hw2_1_table_mean <- hw2_1_table%>%group_by(A,B,C)%>%summarise(mean_y=mean(y))
+# hw2_1_model_mean <- aov(mean_y~A*B*C,hw2_1_table_mean)
+# pander::pander(summary(hw2_1_model_mean))
+
+# hw2_1_model_ln <- lm(log(y)~A+C,hw2_1_table)
+# pander::pander(summary(hw2_1_model_ln))
+# plot(hw2_1_model_ln)
+```
+
+The ANOVA table of new model with factor A, C and AC shows only the interactive effect of AC on average number of orders is significant at 0.05 significance level (P-value=0.008489). Based on the results of simple effects in part (a), We recommend that the 1st class of email and $19.95 offered price can improve the customer response rate for a particular product most effectively.-->
+
+
+### Problem 2:
+
+Scientists wish to understand how the amount of sugar (A with two levels), culture strain (B with two levels), type of fruit (C with blueberry or strawberry), and pH (D with two levels) influence shelf life of refrigerated yogurt. In a preliminary experiment, they produce one batch of each of the sixteen kinds of yogurt. The yogurt is then placed in two coolers, eight batches in each cooler. The response is the number of days till an off odor is detected from the batch.
+Analyze these data to determine how the treatments affect time till off odor.
+
+ABCD effects are confounded with blocks according to given table of data.
+
+```{r echo=F, message=F, results='hold', out.width='30%'}
+hw2_2_y <- c(34,34,32,34,34,39,38,37, 35,36,39,41,39,44,44,42)
+hw2_2_block <- c(rep(1,8),rep(2,8))
+hw2_2_name <- c("(1)","ab", "ac", "ad", "bc", "bd", "cd", "abcd", "a", "b", "c", "d", "abc", "abd", "acd", "bcd")
+hw2_2_table <- data.frame(hw2_2_name,hw2_2_block,hw2_2_y)
+
+hw2_2_table <- hw2_2_table[c(1,9,10,2,11,3,5,13,12,4,6,14,7,15,16,8),]
+hw2_2_table <- cbind(hw2_2_table,FrF2::FrF2(16,4,randomize = F))
+
+hw2_2_model <- aov(hw2_2_y~hw2_2_block+A*B*C*D,hw2_2_table)
+hw2_2_effect <- coef(hw2_2_model)[3:16]
+
+library(daewr)
+halfnorm(hw2_2_effect,alpha=0.15)
+
+# library(ggplot2)
+# library(gghalfnorm)
+# gghalfnorm(hw2_2_effect,labs =names(hw2_2_effect), nlab=4)+ theme_light()
+```
+Form the half-normal quantiles plot, D effects is non-negligible after estimating all effects. 
+
+The complete model you would fit for these data based on the finding. 
+
+The single replicate $2^4$ factorial model with confounde ABCD effect as blocks, and without neglegible terms is:
+
+$$y_{ijk}=\mu+\tau_i+\beta_{j}+\varepsilon_{ijk}$$
+for $i=1,2$ ; $j=1,2$; $k=1,2,3,4$, where 
+
+$\tau_i$ is fixed main effect of $i^{th}$ level of  Factor D;
+
+$\beta_{j}$ is effect of $j^{th}$ level of block;
+
+$\varepsilon_{ijk}$ is random error for the $k^{th}$ replicate Exerimental Units when $i^{th}$ level of Factor D and $j^{th}$ level of block are applied.
+
+$y_{ijk}$ is response for the $k^{th}$ replicate EU when  $i^{th}$ level of Factor D and  $j^{th}$ level of block are applied.
+
+Assumptions:
+
+$\varepsilon_{ij}\sim iid N(0,\sigma^2)$; $\sum_i^2\tau_i=0$; $\sum_i^2\beta_j=0$
+
+Fit the model with non-negligible effects and block effects. get the complete ANOVA table.
+
+```{r eval=FALSE, message=FALSE, include=FALSE, out.width='30%', results='hold'}
+hw2_2_model_non_neg <- aov(hw2_2_y~hw2_2_block+D,hw2_2_table)
+pander::pander(summary(hw2_2_model_non_neg))
+sum((hw2_2_table$hw2_2_y- mean(hw2_2_table$hw2_2_y))^2)
+
+```
+
+ ---------------------------------------------------------------
+     &nbsp;        Df   Sum Sq   Mean Sq   F value    Pr(>F)   
+ ----------------- ---- -------- --------- --------- -----------
+  **hw2_2_block**   1    90.25     90.25     28.97    0.0001249 
+
+      **D**         1      81       81        26      0.0002041 
+
+   **Residuals**    13    40.5     3.115     
+
+   **Total**        15  211.75 
+ ---------------------------------------------------------------
+
+ Based on the ANOVA table, the effects of pH (factor D) and cooler (block) on average shelf life of yogurt are significant at 5% significance level.
+
+
+### Problem 3:
+
+Consider the single replicated $2^3$ factorial design with ABC confounded with two blocks.
+Prove algebraically the $SS_{ABC}=SS_{Block}$ (see the example did in class for $2^2$ design)
+
+Factor ABC is confounded with two blocks, $p=1$. Each block have 4 observations. The ABC interaction is defined as the average difference between the BC interaction at the two different levels of A.
+
+$SS_{ABC}=\sum_i^2\sum_j^2\sum_k^2(\hat\tau\hat\beta\hat\gamma)_{ijk}^2=2^3(\frac{-y_{111}+y_{211}+y_{121}-y_{221}+y_{112}-y_{212}-y_{122}+y_{222}}{2^3})^2$
+
+$$=\frac1{2^3}(-y_{(1)}+ y_{a}+y_{b}- y_{ab}+ y_{c}- y_{ac}- y_{bc}+ y_{abc})^2=\frac{1}{2^3}C_{ABC}^2$$
+
+$SS_{Block}=\sum_i^2\sum_j^2\sum_k^2\sum_l^2\hat\delta_l^2=2^2(\delta_1^2+\delta_2^2)=2^2[(\bar y_{blk1}-\bar y_{...})^2+(\bar y_{blk2}-\bar y_{...})^2]$
+
+$\bar y_{blk1}-\bar y_{...}=\frac{1}{4}[y_{(1)}+y_{ab}+y_{ac}+y_{bc}]-\bar y_{...}=\frac{1}{4}[y_{111}+y_{221}+y_{212}+y_{122}]-\frac{1}{8}[y_{111}+y_{211}+y_{121}+y_{221}+y_{112}+y_{212}+y_{122}+y_{222}]$
+
+$=\frac{1}{8}[y_{111}-y_{211}-y_{121}+y_{221}-y_{112}+y_{212}+y_{122}-y_{222}]=\frac18[y_{(1)}-y_{a}-y_{b}+y_{ab}-y_{c}+ y_{ac}+y_{bc}-y_{abc}]=-\frac18C_{ABC}$
+
+By the same way, $\bar y_{blk2}-\bar y_{...}=\frac18C_{ABC}$. Therefore,
+
+$$SS_{Block}=2^2[(-\frac18C_{ABC})^2+(\frac18C_{ABC})^2]=\frac1{2^3}C_{ABC}^2=SS_{ABC}$$
+
+
+### Problem 4:
+
+A $2^4$ factorial experiment is planned but complete blocks of 16 experimental units (EUs) cannot be obtained. Numerous blocks of 8 homogenous EU are available. Assume that we obtain only one observation for each treatment combination.
+
+Using the methods learned in the class, give a random assignment of treatment combinations in the blocks for each of the following scenario. (You have to decide how many blocks to use based on given information here)
+
+There are $2^4=16$ treatment combination, 16 observation. There are $16/8=2$ blocks of 8 homogenous EU.
+
+(a)  the ABCD interaction is confounded with incomplete blocks
+
+|Block1 | Block2|
+|  ---  |  ---  |
+|(1),ab, ac, bc, ad, bd, cd abcd | a, b, c, abc, d, abd, acd, bcd|
+
+(b)  the ABC interaction is confounded with incomplete blocks
+
+|Block1 | Block2|
+| ---   | --- |
+|(1), ab, ac, bc, d, abd, acd, bcd | a, b, c, abc, ad, bd, cd, abcd|
+
+
+### Problem 5:
+
+A researcher needs to conduct a 24 factorial experiment but cannot obtain complete blocks. Two blocks of 8 homogeneous experimental units (EU)s are obtained and the researcher arbitrarily assigns treatments to the blocks.
+The following two treatment assignments are given. For each of the above assignments, report all the effects that are confounded with incomplete blocks.
+
+|   | Block 1 | Block 2 | confounded effects |
+| --- | --- | --- | --- |
+|(i) |a, ab, ac, abc, bd, bcd, cd, d	  | (1), ad, abd, acd, abcd, b, c, bc| AD |
+|(ii)|(1), a, abc, abd, acd, bc, bd, cd|ab, ac, ad, abcd, b, c, bcd, d| BCD |
+
+
+### Problem 6:
+
+A 24 factorial experiment is to be conducted in 4 blocks with ABC interaction and BCD interaction effects are confounded with incomplete blocks with single replication.
+(a) What other effects, if any, are confounded with incomplete blocks? Explain.
+
+$ABC\times BCD=AB^2C^2D=AD$ is confounded with incomplete blocks automatically.
+
+$2^p-p-1=2^2-2-1=1$. There is only one automaticlly confounded effect.
+
+(b) Give the treatment assignment of blocks for one replication of experiment.
+
+| Block1 | Block2| Block3 | Block4|
+| --- | --- | --- | --- |
+| ABC- | ABC- | ABC+ | ABC+ |
+| BCD- | BCD+ | BCD- | BCD+ |
+| (1) | ab | a  | b  |
+| bc  | ac | abc| c  |
+| abd | bcd| bd | ad |
+| acd |  d | cd |abcd|
+
+
+(c) Provide the partial ANVOA table with source and degrees of freedom for this design.
+
+|source|$SS_{Blk}$|$SS_A$|$SS_B$|$SS_{AB}$|$SS_{C}$|$SS_{AC}$|$SS_{BC}$|$SS_{D}$|$SS_{BD}$|$SS_{ABD}$|$SS_{CD}$|$SS_{ACD}$|$SS_{ABCD}$|$SS_E$|$SS_T$|
+| ---  | ---      | ---  | ---  | ---     | ---    |    ---  |    ---  |   ---  |    ---  |     ---  |    ---  |     ---  |      ---  | ---  | --- |
+|   df |  3       |   1  |   1  |   1     |   1    |   1     |   1     |   1    |   1     |       1  |      1  |       1  |        1  |   0  |15   |
+
+
+### Problem 7:
+
+Consider the $2^5$ factorial design in 2 blocks. If ABCDE interaction effect is confounded with blocks, then list the remaining treatment combinations in the same block as acde.
+
+(1), ab, ac, bc, ad, bd, cd, abcd, ae, be, ce, abce, de, abde, acde, bcde
+
+## HW3
+
+### Problem 1:
+A manufacturer suspects that the batches of raw material furnished by his supplier differ significantly in calcium content. There are a large number of batches currently in the warehouse. Five of these are randomly selected for study. A chemist makes four determinations on each batch and obtains the following numerical summaries of data:
+
+Batch	1	2	3	4	5
+Mean	23.458	23.492	23.524	23.380	23.364
+Variance	0.005	0.004	0.005	0.004	0.004
+
+(a) Write the complete model you fit for these data.
+
+$$y_{ij}=\mu+\tau_i+\varepsilon_{ij}$$
+
+for $i=1,2,3,4,5$ is the number of treatment being compared; 
+
+$j=1,2,3,4$ is the number of replications for each treatment; 
+
+$y_{ij}$ is response value for the $j^{th}$ replication when $i^{th}$ treatment is applied;
+
+$\mu$ is the overall true mean response;
+
+$\tau_i$ is the random effect of $i^{th}$ treatment (batches);
+
+$\varepsilon_{ij}$ is random error for the $j^{th}$ replication when $i^{th}$ treatment is applied;
+
+Assumptions: $\varepsilon_{ij}\sim iid N(0,\sigma^2)$; $\tau_{i}\sim iid N(0,\sigma_\tau^2)$; $\varepsilon_{ij}$ and $\tau_{i}$ are independent.
+
+(b) Compute the SSE for the ANOVA of the model.
+
+$$SSE=(n-1)\sum_{i=1}^5S_i^2=(4-1)(0.005+0.004+0.005+0.004+0.004)=0.066$$
+
+(c) Compute the estimated error variance and a 95% confidence interval for the true error variance.
+
+$$\hat\sigma^2=MSE=SSE/(N-a)=0.066/(20-5)=0.0044$$
+
+$$\frac{SSE}{\chi^2_{\alpha/2,df_E=15}}=0.066/27.48839=0.002401014\qquad \frac{SSE}{\chi^2_{1-\alpha/2,df_E=15}}=0.066/6.262138=0.01053953$$
+
+The 95% confidence interval for the true error variance is $[0.002401014,0.01053953]$
+
+
+(d)  Compute the estimated variance of batches of raw material.
+
+$\bar y_{..}=(23.458+23.492+23.524+23.380+23.364)/5=23.4436$
+
+$MS_{Trt}=4\sum_{i=1}^5(\bar y_{i.}-\bar y_{..})^2/(a-1)=$
+$4[(23.458-23.4436)^2+(23.492-23.4436)^2+(23.524-23.4436)^2+(23.380-23.4436)^2+(23.364-23.4436)^2]/4=0.0193952$
+
+$$\hat\sigma_{\tau}^2=(MS_{Trt}-MSE)/n=(0.0193952-0.0044)/4=0.0037488$$
+
+(e) Compute the estimated value for proportion of variance in the response explained by the different batches of raw material.
+
+$$\hat\sigma_{\tau}^2/(\hat\sigma_{\tau}^2+\hat\sigma^2)=(0.0037488)/(0.0037488+0.0044)=0.4600432$$
+
+(f) Compute a 99% confidence interval for the true proportion of variance in the response explained by the different batches of raw material.
+
+$\frac{MS_{Trt}}{MS_E}\cdot\frac{\hat\sigma^2}{n\hat\sigma_{\tau}^2+\hat\sigma^2}\sim F_{a-1,N-a}$
+
+$$P\left[F_{1-\alpha/2}<\frac{MS_{Trt}}{MS_E}\cdot\frac{\sigma^2}{n\sigma_{\tau}^2+\sigma^2}<F_{\alpha/2}\right]=1-\alpha$$
+
+$100(1-\alpha)\%=99\%$, $\alpha=0.01$, then the Lower bound and Uper bound for $\hat\sigma_{\tau}^2/\hat\sigma^2$ are
+
+$L=\frac1n\left(\frac{MS_{Trt}}{MS_EF_{\alpha/2}}-1\right)=\frac14\left(\frac{0.0193952}{0.0044*5.802907}-1\right)=-0.06009518$
+
+$U=\frac1n\left(\frac{MS_{Trt}}{MS_EF_{1-\alpha/2}}-1\right)=\frac14\left(\frac{0.0193952}{0.0044*0.04892783}-1\right)=22.27297$
+
+ $$\frac{L}{1+L}=\frac{-0.06009518}{1-0.06009518}=-0.06393752,\quad\frac{U}{1+U}=\frac{22.27297}{1+22.27297}=0.9570317$$
+
+ 99% confidence interal for $\hat\sigma_{\tau}^2/(\hat\sigma_{\tau}^2+\hat\sigma^2)$ is $[0,0.9570317]$
+
+
+```{r eval=FALSE, include=FALSE}
+# Find the probability of F equalling x
+df(4.89321, 4, 15,log= FALSE)
+# Find the cumulative probability (lower.tail = TRUE for left tail, lower.tail = FALSE for right tail) of less than or equal to value q
+pf(4.89321, 4, 15, lower.tail = T, log.p = FALSE)
+
+# Find the value of x at the qth percentile.
+qf(0.005, 4, 15, lower.tail = F, log.p = FALSE)
+
+qchisq(0.025, 15, lower.tail = F, log.p = FALSE)
+
+qchisq(0.975, 15, lower.tail = F, log.p = FALSE)
+
+```
+
+
+### Problem 2:
+
+Find the E(SSAB) for the two-way ANOVA model (or two-factor model) when both factors have random effects.
+
+$$E(SS_{AB})=E[\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n(\widehat{\tau\beta})_{ij}^2]=\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^nE[(\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...})^2]$$
+
+$y_{ijk}=\mu+\tau_{i}+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$
+
+$\bar y_{ij.}=\frac1{n}\sum_{k=1}^ny_{ijk}=\mu+\tau_{i}+\beta_j+(\tau\beta)_{ij}+\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}$
+
+$\bar y_{i..}=\frac1{bn}\sum_{j=1}^b\sum_{k=1}^ny_{ijk}=\mu+\tau_{i}+\frac1b {\sum_{j=1}^b[\beta_j+(\tau\beta)_{ij}]}+\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+$\bar y_{.j.}=\frac1{an}\sum_{i=1}^a\sum_{k=1}^ny_{ijk}=\mu+\beta_j+\frac1a \sum_{i=1}^a[\tau_i+(\tau\beta)_{ij}]+\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}$
+
+$\bar y_{...}=\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^ny_{ijk}=\mu+\frac1a \sum_{i=1}^a\tau_i+\frac1b\sum_{j=1}^b\beta_j+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+$$\bar y_{ij.}-\bar y_{i.}-\bar y_{.j.}+\bar y_{...}=(\tau\beta)_{ij}-\frac1a \sum_{i=1}^a(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}$$
+$$+\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$$
+
+ ---
+
+Let $W=(\tau\beta)_{ij}-\frac1a \sum_{i=1}^a(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}$
+
+$Z=\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+For $\varepsilon_{ijk}\sim iid N(0,\sigma^2)$, $(\tau\beta)_{ij}\sim iid N(0,\sigma^2_{\tau\beta})$
+
+$$Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]=Var[W+Z]=Var[W]+Var[Z]+Cov[W,Z]$$
+
+ ---
+
+$$Var[W]=Var[(\tau\beta)_{ij}-\frac1a \sum_{i=1}^a(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}+\frac1{ab}\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}]$$
+
+$$=Var[(\tau\beta)_{ij}]+\frac1{a^2}\sum_{i=1}^aVar[(\tau\beta)_{ij}]+\frac1{b^2} \sum_{j=1}^bVar[(\tau\beta)_{ij}]+\frac1{a^2b^2}\sum_{i=1}^a\sum_{j=1}^bVar[(\tau\beta)_{ij}]$$
+
+$$-\frac2{a}Cov[(\tau\beta)_{ij},\sum_{i=1}^a(\tau\beta)_{ij}]-\frac2{b}Cov[(\tau\beta)_{ij},\sum_{j=1}^b(\tau\beta)_{ij}]+\frac2{ab}Cov[(\tau\beta)_{ij},\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}]$$
+
+$$+\frac2{ab}Cov[(\sum_{i=1}^a\tau\beta)_{ij},\sum_{j=1}^b(\tau\beta)_{ij}]-\frac2{a^2b}Cov[\sum_{i=1}^a(\tau\beta)_{ij},\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}]-\frac2{ab^2}Cov[\sum_{j=1}^b(\tau\beta)_{ij},\sum_{i=1}^a\sum_{j=1}^b(\tau\beta)_{ij}]$$
+
+$$=\sigma^2_{\tau\beta}+\frac{\sigma^2_{\tau\beta}}{a}+\frac{\sigma^2_{\tau\beta}}{b}+\frac{\sigma^2_{\tau\beta}}{ab}-\frac{2\sigma^2_{\tau\beta}}{a}-\frac{2\sigma^2_{\tau\beta}}{b}+\frac{2\sigma^2_{\tau\beta}}{ab}+\frac{2\sigma^2_{\tau\beta}}{ab}-\frac{2\sigma^2_{\tau\beta}}{ab}-\frac{2\sigma^2_{\tau\beta}}{ab}=\frac{(a-1)(b-1)\sigma^2_{\tau\beta}}{ab}$$
+
+ ---
+
+$$Var[Z]=Var[\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$=\frac1{n^2}\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{a^2n^2}\sum_{i=1}^a\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{b^2n^2}\sum_{j=1}^b\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{a^2b^2n^2}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^nVar[\varepsilon_{ijk}]$$
+
+$$-\frac{2}{an^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{bn^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]+\frac{2}{abn^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$+\frac{2}{abn^2}Cov[\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk},\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{a^2bn^2}Cov[\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{ab^2n^2}Cov[\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$=\frac1n\sigma^2+\frac{\sigma^2}{an}+\frac{\sigma^2}{bn}+\frac{\sigma^2}{abn}-\frac{2\sigma^2}{an}-\frac{2\sigma^2}{bn}+\frac{2\sigma^2}{abn}+\frac{2\sigma^2}{abn}-\frac{2\sigma^2}{abn}-\frac{2\sigma^2}{abn}=\frac{(a-1)(b-1)\sigma^2}{abn}$$
+
+ ---
+
+For $\varepsilon_{ijk}$ and $(\tau\beta)_{ij}$ are independent and are the only variable in $W$ and $Z$ corresponsively, $Cov[W,Z]=0$, then
+
+$$Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]=\frac{(a-1)(b-1)\sigma^2_{\tau\beta}}{ab}+\frac{(a-1)(b-1)\sigma^2}{abn}=\frac{(a-1)(b-1)(n\sigma^2_{\tau\beta}+\sigma^2)}{abn}$$
+
+For $E[(\widehat{\tau\beta})_{ij}]=0$
+
+$$E(SS_{AB})=\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^nE[(\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...})^2]=\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\left\{Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]+E[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]^2\right\}$$
+
+$$=\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\frac{(a-1)(b-1)(n\sigma^2_{\tau\beta}+\sigma^2)}{abn}=(a-1)(b-1)(\sigma^2+n\sigma^2_{\tau\beta})$$
+
+
+## HW4
+
+### Problem 1: (13.1)
+
+An experiment was performed to investigate the capability of a measurement system. Ten parts were randomly
+selected, and two randomly selected operators measured each part three times. The tests were made in random order.
+
+Create a plot of data first.
+
+```{r echo=FALSE, out.width='33%',fig.show='hold'}
+library(dplyr)
+hw4_table <-readxl::read_xlsx("TableP13_1.xlsx")
+hw4_table$PartNo <-  factor(hw4_table$PartNo)
+hw4_table$Operator <-  factor(hw4_table$Operator)
+str(hw4_table)
+ggpubr::ggline(hw4_table,"PartNo", "Measurement", add = c("mean", "jitter"), shape= "Operator", color = "Operator", linetype = "Operator", ylab= "Measurement", xlab="PartNo")
+library(ggplot2)
+ggplot(hw4_table, aes(PartNo,Measurement, shape = Operator, color=Operator))+ stat_summary() + labs(y= "Mean Measurement", x="PartNo", shape="Operator", color = "Operator")
+```
+
+(a) Analyze the data from this experiment 
+
+write the model
+
+$$y_{ijk}=\mu+\tau_i+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$$
+
+for $i=1,2..,10$ is the number of parts; 
+$j=1,2$ is the number of operators; 
+$k=1,2,3$ is the number of replication; 
+
+$\mu$ is the overall true mean response;
+$\tau_i$ is the random effect of $i^{th}$ part;
+$\beta_j$ is the random effect of $j^{th}$ operator;
+$(\tau\beta)_{ij}$ is the interaction random effect of $i^{th}$ part and $j^{th}$ operator;
+
+$y_{ijk}$ is response value for the $k^{th}$ replication when $i^{th}$ part and $j^{th}$ operator are applied;
+$\varepsilon_{ijk}$ is random error for the $k^{th}$ replication when $i^{th}$ part, $j^{th}$ operator, and $k^{th}$ replication is applied.
+
+Assumptions: 
+
+$\varepsilon_{ijk}\sim iid N(0,\sigma^2)$; $\tau_{i}\sim iid N(0,\sigma_\tau^2)$; $\beta_{j}\sim iid N(0,\sigma_\beta^2)$; 
+$(\tau\beta)_{ij}\sim iid N(0,\sigma_{\tau\beta}^2)$;
+
+$\varepsilon_{ijk}$, $\tau_{i}$, $\beta_{j}$, and $(\tau\beta)_{ij}$ are independent.
+
+fit the model and the complete ANOVA table
+
+```{r include=FALSE}
+hw4_model1 <- aov( Measurement ~ PartNo*Operator, data=hw4_table)
+pander::pander(anova(hw4_model1))
+sum((hw4_table$Measurement- mean(hw4_table$Measurement))^2)
+11.0019/0.6019
+0.4167/0.6019
+(11.0019-0.6019)^2/(11.0019^2/9+0.6019^2/9)
+(0.4167-0.6019)^2/(0.4167^2/1+0.6019^2/9)
+df(18.27862, 9, 9,log = FALSE)
+df(0.6923077, 1, 9,log = FALSE)
+df(0.4012, 9, 40,log = FALSE)
+```
+
+ -------------------------------------------------------------------
+       &nbsp;          Df   Sum Sq   Mean Sq   F value    Pr(>F)   
+ --------------------- ---- -------- --------- --------- -----------
+     **PartNo**        9    99.02      11       18.27862  0.000 
+
+    **Operator**       1    0.4167   0.4167    0.6923077  0.3219569
+
+ **PartNo:Operator**   9    5.417    0.6019    0.4012     0.5328432
+
+    **Residuals**      40     60       1.5       NA         NA     
+
+   **Total**           59   164.85
+ -------------------------------------------------------------------
+
+write the conclusions along with p values.
+
+Based on ANOVA table, only the part has significant effects on average value of output at 0.05 significance level. The P-values is $2.115195\times10^{-5}$.
+
+Check assumptions.
+
+```{r echo=FALSE, out.width='25%',fig.show='hold'}
+library(lme4)
+hw4_model2 <- lmer(formula = Measurement ~ (1|PartNo) + (1|Operator) + (1|PartNo:Operator), data=hw4_table, REML = TRUE)
+
+hw4_residual2 <- rstudent(hw4_model2)
+plot(hw4_residual2)
+# hw4_y_hat2 <- fitted(hw4_model2)
+# plot(hw4_y_hat2,hw4_residual2)
+qqnorm(hw4_residual2)
+qqline(hw4_residual2)
+hist(hw4_table$Measurement)
+plot(hw4_model2)
+```
+
+The histogram of residuals and the QQ plot didn’t show obvious violation of normality.
+
+The plot of residuals versus fitted value shows the residuals are evenly distributed about zero at each prededict value (zero mean).
+
+The plot of studentized residuals versus fitted value shows vertical deviations of residuals from zero are almost the same for each predicted value (constant variance).
+
+ ---
+ 
+(b) Estimate the variance components using ths ANOVA method.
+report all the estimated variance components.
+
+Random effects:
+
+ -----------------------------------------------------
+ **Groups**        **Name**  **Variance** **Std.Dev.**
+ --------------- ----------- ------------ ------------ 
+ PartNo:Operator (Intercept)   0.000       0.000   
+ 
+ PartNo          (Intercept)   1.614       1.271   
+ 
+ Operator        (Intercept)   0.000       0.000   
+ 
+ Residual                      1.317       1.147   
+ ----------------------------------------------------- 
+
+Number of obs: 60, groups:  PartNo:Operator, 20; PartNo, 10; Operator, 2
+
+```{r echo=FALSE}
+
+# summary(hw4_model2)
+# pander::pander(anova(hw4_model2))
+pander::pander(confint(hw4_model2))
+
+# hw4_model3 <- lmer(formula = Measurement ~ (1|PartNo) + (1|Operator) + (1|PartNo:Operator), data=hw4_table, REML = F)
+# summary(hw4_model3)
+# pander::pander(anova(hw4_model3))
+# pander::pander(confint(hw4_model3))
+
+# 0.7347^2
+# 2.094^2
+```
+Based on the variance componets and confidence intervals, only the part has significant effects on average value of output. The estimated variance is $1.614$. The confidence interval is $[0.5397841,4.384836]$ at $0.05$ significance level.
+
+Report your code here.
+
+```{r eval=FALSE, echo=T, include=T}
+hw4_model1 <- aov( Measurement ~ PartNo*Operator, data=hw4_table)
+anova(hw4_model1)
+11.0019/0.6019
+0.4167/0.6019
+(11.0019-0.6019)^2/(11.0019^2/9+0.6019^2/9)
+(0.4167-0.6019)^2/(0.4167^2/1+0.6019^2/9)
+df(18.27862, 9, 9,log = FALSE)
+df(0.6923077, 1, 9,log = FALSE)
+df(0.4012, 9, 40,log = FALSE)
+
+hw4_model2 <- lmer(formula = Measurement ~ (1|PartNo) + (1|Operator) + (1|PartNo:Operator), data=hw4_table, REML = TRUE)
+hw4_residual2 <- rstudent(hw4_model2)
+plot(hw4_residual2)
+# hw4_y_hat2 <- fitted(hw4_model2)
+# plot(hw4_y_hat2,hw4_residual2)
+qqnorm(hw4_residual2)
+qqline(hw4_residual2)
+hist(hw4_table$Measurement)
+plot(hw4_model2)
+summary(hw4_model2)
+confint(hw4_model2)
+```
+
+
+### Problem 2 (13.6)
+
+Reanalyze the measurement systems experiment in Problem 13.1, assuming that operators are a fixed factor. Estimate the appropriate model components using the ANOVA method.
+
+$$y_{ijk}=\mu+\tau_i+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$$
+
+for $i=1,2..,10$ is the number of parts; 
+$j=1,2$ is the number of operators; 
+$k=1,2,3$ is the number of replication; 
+
+$\mu$ is the overall true mean response;
+$\tau_i$ is the random effect of $i^{th}$ part;
+$\beta_j$ is the fixed effect of $j^{th}$ operator;
+$(\tau\beta)_{ij}$ is the interaction random effect of $i^{th}$ part and $j^{th}$ operator;
+
+$y_{ijk}$ is response value for the $k^{th}$ replication when $i^{th}$ part and $j^{th}$ operator are applied;
+$\varepsilon_{ijk}$ is random error for the $k^{th}$ replication when $i^{th}$ part, $j^{th}$ operator, and $k^{th}$ replication is applied.
+
+Assumptions: 
+
+$\varepsilon_{ijk}\sim iid N(0,\sigma^2)$; $\tau_{i}\sim iid N(0,\sigma_\tau^2)$; $\sum_{j=1}^b\beta_{j}=0$; 
+$(\tau\beta)_{ij}\sim iid N(0,\sigma_{\tau\beta}^2)$;
+
+$\varepsilon_{ijk}$, $\tau_{i}$, and $(\tau\beta)_{ij}$ are independent.
+
+
+Fit the restricted model using REML.
+
+```{r include=FALSE}
+hw4_model4 <- lmer(formula = Measurement ~ (1|PartNo) + Operator + (1|PartNo:Operator), data=hw4_table, REML = T)
+summary(hw4_model4)
+```
+
+Report the complete ANOVA table and then write the conclusions along with p values.
+
+```{r echo=FALSE}
+pander::pander(anova(hw4_model4))
+# df(0.3121, 1, 9,log = FALSE)
+```
+
+Based on ANOVA table, the operator don't have significant effects on average value of output at 0.05 significance level. The degrees of fredom in $F$ test are $1$ and $9$. The P-values is $0.5857311$.
+
+Report all the estimated variance components.
+
+Random effects:
+
+ ----------------------------------------------------- 
+ **Groups**        **Name**  **Variance** **Std.Dev.**
+ --------------- ----------- ------------ ------------ 
+ PartNo:Operator (Intercept) 0.000        0.000   
+ 
+ PartNo          (Intercept) 1.611        1.269   
+ 
+ Residual                    1.335        1.155   
+ ----------------------------------------------------- 
+ 
+Number of obs: 60, groups:  PartNo:Operator, 20; PartNo, 10
+
+```{r echo=FALSE}
+pander::pander(confint(hw4_model4))
+
+# 0.7358^2
+# 2.094^2
+```
+
+Based on the variance componets and confidence intervals, only the part has significant variation in average value of output. The estimated variance is $1.611$. The confidence interval is $[0.5414016,4.384836]$ at $0.05$ significance level.
+
+Check the model assumptions.
+
+```{r echo=FALSE, out.width='25%',fig.show='hold'}
+hw4_residual4 <- rstudent(hw4_model4)
+plot(hw4_residual4)
+hw4_y_hat4 <- fitted(hw4_model4)
+plot(hw4_y_hat4,hw4_residual4)
+qqnorm(hw4_residual4)
+qqline(hw4_residual4)
+plot(hw4_model4)
+```
+
+The QQ plot didn’t show obvious violation of normality.
+
+The plot of residuals and plot of residuals versus fitted value shows the residuals are evenly distributed about zero at each prededict value (zero mean).
+
+Report your code here.
+
+```{r eval=FALSE, echo=T, include=T}
+hw4_model4 <- lmer(formula = Measurement ~ (1|PartNo) + Operator + (1|PartNo:Operator), data=hw4_table, REML = T)
+summary(hw4_model4)
+
+anova(hw4_model4)
+df(0.3121, 1, 40,log = FALSE)
+confint(hw4_model4)
+
+hw4_residual4 <- rstudent(hw4_model4)
+plot(hw4_residual4)
+hw4_y_hat4 <- fitted(hw4_model4)
+plot(hw4_y_hat4,hw4_residual4)
+qqnorm(hw4_residual4)
+qqline(hw4_residual4)
+plot(hw4_model4)
+```
+
+### Problem 3
+
+Consider a single replicated 3-factor factorial model with all the main effects and only AB interaction and AC interaction effects where all the effects are random.
+
+(a) Write the complete model.
+
+$$y_{ijk}=\mu+\tau_i+\beta_j+\gamma_k+(\tau\beta)_{ij}+(\tau\gamma)_{ik}+\varepsilon_{ijk}$$
+
+for $i=1,2..,a$ is the number of treatment $A$ ; 
+$j=1,2,..,b$ is the number of treatment $B$; 
+$k=1,2,..,c$ is the number of treatment $C$; 
+
+$y_{ijk}$ is response value when $i^{th}$ treatment A, $j^{th}$ treatment B, and $k^{th}$ treatment C is applied;
+
+$\mu$ is the overall true mean response;
+$\tau_i$ is the random effect of $i^{th}$ treatment;
+$\beta_j$ is the random effect of $j^{th}$ treatment;
+$\gamma_k$ is the random effect of $k^{th}$ treatment;
+
+$(\tau\beta)_{ij}$ is the interaction random effect of $i^{th}$ treatment $A$ and $j^{th}$ treatment $B$;
+
+$(\tau\gamma)_{ik}$ is the interaction random effect of $i^{th}$ treatment $A$ and $k^{th}$ treatment $C$;
+
+$\varepsilon_{ijk}$ is random error when $i^{th}$ treatment A, $j^{th}$ treatment B, and $k^{th}$ treatment C is applied.
+
+Assumptions: 
+
+$\varepsilon_{ijk}\sim iid N(0,\sigma^2)$; $\tau_{i}\sim iid N(0,\sigma_\tau^2)$; $\beta_{j}\sim iid N(0,\sigma_\beta^2)$; $\gamma_{k}\sim iid N(0,\sigma_\gamma^2)$; 
+$(\tau\beta)_{ij}\sim iid N(0,\sigma_{\tau\beta}^2)$; $(\tau\gamma)_{ik}\sim iid N(0,\sigma_{\tau\gamma}^2)$; 
+
+$\varepsilon_{ijk}$, $\tau_{i}$, $\beta_{j}$, $\gamma_{k}$, $(\tau\beta)_{ij}$, and $(\tau\gamma)_{ik}$ are independent.
+
+(b) Create the table with df, SS, EMS and F test statistic for each term in the model.
+
+$df_E=df_T-df_A-df_B-df_C-df_{AB}-df_{AC}=abc-1-(a-1)-(b-1)-(c-1)-(ab-a-b+1)-(ac-a-c+1)$
+$=abc-ab-ac+a=a(b-1)(c-1)$
+
+|term | i | j | k | df |  SS | EMS | F   |
+| --- |-- |-- | --| -- | --- | --- | --- |
+|$\tau_{i}$|1|b|c|$a-1$|$\frac1{bc}\sum_{i=1}^ay_{i..}^2-\frac{1}{abc}y_{...}^2$|$bc\sigma^2_{\tau}+c\sigma^2_{\tau\beta}+b\sigma^2_{\tau\gamma}+\sigma^2$|$\frac{MS_{A}}{MS_{AB}+MS_{AC}-MS_{E}}$|
+|$\beta_{j}$|a|1|c|$b-1$|$\frac1{ac}\sum_{j=1}^by_{.j.}^2-\frac{1}{abc}y_{...}^2$|$ac\sigma^2_{\beta}+c\sigma^2_{\tau\beta}+\sigma^2$|$\frac{MS_{B}}{MS_{AB}}$|
+|$\gamma_{k}$|a|b|1|$c-1$|$\frac1{ab}\sum_{k=1}^cy_{..k}^2-\frac{1}{abc}y_{...}^2$|$ab\sigma^2_{\gamma}+b\sigma^2_{\tau\gamma}+\sigma^2$|$\frac{MS_{C}}{MS_{AC}}$|
+|$(\tau\beta)_{ij}$|1|1|c|$(a-1)(b-1)$|$\frac1c\sum\limits_{i=1}^a\sum\limits_{j=1}^by_{ij.}^2-\frac1{bc}\sum\limits_{i=1}^ay_{i..}^2-\frac1{ac}\sum\limits_{j=1}^by_{.j.}^2+\frac{1}{abc}y_{...}^2$|$c\sigma^2_{\tau\beta}+\sigma^2$|$\frac{MS_{AB}}{MS_{E}}$|
+|$(\tau\gamma)_{ik}$|1|b|1|$(a-1)(c-1)$|$\frac1b\sum\limits_{i=1}^a\sum\limits_{k=1}^cy_{i.k}^2-\frac1{bc}\sum\limits_{i=1}^ay_{i..}^2-\frac1{ab}\sum\limits_{k=1}^cy_{..k}^2+\frac{1}{abc}y_{...}^2$|$b\sigma^2_{\tau\gamma}+\sigma^2$|$\frac{MS_{AC}}{MS_{E}}$|
+|$\varepsilon_{ijk}$|1|1|1|$a(b-1)(c-1)$|$\sum\limits_{i=1}^a\sum\limits_{j=1}^b\sum\limits_{k=1}^cy_{ijk}^2-\frac1c\sum\limits_{i=1}^a\sum\limits_{j=1}^by_{ij.}^2-\frac1b\sum\limits_{i=1}^a\sum\limits_{k=1}^cy_{i.k}^2+\frac1{bc}\sum\limits_{i=1}^ay_{i..}^2$|$\sigma^2$||
+|Total| | | |$abc-1$|$\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^cy_{ijk}^2-\frac{1}{abc}y_{...}^2$|
+
+### Problem 4
+
+Consider the two-factor restricted mixed model with A has fixed effect and B has random effect given below.
+
+$y_{ijk}=\mu+\tau_i+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$,
+$i=1,2..,a$; $j=1,2,..,b$; $k=1,2,..,n$; 
+
+Assumptions: 
+
+$\varepsilon_{ijk}\sim iid N(0,\sigma^2)$; $\sum_{i=1}^a\tau_{i}=0$; $\sum_{i=1}^a(\tau\beta)_{ij}=0$ (restricted model); $\beta_{j}\sim iid N(0,\sigma_\beta^2)$; 
+$(\tau\beta)_{ij}\sim iid N(0,\sigma_{\tau\beta}^2)$;
+$\varepsilon_{ijk}$, $\beta_{j}$, and $(\tau\beta)_{ij}$ are independent.
+
+Derive the E(SSAB) for this model using only the given information here.
+
+$$E(SS_{AB})=E[\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n(\widehat{\tau\beta})_{ij}^2]=n\sum_{i=1}^a\sum_{j=1}^bE[(\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...})^2]$$
+
+$y_{ijk}=\mu+\tau_{i}+\beta_j+(\tau\beta)_{ij}+\varepsilon_{ijk}$
+
+$\bar y_{ij.}=\frac1{n}\sum_{k=1}^ny_{ijk}=\mu+\tau_{i}+\beta_j+(\tau\beta)_{ij}+\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}$
+
+$\bar y_{i..}=\frac1{bn}\sum_{j=1}^b\sum_{k=1}^ny_{ijk}=\mu+\tau_{i}+\frac1b {\sum_{j=1}^b[\beta_j+(\tau\beta)_{ij}]}+\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+For $\frac1a \sum_{i=1}^a\tau_i=0, \quad\frac1a \sum_{i=1}^a(\tau\beta)_{ij}=0$
+
+$\bar y_{.j.}=\frac1{an}\sum_{i=1}^a\sum_{k=1}^ny_{ijk}=\mu+\beta_j+\frac1a \sum_{i=1}^a[\tau_i+(\tau\beta)_{ij}]+\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}=\mu+\beta_j+\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}$
+
+$\bar y_{...}=\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^ny_{ijk}=\mu+\frac1a \sum_{i=1}^a\tau_i+\frac1b\sum_{j=1}^b\beta_j+\frac1{ab}\sum_{j=1}^b[\sum_{i=1}^a(\tau\beta)_{ij}]+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+$=\mu+\frac1b\sum_{j=1}^b\beta_j+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+$$\bar y_{ij.}-\bar y_{i.}-\bar y_{.j.}+\bar y_{...}=(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}+\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$$
+
+ ---
+
+Let $W=(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}$
+
+$Z=\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}$
+
+For $\varepsilon_{ijk}\sim iid N(0,\sigma^2)$, $(\tau\beta)_{ij}\sim iid N(0,\frac{a-1}{a}\sigma^2_{\tau\beta})$
+
+$$Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]=Var[W+Z]=Var[W]+Var[Z]+Cov[W,Z]$$
+
+ ---
+
+$Var[W]=Var[(\tau\beta)_{ij}-\frac1b \sum_{j=1}^b(\tau\beta)_{ij}]=Var[(\tau\beta)_{ij}]+\frac1{b^2} \sum_{j=1}^bVar[(\tau\beta)_{ij}]-\frac2{b}Cov[(\tau\beta)_{ij},\sum_{j=1}^b(\tau\beta)_{ij}]$
+
+
+$$=\frac{a-1}{a}\sigma^2_{\tau\beta}(1-\frac{1}{b})=\frac{(a-1)(b-1)\sigma^2_{\tau\beta}}{ab}$$
+
+ ---
+
+$$Var[Z]=Var[\frac1{n}\sum_{k=1}^n\varepsilon_{ijk}-\frac1{an}\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}-\frac1{bn}\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}+\frac1{abn}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$=\frac1{n^2}\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{a^2n^2}\sum_{i=1}^a\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{b^2n^2}\sum_{j=1}^b\sum_{k=1}^nVar[\varepsilon_{ijk}]+\frac{1}{a^2b^2n^2}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^nVar[\varepsilon_{ijk}]$$
+
+$$-\frac{2}{an^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{bn^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]+\frac{2}{abn^2}Cov[\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$+\frac{2}{abn^2}Cov[\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk},\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{a^2bn^2}Cov[\sum_{i=1}^a\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]-\frac{2}{ab^2n^2}Cov[\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk},\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^n\varepsilon_{ijk}]$$
+
+$$=\frac1n\sigma^2+\frac{\sigma^2}{an}+\frac{\sigma^2}{bn}+\frac{\sigma^2}{abn}-\frac{2\sigma^2}{an}-\frac{2\sigma^2}{bn}+\frac{2\sigma^2}{abn}+\frac{2\sigma^2}{abn}-\frac{2\sigma^2}{abn}-\frac{2\sigma^2}{abn}=\frac{(a-1)(b-1)\sigma^2}{abn}$$
+
+ ---
+
+For $\varepsilon_{ijk}$ and $(\tau\beta)_{ij}$ are independent and are the only variable in $W$ and $Z$ corresponsively, $Cov[W,Z]=0$, then
+
+$$Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]=\frac{(a-1)(b-1)\sigma^2_{\tau\beta}}{ab}+\frac{(a-1)(b-1)\sigma^2}{abn}=\frac{(a-1)(b-1)(n\sigma^2_{\tau\beta}+\sigma^2)}{abn}$$
+
+For $(\tau\beta)_{ij}\sim iid N(0,\frac{a-1}{a}\sigma^2_{\tau\beta})$, $E[(\widehat{\tau\beta})_{ij}]=0$
+
+$$E(SS_{AB})=n\sum_{i=1}^a\sum_{j=1}^bE[(\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...})^2]=n\sum_{i=1}^a\sum_{j=1}^b\left\{Var[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]+E[\bar y_{ij.}-\bar y_{i..}-\bar y_{.j.}+\bar y_{...}]^2\right\}$$
+
+$$=n\sum_{i=1}^a\sum_{j=1}^b\frac{(a-1)(b-1)(n\sigma^2_{\tau\beta}+\sigma^2)}{abn}=(a-1)(b-1)(n\sigma^2_{\tau\beta}+\sigma^2)$$
+
+## HW5
+
+### Problem 1: (14.5)
+
+Consider the three-stage nested design shown in Figure 14.5 to investigate alloy hardness. Using the data that follow, analyze the design, assuming that alloy chemistry and heats are fixed factors and ingots are random. Use the restricted form of the mixed model.
+
+
+
+```{r, echo=FALSE, out.width='33%',fig.show='hold'}
+hw5_table <- readxl::read_xlsx("TableP14_5.xlsx")
+hw5_table$Chem <- as.factor(hw5_table$Chem)
+hw5_table$Heat <- as.factor(hw5_table$Heat)
+hw5_table$Ignot <- as.factor(hw5_table$Ignot)
+str(hw5_table)
+
+ggpubr::ggline(hw5_table,"Chem", "Hardness", add = c("mean", "jitter"), shape= "Heat", color = "Heat", linetype = "Heat", ylab= "Hardness", xlab="Chemistry")
+library(ggplot2)
+ggplot(hw5_table, aes(x=Heat,y=Hardness, shape = Ignot, color=Ignot))+ stat_summary() + labs(y= "Mean Hardness", x="Heat", shape="Ingots", color = "Ingnot")+facet_wrap(facet="Chem")+theme_light()
+```
+
+The plots of data show that the average hardness of alloy among three types of heats are different. There is no obvious difference between two chemistry and between two ingots.
+
+(a) Write the complete model you would fit for these data.
+
+$$y_{ijkl}=\mu+\tau_i+\beta_{j(i)}+\gamma_{k(ij)}+\varepsilon_{l(ijk)}$$
+
+for $i=1,2$ is the number of Chemistry being compared; 
+$j=1,2,3$ is the number of Heat being compared; 
+$k=1,2$ is the number of Ingots; 
+$l=1,2$ is the number of replication; 
+
+$\mu$ is the overall true mean response;
+
+$\tau_i$ is the main fixed effect of $i^{th}$ level of Chemistry;
+
+$\beta_{j(i)}$ is the fixed effect of $j^{th}$ level of Heat nested in $i^{th}$ level of Chemistry;
+
+$\gamma_{k(ij)}$ is the random effect of $k^{th}$ Ingots nested in $j^{th}$ level of Heat in $i^{th}$ level of Chemistry;
+
+$y_{ijkl}$ is response value for the $l^{th}$ replication for $k^{th}$ Ingots nested in $j^{th}$ level of Heat in $i^{th}$ level of Chemistry;
+
+$\varepsilon_{l(ijk)}$ is random error for the $l^{th}$ replication for $k^{th}$ Ingots nested in $j^{th}$ level of Heat in $i^{th}$ level of Chemistry.
+
+Assumptions: 
+
+$\varepsilon_{l(ijk)}\sim iid N(0,\sigma^2)$; $\sum_{i=1}^2\tau_{i}=0$; $\sum_{j=1}^3\beta_{j(i)}=0$; 
+$\gamma_{k(ij)}\sim iid N(0,\sigma_{\gamma}^2)$
+
+$\varepsilon_{l(ijk)}$ and $\gamma_{k(ij)}$ are independent.
+
+(b) Fit the model using software. Report the ANOVA table and/or the estimated variances.
+
+```{r echo=FALSE, out.width='25%',fig.show='hold'}
+library(lme4)
+hw5_model <- lmer(formula = Hardness ~ Chem+Chem:Heat+(1|Chem:Heat:Ignot), data=hw5_table, REML = TRUE)
+hw5_model1 <- lmer(formula = Hardness ~ Chem+(1|Chem/Heat/Ignot), data=hw5_table, REML = TRUE)
+hw5_model2 <- aov(Hardness ~ Chem*Heat*Ignot, data=hw5_table)
+```
+
+```{r eval=FALSE}
+library("GAD")
+hw5_table$Chem_f <- as.fixed(hw5_table$Chem)
+hw5_table$Heat_f <- as.random(hw5_table$Heat)
+hw5_table$Ignot_r <- as.random(hw5_table$Ignot)
+hw5_model3 <- aov(formula = Hardness ~ Chem_f+Heat_f%in%Chem_f+Ignot_r%in%Heat_f%in%Chem_f, data=hw5_table)
+gad(hw5_model3)
+```
+
+
+By combining some rows, the nested ANOVA is
+
+ -------------------------------------------------------------------
+       &nbsp;          Df   Sum Sq   Mean Sq   F value    Pr(>F)   
+ --------------------- ---- -------- --------- --------- -----------
+       **Chem**         1    315.4     315.4   0.8499439  0.3921308
+
+     **Chem:Heat**      4    6453.7  1613.425  4.347878   0.05451892
+
+  **Chem:Heat:Ignot**   6    2226.5   371.0833  2.078898  0.132204
+
+    **Residuals**      12    2141     178.5                     
+
+     **Total**         23   11136.96
+ -------------------------------------------------------------------
+
+```{r include=FALSE}
+sum((hw5_table$Hardness- mean(hw5_table$Hardness))^2)
+pander::pander(anova(hw5_model2))
+
+(6129+324.7)/4 
+(651+108.4+125.1+1342)/6
+315.4/371.0833
+1613.425/371.0833
+371.0833/178.5
+pf(0.8499439, 1, 6,log = FALSE, lower.tail = F)
+pf(4.347878, 4, 6,log = FALSE, lower.tail = F)
+pf(2.078898, 6, 12,log = FALSE, lower.tail = F)
+
+9.384^2
+18.43^2
+```
+
+Random effects:
+
+ -------------------------------------------------------------------
+ Groups            Name        Variance Std.Dev.
+ ----------------- ----------- -------- ----------------------------
+   Chem:Heat:Ignot (Intercept)  96.29    9.813  
+ 
+   Residual                    178.46   13.359  
+ -------------------------------------------------------------------
+
+```{r echo=FALSE}
+# summary(hw5_model)
+# pander::pander(anova(hw5_model))
+pander::pander(confint(hw5_model))
+```
+
+(c) Write the conclusions along with p values or using confidence intervals. Based on your conclusion, provide recommendations appropriately.
+
+The results of ANOVA show that, Only the Heats nested in the Chemistry have significant effects on avarage value of Hardness at 0.10 significance level. The P-value is $0.05451892$. There is no significant evidents that prove the Chemistry and Ingots have effects on avarage value of Hardness. The P-value is $0.3921308$ and $0.132204$.
+
+The results of variance components and condidence intervals show that only Heats nested in the Chemistry have significant variance on average value of Hardness at 0.05 significance level. The variance is $96.29$ and the confidence intervale is $[88.05946,339.6649]$ at 0.05 significance level.
+
+Based on these result, The Chemistry and Ingot don't have significant effect on Hardness. The factory should be informed to check and adjust Heat to reduce heat to heat variance.
+
+(d) Check model assumptions.
+
+```{r echo=FALSE, out.width='25%',fig.show='hold'}
+hw5_residual <- rstudent(hw5_model)
+plot(hw5_residual)
+# hw4_y_hat2 <- fitted(hw4_model2)
+# plot(hw4_y_hat2,hw4_residual2)
+qqnorm(hw5_residual)
+qqline(hw5_residual)
+hist(hw5_table$Hardness)
+plot(hw5_model)
+```
+
+The histogram of residuals is not a perfect normal distribution. The QQ plot didn’t show obvious violation of normality.
+
+The plot of residuals versus fitted value shows the residuals are evenly distributed about zero at each prededict value (zero mean).
+
+The plot of studentized residuals versus fitted value shows vertical deviations of residuals from zero are almost the same for each predicted value (constant variance).
+
+(e) Report your code here.
+
+```{r eval=FALSE, echo=T, include=T}
+hw5_model <- lmer(formula = Hardness ~ Chem+Chem:Heat+(1|Chem:Heat:Ignot), data=hw5_table, REML = TRUE)
+summary(hw5_model)
+anova(hw5_model)
+confint(hw5_model)
+
+hw5_residual <- rstudent(hw5_model)
+plot(hw5_residual)
+qqnorm(hw5_residual)
+qqline(hw5_residual)
+hist(hw5_table$Hardness)
+plot(hw5_model)
+```
+
+### Problem 2: 
+
+Consider a 3-stage nested design with A has fixed effect while B and C have random effects.
+
+(a) Write the complete model.
+
+$$y_{ijkl}=\mu+\tau_i+\beta_{j(i)}+\gamma_{k(ij)}+\varepsilon_{(ijk)l}$$
+
+for $i=1,..,a$ is the number of factor A being compared; 
+
+$j=1,..,b$ is the number offactor B being compared; 
+
+$k=1,..,c$ is the number of factor C being compared; 
+
+$l=1,..,n$ is the number of replication for $k^{th}$ level of factor C in $j^{th}$ level of factor B in $i^{th}$ level of factor A; 
+
+$\mu$ is the overall true mean response;
+
+$\tau_i$ is the main fixed effect of $i^{th}$ level of factor A;
+
+$\beta_{j(i)}$ is the random effect of $j^{th}$ level of factor B nested in $i^{th}$ level of factor A;
+
+$\gamma_{k(ij)}$ is the random effect of $k^{th}$ level of factor C nested in $j^{th}$ level of factor B in $i^{th}$ level of factor A;
+
+$y_{ijkl}$ is response value for the $l^{th}$ replication for $k^{th}$ level of factor C in $j^{th}$ level of factor B in $i^{th}$ level of factor A;
+
+$\varepsilon_{(ijk)l}$ is random error for the $l^{th}$ EU nested in $k^{th}$ level of factor C in $j^{th}$ level of factor B in $i^{th}$ level of factor A.
+
+Assumptions: 
+
+$\varepsilon_{ijkl}\sim iid\ N(0,\sigma^2)$; $\sum_{i=1}^2\tau_{i}=0$; $\beta_{j(i)}\sim iid\ N(0,\sigma_{\beta}^2)$ ; $\gamma_{k(ij)}\sim iid\ N(0,\sigma_{\gamma}^2)$
+
+$\varepsilon_{(ijk)l}$, $\beta_{j(i)}$, and $\gamma_{k(ij)}$ are independent.
+
+(b) Create the table with df, SS, EMS and F test statistic for each term in the model. If there is no exact F test, then find the (Satterthwaite) approximate F test statistic.
+
+|term | i(f) | j(r) | k(r) | l(r) | df |  SS | EMS | F   |
+| --- |-- |-- | --| -- | --- | --- | --- | --- |
+|A$\tau_{i}$f|0|b|c|n|a-1|$\frac1{bcn}\sum_{i=1}^ay_{i...}^2-\frac{1}{abcn}y_{....}^2$|$\frac{bcn\sum_{i=1}^a\tau_i^2}{a-1}+cn\sigma^2_{\beta}+n\sigma^2_{\gamma}+\sigma^2$|$\frac{MS_{A}}{MS_{B(A)}}$|
+|B(A)$\beta_{j(i)}$r|1|1|c|n|a(b-1)|$\frac1{cn}\sum\limits_{i=1}^a\sum\limits_{j=1}^by_{ij..}^2-\frac1{bcn}\sum_{i=1}^ay_{i...}^2$|$cn\sigma^2_{\beta}+n\sigma^2_{\gamma}+\sigma^2$|$\frac{MS_{B(A)}}{MS_{C(A(B))}}$|
+|C(B(A))$\gamma_{k(ji)}$r|1|1|1|n|ab(c-1)|$\frac1{n}{\sum\limits_{i=1}^a\sum\limits_{j=1}^b\sum\limits_{k=1}^cy_{ijk.}^2}-\frac1{cn}{\sum\limits_{i=1}^a\sum\limits_{j=1}^by_{ij..}^2}$|$n\sigma^2_{\gamma}+\sigma^2$|$\frac{MS_{C(A(B))}}{MS_{E}}$|
+|$\varepsilon_{(ijk)l}$|1|1|1|1|abc(n-1)|$\sum\limits_{i=1}^a\sum\limits_{j=1}^b\sum\limits_{k=1}^c\sum\limits_{l=1}^ny_{ijkl}^2-\frac1n\sum\limits_{i=1}^a\sum\limits_{j=1}^b\sum\limits_{k=1}^cy_{ijk.}^2$|$\sigma^2$||
+|Total| | | | |abcn-1|$\sum\limits_{i=1}^a\sum\limits_{j=1}^b\sum\limits_{k=1}^c\sum\limits_{l=1}^ny_{ijkl}^2-\frac{y_{....}^2}{abcn}$|
+

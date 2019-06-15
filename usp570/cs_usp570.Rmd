@@ -1,0 +1,30 @@
+---
+title: "San Francisco–Oakland–Hayward MSA"
+subtitle: "Case Study, USP 570"
+author: 'Shen Qu'
+date: "Spring, 2019"
+output:
+  pdf_document: default
+  word_document: null
+bibliography: bib_cs_usp570.bib
+mainfont: Times New Roman
+geometry: margin=1in
+spacing: double
+fontsize: 12pt
+
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(message=FALSE, warning=F, echo=F)
+options(width = 2000)
+options(repos="https://cran.rstudio.com")
+```
+
+Slides:
+https://docs.google.com/presentation/d/e/2PACX-1vQobpfVeJD3G1hW5zKlpwuon1mgCqWkQSVVNutvoE1t22HPAjogf1CyXJtDq3NtLqUo-dNTbQXhT1em/pub?start=false&loop=false&delayms=60000
+
+References {#references .unnumbered}
+==========
+---
+nocite: '@*'
+...
