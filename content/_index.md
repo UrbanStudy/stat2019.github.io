@@ -4,7 +4,7 @@ description: "Fariborz Maseeh Department of Mathematics and Statistics, PSU"
 markup: "mmark"
 ---
 
-###Core Requirements (33 credits):
+### Core Requirements (33 credits):
 
 Candidates must complete an approved 45-credit program, which includes at least 33 core credits in courses with the STAT prefix. These 33 credits must include courses distributed as follows:
 
@@ -86,7 +86,7 @@ Other statistically orientated courses outside the Department and other mathemat
 
 Students must pass two examinations, one in Mathematical Statistics which covers STAT 561, 562, 563 and one in Applied Statistics which includes the core topics covered in STAT 564, 565, and 566. Examinations are scheduled twice per year, the week before the Fall term and during the first week of Spring term.  Students may take any examination at most two times. Students must be registered for and complete at least one graduate credit during the term in which they take an exam. See the MS examination policy for more detailed information. 
 
-### Grading Policy for the MS Exam in Applied Statistics
+### Applied Statistics
 
 The Applied Statistics Exam is comprised of two components:
 
@@ -148,14 +148,7 @@ examination where a data set will be provided and students will be asked to use 
 {.table .table-condensed .table-striped .text-left}
  <span></span>     | <span></span> | <span></span> 
 -----------|---------------------------------|----------------------------------
-Probability theory, random variables and expectation, discrete and continuous distributions,
-conditional distributions, transformations of random variables, moment generating functions,
-exponential families of distributions, multivariate distributions, univariate sampling algorithms.
-Holder’s Inequality, Minkowski’s Inequality, Jensen’s Inequality, |Sampling distributions, Order
-Statistics, Convergence concepts, Data reduction, Sufficiency, Completeness, Basu’s theorem,
-Cramer-Rao inequality, Methods of estimation, |Maximum likelihood estimation, Bayes estimation,
-EM Algorithm, Most Powerful tests, Neyman-Pearson Lemma, UMP Tests, Likelihood Ratio
-Tests, Interval Estimation, Large sample properties of estimators and the tests of hypotheses.    
+Probability theory, random variables and expectation, discrete and continuous distributions, conditional distributions, transformations of random variables, moment generating functions, exponential families of distributions, multivariate distributions, univariate sampling algorithms. |Holder’s Inequality, Minkowski’s Inequality, Jensen’s Inequality,  Sampling distributions, Order Statistics, Convergence concepts, Data reduction, Sufficiency, Completeness, Basu’s theorem, Cramer-Rao inequality, Methods of estimation, |Maximum likelihood estimation, Bayes estimation, EM Algorithm, Most Powerful tests, Neyman-Pearson Lemma, UMP Tests, Likelihood Ratio Tests, Interval Estimation, Large sample properties of estimators and the tests of hypotheses.    
 
  - References:
 
@@ -193,10 +186,10 @@ Students taking a master’s exam must be registered for at least one graduate c
 ### Committees
 
 {.table .table-condensed .table-striped .text-left}
-<span></span>     | <span></span>     | <span></span>    | 
-------------------|-------------------|------------------|
-Applied Statistics: |  Daniel Taylor-Rodriguez| Bruno Jedynak | 
-Mathematical Statistics:|  Bob Fountain| Subhash Kochar  | 
+<span></span>     | <span></span>     | <span></span>    
+------------------|-------------------|------------------
+Applied Statistics: |  Daniel Taylor-Rodriguez| Bruno Jedynak
+Mathematical Statistics:|  Bob Fountain| Subhash Kochar
 
 
 
